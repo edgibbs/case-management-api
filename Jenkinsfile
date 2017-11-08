@@ -43,7 +43,7 @@ node ('tpt3-slave'){
       string(defaultValue: 'development', description: '', name: 'branch'),
       booleanParam(defaultValue: false, description: '', name: 'RELEASE_DOCKER'),
       booleanParam(defaultValue: true, description: '', name: 'USE_NEWRELIC'),
-      string(defaultValue: 'inventories/tpt2dev/hosts.yml', description: '', name: 'inventory')
+      string(defaultValue: 'inventories/tpt3dev/hosts.yml', description: '', name: 'inventory')
       ]), pipelineTriggers([pollSCM('H/5 * * * *')])])
   try {
    stage('Preparation') {
