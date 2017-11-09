@@ -51,6 +51,6 @@
     <property dbms="postgresql, hsqldb" name="boolean_false" value="false"/>
     <property dbms="db2" name="boolean_false" value="0"/>
 
-    <!--<include file="test_forms_schema.xml" relativeToChangelogFile="true"/>-->
+    <include file="legacy/chld.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
