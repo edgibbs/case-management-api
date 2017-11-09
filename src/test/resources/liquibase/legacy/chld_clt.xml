@@ -121,16 +121,16 @@
             <column name="ICADSR_IND" type="${type.string}(1)" defaultValue="N">
                 <constraints nullable="false"/>
             </column>
-            <column name="DISABLD_CD" type="${DATE}">
+            <column name="FSTAMP_DT" type="DATE">
                 <constraints nullable="true"/>
             </column>
-            <column name="SIJ_INT_DT" type="${DATE}">
+            <column name="SIJ_INT_DT" type="DATE">
                 <constraints nullable="true"/>
             </column>
-            <column name="SSI_SCR_DT" type="${DATE}">
+            <column name="SSI_SCR_DT" type="DATE">
                 <constraints nullable="true"/>
             </column>
-            <column name="TCADPT_DT" type="${DATE}">
+            <column name="TCADPT_DT" type="DATE">
                 <constraints nullable="true"/>
             </column>
         </createTable>
