@@ -41,7 +41,7 @@ group projectGroup
 version projectVersion
 
 repositories {
-//    mavenLocal()
+    mavenLocal()
     maven {
         url "http://sonar.dev.cwds.io:8081/artifactory/repo"
     }
