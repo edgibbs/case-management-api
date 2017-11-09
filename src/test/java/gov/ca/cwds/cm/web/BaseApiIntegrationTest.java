@@ -45,4 +45,8 @@ public abstract class BaseApiIntegrationTest {
   public void tearDown() throws Exception {
   }
 
+    public String transformDTOtoJSON(Object o) throws Exception {
+        return clientTestRule.getMapper().writeValueAsString(o);
+    }
+
 }
