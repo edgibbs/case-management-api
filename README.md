@@ -1,6 +1,6 @@
 # CWDS CASE MANAGEMENT API
 
-The CWDS API provides Forms Generation RESTful services for the CWDS CALS Digital Service.
+The CWDS CASE MANAGEMENT API provides RESTful services for the CWDS CASE MANAGEMENT Digital Service.
 
 ## Wiki
 

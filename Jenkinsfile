@@ -34,7 +34,7 @@ def notifyBuild(String buildStatus, Exception e) {
     )
 }
 
-node ('dora-slave'){
+node ('tpt3-slave'){
    def serverArti = Artifactory.server 'CWDS_DEV'
    def rtGradle = Artifactory.newGradleBuild()
    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), disableConcurrentBuilds(), [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
@@ -43,7 +43,7 @@ node ('dora-slave'){
       string(defaultValue: 'development', description: '', name: 'branch'),
       booleanParam(defaultValue: false, description: '', name: 'RELEASE_DOCKER'),
       booleanParam(defaultValue: true, description: '', name: 'USE_NEWRELIC'),
-      string(defaultValue: 'inventories/tpt2dev/hosts.yml', description: '', name: 'inventory')
+      string(defaultValue: 'inventories/tpt3dev/hosts.yml', description: '', name: 'inventory')
       ]), pipelineTriggers([pollSCM('H/5 * * * *')])])
   try {
    stage('Preparation') {
