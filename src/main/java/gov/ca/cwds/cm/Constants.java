@@ -15,6 +15,8 @@ public final class Constants {
 
   public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
 
+  public static final String CASE = "case";
+
   private Constants() {
   }
 
