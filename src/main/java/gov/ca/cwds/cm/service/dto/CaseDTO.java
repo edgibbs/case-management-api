@@ -1,13 +1,19 @@
 package gov.ca.cwds.cm.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 
+import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
+
+/**
+ * @author CWDS TPT-3 Team
+ */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CaseDTO extends BaseDTO{
 
@@ -15,7 +21,7 @@ public class CaseDTO extends BaseDTO{
 
 	private String id;
 
-	@ApiModelProperty(value = "Alert Text", example = "")
+	@ApiModelProperty(value = "Alert Text", example = "Text")
 	private String alertText;
 
 	@Size(max = 10)
@@ -25,34 +31,53 @@ public class CaseDTO extends BaseDTO{
 	//approvalStatusType
 	@NotNull
 	@ApiModelProperty(required = true, value = "Approval Status", example = "100")
-	private ApprovalStatus approvalStatus;
+	private String approvalStatus;
 
 	//caseClosureReasonType
 	@ApiModelProperty(required = true, value = "Approval Status", example = "Child Abducted")
-	private CaseClosureReason caseClosureReason;
+	private String caseClosureReason;
 
 	//caseplanChildrenDetailIndVar
+	@NotNull
+	@ApiModelProperty(required = true, value = "Caseplan children detail existing indicator.", example = "true")
 	private Boolean isCaseplanChildrenDetail;
 
+	@NotNull
+	@ApiModelProperty(required = true, value = "Case closure statement text", example = "Text")
 	private String closureStatementText;
 
 	//countryCodeType
+	@NotNull
+	@ApiModelProperty(required = true, value = "Country", example = "US")
 	private String country;
 
 	@NotNull
+	@ApiModelProperty(required = true, value = "County", example = "Alameda")
 	private String countySpecificCode;
 
+	@ApiModelProperty(value = "DRMS notes", example = "Text")
 	private String drmsNotesDoc;
 
-	private String emancipationDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@ApiModelProperty(value = "The anticipated date the child client will become emancipated.", example = "2018-10-20")
+	private LocalDate emancipationDate;
 
-	private Date endDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@ApiModelProperty(value = "End date.", example = "2018-10-20")
+	private LocalDate endDate;
 
 	//fkchldClt
+	@NotNull
+	@ApiModelProperty(required = true, value = "Child")
 	private String childClient;
 
+	@ApiModelProperty(value = "Referrer")
 	private String fkreferlt;
 
+	@NotNull
+	@ApiModelProperty(required = true, value = "Staff Person")
 	private String staffPerson;
 
 	//governmentEntityType
@@ -60,42 +85,78 @@ public class CaseDTO extends BaseDTO{
 	private Short governmentEntityType;
 
 	//icpcOutgngPlcmtStatusIndVar
+	@NotNull
+	@ApiModelProperty(required = true, value = "ICPC outgoing placement status indicator.", example = "true")
 	private Boolean isIcpcOutgoingPlacementStatus;
 
 	//icpcOutgoingRequestIndVar
+	@NotNull
+	@ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
 	private Boolean isIcpcOutgoingRequest;
 
+	@NotNull
+	@ApiModelProperty(required = true, value = "Determine the security access level.", example = "S")
 	private String limitedAccessCode;
 
-	private Date limitedAccessDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@ApiModelProperty(value = "Limited access date", example = "2016-10-25")
+	private LocalDate limitedAccessDate;
 
+	@ApiModelProperty(value = "Limited access description", example = "Text")
 	private String limitedAccessDesc;
 
 	//limitedAccessGovernmentEntityType
+	@ApiModelProperty(value = "Limited access county", example = "Alameda")
 	private Short limitedAccessChangedCounty;
 
+	@NotNull
+	@ApiModelProperty(required = true, value = "Case name")
 	private String caseName;
 
-	private Date nextTILPDueDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@ApiModelProperty(value = "Next Transitional Independent Living Plan due date", example = "2018-10-24")
+	private LocalDate nextTILPDueDate;
 
-	private Date projectedEndDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@ApiModelProperty(value = "Next Transitional Independent Living Plan due date", example = "2018-10-23")
+	private LocalDate projectedEndDate;
 
+	@ApiModelProperty(value = "Responsible agency")
 	private String responsibleAgencyCode;
 
+	@NotNull
+	@ApiModelProperty(required = true, value = "Special case project indicator", example = "true")
 	private Boolean isSpecialProjectCase;
 
-	private Date startDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@NotNull
+	@ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
+	private LocalDate startDate;
 
 	//stateCodeType
+	@NotNull
+	@ApiModelProperty(required = true, value = "State", example = "CA")
 	private Short state;
 
 	//activeServiceComponentType
+	@NotNull
+	@ApiModelProperty(required = true, value = "Service component being referenced  for a child's case", example = "Emergency Response")
 	private Short activeServiceComponent;
 
 	//activeSvcComponentStartDate
-	private Date activeServiceComponentStartDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
+	@NotNull
+	@ApiModelProperty(required = true, value = "Service component start date", example = "2016-10-23")
+	private LocalDate activeServiceComponentStartDate;
 
 	//tickleIndVar
+	@NotNull
+	@ApiModelProperty(required = true, value = "Tickle indicator", example = "true")
 	private Boolean isTickle;
 
 	public String getId() {
@@ -122,19 +183,19 @@ public class CaseDTO extends BaseDTO{
 		this.approvalNumber = approvalNumber;
 	}
 
-	public ApprovalStatus getApprovalStatus() {
+	public String getApprovalStatus() {
 		return approvalStatus;
 	}
 
-	public void setApprovalStatus(ApprovalStatus approvalStatus) {
+	public void setApprovalStatus(String approvalStatus) {
 		this.approvalStatus = approvalStatus;
 	}
 
-	public CaseClosureReason getCaseClosureReason() {
+	public String getCaseClosureReason() {
 		return caseClosureReason;
 	}
 
-	public void setCaseClosureReason(CaseClosureReason caseClosureReason) {
+	public void setCaseClosureReason(String caseClosureReason) {
 		this.caseClosureReason = caseClosureReason;
 	}
 
@@ -178,19 +239,19 @@ public class CaseDTO extends BaseDTO{
 		this.drmsNotesDoc = drmsNotesDoc;
 	}
 
-	public String getEmancipationDate() {
+	public LocalDate getEmancipationDate() {
 		return emancipationDate;
 	}
 
-	public void setEmancipationDate(String emancipationDate) {
+	public void setEmancipationDate(LocalDate emancipationDate) {
 		this.emancipationDate = emancipationDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -250,11 +311,11 @@ public class CaseDTO extends BaseDTO{
 		this.limitedAccessCode = limitedAccessCode;
 	}
 
-	public Date getLimitedAccessDate() {
+	public LocalDate getLimitedAccessDate() {
 		return limitedAccessDate;
 	}
 
-	public void setLimitedAccessDate(Date limitedAccessDate) {
+	public void setLimitedAccessDate(LocalDate limitedAccessDate) {
 		this.limitedAccessDate = limitedAccessDate;
 	}
 
@@ -282,19 +343,19 @@ public class CaseDTO extends BaseDTO{
 		this.caseName = caseName;
 	}
 
-	public Date getNextTILPDueDate() {
+	public LocalDate getNextTILPDueDate() {
 		return nextTILPDueDate;
 	}
 
-	public void setNextTILPDueDate(Date nextTILPDueDate) {
+	public void setNextTILPDueDate(LocalDate nextTILPDueDate) {
 		this.nextTILPDueDate = nextTILPDueDate;
 	}
 
-	public Date getProjectedEndDate() {
+	public LocalDate getProjectedEndDate() {
 		return projectedEndDate;
 	}
 
-	public void setProjectedEndDate(Date projectedEndDate) {
+	public void setProjectedEndDate(LocalDate projectedEndDate) {
 		this.projectedEndDate = projectedEndDate;
 	}
 
@@ -314,11 +375,11 @@ public class CaseDTO extends BaseDTO{
 		isSpecialProjectCase = specialProjectCase;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
@@ -338,11 +399,11 @@ public class CaseDTO extends BaseDTO{
 		this.activeServiceComponent = activeServiceComponent;
 	}
 
-	public Date getActiveServiceComponentStartDate() {
+	public LocalDate getActiveServiceComponentStartDate() {
 		return activeServiceComponentStartDate;
 	}
 
-	public void setActiveServiceComponentStartDate(Date activeServiceComponentStartDate) {
+	public void setActiveServiceComponentStartDate(LocalDate activeServiceComponentStartDate) {
 		this.activeServiceComponentStartDate = activeServiceComponentStartDate;
 	}
 

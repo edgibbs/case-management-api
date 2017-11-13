@@ -15,8 +15,6 @@ public final class Constants {
 
   public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
 
-  public static final String CASE = "case";
-
   private Constants() {
   }
 
@@ -29,6 +27,8 @@ public final class Constants {
     public static final String CM_TAG = "cm";
 
     public static final String CHILD_CLIENT = "child-clients";
+
+    public static final String CASE = "case";
 
     private API() {
     }
