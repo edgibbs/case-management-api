@@ -10,18 +10,15 @@ import java.io.Serializable;
 
 public class CaseService extends CrudServiceAdapter {
 
-	private CaseDao caseDao;
-	private CaseMapper caseMapper;
+  @Inject
+  private CaseDao caseDao;
 
-	@Inject
-	public CaseService(CaseDao caseDao, CaseMapper caseMapper) {
-		this.caseDao = caseDao;
-		this.caseMapper = caseMapper;
-	}
+  @Inject
+  private CaseMapper caseMapper;
 
-	@Override
-	public Response find(Serializable param) {
-		Case caseEntity = caseDao.find(param);
-		return caseMapper.toCaseDTO(caseEntity);
-	}
+  @Override
+  public Response find(Serializable param) {
+    Case caseEntity = caseDao.find(param);
+    return caseMapper.toCaseDTO(caseEntity);
+  }
 }
