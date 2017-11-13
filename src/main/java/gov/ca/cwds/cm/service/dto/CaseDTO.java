@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.service.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.RequestResponse;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
  * @author CWDS TPT-3 Team
  */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class CaseDTO extends BaseDTO{
+public class CaseDTO extends BaseDTO implements RequestResponse{
 
 	private static final long serialVersionUID = 3787452961716324977L;
 
@@ -71,10 +72,10 @@ public class CaseDTO extends BaseDTO{
 	//fkchldClt
 	@NotNull
 	@ApiModelProperty(required = true, value = "Child")
-	private String childClient;
+	private ChildClientDTO childClient;
 
 	@ApiModelProperty(value = "Referrer")
-	private String fkreferlt;
+	private String referralId;
 
 	@NotNull
 	@ApiModelProperty(required = true, value = "Staff Person")
@@ -82,7 +83,7 @@ public class CaseDTO extends BaseDTO{
 
 	//governmentEntityType
 	@ApiModelProperty(value = "County within the state of California to which a specific CASE is assigned.", example = "Alameda")
-	private Short governmentEntityType;
+	private String county;
 
 	//icpcOutgngPlcmtStatusIndVar
 	@NotNull
@@ -96,7 +97,7 @@ public class CaseDTO extends BaseDTO{
 
 	@NotNull
 	@ApiModelProperty(required = true, value = "Determine the security access level.", example = "S")
-	private String limitedAccessCode;
+	private String limitedAccess;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
 	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
@@ -108,7 +109,7 @@ public class CaseDTO extends BaseDTO{
 
 	//limitedAccessGovernmentEntityType
 	@ApiModelProperty(value = "Limited access county", example = "Alameda")
-	private Short limitedAccessChangedCounty;
+	private Short limitedAccessCounty;
 
 	@NotNull
 	@ApiModelProperty(required = true, value = "Case name")
@@ -117,7 +118,7 @@ public class CaseDTO extends BaseDTO{
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
 	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
 	@ApiModelProperty(value = "Next Transitional Independent Living Plan due date", example = "2018-10-24")
-	private LocalDate nextTILPDueDate;
+	private LocalDate nextTilpDueDate;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
 	@gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
@@ -125,7 +126,7 @@ public class CaseDTO extends BaseDTO{
 	private LocalDate projectedEndDate;
 
 	@ApiModelProperty(value = "Responsible agency")
-	private String responsibleAgencyCode;
+	private String responsibleAgency;
 
 	@NotNull
 	@ApiModelProperty(required = true, value = "Special case project indicator", example = "true")
@@ -140,12 +141,12 @@ public class CaseDTO extends BaseDTO{
 	//stateCodeType
 	@NotNull
 	@ApiModelProperty(required = true, value = "State", example = "CA")
-	private Short state;
+	private String state;
 
 	//activeServiceComponentType
 	@NotNull
 	@ApiModelProperty(required = true, value = "Service component being referenced  for a child's case", example = "Emergency Response")
-	private Short activeServiceComponent;
+	private String activeServiceComponent;
 
 	//activeSvcComponentStartDate
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -255,20 +256,20 @@ public class CaseDTO extends BaseDTO{
 		this.endDate = endDate;
 	}
 
-	public String getChildClient() {
+	public ChildClientDTO getChildClient() {
 		return childClient;
 	}
 
-	public void setChildClient(String childClient) {
+	public void setChildClient(ChildClientDTO childClient) {
 		this.childClient = childClient;
 	}
 
-	public String getFkreferlt() {
-		return fkreferlt;
+	public String getReferralId() {
+		return referralId;
 	}
 
-	public void setFkreferlt(String fkreferlt) {
-		this.fkreferlt = fkreferlt;
+	public void setReferralId(String referralId) {
+		this.referralId = referralId;
 	}
 
 	public String getStaffPerson() {
@@ -279,12 +280,12 @@ public class CaseDTO extends BaseDTO{
 		this.staffPerson = staffPerson;
 	}
 
-	public Short getGovernmentEntityType() {
-		return governmentEntityType;
+	public String getCounty() {
+		return county;
 	}
 
-	public void setGovernmentEntityType(Short governmentEntityType) {
-		this.governmentEntityType = governmentEntityType;
+	public void setCounty(String county) {
+		this.county = county;
 	}
 
 	public Boolean getIcpcOutgoingPlacementStatus() {
@@ -303,12 +304,12 @@ public class CaseDTO extends BaseDTO{
 		isIcpcOutgoingRequest = icpcOutgoingRequest;
 	}
 
-	public String getLimitedAccessCode() {
-		return limitedAccessCode;
+	public String getLimitedAccess() {
+		return limitedAccess;
 	}
 
-	public void setLimitedAccessCode(String limitedAccessCode) {
-		this.limitedAccessCode = limitedAccessCode;
+	public void setLimitedAccess(String limitedAccess) {
+		this.limitedAccess = limitedAccess;
 	}
 
 	public LocalDate getLimitedAccessDate() {
@@ -327,12 +328,12 @@ public class CaseDTO extends BaseDTO{
 		this.limitedAccessDesc = limitedAccessDesc;
 	}
 
-	public Short getLimitedAccessChangedCounty() {
-		return limitedAccessChangedCounty;
+	public Short getLimitedAccessCounty() {
+		return limitedAccessCounty;
 	}
 
-	public void setLimitedAccessChangedCounty(Short limitedAccessChangedCounty) {
-		this.limitedAccessChangedCounty = limitedAccessChangedCounty;
+	public void setLimitedAccessCounty(Short limitedAccessCounty) {
+		this.limitedAccessCounty = limitedAccessCounty;
 	}
 
 	public String getCaseName() {
@@ -343,12 +344,12 @@ public class CaseDTO extends BaseDTO{
 		this.caseName = caseName;
 	}
 
-	public LocalDate getNextTILPDueDate() {
-		return nextTILPDueDate;
+	public LocalDate getNextTilpDueDate() {
+		return nextTilpDueDate;
 	}
 
-	public void setNextTILPDueDate(LocalDate nextTILPDueDate) {
-		this.nextTILPDueDate = nextTILPDueDate;
+	public void setNextTilpDueDate(LocalDate nextTilpDueDate) {
+		this.nextTilpDueDate = nextTilpDueDate;
 	}
 
 	public LocalDate getProjectedEndDate() {
@@ -359,12 +360,12 @@ public class CaseDTO extends BaseDTO{
 		this.projectedEndDate = projectedEndDate;
 	}
 
-	public String getResponsibleAgencyCode() {
-		return responsibleAgencyCode;
+	public String getResponsibleAgency() {
+		return responsibleAgency;
 	}
 
-	public void setResponsibleAgencyCode(String responsibleAgencyCode) {
-		this.responsibleAgencyCode = responsibleAgencyCode;
+	public void setResponsibleAgency(String responsibleAgency) {
+		this.responsibleAgency = responsibleAgency;
 	}
 
 	public Boolean getSpecialProjectCase() {
@@ -383,19 +384,19 @@ public class CaseDTO extends BaseDTO{
 		this.startDate = startDate;
 	}
 
-	public Short getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(Short state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 
-	public Short getActiveServiceComponent() {
+	public String getActiveServiceComponent() {
 		return activeServiceComponent;
 	}
 
-	public void setActiveServiceComponent(Short activeServiceComponent) {
+	public void setActiveServiceComponent(String activeServiceComponent) {
 		this.activeServiceComponent = activeServiceComponent;
 	}
 
