@@ -32,10 +32,9 @@ project.ext {
     projectMajorVersion = '0.1.0'
     projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '3.6'
+    coreApiVersion = '0.4.4-SNAPSHOT'
     mapstructVersion = '1.1.0.Final'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    shiroSecurityVersion = '0.4.2-SNAPSHOT'
 }
 
 group projectGroup
@@ -43,9 +42,9 @@ version projectVersion
 
 repositories {
     mavenLocal()
-//    maven {
-//        url "http://sonar.dev.cwds.io:8081/artifactory/repo"
-//    }
+    maven {
+        url "http://sonar.dev.cwds.io:8081/artifactory/repo"
+    }
     mavenCentral()
 }
 
@@ -97,10 +96,7 @@ dependencies {
 // Exclude transitive dependencies.
     compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion , changing: true) {
         exclude group: 'org.glassfish.jersey.core'
-        exclude group: 'gov.ca.cwds.api', module: 'shiro-security'
     }
-
-    compile group: 'gov.ca.cwds.api', name:'shiro-security', version: shiroSecurityVersion
 
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
@@ -129,7 +125,7 @@ dependencies {
 
     testCompile group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
-//    testCompile group: 'gov.ca.cwds.api', name: 'jwt-security', version: '0.25.77'
+    testCompile group: 'gov.ca.cwds.api', name: 'jwt-security', version: '0.25.77'
     testCompile 'org.mockito:mockito-core:2.0.54-beta'
     testCompile group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
     testCompile group: 'com.h2database', name: 'h2', version: '1.4.194'
