@@ -2,7 +2,10 @@ package gov.ca.cwds.cm.web;
 
 import gov.ca.cwds.cm.CmApiApplication;
 import gov.ca.cwds.cm.CmApiConfiguration;
+import gov.ca.cwds.cm.DatabaseHelper;
 import gov.ca.cwds.cm.web.rest.RestClientTestRule;
+import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
+import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import java.time.format.DateTimeFormatter;
@@ -12,13 +15,11 @@ import org.junit.After;
 import org.junit.ClassRule;
 import org.junit.Rule;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public abstract class BaseApiIntegrationTest {
 
-  private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
-      .ofPattern("yyyy-MM-dd HH:mm:ss");
+  private static final DateTimeFormatter DATE_TIME_FORMATTER =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
   private static final String configFile = "config/test-case-management-api.yml";
 
@@ -37,16 +38,24 @@ public abstract class BaseApiIntegrationTest {
         }
       };
 
-  @Rule
-  public RestClientTestRule clientTestRule = new RestClientTestRule(appRule);
-
+  @Rule public RestClientTestRule clientTestRule = new RestClientTestRule(appRule);
 
   @After
-  public void tearDown() throws Exception {
+  public void tearDown() throws Exception {}
+
+  public String transformDTOtoJSON(Object o) throws Exception {
+    return clientTestRule.getMapper().writeValueAsString(o);
   }
 
-    public String transformDTOtoJSON(Object o) throws Exception {
-        return clientTestRule.getMapper().writeValueAsString(o);
-    }
+  protected static DatabaseHelper getDatabaseHelper() {
+    DataSourceFactory dataSourceFactory = appRule.getConfiguration().getCmsDataSourceFactory();
+    return new DatabaseHelper(
+        dataSourceFactory.getUrl(), dataSourceFactory.getUser(), dataSourceFactory.getPassword());
+  }
 
+  public static void setUpDb() throws Exception {
+    if (!TestModeUtils.isIntegrationTestsMode()) {
+      getDatabaseHelper().runScript("liquibase/test_database_master.xml");
+    }
+  }
 }
