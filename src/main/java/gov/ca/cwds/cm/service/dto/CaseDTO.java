@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
+import gov.ca.cwds.cm.service.mapper.RemoveTrailingSpaces;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -20,17 +21,21 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private String id;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Alert Text", example = "Text")
   private String alertText;
 
+  @RemoveTrailingSpaces
   @Size(max = 10)
   @ApiModelProperty(value = "Approval Number", example = "100")
   private String approvalNumber;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Approval Status", example = "100")
   private String approvalStatus;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(required = true, value = "Approval Status", example = "Child Abducted")
   private String caseClosureReason;
 
@@ -42,18 +47,22 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private Boolean isCaseplanChildrenDetail;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Case closure statement text", example = "Text")
   private String closureStatementText;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Country", example = "US")
   private String country;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "County", example = "Alameda")
   private String countySpecificCode;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "DRMS notes", example = "Text")
   private String drmsNotesDoc;
 
@@ -70,17 +79,21 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "End date.", example = "2018-10-20")
   private LocalDate endDate;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Child")
   private String childClient;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Referrer")
   private String referralId;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Staff Person")
   private String staffPerson;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(
     value = "County within the state of California to which a specific CASE is assigned.",
     example = "Alameda"
@@ -99,6 +112,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
   private Boolean isIcpcOutgoingRequest;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Determine the security access level.", example = "S")
   private String limitedAccess;
@@ -108,12 +122,14 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Limited access date", example = "2016-10-25")
   private LocalDate limitedAccessDate;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Limited access description", example = "Text")
   private String limitedAccessDesc;
 
   @ApiModelProperty(value = "Limited access county", example = "Alameda")
   private Short limitedAccessCounty;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Case name")
   private String caseName;
@@ -134,6 +150,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private LocalDate projectedEndDate;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Responsible agency")
   private String responsibleAgency;
 
@@ -147,10 +164,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
   private LocalDate startDate;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "State", example = "CA")
   private String state;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(
     required = true,

@@ -1,6 +1,5 @@
 package gov.ca.cwds.cm.service.mapper;
 
-import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
 import org.mapstruct.Mapper;
@@ -8,7 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(
-  imports = {Constants.class}
+  uses = TrailingSpacesRemovalPostMappingProcessor.class
 )
 public interface CaseMapper {
 
