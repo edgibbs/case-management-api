@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.web.rest;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import gov.ca.cwds.security.jwt.JwtConfiguration;
@@ -116,12 +117,12 @@ public class RestClientTestRule implements TestRule {
       public void evaluate() throws Throwable {
 
         JerseyClientBuilder clientBuilder = new JerseyClientBuilder()
-            .property(ClientProperties.CONNECT_TIMEOUT, 5000)
-            .property(ClientProperties.READ_TIMEOUT, 20000)
-            .hostnameVerifier((hostName, sslSession) -> {
-              // Just ignore host verification for test purposes
-              return true;
-            });
+                .property(ClientProperties.CONNECT_TIMEOUT, 5000)
+                .property(ClientProperties.READ_TIMEOUT, 20000)
+                .hostnameVerifier((hostName, sslSession) -> {
+                  // Just ignore host verification for test purposes
+                  return true;
+                });
 
         client = clientBuilder.build();
 
@@ -141,6 +142,7 @@ public class RestClientTestRule implements TestRule {
         client.getSslContext().init(null, trustAllCerts, new SecureRandom());
 
         mapper = dropWizardApplication.getObjectMapper();
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         client.register(new JacksonJsonProvider(mapper));
         statement.evaluate();
       }

@@ -6,7 +6,7 @@
     <changeSet id="correct_data_for_child_client" author="TPT3_team">
         <insert tableName="CHLD_CLT">
             <column name="FKCLIENT_T" value="BKk7CHj00Z" />
-            <column name="FC_ELIGT_B" value="N" />
+            <column name="FC_ELIGT_B" value="Y" />
             <column name="EDONFL_IND" value="N"/>
             <column name="HLONFL_IND" value="N"/>
             <column name="CURNT_CSID" value="D9G54xH00Z" />

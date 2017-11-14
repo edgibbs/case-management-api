@@ -25,7 +25,7 @@ public interface ChildClientMapper {
   @Mapping(target = "childIndianAncestryIndicator", source = "childIndianAncestryIndicator")
   @Mapping(target = "collegeIndicator", source = "collegeIndicator")
   @Mapping(target = "currentCaseId", source = "currentCaseId")
-  @Mapping(target = "deathCircumstancesType", ignore = true) //target = "deathCircumstancesType")
+//  @Mapping(target = "deathCircumstancesType", defaultValue = "3145") //target = "deathCircumstancesType")
   @Mapping(target = "disabilityDiagnosedCode", source = "disabilityDiagnosed")
   @Mapping(target = "drmsHePassportDocOld", source = "drmsHePassportDocOld")
   @Mapping(target = "foodStampsApplicationIndicator", source = "foodStampsApplicationIndicator")
@@ -46,7 +46,8 @@ public interface ChildClientMapper {
   )
   @Mapping(target = "paternityIndividualIndicatorVar", source = "paternityIndividualIndicatorVar")
   @Mapping(target = "postsecVocIndicator", source = "postsecVocIndicator")
-  @Mapping(target = "previouslyAdoptedCode", source = "previouslyAdopted")
+//  @Mapping(target = "previouslyAdopted", source = "previouslyAdopted")
+  @Mapping(target = "previouslyAdopted", ignore = true)
   @Mapping(
           target = "safelySurrendedBabiesIndicatorVar",
           source = "safelySurrendedBabiesIndicatorVar"

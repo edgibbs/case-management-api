@@ -8,7 +8,7 @@
 
         <createTable tableName="CHLD_CLT">
             <column name="FC_ELIGT_B" type="${type.string}(1)" >
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="EDONFL_IND" type="${type.string}(1)" >
                 <constraints nullable="false"/>
