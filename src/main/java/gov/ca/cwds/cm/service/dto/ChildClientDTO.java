@@ -1,13 +1,20 @@
 package gov.ca.cwds.cm.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.rest.api.Response;
+import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+
+import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 
 /** @author CWDS TPT-3 Team */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
@@ -15,64 +22,113 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 7569314519640349923L;
 
-  @JsonProperty("victim_client_id")
+  @NotNull
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
+  @ApiModelProperty(
+    required = true,
+    readOnly = true,
+    value = "CLIENT ID of victim",
+    example = "ABC1234567"
+  )
   private String victimClientId;
 
-  @JsonProperty("adoptable_code")
+  @NotEmpty
+  @Size(min = 1, max = 2)
+  @OneOf(
+    value = {"NOT_ADOPTABLE", "ADOPTABLE", "NOT_ASSESSED"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  @ApiModelProperty(
+    required = true,
+    readOnly = false,
+    value = "Adoptable Code",
+    example = "ADOPTABLE"
+  )
   private String adoptableCode;
 
-  @JsonProperty("adopted_age")
+  @NotNull
+  @ApiModelProperty(required = false, readOnly = false, value = "Adpoted Age", example = "34")
   private Short adoptedAge;
 
-  @JsonProperty("afdc_fc_eligibility_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean afdcFcEligibilityIndicatorVar;
 
-  @JsonProperty("all_education_info_on_file_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean allEducationInfoOnFileIndicator;
 
-  @JsonProperty("all_health_info_on_file_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean allHealthInfoOnFileIndicator;
 
-  @JsonProperty("attempt_to_acquire_educ_info_desc")
+  @NotNull
+  @Size(max = 254)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "Eucation")
   private String attemptToAcquireEducInfoDesc;
 
-  @JsonProperty("attempt_to_acquire_hlth_info_desc")
+  @NotNull
+  @Size(max = 254)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "Health")
   private String attemptToAcquireHlthInfoDesc;
 
-  @JsonProperty("awol_abducted_code")
+  @NotNull
+  @Size(max = 1, message = "size must be 1")
+  @ApiModelProperty(required = true, readOnly = false, value = "", example = "N")
   private String awolAbductedCode;
 
-  @JsonProperty("birth_history_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean birthHistoryIndicatorVar;
 
-  @JsonProperty("child_indian_ancestry_indicator")
+  @NotNull
+  @ApiModelProperty(required = false, readOnly = false)
   private Boolean childIndianAncestryIndicator;
 
-  @JsonProperty("college_indicator")
+  @ApiModelProperty(required = false, readOnly = false)
   private Boolean collegeIndicator;
 
-  @JsonProperty("current_case_id")
+  @Size(max = CMS_ID_LEN)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "ABC1234567")
   private String currentCaseId;
 
-  @JsonProperty("death_circumstances_type")
+  @NotNull
+  @ApiModelProperty(required = false, readOnly = false, example = "1234")
   private String deathCircumstancesType;
 
-  @JsonProperty("disability_diagnosed_code")
+  @Size(min = 1, max = 1)
+  @OneOf(
+    value = {"N", "Y", "D"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  @ApiModelProperty(
+    required = false,
+    readOnly = false,
+    value = "Disablility Diagnosed",
+    example = "N"
+  )
   private String disabilityDiagnosedCode;
 
-  @JsonProperty("drms_he_passport_doc_old")
+  @Size(max = CMS_ID_LEN)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "")
   private String drmsHePassportDocOld;
 
-  @JsonProperty("drms_health_educ_passport_doc")
+  @Size(max = CMS_ID_LEN)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "Document")
   private String drmsHealthEducPassportDoc;
 
-  @JsonProperty("drms_voluntary_plcmnt_agrmnt_doc")
+  @Size(max = CMS_ID_LEN)
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "Agreement")
   private String drmsVoluntaryPlcmntAgrmntDoc;
 
-  @JsonProperty("fc2_elig_application_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean fc2EligApplicationIndicatorVar;
 
-  @JsonProperty("food_stamps_application_date")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  @gov.ca.cwds.rest.validation.Date(format = "yyyy-MM-dd", required = false)
   @ApiModelProperty(
     required = false,
     readOnly = false,
@@ -81,49 +137,74 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   )
   private LocalDateTime foodStampsApplicationDate;
 
-  @JsonProperty("food_stamps_application_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false, example = "true")
   private Boolean foodStampsApplicationIndicator;
 
-  @JsonProperty("icwa_eligibility_code")
+  @NotEmpty
+  @Size(min = 1, max = 1, message = "size must be 1")
+  @OneOf(
+    value = {"Y", "N", "U", "P"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  @ApiModelProperty(required = true, readOnly = false, value = "", example = "N")
   private String icwaEligibilityCode;
 
-  @JsonProperty("intercountry_adopt_disrupted_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean intercountryAdoptDisruptedIndicator;
 
-  @JsonProperty("intercountry_adopt_dissolved_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean intercountryAdoptDissolvedIndicator;
 
-  @JsonProperty("med_eligibility_application_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean medEligibilityApplicationIndicatorVar;
 
-  @JsonProperty("minor_nmd_parent_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean minorNmdParentIndicator;
 
-  @JsonProperty("parental_rights_limited_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean parentalRightsLimitedIndicator;
 
-  @JsonProperty("parental_rights_termintn_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean parentalRightsTermintnIndicatorVar;
 
-  @JsonProperty("paternity_individual_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean paternityIndividualIndicatorVar;
 
-  @JsonProperty("postsec_voc_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean postsecVocIndicator;
 
-  @JsonProperty("previously_adopted_code")
-  private Boolean previouslyAdopted;
+  @NotEmpty
+  @Size(min = 1, max = 1, message = "size must be 1")
+  @OneOf(
+    value = {"Y", "N", "U", "X"},
+    ignoreCase = true,
+    ignoreWhitespace = true
+  )
+  @ApiModelProperty(required = true, readOnly = false, value = "", example = "N")
+  private String previouslyAdopted;
 
-  @JsonProperty("safely_surrended_babies_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean safelySurrendedBabiesIndicatorVar;
 
-  @JsonProperty("saw1_elig_application_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean saw1EligApplicationIndicatorVar;
 
-  @JsonProperty("saws_case_serial_number")
+  @NotNull
+  @ApiModelProperty(required = false, readOnly = false, value = "", example = "0")
   private Integer sawsCaseSerialNumber;
 
-  @JsonProperty("sijs_scheduled_interview_date")
   @ApiModelProperty(
     required = false,
     readOnly = false,
@@ -132,22 +213,24 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   )
   private LocalDateTime sijsScheduledInterviewDate;
 
-  @JsonProperty("sii_next_screening_due_date")
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @ApiModelProperty(
     required = false,
     readOnly = false,
     value = "yyyy-MM-dd",
     example = "2000-01-01"
   )
+  @gov.ca.cwds.rest.validation.Date(format = "yyyy-MM-dd", required = false)
   private LocalDateTime siiNextScreeningDueDate;
 
-  @JsonProperty("ssi_ssp_application_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean ssiSspApplicationIndicator;
 
-  @JsonProperty("tribal_ancestry_notifctn_indicator_var")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean tribalAncestryNotifctnIndicatorVar;
 
-  @JsonProperty("tribal_customary_adoption_date")
   @ApiModelProperty(
     required = false,
     readOnly = false,
@@ -156,7 +239,8 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   )
   private LocalDateTime tribalCustomaryAdoptionDate;
 
-  @JsonProperty("tribal_customary_adoption_indicator")
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
   private Boolean tribalCustomaryAdoptionIndicator;
 
   public static long getSerialVersionUID() {
@@ -404,11 +488,11 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
     this.postsecVocIndicator = postsecVocIndicator;
   }
 
-  public Boolean getPreviouslyAdopted() {
+  public String getPreviouslyAdopted() {
     return previouslyAdopted;
   }
 
-  public void setPreviouslyAdopted(Boolean previouslyAdopted) {
+  public void setPreviouslyAdopted(String previouslyAdopted) {
     this.previouslyAdopted = previouslyAdopted;
   }
 
