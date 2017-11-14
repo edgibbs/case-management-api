@@ -28,6 +28,8 @@ public final class Constants {
 
     public static final String CHILD_CLIENT = "child-clients";
 
+    public static final String CASE = "case";
+
     private API() {
     }
 
