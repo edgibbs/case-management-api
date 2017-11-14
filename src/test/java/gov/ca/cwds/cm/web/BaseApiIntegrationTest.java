@@ -58,4 +58,10 @@ public abstract class BaseApiIntegrationTest {
       getDatabaseHelper().runScript("liquibase/test_database_master.xml");
     }
   }
+
+  public static void runScript(final String scriptPath) throws Exception {
+    if (!TestModeUtils.isIntegrationTestsMode()) {
+      getDatabaseHelper().runScript(scriptPath);
+    }
+  }
 }

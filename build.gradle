@@ -123,7 +123,7 @@ dependencies {
     compile group: 'com.github.javafaker', name: 'javafaker', version: '0.13'
     compile(group: "com.github.java-json-tools", name: "json-schema-validator", version: "2.2.8")
 
-    compileOnly 'org.mapstruct:mapstruct-jdk8:' + mapstructVersion
+    compile 'org.mapstruct:mapstruct-jdk8:' + mapstructVersion
     compileOnly 'org.projectlombok:lombok:' + lombokVersion
 
     testCompile group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'

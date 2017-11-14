@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="addrs_t ddl" author="CWDS TPT-3 Team">
+    <sql>
+      CREATE TABLE  ADDRS_T   (
+      IDENTIFIER  CHAR(10) NOT NULL ,
+      CITY_NM  CHAR(20) NOT NULL   ,
+      EMRG_TELNO  DECIMAL(10,0) NOT NULL   ,
+      EMRG_EXTNO  INTEGER NOT NULL   ,
+      FRG_ADRT_B  CHAR(1) NOT NULL ,
+      GVR_ENTC  SMALLINT NOT NULL   ,
+      MSG_TEL_NO  DECIMAL(10,0) NOT NULL   ,
+      MSG_EXT_NO  INTEGER NOT NULL   ,
+      HEADER_ADR  CHAR(35) NOT NULL   ,
+      PRM_TEL_NO  DECIMAL(10,0) NOT NULL   ,
+      PRM_EXT_NO  INTEGER NOT NULL   ,
+      STATE_C  SMALLINT NOT NULL   ,
+      STREET_NM  CHAR(40) NOT NULL   ,
+      STREET_NO  CHAR(10) NOT NULL   ,
+      ZIP_NO  INTEGER NOT NULL   ,
+      LST_UPD_ID  CHAR(3) NOT NULL ,
+      LST_UPD_TS  TIMESTAMP NOT NULL ,
+      ADDR_DSC  CHAR(120) NOT NULL   ,
+      ZIP_SFX_NO  SMALLINT NOT NULL   ,
+      POSTDIR_CD  CHAR(2) NOT NULL   ,
+      PREDIR_CD  CHAR(2) NOT NULL   ,
+      ST_SFX_C  SMALLINT NOT NULL   ,
+      UNT_DSGC  SMALLINT NOT NULL   ,
+      UNIT_NO  CHAR(8) NOT NULL   );
+    </sql>
+  </changeSet>
+</databaseChangeLog>

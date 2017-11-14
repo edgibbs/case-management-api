@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.persistence.dao;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.persistence.model.Address;
 import gov.ca.cwds.data.BaseDaoImpl;
+import gov.ca.cwds.inject.CmsSessionFactory;
 import lombok.extern.java.Log;
 import org.hibernate.SessionFactory;
 
@@ -13,7 +14,7 @@ import org.hibernate.SessionFactory;
 public class AddressDao extends BaseDaoImpl<Address> {
 
   @Inject
-  public AddressDao(final SessionFactory sessionFactory) {
+  public AddressDao(@CmsSessionFactory final SessionFactory sessionFactory) {
     super(sessionFactory);
   }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="address_test_data" author="CWDS TPT-3 Team">
+    <insert tableName="ADDRS_T">
+      <column name="IDENTIFIER" value="Ab7mue101b"/>
+      <column name="CITY_NM" value="Lakeport            "/>
+      <column name="EMRG_TELNO" value="5243542354"/>
+      <column name="EMRG_EXTNO" value="523454"/>
+      <column name="FRG_ADRT_B" value="N"/>
+      <column name="GVR_ENTC" value="1084"/>
+      <column name="MSG_TEL_NO" value="4523452435"/>
+      <column name="MSG_EXT_NO" value="52345"/>
+      <column name="HEADER_ADR" value="                                   "/>
+      <column name="PRM_TEL_NO" value="8300001242"/>
+      <column name="PRM_EXT_NO" value="54235"/>
+      <column name="STATE_C" value="1828"/>
+      <column name="STREET_NM" value="Vahlen Crossing                         "/>
+      <column name="STREET_NO" value="45435     "/>
+      <column name="ZIP_NO" value="45435"/>
+      <column name="LST_UPD_ID" value="01b"/>
+      <column name="LST_UPD_TS" value="2017-11-14 14:09:40"/>
+      <column name="ADDR_DSC" value="                                                                                                                        "/>
+      <column name="ZIP_SFX_NO" value="4534"/>
+      <column name="POSTDIR_CD" value="  "/>
+      <column name="PREDIR_CD" value="  "/>
+      <column name="ST_SFX_C" value="0"/>
+      <column name="UNT_DSGC" value="0"/>
+      <column name="UNIT_NO" value="        "/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>
