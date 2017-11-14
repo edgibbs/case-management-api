@@ -1,14 +1,17 @@
 package gov.ca.cwds.cm.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;
 
 /** @author CWDS TPT-3 Team */
-public class ChildClientDTO extends BaseDTO implements Response {
-
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 7569314519640349923L;
 
@@ -31,7 +34,7 @@ public class ChildClientDTO extends BaseDTO implements Response {
   private Boolean allHealthInfoOnFileIndicator;
 
   @JsonProperty("attempt_to_acquire_educ_info_desc")
-  private Boolean attemptToAcquireEducInfoDesc;
+  private String attemptToAcquireEducInfoDesc;
 
   @JsonProperty("attempt_to_acquire_hlth_info_desc")
   private String attemptToAcquireHlthInfoDesc;
@@ -67,11 +70,15 @@ public class ChildClientDTO extends BaseDTO implements Response {
   private String drmsVoluntaryPlcmntAgrmntDoc;
 
   @JsonProperty("fc2_elig_application_indicator_var")
-  private String fc2EligApplicationIndicatorVar;
+  private Boolean fc2EligApplicationIndicatorVar;
 
   @JsonProperty("food_stamps_application_date")
-  @ApiModelProperty(required = false, readOnly = false, value = "yyyy-MM-dd",
-          example = "2000-01-01")
+  @ApiModelProperty(
+    required = false,
+    readOnly = false,
+    value = "yyyy-MM-dd",
+    example = "2000-01-01"
+  )
   private LocalDateTime foodStampsApplicationDate;
 
   @JsonProperty("food_stamps_application_indicator")
@@ -105,7 +112,7 @@ public class ChildClientDTO extends BaseDTO implements Response {
   private Boolean postsecVocIndicator;
 
   @JsonProperty("previously_adopted_code")
-  private Boolean previouslyAdoptedCode;
+  private Boolean previouslyAdopted;
 
   @JsonProperty("safely_surrended_babies_indicator_var")
   private Boolean safelySurrendedBabiesIndicatorVar;
@@ -117,13 +124,21 @@ public class ChildClientDTO extends BaseDTO implements Response {
   private Integer sawsCaseSerialNumber;
 
   @JsonProperty("sijs_scheduled_interview_date")
-  @ApiModelProperty(required = false, readOnly = false, value = "yyyy-MM-dd",
-          example = "2000-01-01")
+  @ApiModelProperty(
+    required = false,
+    readOnly = false,
+    value = "yyyy-MM-dd",
+    example = "2000-01-01"
+  )
   private LocalDateTime sijsScheduledInterviewDate;
 
   @JsonProperty("sii_next_screening_due_date")
-  @ApiModelProperty(required = false, readOnly = false, value = "yyyy-MM-dd",
-          example = "2000-01-01")
+  @ApiModelProperty(
+    required = false,
+    readOnly = false,
+    value = "yyyy-MM-dd",
+    example = "2000-01-01"
+  )
   private LocalDateTime siiNextScreeningDueDate;
 
   @JsonProperty("ssi_ssp_application_indicator")
@@ -133,8 +148,12 @@ public class ChildClientDTO extends BaseDTO implements Response {
   private Boolean tribalAncestryNotifctnIndicatorVar;
 
   @JsonProperty("tribal_customary_adoption_date")
-  @ApiModelProperty(required = false, readOnly = false, value = "yyyy-MM-dd",
-          example = "2000-01-01")
+  @ApiModelProperty(
+    required = false,
+    readOnly = false,
+    value = "yyyy-MM-dd",
+    example = "2000-01-01"
+  )
   private LocalDateTime tribalCustomaryAdoptionDate;
 
   @JsonProperty("tribal_customary_adoption_indicator")
@@ -192,11 +211,11 @@ public class ChildClientDTO extends BaseDTO implements Response {
     this.allHealthInfoOnFileIndicator = allHealthInfoOnFileIndicator;
   }
 
-  public Boolean getAttemptToAcquireEducInfoDesc() {
+  public String getAttemptToAcquireEducInfoDesc() {
     return attemptToAcquireEducInfoDesc;
   }
 
-  public void setAttemptToAcquireEducInfoDesc(Boolean attemptToAcquireEducInfoDesc) {
+  public void setAttemptToAcquireEducInfoDesc(String attemptToAcquireEducInfoDesc) {
     this.attemptToAcquireEducInfoDesc = attemptToAcquireEducInfoDesc;
   }
 
@@ -288,11 +307,11 @@ public class ChildClientDTO extends BaseDTO implements Response {
     this.drmsVoluntaryPlcmntAgrmntDoc = drmsVoluntaryPlcmntAgrmntDoc;
   }
 
-  public String getFc2EligApplicationIndicatorVar() {
+  public Boolean getFc2EligApplicationIndicatorVar() {
     return fc2EligApplicationIndicatorVar;
   }
 
-  public void setFc2EligApplicationIndicatorVar(String fc2EligApplicationIndicatorVar) {
+  public void setFc2EligApplicationIndicatorVar(Boolean fc2EligApplicationIndicatorVar) {
     this.fc2EligApplicationIndicatorVar = fc2EligApplicationIndicatorVar;
   }
 
@@ -340,7 +359,8 @@ public class ChildClientDTO extends BaseDTO implements Response {
     return medEligibilityApplicationIndicatorVar;
   }
 
-  public void setMedEligibilityApplicationIndicatorVar(Boolean medEligibilityApplicationIndicatorVar) {
+  public void setMedEligibilityApplicationIndicatorVar(
+      Boolean medEligibilityApplicationIndicatorVar) {
     this.medEligibilityApplicationIndicatorVar = medEligibilityApplicationIndicatorVar;
   }
 
@@ -384,12 +404,12 @@ public class ChildClientDTO extends BaseDTO implements Response {
     this.postsecVocIndicator = postsecVocIndicator;
   }
 
-  public Boolean getPreviouslyAdoptedCode() {
-    return previouslyAdoptedCode;
+  public Boolean getPreviouslyAdopted() {
+    return previouslyAdopted;
   }
 
-  public void setPreviouslyAdoptedCode(Boolean previouslyAdoptedCode) {
-    this.previouslyAdoptedCode = previouslyAdoptedCode;
+  public void setPreviouslyAdopted(Boolean previouslyAdopted) {
+    this.previouslyAdopted = previouslyAdopted;
   }
 
   public Boolean getSafelySurrendedBabiesIndicatorVar() {
