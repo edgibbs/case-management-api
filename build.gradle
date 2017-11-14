@@ -32,7 +32,7 @@ project.ext {
     projectMajorVersion = '0.1.0'
     projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '3.6'
+    coreApiVersion = '0.4.4-SNAPSHOT'
     mapstructVersion = '1.1.0.Final'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
     shiroSecurityVersion = '0.4.2-SNAPSHOT'

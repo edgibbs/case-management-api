@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="correct_data_for_child_client" author="TPT3_team">
+        <insert tableName="CHLD_CLT">
+            <column name="FKCLIENT_T" value="BKk7CHj00Z" />
+            <column name="FC_ELIGT_B" value="N" />
+            <column name="EDONFL_IND" value="N"/>
+            <column name="HLONFL_IND" value="N"/>
+            <column name="CURNT_CSID" value="D9G54xH00Z" />
+            <column name="DTH_CIRC" value="3145"/>
+            <!--<column name="VOL_PLCDOC" value="null" />-->
+            <column name="FC2_APLT_B" value="N" />
+            <column name="ICWA_ELGCD" value="N" />
+            <column name="MEDELIGT_B" value="N" />
+            <column name="MNRMOM_IND" value="N" />
+            <column name="PRG_TRMT_B" value="N" />
+            <column name="PTRN_INT_B" value="N" />
+            <column name="SAWS_CS_NO" value="35" />
+            <column name="SAW1APLT_B" value="N" />
+            <column name="SSI_SSPIND" value="N" />
+            <column name="LST_UPD_ID" value="0JG" />
+            <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
+            <column name="ACQ_ED_DSC" value="" />
+            <column name="ACQ_HTHDSC" value="" />
+            <!--<column name="HEPDOC_OLD" value="null" />-->
+            <column name="PRTLIM_IND" value="Y" />
+            <column name="INDIAN_IND" value="N" />
+            <column name="PREADPT_CD" value="N" />
+            <column name="ADPT_AGE" value="12" />
+            <column name="ADOPTBL_CD" value="NA" />
+            <column name="DRMSHEPDOC" value="null" />
+            <column name="BHIST_IND" value="N" />
+            <column name="SFSURB_IND" value="N" />
+            <column name="AWOL_AB_CD" value="N" />
+            <column name="TRBA_NOT_B" value="N" />
+            <column name="FSTAMP_IND" value="N" />
+            <column name="DISABLD_CD" value="null" />
+            <column name="CLG_IND" value="Y" />
+            <column name="PSVOC_IND" value="Y" />
+            <column name="TCADPT_IND" value="N" />
+            <column name="ICADSL_IND" value="Y" />
+            <column name="ICADSR_IND" value="Y" />
+            <!--<column name="FSTAMP_DT" value="null" />-->
+            <!--<column name="SIJ_INT_DT" value="null" />-->
+            <!--<column name="SSI_SCR_DT" value="null" />-->
+            <!--<column name="TCADPT_DT" value="null" />-->
+        </insert>
+    </changeSet>
+</databaseChangeLog>
