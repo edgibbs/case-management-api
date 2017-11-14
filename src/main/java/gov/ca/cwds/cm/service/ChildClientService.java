@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm.service;
 
 import com.google.inject.Inject;
+import com.sun.org.apache.regexp.internal.RE;
 import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
 import gov.ca.cwds.data.legacy.cms.dao.ChildClientDao;
@@ -30,16 +31,8 @@ public class ChildClientService implements CrudsService {
 
   @Override
   public Response find(Serializable serializable) {
-    List<ChildClient> childClients =
-        Arrays.asList(
-            childClientDao.findVictimClients(
-                ((ChildClientParameterObject) serializable).getChildClientId()));
-
-    if (CollectionUtils.isEmpty(childClients)) {
-      return null;
-    } else {
-      return childClientMapper.toChildClientDTO(childClients.get(0));
-    }
+    ChildClient childClient = childClientDao.find(((ChildClientParameterObject) serializable).getChildClientId());
+    return childClientMapper.toChildClientDTO(childClient);
   }
 
   @Override

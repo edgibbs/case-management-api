@@ -16,7 +16,7 @@ import static io.dropwizard.testing.FixtureHelpers.fixture;
 /** @author CWDS TPT-3 Team */
 public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
-  public static final String CASE_NUMBER = "1";
+  public static final String CLIENT_ID = "BKk7CHj00Z";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
@@ -25,7 +25,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   @Test
   public void testGetChildClientById() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.CHILD_CLIENT + "/" + CASE_NUMBER);
+    WebTarget target = clientTestRule.target(Constants.API.CHILD_CLIENT + "/" + CLIENT_ID);
     Invocation.Builder invocation = target.request(MediaType.APPLICATION_JSON_TYPE);
     ChildClientDTO childClientDTO = invocation.get(ChildClientDTO.class);
 

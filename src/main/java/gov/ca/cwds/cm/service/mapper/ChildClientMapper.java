@@ -12,55 +12,55 @@ public interface ChildClientMapper {
 
   ChildClientMapper INSTANCE = Mappers.getMapper(ChildClientMapper.class);
 
-  @Mapping(source = "victimClientId", target = "victimClientId")
-  @Mapping(source = "adoptableCode", target = "adoptableCode")
-  @Mapping(source = "adoptedAge", target = "adoptedAge")
-  @Mapping(source = "afdcFcEligibilityIndicatorVar", target = "afdcFcEligibilityIndicatorVar")
-  @Mapping(source = "allEducationInfoOnFileIndicator", target = "allEducationInfoOnFileIndicator")
-  @Mapping(source = "allHealthInfoOnFileIndicator", target = "allHealthInfoOnFileIndicator")
-  @Mapping(source = "attemptToAcquireEducInfoDesc", target = "attemptToAcquireEducInfoDesc")
-  @Mapping(source = "attemptToAcquireHlthInfoDesc", target = "attemptToAcquireHlthInfoDesc")
-  @Mapping(source = "awolAbductedCode", target = "awolAbductedCode")
-  @Mapping(source = "birthHistoryIndicatorVar", target = "birthHistoryIndicatorVar")
-  @Mapping(source = "childIndianAncestryIndicator", target = "childIndianAncestryIndicator")
-  @Mapping(source = "collegeIndicator", target = "collegeIndicator")
-  @Mapping(source = "currentCaseId", target = "currentCaseId")
+  @Mapping(target = "victimClientId", source = "victimClientId")
+  @Mapping(target = "adoptableCode", source = "adoptable")
+  @Mapping(target = "adoptedAge", source = "adoptedAge")
+  @Mapping(target = "afdcFcEligibilityIndicatorVar", source = "afdcFcEligibilityIndicatorVar")
+  @Mapping(target = "allEducationInfoOnFileIndicator", source = "allEducationInfoOnFileIndicator")
+  @Mapping(target = "allHealthInfoOnFileIndicator", source = "allHealthInfoOnFileIndicator")
+  @Mapping(target = "attemptToAcquireEducInfoDesc", source = "attemptToAcquireEducInfoDesc")
+  @Mapping(target = "attemptToAcquireHlthInfoDesc", source = "attemptToAcquireHlthInfoDesc")
+  @Mapping(target = "awolAbductedCode", source = "awolAbducted")
+  @Mapping(target = "birthHistoryIndicatorVar", source = "birthHistoryIndicatorVar")
+  @Mapping(target = "childIndianAncestryIndicator", source = "childIndianAncestryIndicator")
+  @Mapping(target = "collegeIndicator", source = "collegeIndicator")
+  @Mapping(target = "currentCaseId", source = "currentCaseId")
   @Mapping(target = "deathCircumstancesType", ignore = true) //target = "deathCircumstancesType")
-  @Mapping(source = "disabilityDiagnosedCode", target = "disabilityDiagnosedCode")
-  @Mapping(source = "drmsHePassportDocOld", target = "drmsHePassportDocOld")
-  @Mapping(source = "foodStampsApplicationIndicator", target = "foodStampsApplicationIndicator")
-  @Mapping(source = "icwaEligibilityCode", target = "icwaEligibilityCode")
+  @Mapping(target = "disabilityDiagnosedCode", source = "disabilityDiagnosed")
+  @Mapping(target = "drmsHePassportDocOld", source = "drmsHePassportDocOld")
+  @Mapping(target = "foodStampsApplicationIndicator", source = "foodStampsApplicationIndicator")
+  @Mapping(target = "icwaEligibilityCode", source = "icwaEligibility")
   @Mapping(
-    source = "intercountryAdoptDisruptedIndicator",
-    target = "intercountryAdoptDisruptedIndicator"
+          target = "intercountryAdoptDisruptedIndicator",
+          source = "intercountryAdoptDisruptedIndicator"
   )
   @Mapping(
-    source = "medEligibilityApplicationIndicatorVar",
-    target = "medEligibilityApplicationIndicatorVar"
+          target = "medEligibilityApplicationIndicatorVar",
+          source = "medEligibilityApplicationIndicatorVar"
   )
-  @Mapping(source = "minorNmdParentIndicator", target = "minorNmdParentIndicator")
-  @Mapping(source = "parentalRightsLimitedIndicator", target = "parentalRightsLimitedIndicator")
+  @Mapping(target = "minorNmdParentIndicator", source = "minorNmdParentIndicator")
+  @Mapping(target = "parentalRightsLimitedIndicator", source = "parentalRightsLimitedIndicator")
   @Mapping(
-    source = "parentalRightsTermintnIndicatorVar",
-    target = "parentalRightsTermintnIndicatorVar"
+          target = "parentalRightsTermintnIndicatorVar",
+          source = "parentalRightsTermintnIndicatorVar"
   )
-  @Mapping(source = "paternityIndividualIndicatorVar", target = "paternityIndividualIndicatorVar")
-  @Mapping(source = "postsecVocIndicator", target = "postsecVocIndicator")
-  @Mapping(source = "previouslyAdoptedCode", target = "previouslyAdoptedCode")
+  @Mapping(target = "paternityIndividualIndicatorVar", source = "paternityIndividualIndicatorVar")
+  @Mapping(target = "postsecVocIndicator", source = "postsecVocIndicator")
+  @Mapping(target = "previouslyAdoptedCode", source = "previouslyAdopted")
   @Mapping(
-    source = "safelySurrendedBabiesIndicatorVar",
-    target = "safelySurrendedBabiesIndicatorVar"
+          target = "safelySurrendedBabiesIndicatorVar",
+          source = "safelySurrendedBabiesIndicatorVar"
   )
-  @Mapping(source = "sawsCaseSerialNumber", target = "sawsCaseSerialNumber")
+  @Mapping(target = "sawsCaseSerialNumber", source = "sawsCaseSerialNumber")
   @Mapping(target = "sijsScheduledInterviewDate", ignore = true)
   @Mapping(target = "siiNextScreeningDueDate", ignore = true)
-  @Mapping(source = "ssiSspApplicationIndicator", target = "ssiSspApplicationIndicator")
+  @Mapping(target = "ssiSspApplicationIndicator", source = "ssiSspApplicationIndicator")
   @Mapping(
-    source = "tribalAncestryNotifctnIndicatorVar",
-    target = "tribalAncestryNotifctnIndicatorVar"
+          target = "tribalAncestryNotifctnIndicatorVar",
+          source = "tribalAncestryNotifctnIndicatorVar"
   )
   @Mapping(target = "tribalCustomaryAdoptionDate", ignore = true)
-  @Mapping(source = "tribalCustomaryAdoptionIndicator", target = "tribalCustomaryAdoptionIndicator")
+  @Mapping(target = "tribalCustomaryAdoptionIndicator", source = "tribalCustomaryAdoptionIndicator")
   @Mapping(target = "foodStampsApplicationDate", ignore = true)
   ChildClientDTO toChildClientDTO(ChildClient childClient);
 }
