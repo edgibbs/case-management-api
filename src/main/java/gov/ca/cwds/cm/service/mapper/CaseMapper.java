@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(
   imports = {Constants.class}
-  //uses = {ChildClientMapper.class}
 )
 public interface CaseMapper {
 
@@ -29,12 +28,10 @@ public interface CaseMapper {
   @Mapping(source = "country.shortDsc", target = "country")
   @Mapping(source = "county.shortDsc", target = "county")
   @Mapping(source = "limitedAccessCounty.shortDsc", target = "limitedAccessCounty")
-  @Mapping(source = "limitedAccess.code", target = "limitedAccess")
+  @Mapping(source = "limitedAccess.description", target = "limitedAccess")
   @Mapping(source = "responsibleAgency.description", target = "responsibleAgency")
   @Mapping(source = "state.shortDsc", target = "state")
-  // TODO: StaffPersonDTO should be implemented
   @Mapping(source = "staffPerson.identifier", target = "staffPerson")
-  //Temporary
   @Mapping(source = "childClient.victimClientId", target = "childClient")
   CaseDTO toCaseDTO(Case caseEntity);
 }

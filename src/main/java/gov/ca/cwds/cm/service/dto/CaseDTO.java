@@ -27,16 +27,13 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Approval Number", example = "100")
   private String approvalNumber;
 
-  // approvalStatusType
   @NotNull
   @ApiModelProperty(required = true, value = "Approval Status", example = "100")
   private String approvalStatus;
 
-  // caseClosureReasonType
   @ApiModelProperty(required = true, value = "Approval Status", example = "Child Abducted")
   private String caseClosureReason;
 
-  // caseplanChildrenDetailIndVar
   @NotNull
   @ApiModelProperty(
     required = true,
@@ -49,7 +46,6 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Case closure statement text", example = "Text")
   private String closureStatementText;
 
-  // countryCodeType
   @NotNull
   @ApiModelProperty(required = true, value = "Country", example = "US")
   private String country;
@@ -74,7 +70,6 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "End date.", example = "2018-10-20")
   private LocalDate endDate;
 
-  // fkchldClt
   @NotNull
   @ApiModelProperty(required = true, value = "Child")
   private String childClient;
@@ -86,14 +81,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Staff Person")
   private String staffPerson;
 
-  // governmentEntityType
   @ApiModelProperty(
     value = "County within the state of California to which a specific CASE is assigned.",
     example = "Alameda"
   )
   private String county;
 
-  // icpcOutgngPlcmtStatusIndVar
   @NotNull
   @ApiModelProperty(
     required = true,
@@ -102,7 +95,6 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private Boolean isIcpcOutgoingPlacementStatus;
 
-  // icpcOutgoingRequestIndVar
   @NotNull
   @ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
   private Boolean isIcpcOutgoingRequest;
@@ -119,7 +111,6 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Limited access description", example = "Text")
   private String limitedAccessDesc;
 
-  // limitedAccessGovernmentEntityType
   @ApiModelProperty(value = "Limited access county", example = "Alameda")
   private Short limitedAccessCounty;
 
@@ -156,12 +147,10 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
   private LocalDate startDate;
 
-  // stateCodeType
   @NotNull
   @ApiModelProperty(required = true, value = "State", example = "CA")
   private String state;
 
-  // activeServiceComponentType
   @NotNull
   @ApiModelProperty(
     required = true,
@@ -170,14 +159,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private String activeServiceComponent;
 
-  // activeSvcComponentStartDate
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @gov.ca.cwds.rest.validation.Date(format = DATE_FORMAT)
   @NotNull
   @ApiModelProperty(required = true, value = "Service component start date", example = "2016-10-23")
   private LocalDate activeServiceComponentStartDate;
 
-  // tickleIndVar
   @NotNull
   @ApiModelProperty(required = true, value = "Tickle indicator", example = "true")
   private Boolean isTickle;
