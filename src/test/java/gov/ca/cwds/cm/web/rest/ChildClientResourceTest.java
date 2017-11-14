@@ -19,7 +19,9 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   public static final String CASE_NUMBER = "1";
 
   @BeforeClass
-  public static void beforeClass() throws Exception {}
+  public static void beforeClass() throws Exception {
+    setUpDb();
+  }
 
   @Test
   public void testGetChildClientById() throws Exception {

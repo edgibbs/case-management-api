@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
+import gov.ca.cwds.cm.service.CaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,19 +15,15 @@ public class ServicesModule extends AbstractModule {
 
   private static final Logger LOG = LoggerFactory.getLogger(ServicesModule.class);
 
-  /**
-   * Default constructor
-   */
+  /** Default constructor */
   public ServicesModule() {
     // Do nothing - Default constructor
   }
 
-  /**
-   * Do Nothing
-   */
+  /** Do Nothing */
   @Override
   protected void configure() {
     LOG.debug("ServicesModule configure method");
+    bind(CaseService.class);
   }
-
 }
