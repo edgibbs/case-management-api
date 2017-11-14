@@ -8,30 +8,33 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(
-  imports = {Constants.class},
-  uses = {ChildClientMapper.class}
+  imports = {Constants.class}
+  //uses = {ChildClientMapper.class}
 )
 public interface CaseMapper {
 
   CaseMapper INSTANCE = Mappers.getMapper(CaseMapper.class);
 
+  @Mapping(target = "messages", ignore = true)
   @Mapping(source = "identifier", target = "id")
   @Mapping(source = "approvalStatusType.shortDsc", target = "approvalStatus")
   @Mapping(source = "caseClosureReasonType.shortDsc", target = "caseClosureReason")
-  @Mapping(source = "caseplanChildrenDetailIndVar", target = "isCaseplanChildrenDetail")
-  @Mapping(source = "icpcOutgngPlcmtStatusIndVar", target = "isIcpcOutgoingPlacementStatus")
-  @Mapping(source = "icpcOutgoingRequestIndVar", target = "isIcpcOutgoingRequest")
-  @Mapping(source = "specialProjectCaseIndVar", target = "isSpecialProjectCase")
+  @Mapping(source = "caseplanChildrenDetailIndVar", target = "caseplanChildrenDetail")
+  @Mapping(source = "icpcOutgngPlcmtStatusIndVar", target = "icpcOutgoingPlacementStatus")
+  @Mapping(source = "icpcOutgoingRequestIndVar", target = "icpcOutgoingRequest")
+  @Mapping(source = "specialProjectCaseIndVar", target = "specialProjectCase")
   @Mapping(source = "activeServiceComponentType.shortDsc", target = "activeServiceComponent")
   @Mapping(source = "activeSvcComponentStartDate", target = "activeServiceComponentStartDate")
-  @Mapping(source = "tickleIndVar", target = "isTickle")
+  @Mapping(source = "tickleIndVar", target = "tickle")
   @Mapping(source = "country.shortDsc", target = "country")
   @Mapping(source = "county.shortDsc", target = "county")
   @Mapping(source = "limitedAccessCounty.shortDsc", target = "limitedAccessCounty")
-  @Mapping(source = "limitedAccess.description", target = "limitedAccess")
+  @Mapping(source = "limitedAccess.code", target = "limitedAccess")
   @Mapping(source = "responsibleAgency.description", target = "responsibleAgency")
   @Mapping(source = "state.shortDsc", target = "state")
   // TODO: StaffPersonDTO should be implemented
   @Mapping(source = "staffPerson.identifier", target = "staffPerson")
+  //Temporary
+  @Mapping(source = "childClient.victimClientId", target = "childClient")
   CaseDTO toCaseDTO(Case caseEntity);
 }

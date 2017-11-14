@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.web.rest;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
+import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.*;
 
 import javax.ws.rs.*;
@@ -34,10 +35,11 @@ public class CaseResource {
       @ApiResponse(code = 406, message = "Accept Header not supported")
     }
   )
+  @UnitOfWork
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class, code = 200)
   public Response get(
       @PathParam("caseId")
-          @ApiParam(required = true, value = "The unique case ID", example = "DSC1233117")
+          @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
           String caseId) {
     return Response.ok().entity(caseService.find(caseId)).build();
   }

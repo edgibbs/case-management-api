@@ -77,7 +77,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   // fkchldClt
   @NotNull
   @ApiModelProperty(required = true, value = "Child")
-  private ChildClientDTO childClient;
+  private String childClient;
 
   @ApiModelProperty(value = "Referrer")
   private String referralId;
@@ -278,11 +278,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
     this.endDate = endDate;
   }
 
-  public ChildClientDTO getChildClient() {
+  public String getChildClient() {
     return childClient;
   }
 
-  public void setChildClient(ChildClientDTO childClient) {
+  public void setChildClient(String childClient) {
     this.childClient = childClient;
   }
 
