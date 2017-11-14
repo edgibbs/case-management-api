@@ -33,5 +33,6 @@ public interface CaseMapper {
   @Mapping(source = "state.shortDsc", target = "state")
   @Mapping(source = "staffPerson.identifier", target = "staffPerson")
   @Mapping(source = "childClient.victimClientId", target = "childClient")
+  @Mapping(source = "alertText.textDescription", target = "alertText")
   CaseDTO toCaseDTO(Case caseEntity);
 }

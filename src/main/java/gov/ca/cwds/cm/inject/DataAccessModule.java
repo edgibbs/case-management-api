@@ -10,6 +10,7 @@ import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.CountyLicenseCase;
 import gov.ca.cwds.data.legacy.cms.entity.LicensingVisit;
+import gov.ca.cwds.data.legacy.cms.entity.LongText;
 import gov.ca.cwds.data.legacy.cms.entity.OtherAdultsInPlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.OtherChildrenInPlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.OtherPeopleScpRelationship;
@@ -63,7 +64,8 @@ public class DataAccessModule extends AbstractModule {
               PlacementHomeNotes.class,
               OtherChildrenInPlacementHome.class,
               OtherPeopleScpRelationship.class,
-              OtherAdultsInPlacementHome.class
+              OtherAdultsInPlacementHome.class,
+              LongText.class
           )
           .build();
 
