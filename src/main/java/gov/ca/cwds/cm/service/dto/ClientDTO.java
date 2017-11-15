@@ -21,6 +21,14 @@ public class ClientDTO extends BaseDTO {
 
   private static final long serialVersionUID = -4098613951159302301L;
 
+  @NotNull
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "ID - A system generated number used to uniquely  identify each CLIENT.    This ID has an internal "
+            + "10 digit alpha-numeric and an external 19 digit numeric representation.",
+    example = "0YIPkZU0S0"
+  )
   private String identifier;
 
   @NotNull
@@ -194,9 +202,35 @@ public class ClientDTO extends BaseDTO {
   )
   private String genderCd;
 
+  @NotNull
+  @ApiModelProperty(
+    value =
+        "IMMIGRATION COUNTRY CODE TYPE - The system generated number which identifies the  Country of "
+            + "origin for a specific CLIENT (e.g., United States, China, Mexico, etc.).",
+    example = "563"
+  )
   private Short iCntryC;
+
+  @NotNull
+  @ApiModelProperty(
+    value =
+        "IMMIGRATION STATUS TYPE - The system generated number which identifies the type of residency "
+            + "status for the CLIENT (e.g., refugee, alien, or US citizen, etc.).",
+    example = "1199"
+  )
   private Short imgtStc;
+
+  @Size(max = 2)
+  @NotNull
+  @ApiModelProperty(
+    value =
+        "INCAPACITATED PARENT CODE - This indicates if the parent CLIENT is incapacitated.  This "
+            + "information is passed along to the eligibility worker when determining eligibility of "
+            + "the child for federal aid.",
+    example = "1199"
+  )
   private String incapcCd;
+
   private String litrateCd;
   private String marHistB;
   private Short mrtlStc;
@@ -249,6 +283,14 @@ public class ClientDTO extends BaseDTO {
   )
   private String bpVerInd;
 
+  @NotNull
+  @Size(max = 1)
+  @ApiModelProperty(
+    value =
+        "HISPANIC ORIGIN CODE - Records Hispanic origin of the individual client. An 'X' indicates no user "
+            + "selection has been made.",
+    example = "U"
+  )
   private String hispCd;
 
   @NotNull
@@ -289,7 +331,17 @@ public class ClientDTO extends BaseDTO {
   private String prevcaInd;
   private String preregInd;
   private String pothDesc;
+
+  @NotNull
+  @Size(max = 1)
+  @ApiModelProperty(
+    value =
+        "INDIVIDUAL HEALTH CARE PLAN IND - This indicator tells the worker that there is an Individual "
+            + "Health Care Plan  on File for a Special Needs Child.",
+    example = "N"
+  )
   private String hcareInd;
+
   private String limitInd;
 
   @NotNull
@@ -300,7 +352,16 @@ public class ClientDTO extends BaseDTO {
   )
   private String birthCity;
 
+  @Size(max = 10)
+  @ApiModelProperty(
+    value =
+        "HEALTH_SUMMARY_TEXT - A brief description of a CLIENT's overall health condition and/or "
+            + "information about the location of a CHILD CLIENT's health records.  This is the ID from the LONG "
+            + "TEXT entity type which uniquely identifies a specific occurrence of user defined text.",
+    example = "0Wqj8l901w"
+  )
   private String healthTxt;
+
   private LocalDate mtermDt;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -361,7 +422,15 @@ public class ClientDTO extends BaseDTO {
   )
   private String ethUdCd;
 
+  @Size(max = 1)
+  @ApiModelProperty(
+    value =
+        "HISP UNABLE TO DET REASON CODE - Records the reason that 'Unable to Determine' was selected as "
+            + "the Hispanic or Latino Origin for an individual client.",
+    example = " "
+  )
   private String hispUdCd;
+
   private String socplcCd;
 
   @Size(max = 12)
