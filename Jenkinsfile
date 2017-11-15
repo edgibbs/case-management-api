@@ -86,7 +86,7 @@ node ('tpt3-slave'){
 	stage('Clean Workspace') {
 		buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'dropDockerImage'
 		archiveArtifacts artifacts: '**/case-management-api-*.jar,readme.txt', fingerprint: true
-		cleanWs()
+	//	cleanWs()
 	}
 	stage('Deploy Application'){
 	   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/case-management-api-dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]]
