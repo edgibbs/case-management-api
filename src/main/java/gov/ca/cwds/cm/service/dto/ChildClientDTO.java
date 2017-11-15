@@ -35,7 +35,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   @NotEmpty
   @Size(min = 1, max = 2)
   @OneOf(
-    value = {"NOT_ADOPTABLE", "ADOPTABLE", "NOT_ASSESSED"},
+    value = {"N", "Y", "NA"},
     ignoreCase = true,
     ignoreWhitespace = true
   )
