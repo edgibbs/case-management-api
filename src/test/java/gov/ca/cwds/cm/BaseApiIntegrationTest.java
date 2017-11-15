@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web;
+package gov.ca.cwds.cm;
 
 import gov.ca.cwds.cm.CmApiApplication;
 import gov.ca.cwds.cm.CmApiConfiguration;
