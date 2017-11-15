@@ -91,7 +91,7 @@ node ('tpt3-slave'){
 	}
 	stage('Deploy Application'){
 //	   checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/case-management-api-dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]]
-	   checkout([$class: 'GitSCM', branches: [[name: '*/case-management-api-dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]])
+	   checkout([$class: 'GitSCM', branches: [[name: '*/case-managemennt-api-dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git']]])
 //	   git branch: 'case-management-api-dev', credentialsId: '433ac100-b3c2-4519-b4d6-207c029a103b', url: 'git@github.com:ca-cwds/de-ansible.git'
 	   sh 'ansible-playbook -e NEW_RELIC_AGENT=$USE_NEWRELIC  -e API_VERSION=$APP_VERSION -i $inventory deploy-case-management-api.yml --vault-password-file ~/.ssh/vault.txt -vv'
 //	   cleanWs()
