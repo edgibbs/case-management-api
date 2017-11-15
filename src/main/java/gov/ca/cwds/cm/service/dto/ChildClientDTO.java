@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
-import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;

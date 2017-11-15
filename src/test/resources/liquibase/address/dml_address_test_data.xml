@@ -12,8 +12,8 @@
       <column name="EMRG_EXTNO" value="523454"/>
       <column name="FRG_ADRT_B" value="N"/>
       <column name="GVR_ENTC" value="1084"/>
-      <column name="MSG_TEL_NO" value="4523452435"/>
-      <column name="MSG_EXT_NO" value="52345"/>
+      <column name="MSG_TEL_NO" value="0"/>
+      <column name="MSG_EXT_NO" value="0"/>
       <column name="HEADER_ADR" value="                                   "/>
       <column name="PRM_TEL_NO" value="8300001242"/>
       <column name="PRM_EXT_NO" value="54235"/>

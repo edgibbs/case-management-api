@@ -51,7 +51,6 @@ public class ChildClientResource {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
     childClientParameterObject.setChildClientId(clientId);
     Response childClientDTO = childClientResourceDelegat.get(childClientParameterObject);
-    System.out.println(childClientDTO.getEntity());
     return Response.ok().entity(childClientDTO.getEntity()).build();
   }
 }
