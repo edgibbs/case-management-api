@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
+import gov.ca.cwds.cm.service.mapper.RemoveTrailingSpaces;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 /** @author CWDS TPT-3 Team */
+@SuppressWarnings({"squid:S3437"})
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CaseDTO extends BaseDTO implements RequestResponse {
 
@@ -20,18 +22,22 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private String id;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Alert Text", example = "Text")
   private String alertText;
 
+  @RemoveTrailingSpaces
   @Size(max = 10)
   @ApiModelProperty(value = "Approval Number", example = "100")
   private String approvalNumber;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Approval Status", example = "100")
   private String approvalStatus;
 
-  @ApiModelProperty(required = true, value = "Approval Status", example = "Child Abducted")
+  @RemoveTrailingSpaces
+  @ApiModelProperty(required = true, value = "Case Closure Reason", example = "Child Abducted")
   private String caseClosureReason;
 
   @NotNull
@@ -42,18 +48,22 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private Boolean isCaseplanChildrenDetail;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Case closure statement text", example = "Text")
   private String closureStatementText;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Country", example = "US")
   private String country;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "County", example = "Alameda")
   private String countySpecificCode;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "DRMS notes", example = "Text")
   private String drmsNotesDoc;
 
@@ -70,17 +80,21 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "End date.", example = "2018-10-20")
   private LocalDate endDate;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Child")
   private String childClient;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Referrer")
   private String referralId;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Staff Person")
   private String staffPerson;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(
     value = "County within the state of California to which a specific CASE is assigned.",
     example = "Alameda"
@@ -99,6 +113,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
   private Boolean isIcpcOutgoingRequest;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Determine the security access level.", example = "S")
   private String limitedAccess;
@@ -108,12 +123,14 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Limited access date", example = "2016-10-25")
   private LocalDate limitedAccessDate;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Limited access description", example = "Text")
   private String limitedAccessDesc;
 
   @ApiModelProperty(value = "Limited access county", example = "Alameda")
-  private Short limitedAccessCounty;
+  private String limitedAccessCounty;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Case name")
   private String caseName;
@@ -134,6 +151,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   )
   private LocalDate projectedEndDate;
 
+  @RemoveTrailingSpaces
   @ApiModelProperty(value = "Responsible agency")
   private String responsibleAgency;
 
@@ -147,10 +165,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
   private LocalDate startDate;
 
+  @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "State", example = "CA")
+  @ApiModelProperty(required = true, value = "State", example = "California")
   private String state;
 
+  @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(
     required = true,
@@ -337,11 +357,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
     this.limitedAccessDesc = limitedAccessDesc;
   }
 
-  public Short getLimitedAccessCounty() {
+  public String getLimitedAccessCounty() {
     return limitedAccessCounty;
   }
 
-  public void setLimitedAccessCounty(Short limitedAccessCounty) {
+  public void setLimitedAccessCounty(String limitedAccessCounty) {
     this.limitedAccessCounty = limitedAccessCounty;
   }
 
@@ -423,5 +443,23 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   public void setTickle(Boolean tickle) {
     isTickle = tickle;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+
+    CaseDTO caseDTO = (CaseDTO) o;
+
+    return id.equals(caseDTO.id);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + id.hashCode();
+    return result;
   }
 }

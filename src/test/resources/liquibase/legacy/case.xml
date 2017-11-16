@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <!-- This change set only for testing -->
+    <changeSet author="TPT3_team" id="case_table">
+
+        <createTable tableName="CASE_T">
+            <column name="IDENTIFIER" type="${type.string}">
+            </column>
+
+            <column name="ALERT_TXT" type="${type.string}">
+            </column>
+
+            <column name="APRVL_NO" type="${type.string}">
+            </column>
+
+            <column name="APV_STC" type="${type.string}">
+            </column>
+
+            <column name="CLS_RSNC" type="${type.string}">
+            </column>
+
+            <column name="CSPL_DET_B" type="${type.string}">
+            </column>
+
+            <column name="CL_STM_TXT" type="${type.string}">
+            </column>
+
+            <column name="CNTRY_C" type="${type.string}">
+            </column>
+
+            <column name="CNTY_SPFCD" type="${type.string}">
+            </column>
+
+            <column name="NOTES_DOC" type="${type.string}">
+            </column>
+
+            <column name="EMANCPN_DT" type="date">
+            </column>
+
+            <column name="END_DT" type="date">
+            </column>
+
+            <column name="FKCHLD_CLT" type="${type.string}">
+            </column>
+
+            <column name="FKREFERL_T" type="${type.string}">
+            </column>
+
+            <column name="FKSTFPERST" type="${type.string}">
+            </column>
+
+            <column name="GVR_ENTC" type="${type.string}">
+            </column>
+
+            <column name="ICPCSTAT_B" type="${type.string}">
+            </column>
+
+            <column name="ICPC_RQT_B" type="${type.string}">
+            </column>
+
+            <column name="LMT_ACSSCD" type="${type.string}">
+            </column>
+
+            <column name="LMT_ACS_DT" type="${type.string}">
+            </column>
+
+            <column name="LMT_ACSDSC" type="${type.string}">
+            </column>
+
+            <column name="L_GVR_ENTC" type="${type.string}">
+            </column>
+
+            <column name="CASE_NM" type="${type.string}">
+            </column>
+
+            <column name="NXT_TILPDT" type="date">
+            </column>
+
+            <column name="PRJ_END_DT" type="date">
+            </column>
+
+            <column name="RSP_AGY_CD" type="${type.string}">
+            </column>
+
+            <column name="SPRJ_CST_B" type="${type.string}">
+            </column>
+
+            <column name="START_DT" type="${type.string}">
+            </column>
+
+            <column name="STATE_C" type="${type.string}">
+            </column>
+
+            <column name="SRV_CMPC" type="${type.string}">
+            </column>
+
+            <column name="SRV_CMPDT" type="${type.string}">
+            </column>
+
+            <column name="TICKLE_T_B" type="${type.string}">
+            </column>
+
+            <column name="LST_UPD_ID" type="${type.string}">
+            </column>
+
+            <column name="LST_UPD_TS" type="TIMESTAMP">
+            </column>
+
+        </createTable>
+
+        <createTable tableName="SYS_CD_C">
+            <column name="SYS_ID" type="${type.short}"/>
+            <column name="CATEGORYID" type="${type.short}"/>
+            <column name="INACTV_IND" type="${type.string}"/>
+            <column name="OTHER_CD" type="${type.string}"/>
+            <column name="SHORT_DSC" type="${type.string}"/>
+            <column name="LGC_ID" type="${type.string}"/>
+            <column name="LST_UPD_ID" type="${type.string}"/>
+            <column name="LST_UPD_TS" type="TIMESTAMP"/>
+            <column name="THIRD_ID" type="${type.string}"/>
+            <column name="FKS_META_T" type="${type.string}"/>
+            <column name="LONG_DSC" type="${type.string}"/>
+        </createTable>
+
+        <createTable tableName="LONG_TXT">
+            <column name="IDENTIFIER" type="${type.string}"/>
+            <column name="LST_UPD_ID" type="${type.string}"/>
+            <column name="LST_UPD_TS" type="TIMESTAMP"/>
+            <column name="CNTY_SPFCD" type="${type.string}"/>
+            <column name="TTEXT_DSC" type="${type.string}"/>
+        </createTable>
+
+        <createTable tableName="STFPERST">
+            <column name="CNTY_SPFCD" type="${type.string}"/>
+            <column name="IDENTIFIER" type="${type.string}"/>
+            <column name="END_DT" type="date"/>
+            <column name="FIRST_NM" type="${type.string}"/>
+            <column name="JOB_TL_DSC" type="${type.string}"/>
+            <column name="LAST_NM" type="${type.string}"/>
+            <column name="MID_INI_NM" type="${type.string}"/>
+            <column name="NMPRFX_DSC" type="${type.string}"/>
+            <column name="PHONE_NO" type="${type.long}"/>
+            <column name="TEL_EXT_NO" type="${type.int}"/>
+            <column name="START_DT" type="date"/>
+            <column name="SUFX_TLDSC" type="${type.string}"/>
+            <column name="TLCMTR_IND" type="${type.string}"/>
+            <column name="LST_UPD_ID" type="${type.string}"/>
+            <column name="LST_UPD_TS" type="timestamp"/>
+            <column name="FKCWS_OFFT" type="${type.string}"/>
+            <column name="AVLOC_DSC" type="${type.string}"/>
+            <column name="SSRS_WKRID" type="${type.string}"/>
+            <column name="DTYWKR_IND" type="${type.string}"/>
+            <column name="FKCWSADDRT" type="${type.string}"/>
+            <column name="EMAIL_ADDR" type="${type.string}"/>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
