@@ -13,8 +13,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
-import static gov.ca.cwds.rest.api.domain.DomainObject.TIMESTAMP_ISO8601_FORMAT;
-import static gov.ca.cwds.rest.api.domain.DomainObject.TIME_FORMAT;
 
 /** @author CWDS TPT-3 Team */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
@@ -698,4 +696,556 @@ public class ClientDTO extends BaseDTO {
     example = " "
   )
   private String clIndxNo;
+
+  public String getIdentifier() {
+    return identifier;
+  }
+
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
+  }
+
+  public String getAdptnStcd() {
+    return adptnStcd;
+  }
+
+  public void setAdptnStcd(String adptnStcd) {
+    this.adptnStcd = adptnStcd;
+  }
+
+  public String getAlnRegNo() {
+    return alnRegNo;
+  }
+
+  public void setAlnRegNo(String alnRegNo) {
+    this.alnRegNo = alnRegNo;
+  }
+
+  public LocalDate getBirthDt() {
+    return birthDt;
+  }
+
+  public void setBirthDt(LocalDate birthDt) {
+    this.birthDt = birthDt;
+  }
+
+  public String getBrFacNm() {
+    return brFacNm;
+  }
+
+  public void setBrFacNm(String brFacNm) {
+    this.brFacNm = brFacNm;
+  }
+
+  public Short getbStateC() {
+    return bStateC;
+  }
+
+  public void setbStateC(Short bStateC) {
+    this.bStateC = bStateC;
+  }
+
+  public Short getbCntryC() {
+    return bCntryC;
+  }
+
+  public void setbCntryC(Short bCntryC) {
+    this.bCntryC = bCntryC;
+  }
+
+  public String getChldCltB() {
+    return chldCltB;
+  }
+
+  public void setChldCltB(String chldCltB) {
+    this.chldCltB = chldCltB;
+  }
+
+  public String getComFstNm() {
+    return comFstNm;
+  }
+
+  public void setComFstNm(String comFstNm) {
+    this.comFstNm = comFstNm;
+  }
+
+  public String getComLstNm() {
+    return comLstNm;
+  }
+
+  public void setComLstNm(String comLstNm) {
+    this.comLstNm = comLstNm;
+  }
+
+  public String getComMidNm() {
+    return comMidNm;
+  }
+
+  public void setComMidNm(String comMidNm) {
+    this.comMidNm = comMidNm;
+  }
+
+  public String getConfEfind() {
+    return confEfind;
+  }
+
+  public void setConfEfind(String confEfind) {
+    this.confEfind = confEfind;
+  }
+
+  public LocalDate getConfActdt() {
+    return confActdt;
+  }
+
+  public void setConfActdt(LocalDate confActdt) {
+    this.confActdt = confActdt;
+  }
+
+  public LocalDate getCreatnDt() {
+    return creatnDt;
+  }
+
+  public void setCreatnDt(LocalDate creatnDt) {
+    this.creatnDt = creatnDt;
+  }
+
+  public LocalDate getDeathDt() {
+    return deathDt;
+  }
+
+  public void setDeathDt(LocalDate deathDt) {
+    this.deathDt = deathDt;
+  }
+
+  public String getDthRnTxt() {
+    return dthRnTxt;
+  }
+
+  public void setDthRnTxt(String dthRnTxt) {
+    this.dthRnTxt = dthRnTxt;
+  }
+
+  public String getDrvLicNo() {
+    return drvLicNo;
+  }
+
+  public void setDrvLicNo(String drvLicNo) {
+    this.drvLicNo = drvLicNo;
+  }
+
+  public Short getdStateC() {
+    return dStateC;
+  }
+
+  public void setdStateC(Short dStateC) {
+    this.dStateC = dStateC;
+  }
+
+  public String getGenderCd() {
+    return genderCd;
+  }
+
+  public void setGenderCd(String genderCd) {
+    this.genderCd = genderCd;
+  }
+
+  public Short getiCntryC() {
+    return iCntryC;
+  }
+
+  public void setiCntryC(Short iCntryC) {
+    this.iCntryC = iCntryC;
+  }
+
+  public Short getImgtStc() {
+    return imgtStc;
+  }
+
+  public void setImgtStc(Short imgtStc) {
+    this.imgtStc = imgtStc;
+  }
+
+  public String getIncapcCd() {
+    return incapcCd;
+  }
+
+  public void setIncapcCd(String incapcCd) {
+    this.incapcCd = incapcCd;
+  }
+
+  public String getLitrateCd() {
+    return litrateCd;
+  }
+
+  public void setLitrateCd(String litrateCd) {
+    this.litrateCd = litrateCd;
+  }
+
+  public String getMarHistB() {
+    return marHistB;
+  }
+
+  public void setMarHistB(String marHistB) {
+    this.marHistB = marHistB;
+  }
+
+  public Short getMrtlStc() {
+    return mrtlStc;
+  }
+
+  public void setMrtlStc(Short mrtlStc) {
+    this.mrtlStc = mrtlStc;
+  }
+
+  public String getMiltStacd() {
+    return miltStacd;
+  }
+
+  public void setMiltStacd(String miltStacd) {
+    this.miltStacd = miltStacd;
+  }
+
+  public String getNmprfxDsc() {
+    return nmprfxDsc;
+  }
+
+  public void setNmprfxDsc(String nmprfxDsc) {
+    this.nmprfxDsc = nmprfxDsc;
+  }
+
+  public Short getNameTpc() {
+    return nameTpc;
+  }
+
+  public void setNameTpc(Short nameTpc) {
+    this.nameTpc = nameTpc;
+  }
+
+  public String getOutwrtInd() {
+    return outwrtInd;
+  }
+
+  public void setOutwrtInd(String outwrtInd) {
+    this.outwrtInd = outwrtInd;
+  }
+
+  public Short getpEthnctyc() {
+    return pEthnctyc;
+  }
+
+  public void setpEthnctyc(Short pEthnctyc) {
+    this.pEthnctyc = pEthnctyc;
+  }
+
+  public Short getpLangTpc() {
+    return pLangTpc;
+  }
+
+  public void setpLangTpc(Short pLangTpc) {
+    this.pLangTpc = pLangTpc;
+  }
+
+  public Short getRlgnTpc() {
+    return rlgnTpc;
+  }
+
+  public void setRlgnTpc(Short rlgnTpc) {
+    this.rlgnTpc = rlgnTpc;
+  }
+
+  public Short getsLangTc() {
+    return sLangTc;
+  }
+
+  public void setsLangTc(Short sLangTc) {
+    this.sLangTc = sLangTc;
+  }
+
+  public String getSenstvInd() {
+    return senstvInd;
+  }
+
+  public void setSenstvInd(String senstvInd) {
+    this.senstvInd = senstvInd;
+  }
+
+  public String getSntvHlind() {
+    return sntvHlind;
+  }
+
+  public void setSntvHlind(String sntvHlind) {
+    this.sntvHlind = sntvHlind;
+  }
+
+  public String getSsNo() {
+    return ssNo;
+  }
+
+  public void setSsNo(String ssNo) {
+    this.ssNo = ssNo;
+  }
+
+  public String getSsnChgCd() {
+    return ssnChgCd;
+  }
+
+  public void setSsnChgCd(String ssnChgCd) {
+    this.ssnChgCd = ssnChgCd;
+  }
+
+  public String getSufxTldsc() {
+    return sufxTldsc;
+  }
+
+  public void setSufxTldsc(String sufxTldsc) {
+    this.sufxTldsc = sufxTldsc;
+  }
+
+  public String getUnemplyCd() {
+    return unemplyCd;
+  }
+
+  public void setUnemplyCd(String unemplyCd) {
+    this.unemplyCd = unemplyCd;
+  }
+
+  public String getLstUpdId() {
+    return lstUpdId;
+  }
+
+  public void setLstUpdId(String lstUpdId) {
+    this.lstUpdId = lstUpdId;
+  }
+
+  public Timestamp getLstUpdTs() {
+    return lstUpdTs;
+  }
+
+  public void setLstUpdTs(Timestamp lstUpdTs) {
+    this.lstUpdTs = lstUpdTs;
+  }
+
+  public String getCommntDsc() {
+    return commntDsc;
+  }
+
+  public void setCommntDsc(String commntDsc) {
+    this.commntDsc = commntDsc;
+  }
+
+  public String getEstDobCd() {
+    return estDobCd;
+  }
+
+  public void setEstDobCd(String estDobCd) {
+    this.estDobCd = estDobCd;
+  }
+
+  public String getBpVerInd() {
+    return bpVerInd;
+  }
+
+  public void setBpVerInd(String bpVerInd) {
+    this.bpVerInd = bpVerInd;
+  }
+
+  public String getHispCd() {
+    return hispCd;
+  }
+
+  public void setHispCd(String hispCd) {
+    this.hispCd = hispCd;
+  }
+
+  public String getCurrcaInd() {
+    return currcaInd;
+  }
+
+  public void setCurrcaInd(String currcaInd) {
+    this.currcaInd = currcaInd;
+  }
+
+  public String getCurregInd() {
+    return curregInd;
+  }
+
+  public void setCurregInd(String curregInd) {
+    this.curregInd = curregInd;
+  }
+
+  public String getCothDesc() {
+    return cothDesc;
+  }
+
+  public void setCothDesc(String cothDesc) {
+    this.cothDesc = cothDesc;
+  }
+
+  public String getPrevcaInd() {
+    return prevcaInd;
+  }
+
+  public void setPrevcaInd(String prevcaInd) {
+    this.prevcaInd = prevcaInd;
+  }
+
+  public String getPreregInd() {
+    return preregInd;
+  }
+
+  public void setPreregInd(String preregInd) {
+    this.preregInd = preregInd;
+  }
+
+  public String getPothDesc() {
+    return pothDesc;
+  }
+
+  public void setPothDesc(String pothDesc) {
+    this.pothDesc = pothDesc;
+  }
+
+  public String getHcareInd() {
+    return hcareInd;
+  }
+
+  public void setHcareInd(String hcareInd) {
+    this.hcareInd = hcareInd;
+  }
+
+  public String getLimitInd() {
+    return limitInd;
+  }
+
+  public void setLimitInd(String limitInd) {
+    this.limitInd = limitInd;
+  }
+
+  public String getBirthCity() {
+    return birthCity;
+  }
+
+  public void setBirthCity(String birthCity) {
+    this.birthCity = birthCity;
+  }
+
+  public String getHealthTxt() {
+    return healthTxt;
+  }
+
+  public void setHealthTxt(String healthTxt) {
+    this.healthTxt = healthTxt;
+  }
+
+  public LocalDate getMtermDt() {
+    return mtermDt;
+  }
+
+  public void setMtermDt(LocalDate mtermDt) {
+    this.mtermDt = mtermDt;
+  }
+
+  public LocalDate getFtermDt() {
+    return ftermDt;
+  }
+
+  public void setFtermDt(LocalDate ftermDt) {
+    this.ftermDt = ftermDt;
+  }
+
+  public String getZippyInd() {
+    return zippyInd;
+  }
+
+  public void setZippyInd(String zippyInd) {
+    this.zippyInd = zippyInd;
+  }
+
+  public String getDeathPlc() {
+    return deathPlc;
+  }
+
+  public void setDeathPlc(String deathPlc) {
+    this.deathPlc = deathPlc;
+  }
+
+  public String getTrMbvrtB() {
+    return trMbvrtB;
+  }
+
+  public void setTrMbvrtB(String trMbvrtB) {
+    this.trMbvrtB = trMbvrtB;
+  }
+
+  public String getTrbaCltB() {
+    return trbaCltB;
+  }
+
+  public void setTrbaCltB(String trbaCltB) {
+    this.trbaCltB = trbaCltB;
+  }
+
+  public String getSoc158Ind() {
+    return soc158Ind;
+  }
+
+  public void setSoc158Ind(String soc158Ind) {
+    this.soc158Ind = soc158Ind;
+  }
+
+  public String getDthDtInd() {
+    return dthDtInd;
+  }
+
+  public void setDthDtInd(String dthDtInd) {
+    this.dthDtInd = dthDtInd;
+  }
+
+  public String getEmailAddr() {
+    return emailAddr;
+  }
+
+  public void setEmailAddr(String emailAddr) {
+    this.emailAddr = emailAddr;
+  }
+
+  public String getAdjdelInd() {
+    return adjdelInd;
+  }
+
+  public void setAdjdelInd(String adjdelInd) {
+    this.adjdelInd = adjdelInd;
+  }
+
+  public String getEthUdCd() {
+    return ethUdCd;
+  }
+
+  public void setEthUdCd(String ethUdCd) {
+    this.ethUdCd = ethUdCd;
+  }
+
+  public String getHispUdCd() {
+    return hispUdCd;
+  }
+
+  public void setHispUdCd(String hispUdCd) {
+    this.hispUdCd = hispUdCd;
+  }
+
+  public String getSocplcCd() {
+    return socplcCd;
+  }
+
+  public void setSocplcCd(String socplcCd) {
+    this.socplcCd = socplcCd;
+  }
+
+  public String getClIndxNo() {
+    return clIndxNo;
+  }
+
+  public void setClIndxNo(String clIndxNo) {
+    this.clIndxNo = clIndxNo;
+  }
 }
