@@ -96,17 +96,18 @@ node ('tpt3-slave'){
 //	   cleanWs()
 	   sleep (20)
   }
-  stage('Smoke Tests') {
-      git branch: 'development', url: 'https://github.com/ca-cwds/case-management-api.git'
+/*  stage('Smoke Tests') {
+     git branch: 'development', url: 'https://github.com/ca-cwds/case-management-api.git'
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'smokeTest --stacktrace'
-      publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'build/reports/tests/smokeTest', reportFiles: 'index.html', reportName: 'Smoke Tests Report', reportTitles: 'Smoke tests summary'])
-  }
-  stage('Integration Tests') {
+     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'build/reports/tests/smokeTest', reportFiles: 'index.html', reportName: 'Smoke Tests Report', reportTitles: 'Smoke tests summary'])
+*/ }
+/*  stage('Integration Tests') {
       git branch: 'development', url: 'https://github.com/ca-cwds/case-management-api.git'
       buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'integrationTest --stacktrace'
       publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'build/reports/tests/integrationTest', reportFiles: 'index.html', reportName: 'Integration Tests Report', reportTitles: 'Integration tests summary'])
       cleanWs()
   }
+ */
  } catch (Exception e)    {
  	   errorcode = e
   	   currentBuild.result = "FAIL"
