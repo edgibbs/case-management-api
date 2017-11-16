@@ -12,6 +12,7 @@ public interface ChildClientMapper {
 
   ChildClientMapper INSTANCE = Mappers.getMapper(ChildClientMapper.class);
 
+  @Mapping(target = "messages", ignore = true)
   @Mapping(target = "victimClientId", source = "victimClientId")
   @Mapping(target = "adoptableCode", source = "adoptable")
   @Mapping(target = "adoptedAge", source = "adoptedAge")

@@ -41,6 +41,10 @@ public class CaseResource {
       @PathParam("caseId")
           @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
           String caseId) {
-    return Response.ok().entity(caseService.find(caseId)).build();
+    CaseDTO caseDTO = caseService.find(caseId);
+    if (caseDTO != null) {
+      return Response.status(Response.Status.OK).entity(caseDTO).build();
+    }
+    return Response.status(Response.Status.NOT_FOUND).build();
   }
 }

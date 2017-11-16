@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 /** @author CWDS TPT-3 Team */
+@SuppressWarnings({"squid:S3437"})
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CaseDTO extends BaseDTO implements RequestResponse {
 
@@ -36,7 +37,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private String approvalStatus;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(required = true, value = "Approval Status", example = "Child Abducted")
+  @ApiModelProperty(required = true, value = "Case Closure Reason", example = "Child Abducted")
   private String caseClosureReason;
 
   @NotNull
@@ -127,7 +128,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private String limitedAccessDesc;
 
   @ApiModelProperty(value = "Limited access county", example = "Alameda")
-  private Short limitedAccessCounty;
+  private String limitedAccessCounty;
 
   @RemoveTrailingSpaces
   @NotNull
@@ -166,7 +167,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "State", example = "CA")
+  @ApiModelProperty(required = true, value = "State", example = "California")
   private String state;
 
   @RemoveTrailingSpaces
@@ -356,11 +357,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
     this.limitedAccessDesc = limitedAccessDesc;
   }
 
-  public Short getLimitedAccessCounty() {
+  public String getLimitedAccessCounty() {
     return limitedAccessCounty;
   }
 
-  public void setLimitedAccessCounty(Short limitedAccessCounty) {
+  public void setLimitedAccessCounty(String limitedAccessCounty) {
     this.limitedAccessCounty = limitedAccessCounty;
   }
 
@@ -442,5 +443,23 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   public void setTickle(Boolean tickle) {
     isTickle = tickle;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    if (!super.equals(o)) return false;
+
+    CaseDTO caseDTO = (CaseDTO) o;
+
+    return id.equals(caseDTO.id);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + id.hashCode();
+    return result;
   }
 }
