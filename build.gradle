@@ -35,6 +35,7 @@ project.ext {
     coreApiVersion = '0.4.4-SNAPSHOT'
     mapstructVersion = '1.1.0.Final'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
+    calsModelVersion = '0.4.4'
 }
 
 group projectGroup
@@ -119,7 +120,9 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-compress', version: '1.14'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
     compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
-    
+    testCompile (group: 'gov.ca.cwds.cals', name: 'fas-data-model', version: calsModelVersion, changing: true)
+    testCompile (group: 'gov.ca.cwds.cals', name: 'cws-cms-data-model', version: calsModelVersion, changing: true)
+
     compile group: 'com.github.javafaker', name: 'javafaker', version: '0.13'
     compile(group: "com.github.java-json-tools", name: "json-schema-validator", version: "2.2.8")
 

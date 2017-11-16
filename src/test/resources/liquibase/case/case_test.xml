@@ -103,5 +103,13 @@
             <column name="CNTY_SPFCD" value="21"/>
             <column name="TTEXT_DSC" value="hooby doop"/>
         </insert>
+
+        <insert tableName="LONG_TXT">
+            <column name="IDENTIFIER" value="UCAtsm400F"/>
+            <column name="LST_UPD_ID" value="09L"/>
+            <column name="LST_UPD_TS" value="1998-06-18 11:31:52.089749"/>
+            <column name="CNTY_SPFCD" value="21"/>
+            <column name="TTEXT_DSC" value="Closure statement"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

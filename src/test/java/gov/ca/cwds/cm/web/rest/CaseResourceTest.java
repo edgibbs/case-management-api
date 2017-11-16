@@ -23,7 +23,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
 	}
 
 	@Test
-	public void testGetChildClientById() throws Exception {
+	public void testGetCaseById() throws Exception {
 		WebTarget target = clientTestRule.target(Constants.API.CASE + "/" + CASE_ID);
 		Response response = target.request(MediaType.APPLICATION_JSON).get();
 		CaseDTO caseDTO = response.readEntity(CaseDTO.class);
