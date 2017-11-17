@@ -24,6 +24,7 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.*;
+import gov.ca.cwds.data.persistence.cms.SystemCode;
 import gov.ca.cwds.inject.CmsHibernateBundle;
 import gov.ca.cwds.inject.CmsSessionFactory;
 import io.dropwizard.db.PooledDataSourceFactory;
@@ -33,7 +34,6 @@ import io.dropwizard.setup.Bootstrap;
 import org.hibernate.SessionFactory;
 
 import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
-import static gov.ca.cwds.cm.Constants.UnitOfWork.XA_CMS;
 
 /** @author CWDS TPT-3 Team */
 public class DataAccessModule extends AbstractModule {
@@ -58,6 +58,7 @@ public class DataAccessModule extends AbstractModule {
               OutOfHomePlacement.class,
               PlacementHome.class,
               SubstituteCareProvider.class,
+              SystemCode.class,
               CountyLicenseCase.class,
               LicensingVisit.class,
               VisitType.class,

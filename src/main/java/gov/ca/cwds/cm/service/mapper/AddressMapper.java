@@ -16,6 +16,7 @@ import org.mapstruct.Mapping;
 @Mapper(uses = { LegacyBooleanToStringMapper.class, LegacyZeroNumberToNullStringMapper.class })
 public interface AddressMapper {
 
+  @Mapping(target = "messages", ignore = true)
   @Mapping(source = "addressDescription", target = "description")
   @Mapping(
       source = "emergencyNumber",
@@ -59,6 +60,10 @@ public interface AddressMapper {
   AddressDTO toDto(final Address address);
 
   @InheritInverseConfiguration
+  @Mapping(target = "state", ignore = true)
+  @Mapping(target = "contextAddressType", ignore = true)
+  @Mapping(target = "lastUpdatedId", ignore = true)
+  @Mapping(target = "lastUpdatedTime", ignore = true)
   Address toEntity(final AddressDTO dto);
 
 }

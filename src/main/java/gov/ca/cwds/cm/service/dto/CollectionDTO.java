@@ -1,28 +1,29 @@
 package gov.ca.cwds.cm.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.api.Response;
 import java.util.Collection;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS TPT-3 Team
  */
-@SuppressWarnings("squid:S2160") //reflection equals hashcode is used in superclass
+
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CollectionDTO<T extends BaseDTO> extends BaseDTO implements Response {
 
-  private static final long serialVersionUID = 7775898799478004935L;
+  private static final long serialVersionUID = -8348328384818361345L;
 
-  @JsonProperty("items")
-  private Collection<T> collection;
+  private Collection<T> items;
 
-  public CollectionDTO() {
-  }
-
-  public CollectionDTO(Collection<T> collection) {
-    this.collection = collection;
-  }
-
-  public Collection<T> getCollection() {
-    return collection;
-  }
 }

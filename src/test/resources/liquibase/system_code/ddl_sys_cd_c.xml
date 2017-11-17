@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="sys_cd_c ddl" author="CWDS TPT-3 Team">
+    <sql>
+      CREATE TABLE "SYS_CD_C"  (
+      "SYS_ID" SMALLINT ,
+      "CATEGORYID" SMALLINT ,
+      "INACTV_IND" CHAR(1) ,
+      "OTHER_CD" CHAR(2) ,
+      "SHORT_DSC" CHAR(40) ,
+      "LGC_ID" CHAR(4) ,
+      "LST_UPD_ID" CHAR(3) ,
+      "LST_UPD_TS" TIMESTAMP ,
+      "THIRD_ID" CHAR(10) ,
+      "FKS_META_T" CHAR(8) ,
+      "LONG_DSC" CHAR(160) )
+    </sql>
+  </changeSet>
+</databaseChangeLog>

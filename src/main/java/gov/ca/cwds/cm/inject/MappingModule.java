@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import gov.ca.cwds.cm.service.mapper.AddressMapper;
 import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.CaseMapper;
+import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -13,15 +14,19 @@ import org.mapstruct.factory.Mappers;
  */
 public class MappingModule extends AbstractModule {
 
-  private static Class getMapperImpl(Class mapperClass) {
-    return Mappers.getMapper(mapperClass).getClass();
-  }
-
   @Override
   protected void configure() {
-    bind(CaseMapper.class).to(CaseMapper.INSTANCE.getClass()).asEagerSingleton();
-    bind(AddressMapper.class).to(getMapperImpl(AddressMapper.class)).asEagerSingleton();
-    bind(ChildClientMapper.class).to(ChildClientMapper.INSTANCE.getClass())
-            .asEagerSingleton();
+    bindMapperAsEagerSingleton(AddressMapper.class);
+    bindMapperAsEagerSingleton(CaseMapper.class);
+    bindMapperAsEagerSingleton(ChildClientMapper.class);
+    bindMapperAsEagerSingleton(SystemCodeMapper.class);
+  }
+
+  private void bindMapperAsEagerSingleton(Class<?> clazz) {
+    bind(clazz).to(getMapperImpl(clazz)).asEagerSingleton();
+  }
+
+  private static Class getMapperImpl(Class<?> mapperClass) {
+    return Mappers.getMapper(mapperClass).getClass();
   }
 }

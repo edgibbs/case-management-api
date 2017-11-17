@@ -5,16 +5,15 @@ import gov.ca.cwds.cm.service.dto.CaseDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 @Mapper(
   imports = {Constants.class}
 )
 public interface CaseMapper {
 
-  CaseMapper INSTANCE = Mappers.getMapper(CaseMapper.class);
-
   @Mapping(target = "messages", ignore = true)
+  @Mapping(target = "alertText", ignore = true)
+  @Mapping(target = "closureStatementText", ignore = true)
   @Mapping(source = "identifier", target = "id")
   @Mapping(source = "approvalStatusType.shortDsc", target = "approvalStatus")
   @Mapping(source = "caseClosureReasonType.shortDsc", target = "caseClosureReason")
