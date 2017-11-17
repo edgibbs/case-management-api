@@ -16,17 +16,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author CWDS CALS API Team
- */
-
+/** @author CWDS CALS API Team */
 @Mapper
 public class TrailingSpacesRemovalPostMappingProcessor {
 
-  private static final Logger LOG = LoggerFactory
-      .getLogger(TrailingSpacesRemovalPostMappingProcessor.class);
+  private static final Logger LOG =
+      LoggerFactory.getLogger(TrailingSpacesRemovalPostMappingProcessor.class);
 
-  private static final String WARN_MESSAGE = "Do not apply RemoveTrailingSpaces annotation for non-string field";
+  private static final String WARN_MESSAGE =
+      "Do not apply RemoveTrailingSpaces annotation for non-string field";
   private static final String ERROR_MESSAGE = "Can't remove trailing spaces";
 
   @AfterMapping
@@ -60,15 +58,16 @@ public class TrailingSpacesRemovalPostMappingProcessor {
   }
 
   private boolean isInPackage(Class<?> clazz, String... packageNames) {
-    return Arrays.stream(packageNames).anyMatch(
-        packageName -> clazz.getPackage() != null && clazz.getPackage().getName()
-            .equals(packageName));
+    return Arrays.stream(packageNames)
+        .anyMatch(
+            packageName ->
+                clazz.getPackage() != null && clazz.getPackage().getName().equals(packageName));
   }
 
   private boolean isSimpleValueType(Class<?> clazz) {
-    return ClassUtils.isPrimitiveOrWrapper(clazz) ||
-        String.class.isAssignableFrom(clazz) ||
-        isInPackage(clazz, "java.time", "java.math");
+    return ClassUtils.isPrimitiveOrWrapper(clazz)
+        || String.class.isAssignableFrom(clazz)
+        || isInPackage(clazz, "java.time", "java.math");
   }
 
   private boolean isCollection(Class<?> clazz) {
@@ -86,15 +85,16 @@ public class TrailingSpacesRemovalPostMappingProcessor {
 
   private static void doRemoveTrailingSpaces(Object object)
       throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-    for (Field field : FieldUtils
-        .getFieldsWithAnnotation(object.getClass(), RemoveTrailingSpaces.class)) {
+    for (Field field :
+        FieldUtils.getFieldsWithAnnotation(object.getClass(), RemoveTrailingSpaces.class)) {
       if (field.getType().isAssignableFrom(String.class)) {
-        PropertyUtils.setProperty(object, field.getName(),
+        PropertyUtils.setProperty(
+            object,
+            field.getName(),
             StringUtils.trim((String) PropertyUtils.getProperty(object, field.getName())));
       } else {
         LOG.warn(WARN_MESSAGE);
       }
     }
   }
-
 }

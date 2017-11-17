@@ -45,7 +45,7 @@ public class ClientDTO extends BaseDTO {
             + "time.",
     example = "N"
   )
-  private String adptnStcd;
+  private String adoptionStatusCode;
 
   @NotNull
   @ApiModelProperty(
@@ -54,7 +54,7 @@ public class ClientDTO extends BaseDTO {
             + "non-citizen status",
     example = "111483672"
   )
-  private String alnRegNo;
+  private String alienRegistrationNumber;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @Date(format = DATE_FORMAT)
@@ -66,14 +66,15 @@ public class ClientDTO extends BaseDTO {
     value = "BIRTH FACILITY NAME - The name of the facility where the CLIENT was born.",
     example = "San Jose Medical Center"
   )
-  private String brFacNm;
+  private String birthFacilityName;
 
   @NotNull
   @ApiModelProperty(
-    value = "BIRTH FACILITY NAME - The name of the facility where the CLIENT was born.",
-    example = "San Jose Medical Center"
+    value =
+        "BIRTH COUNTRY CODE TYPE - The system number which identifies the Country where the CLIENT was born ",
+    example = " "
   )
-  private Short bStateC;
+  private Short birthCountryCode;
 
   @NotNull
   @ApiModelProperty(
@@ -82,7 +83,7 @@ public class ClientDTO extends BaseDTO {
             + "was born (e.g., California, Hawaii, Texas, etc.).",
     example = "1828"
   )
-  private Short bCntryC;
+  private Short birthStateCodeType;
 
   @Size(max = 1)
   @NotNull
@@ -93,7 +94,7 @@ public class ClientDTO extends BaseDTO {
             + "processing time from  searching for information that does not exist in the data base.",
     example = "N"
   )
-  private String chldCltB;
+  private String childClientIndVar;
 
   @Size(max = 20)
   @NotNull
@@ -104,7 +105,7 @@ public class ClientDTO extends BaseDTO {
             + "family members, friends, and CWS staff.",
     example = "Monica"
   )
-  private String comFstNm;
+  private String commonFirstName;
 
   @Size(max = 25)
   @NotNull
@@ -115,7 +116,7 @@ public class ClientDTO extends BaseDTO {
             + "family members, friends, and CWS staff.",
     example = "Pain"
   )
-  private String comLstNm;
+  private String commonLastName;
 
   @Size(max = 20)
   @NotNull
@@ -126,7 +127,7 @@ public class ClientDTO extends BaseDTO {
             + "referred to by family members, friends, and CWS staff.",
     example = "Jacobson"
   )
-  private String comMidNm;
+  private String commonMiddleName;
 
   @Size(max = 1)
   @NotNull
@@ -138,7 +139,7 @@ public class ClientDTO extends BaseDTO {
             + "Non Disclosure Order request.",
     example = "N"
   )
-  private String confEfind;
+  private String confidentialityInEffectInd;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @Date(format = DATE_FORMAT)
@@ -149,7 +150,7 @@ public class ClientDTO extends BaseDTO {
             + "judgment call on an individual case to protect a CLIENT.",
     example = "2004-06-14"
   )
-  private LocalDate confActdt;
+  private LocalDate confidentialityActionDate;
 
   @NotNull
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -160,12 +161,12 @@ public class ClientDTO extends BaseDTO {
             + "This should be defaulted to the system date.",
     example = "1999-08-15"
   )
-  private LocalDate creatnDt;
+  private LocalDate creationDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @Date(format = DATE_FORMAT)
   @ApiModelProperty(value = "DEATH_DATE - The date the CLIENT passed away.", example = "1999-08-15")
-  private LocalDate deathDt;
+  private LocalDate deathDate;
 
   @Size(max = 10)
   @ApiModelProperty(
@@ -174,7 +175,7 @@ public class ClientDTO extends BaseDTO {
             + "type which uniquely identifies a specific occurrence of user defined text.",
     example = "U8SxGBF00c"
   )
-  private String dthRnTxt;
+  private String deathReason;
 
   @NotNull
   @Size(max = 20)
@@ -182,7 +183,7 @@ public class ClientDTO extends BaseDTO {
     value = "DRIVER_LICENSE_NUMBER - The driver license number of the CLIENT.",
     example = "987654321"
   )
-  private String drvLicNo;
+  private String driverLicensNumber;
 
   @NotNull
   @ApiModelProperty(
@@ -191,7 +192,7 @@ public class ClientDTO extends BaseDTO {
             + "the CLIENT's Driver License was issued (e.g. California, Hawaii, Texas, etc).",
     example = "1828"
   )
-  private Short dStateC;
+  private Short driverLicenseStateCodeType;
 
   @NotNull
   @ApiModelProperty(
@@ -199,7 +200,7 @@ public class ClientDTO extends BaseDTO {
         "GENDER_CODE - Indicates the gender of a CLIENT (e.g. F = female, M = male, U = unknown, etc).",
     example = "M"
   )
-  private String genderCd;
+  private String genderCode;
 
   @NotNull
   @ApiModelProperty(
@@ -208,7 +209,7 @@ public class ClientDTO extends BaseDTO {
             + "origin for a specific CLIENT (e.g., United States, China, Mexico, etc.).",
     example = "563"
   )
-  private Short iCntryC;
+  private Short immigrationCountryCodeType;
 
   @NotNull
   @ApiModelProperty(
@@ -217,7 +218,7 @@ public class ClientDTO extends BaseDTO {
             + "status for the CLIENT (e.g., refugee, alien, or US citizen, etc.).",
     example = "1199"
   )
-  private Short imgtStc;
+  private Short immigrationStatusType;
 
   @Size(max = 2)
   @NotNull
@@ -228,7 +229,7 @@ public class ClientDTO extends BaseDTO {
             + "the child for federal aid.",
     example = "1199"
   )
-  private String incapcCd;
+  private String incapacitatedParentCode;
 
   @Size(max = 1)
   @NotNull
@@ -239,7 +240,7 @@ public class ClientDTO extends BaseDTO {
             + "or it is not applicable (D).",
     example = "N"
   )
-  private String litrateCd;
+  private String litrateCode;
 
   @Size(max = 1)
   @NotNull
@@ -251,7 +252,7 @@ public class ClientDTO extends BaseDTO {
             + "does not exist in the data base.",
     example = "N"
   )
-  private String marHistB;
+  private String maritalCohabitatnIndicator;
 
   @NotNull
   @ApiModelProperty(
@@ -260,7 +261,7 @@ public class ClientDTO extends BaseDTO {
             + "the CLIENT (e.g., single, married, divorced, etc.).",
     example = "1308"
   )
-  private Short mrtlStc;
+  private Short materialStatusType;
 
   @Size(max = 1)
   @NotNull
@@ -271,7 +272,7 @@ public class ClientDTO extends BaseDTO {
             + "has no military involvement (N), or no information are available (U).",
     example = "U"
   )
-  private String miltStacd;
+  private String militaryStatusCode;
 
   @Size(max = 6)
   @NotNull
@@ -281,7 +282,7 @@ public class ClientDTO extends BaseDTO {
             + "CLIENT (e.g., Mr., Ms., Mrs., Dr., Miss, Rev., etc.).",
     example = "Mr"
   )
-  private String nmprfxDsc;
+  private String namePrefixDescription;
 
   @NotNull
   @ApiModelProperty(
@@ -290,17 +291,17 @@ public class ClientDTO extends BaseDTO {
             + "for a CLIENT (e.g., legal, AKA, etc.).",
     example = "1313"
   )
-  private Short nameTpc;
+  private Short nameType;
 
   @Size(max = 1)
   @NotNull
   @ApiModelProperty(
     value =
-        "OUTSTANDING_WARRANT_IND - Indicates whether there is an outstanding warrant "
+        "OUTSTANDING WARRANT IND - Indicates whether there is an outstanding warrant "
             + "for this particular child (Y) or not (N).",
     example = "Y"
   )
-  private String outwrtInd;
+  private String outstandingWarrantIndicator;
 
   @NotNull
   @ApiModelProperty(
@@ -309,7 +310,7 @@ public class ClientDTO extends BaseDTO {
             + "ethnicity for the CLIENT (e.g., Native  American, Asian, Hispanic, Black, etc.).",
     example = "841"
   )
-  private Short pEthnctyc;
+  private Short primaryEthnicityType;
 
   @NotNull
   @ApiModelProperty(
@@ -318,7 +319,7 @@ public class ClientDTO extends BaseDTO {
             + "spoken by a specific CLIENT (e.g., English, Spanish, Chinese, etc.).",
     example = "33"
   )
-  private Short pLangTpc;
+  private Short primaryLanguageType;
 
   @NotNull
   @ApiModelProperty(
@@ -327,16 +328,16 @@ public class ClientDTO extends BaseDTO {
             + "CLIENT is affiliated with (e.g., Baptist, Christian, Jewish, etc.).",
     example = "33"
   )
-  private Short rlgnTpc;
+  private Short religionType;
 
   @NotNull
   @ApiModelProperty(
     value =
         "SECONDARY LANGUAGE TYPE - The system generated number which identifies the  secondary language "
             + "spoken by a specific CLIENT (e.g., English, Spanish, Chinese, etc.).",
-    example = "N"
+    example = "11"
   )
-  private Short sLangTc;
+  private Short secondaryLanguageType;
 
   @Size(max = 1)
   @NotNull
@@ -347,7 +348,7 @@ public class ClientDTO extends BaseDTO {
             + "restricted to authorized individuals only.",
     example = "12"
   )
-  private String senstvInd;
+  private String sensivityIndicator;
 
   @Size(max = 1)
   @NotNull
@@ -355,17 +356,17 @@ public class ClientDTO extends BaseDTO {
     value =
         "SENSITIVE HLTH INFO ON FILE IND - Indicates whether sensitive health information is being stored "
             + "in a social worker's file rather than on the system.",
-    example = "NSENSTV_IND"
+    example = "Y"
   )
-  private String sntvHlind;
+  private String sensivityHealthInfoOnFileIndicator;
 
   @Size(max = 9)
   @NotNull
   @ApiModelProperty(
-    value = "SOCIAL_SECURITY_NUMBER - The Social Security Number for the CLIENT.",
+    value = "SOCIAL SECURITY NUMBER - The Social Security Number for the CLIENT.",
     example = "111-111-1111"
   )
-  private String ssNo;
+  private String socialSecurityNumber;
 
   @Size(max = 1)
   @NotNull
@@ -373,7 +374,7 @@ public class ClientDTO extends BaseDTO {
     value = "SOCIAL SECURITY NUM CHANGED CODE - This is an unused attribute. The default is N.",
     example = "N"
   )
-  private String ssnChgCd;
+  private String socialSecurityNumberChangedCode;
 
   @Size(max = 4)
   @NotNull
@@ -382,7 +383,7 @@ public class ClientDTO extends BaseDTO {
         "SUFFIX TITLE DESCRIPTION - The suffix name of a CLIENT (e.g., Esq., M.D., Ph.D., D.D.S., etc.).",
     example = "D.D.S."
   )
-  private String sufxTldsc;
+  private String suffixTitleDescription;
 
   @Size(max = 2)
   @NotNull
@@ -393,7 +394,7 @@ public class ClientDTO extends BaseDTO {
             + "the child for federal aid.",
     example = "U"
   )
-  private String unemplyCd;
+  private String unemployedParentCode;
 
   @NotNull
   @ApiModelProperty(
@@ -403,7 +404,7 @@ public class ClientDTO extends BaseDTO {
             + "this entity type.",
     example = "2004-08-10 08:07:07.752386"
   )
-  private String lstUpdId;
+  private String lstUpdateId;
 
   @NotNull
   @ApiModelProperty(
@@ -412,7 +413,7 @@ public class ClientDTO extends BaseDTO {
             + "occurrence of this entity type.",
     example = "00h"
   )
-  private Timestamp lstUpdTs;
+  private Timestamp lastUpdateTimestamp;
 
   @NotNull
   @Size(max = 120)
@@ -424,7 +425,7 @@ public class ClientDTO extends BaseDTO {
             + "information which could be used in planning services for the CLIENT).",
     example = "Primary Comments for the Primary Client."
   )
-  private String commntDsc;
+  private String commentDescription;
 
   @NotNull
   @Size(max = 1)
@@ -434,7 +435,7 @@ public class ClientDTO extends BaseDTO {
             + "if a birth date was actually entered (N) or has not been provided (U).",
     example = "Y"
   )
-  private String estDobCd;
+  private String estimatedDobCode;
 
   @NotNull
   @Size(max = 1)
@@ -444,7 +445,7 @@ public class ClientDTO extends BaseDTO {
             + "means of a birth certificate or other legal document acceptable to the court.",
     example = "N"
   )
-  private String bpVerInd;
+  private String birthplaceVerifiedIdentificator;
 
   @NotNull
   @Size(max = 1)
@@ -454,7 +455,7 @@ public class ClientDTO extends BaseDTO {
             + "selection has been made.",
     example = "U"
   )
-  private String hispCd;
+  private String hispanicOriginCode;
 
   @NotNull
   @Size(max = 1)
@@ -466,7 +467,7 @@ public class ClientDTO extends BaseDTO {
             + "the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private String currcaInd;
+  private String childrenServIdentificator;
 
   @NotNull
   @Size(max = 1)
@@ -477,7 +478,7 @@ public class ClientDTO extends BaseDTO {
             + "are historical, and new valueswill be stored in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "Y"
   )
-  private String curregInd;
+  private String currentlyRegionalCenteerIdentificator;
 
   @NotNull
   @Size(max = 25)
@@ -489,7 +490,7 @@ public class ClientDTO extends BaseDTO {
             + "in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "QWREQWER"
   )
-  private String cothDesc;
+  private String currentlyOtherDescription;
 
   @NotNull
   @Size(max = 1)
@@ -501,7 +502,7 @@ public class ClientDTO extends BaseDTO {
             + "be stored in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private String prevcaInd;
+  private String previouslyReceivedIdentificator;
 
   @NotNull
   @Size(max = 1)
@@ -513,7 +514,7 @@ public class ClientDTO extends BaseDTO {
             + "DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private String preregInd;
+  private String previouslyRegionalCenterIdentificator;
 
   @NotNull
   @Size(max = 25)
@@ -525,7 +526,7 @@ public class ClientDTO extends BaseDTO {
             + "will be stored in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = " "
   )
-  private String pothDesc;
+  private String previouslyOtherDescription;
 
   @NotNull
   @Size(max = 1)
@@ -535,7 +536,7 @@ public class ClientDTO extends BaseDTO {
             + "Health Care Plan  on File for a Special Needs Child.",
     example = "N"
   )
-  private String hcareInd;
+  private String healthCarePlanIdentificator;
 
   @NotNull
   @Size(max = 1)
@@ -545,7 +546,7 @@ public class ClientDTO extends BaseDTO {
             + "Substitute Care Provider's Ability to make Health Care Decisions for this child.",
     example = "N"
   )
-  private String limitInd;
+  private String limitationOnSCPHealthIndicator;
 
   @NotNull
   @Size(max = 35)
@@ -574,64 +575,64 @@ public class ClientDTO extends BaseDTO {
             + "District Office.",
     example = " "
   )
-  private LocalDate mtermDt;
+  private LocalDate motherParentalTermDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @Date(format = DATE_FORMAT)
   @ApiModelProperty(
     value =
-        "FATHER_PARENTAL_RIGHT_TERM_DATE - The date the father's parental rights were terminated. "
+        "FATHER PARENTAL RIGHT TERM DATE - The date the father's parental rights were terminated. "
             + "This is only used by placement episodes created in the SOC158 application. The Agency"
             + "Responsible Types for these episodes include - County Probation Department, Indian Child Welfare"
             + ", Out of State Agency, Private Adoption Agency, and State Adoptions District Office.",
     example = "1999-08-15"
   )
-  private LocalDate ftermDt;
+  private LocalDate fatherParentalTermDate;
 
   @NotNull
   @Size(max = 1)
   @ApiModelProperty(
     value =
-        "ZIPPY_CREATED_IND - Indicates whether or not this CLIENT was created from within the Zippy "
+        "ZIPPY CREATED IND - Indicates whether or not this CLIENT was created from within the Zippy "
             + "Referral notebook as opposed to the traditional client notebook.",
     example = "N"
   )
-  private String zippyInd;
+  private String zippyIdentificator;
 
   @Size(max = 35)
   @ApiModelProperty(
-    value = "DEATH_PLACE - The place of death for the CLIENT.",
+    value = "DEATH PLACE - The place of death for the CLIENT.",
     example = "San Jose"
   )
-  private String deathPlc;
+  private String deathPlace;
 
   @Size(max = 1)
   @ApiModelProperty(
     value =
-        "TRIBAL_MEMBRSHP_VERIFCTN_IND_VAR - This indicator variable is used to indicate if there are "
+        "TRIBAL MEMBRSHP VERIFCTN IND VAR - This indicator variable is used to indicate if there are "
             + "any occurrences of TRIBAL MEMBERSHIP VERIFICATIONs related to this CLIENT. This will save "
             + "unnecessary processing time from searching for information that does not exist in the data base.",
     example = "N"
   )
-  private String trMbvrtB;
+  private String tribalMemberVerificationIdentificator;
 
   @NotNull
   @Size(max = 1)
   @ApiModelProperty(
     value =
-        "TRIBAL_ANCESTRY_CLIENT_IND_VAR - This indicator variable is used to indicate if there are any "
+        "TRIBAL ANCESTRY CLIENT IND VAR - This indicator variable is used to indicate if there are any "
             + "occurrences of TRIBAL ANCESTRY CLIENT related to this CLIENT. This will save "
             + "unnecessary processing time from searching for information that does "
             + "not exist in the data base.",
     example = "N"
   )
-  private String trbaCltB;
+  private String tribalAncestryClientIdentificator;
 
   @NotNull
   @Size(max = 1)
   @ApiModelProperty(
     value =
-        "SOC158_SEALED_CLIENT_IND - This indicates whether or not the client's record has been sealed "
+        "SOC158 SEALED CLIENT IND - This indicates whether or not the client's record has been sealed "
             + "in the SOC 158 application. The valid values are Yes (Y), No (N).",
     example = "Y"
   )
@@ -641,15 +642,15 @@ public class ClientDTO extends BaseDTO {
   @Size(max = 1)
   @ApiModelProperty(
     value =
-        "DEATH_DATE_VERIFIED_IND - This indicates whether the date of death has been verified. "
+        "DEATH DATE VERIFIED IND - This indicates whether the date of death has been verified. "
             + "The valid values are Yes (Y) and No (N)",
     example = "N"
   )
-  private String dthDtInd;
+  private String deathDateVerifiedIdentificator;
 
   @Size(max = 50)
   @ApiModelProperty(
-    value = "EMAIL_ADDRESS - The e-mail address for the CLIENT.",
+    value = "EMAIL ADDRESS - The e-mail address for the CLIENT.",
     example = "test@test.com"
   )
   private String emailAddr;
@@ -659,7 +660,7 @@ public class ClientDTO extends BaseDTO {
     value = "ADJUDICATED DELINQUENT IND - Records that a client has been an adjudicated delinquent",
     example = " "
   )
-  private String adjdelInd;
+  private String adjudicatedDelinquentIdentificator;
 
   @Size(max = 1)
   @ApiModelProperty(
@@ -668,7 +669,7 @@ public class ClientDTO extends BaseDTO {
             + "the Race/Ethnicity for an individual client.",
     example = ""
   )
-  private String ethUdCd;
+  private String ethUnableToDeterminCode;
 
   @Size(max = 1)
   @ApiModelProperty(
@@ -677,7 +678,7 @@ public class ClientDTO extends BaseDTO {
             + "the Hispanic or Latino Origin for an individual client.",
     example = " "
   )
-  private String hispUdCd;
+  private String hispUnableToDeterminateReasonCode;
 
   @Size(max = 1)
   @ApiModelProperty(
@@ -688,14 +689,14 @@ public class ClientDTO extends BaseDTO {
             + "that were created in the SOC 158 application (N).",
     example = "M"
   )
-  private String socplcCd;
+  private String soc158PlacementCode;
 
   @Size(max = 12)
   @ApiModelProperty(
     value = "This number is assigned by the Statewide Client Index (SCI).",
     example = " "
   )
-  private String clIndxNo;
+  private String sciIndexNumber;
 
   public String getIdentifier() {
     return identifier;
@@ -705,20 +706,20 @@ public class ClientDTO extends BaseDTO {
     this.identifier = identifier;
   }
 
-  public String getAdptnStcd() {
-    return adptnStcd;
+  public String getAdoptionStatusCode() {
+    return adoptionStatusCode;
   }
 
-  public void setAdptnStcd(String adptnStcd) {
-    this.adptnStcd = adptnStcd;
+  public void setAdoptionStatusCode(String adoptionStatusCode) {
+    this.adoptionStatusCode = adoptionStatusCode;
   }
 
-  public String getAlnRegNo() {
-    return alnRegNo;
+  public String getAlienRegistrationNumber() {
+    return alienRegistrationNumber;
   }
 
-  public void setAlnRegNo(String alnRegNo) {
-    this.alnRegNo = alnRegNo;
+  public void setAlienRegistrationNumber(String alienRegistrationNumber) {
+    this.alienRegistrationNumber = alienRegistrationNumber;
   }
 
   public LocalDate getBirthDt() {
@@ -729,396 +730,390 @@ public class ClientDTO extends BaseDTO {
     this.birthDt = birthDt;
   }
 
-  public String getBrFacNm() {
-    return brFacNm;
+  public String getBirthFacilityName() {
+    return birthFacilityName;
   }
 
-  public void setBrFacNm(String brFacNm) {
-    this.brFacNm = brFacNm;
+  public void setBirthFacilityName(String birthFacilityName) {
+    this.birthFacilityName = birthFacilityName;
   }
 
-  public Short getbStateC() {
-    return bStateC;
+  public Short getBirthStateCodeType() {
+    return birthStateCodeType;
   }
 
-  public void setbStateC(Short bStateC) {
-    this.bStateC = bStateC;
+  public void setBirthStateCodeType(Short birthStateCodeType) {
+    this.birthStateCodeType = birthStateCodeType;
   }
 
-  public Short getbCntryC() {
-    return bCntryC;
+  public String getChildClientIndVar() {
+    return childClientIndVar;
   }
 
-  public void setbCntryC(Short bCntryC) {
-    this.bCntryC = bCntryC;
+  public void setChildClientIndVar(String childClientIndVar) {
+    this.childClientIndVar = childClientIndVar;
   }
 
-  public String getChldCltB() {
-    return chldCltB;
+  public String getCommonFirstName() {
+    return commonFirstName;
   }
 
-  public void setChldCltB(String chldCltB) {
-    this.chldCltB = chldCltB;
+  public void setCommonFirstName(String commonFirstName) {
+    this.commonFirstName = commonFirstName;
   }
 
-  public String getComFstNm() {
-    return comFstNm;
+  public String getCommonLastName() {
+    return commonLastName;
   }
 
-  public void setComFstNm(String comFstNm) {
-    this.comFstNm = comFstNm;
+  public void setCommonLastName(String commonLastName) {
+    this.commonLastName = commonLastName;
   }
 
-  public String getComLstNm() {
-    return comLstNm;
+  public String getCommonMiddleName() {
+    return commonMiddleName;
   }
 
-  public void setComLstNm(String comLstNm) {
-    this.comLstNm = comLstNm;
+  public void setCommonMiddleName(String commonMiddleName) {
+    this.commonMiddleName = commonMiddleName;
   }
 
-  public String getComMidNm() {
-    return comMidNm;
+  public String getConfidentialityInEffectInd() {
+    return confidentialityInEffectInd;
   }
 
-  public void setComMidNm(String comMidNm) {
-    this.comMidNm = comMidNm;
+  public void setConfidentialityInEffectInd(String confidentialityInEffectInd) {
+    this.confidentialityInEffectInd = confidentialityInEffectInd;
   }
 
-  public String getConfEfind() {
-    return confEfind;
+  public LocalDate getConfidentialityActionDate() {
+    return confidentialityActionDate;
   }
 
-  public void setConfEfind(String confEfind) {
-    this.confEfind = confEfind;
+  public void setConfidentialityActionDate(LocalDate confidentialityActionDate) {
+    this.confidentialityActionDate = confidentialityActionDate;
   }
 
-  public LocalDate getConfActdt() {
-    return confActdt;
+  public LocalDate getCreationDate() {
+    return creationDate;
   }
 
-  public void setConfActdt(LocalDate confActdt) {
-    this.confActdt = confActdt;
+  public void setCreationDate(LocalDate creationDate) {
+    this.creationDate = creationDate;
   }
 
-  public LocalDate getCreatnDt() {
-    return creatnDt;
+  public LocalDate getDeathDate() {
+    return deathDate;
   }
 
-  public void setCreatnDt(LocalDate creatnDt) {
-    this.creatnDt = creatnDt;
+  public void setDeathDate(LocalDate deathDate) {
+    this.deathDate = deathDate;
   }
 
-  public LocalDate getDeathDt() {
-    return deathDt;
+  public String getDeathReason() {
+    return deathReason;
   }
 
-  public void setDeathDt(LocalDate deathDt) {
-    this.deathDt = deathDt;
+  public void setDeathReason(String deathReason) {
+    this.deathReason = deathReason;
   }
 
-  public String getDthRnTxt() {
-    return dthRnTxt;
+  public String getDriverLicensNumber() {
+    return driverLicensNumber;
   }
 
-  public void setDthRnTxt(String dthRnTxt) {
-    this.dthRnTxt = dthRnTxt;
+  public void setDriverLicensNumber(String driverLicensNumber) {
+    this.driverLicensNumber = driverLicensNumber;
   }
 
-  public String getDrvLicNo() {
-    return drvLicNo;
+  public Short getDriverLicenseStateCodeType() {
+    return driverLicenseStateCodeType;
   }
 
-  public void setDrvLicNo(String drvLicNo) {
-    this.drvLicNo = drvLicNo;
+  public void setDriverLicenseStateCodeType(Short driverLicenseStateCodeType) {
+    this.driverLicenseStateCodeType = driverLicenseStateCodeType;
   }
 
-  public Short getdStateC() {
-    return dStateC;
+  public String getGenderCode() {
+    return genderCode;
   }
 
-  public void setdStateC(Short dStateC) {
-    this.dStateC = dStateC;
+  public void setGenderCode(String genderCode) {
+    this.genderCode = genderCode;
   }
 
-  public String getGenderCd() {
-    return genderCd;
+  public Short getImmigrationCountryCodeType() {
+    return immigrationCountryCodeType;
   }
 
-  public void setGenderCd(String genderCd) {
-    this.genderCd = genderCd;
+  public void setImmigrationCountryCodeType(Short immigrationCountryCodeType) {
+    this.immigrationCountryCodeType = immigrationCountryCodeType;
   }
 
-  public Short getiCntryC() {
-    return iCntryC;
+  public Short getImmigrationStatusType() {
+    return immigrationStatusType;
   }
 
-  public void setiCntryC(Short iCntryC) {
-    this.iCntryC = iCntryC;
+  public void setImmigrationStatusType(Short immigrationStatusType) {
+    this.immigrationStatusType = immigrationStatusType;
   }
 
-  public Short getImgtStc() {
-    return imgtStc;
+  public String getIncapacitatedParentCode() {
+    return incapacitatedParentCode;
   }
 
-  public void setImgtStc(Short imgtStc) {
-    this.imgtStc = imgtStc;
+  public void setIncapacitatedParentCode(String incapacitatedParentCode) {
+    this.incapacitatedParentCode = incapacitatedParentCode;
   }
 
-  public String getIncapcCd() {
-    return incapcCd;
+  public String getLitrateCode() {
+    return litrateCode;
   }
 
-  public void setIncapcCd(String incapcCd) {
-    this.incapcCd = incapcCd;
+  public void setLitrateCode(String litrateCode) {
+    this.litrateCode = litrateCode;
   }
 
-  public String getLitrateCd() {
-    return litrateCd;
+  public String getMaritalCohabitatnIndicator() {
+    return maritalCohabitatnIndicator;
   }
 
-  public void setLitrateCd(String litrateCd) {
-    this.litrateCd = litrateCd;
+  public void setMaritalCohabitatnIndicator(String maritalCohabitatnIndicator) {
+    this.maritalCohabitatnIndicator = maritalCohabitatnIndicator;
   }
 
-  public String getMarHistB() {
-    return marHistB;
+  public Short getMaterialStatusType() {
+    return materialStatusType;
   }
 
-  public void setMarHistB(String marHistB) {
-    this.marHistB = marHistB;
+  public void setMaterialStatusType(Short materialStatusType) {
+    this.materialStatusType = materialStatusType;
   }
 
-  public Short getMrtlStc() {
-    return mrtlStc;
+  public String getMilitaryStatusCode() {
+    return militaryStatusCode;
   }
 
-  public void setMrtlStc(Short mrtlStc) {
-    this.mrtlStc = mrtlStc;
+  public void setMilitaryStatusCode(String militaryStatusCode) {
+    this.militaryStatusCode = militaryStatusCode;
   }
 
-  public String getMiltStacd() {
-    return miltStacd;
+  public String getNamePrefixDescription() {
+    return namePrefixDescription;
   }
 
-  public void setMiltStacd(String miltStacd) {
-    this.miltStacd = miltStacd;
+  public void setNamePrefixDescription(String namePrefixDescription) {
+    this.namePrefixDescription = namePrefixDescription;
   }
 
-  public String getNmprfxDsc() {
-    return nmprfxDsc;
+  public Short getNameType() {
+    return nameType;
   }
 
-  public void setNmprfxDsc(String nmprfxDsc) {
-    this.nmprfxDsc = nmprfxDsc;
+  public void setNameType(Short nameType) {
+    this.nameType = nameType;
   }
 
-  public Short getNameTpc() {
-    return nameTpc;
+  public String getOutstandingWarrantIndicator() {
+    return outstandingWarrantIndicator;
   }
 
-  public void setNameTpc(Short nameTpc) {
-    this.nameTpc = nameTpc;
+  public void setOutstandingWarrantIndicator(String outstandingWarrantIndicator) {
+    this.outstandingWarrantIndicator = outstandingWarrantIndicator;
   }
 
-  public String getOutwrtInd() {
-    return outwrtInd;
+  public Short getPrimaryEthnicityType() {
+    return primaryEthnicityType;
   }
 
-  public void setOutwrtInd(String outwrtInd) {
-    this.outwrtInd = outwrtInd;
+  public void setPrimaryEthnicityType(Short primaryEthnicityType) {
+    this.primaryEthnicityType = primaryEthnicityType;
   }
 
-  public Short getpEthnctyc() {
-    return pEthnctyc;
+  public Short getPrimaryLanguageType() {
+    return primaryLanguageType;
   }
 
-  public void setpEthnctyc(Short pEthnctyc) {
-    this.pEthnctyc = pEthnctyc;
+  public void setPrimaryLanguageType(Short primaryLanguageType) {
+    this.primaryLanguageType = primaryLanguageType;
   }
 
-  public Short getpLangTpc() {
-    return pLangTpc;
+  public Short getReligionType() {
+    return religionType;
   }
 
-  public void setpLangTpc(Short pLangTpc) {
-    this.pLangTpc = pLangTpc;
+  public void setReligionType(Short religionType) {
+    this.religionType = religionType;
   }
 
-  public Short getRlgnTpc() {
-    return rlgnTpc;
+  public Short getSecondaryLanguageType() {
+    return secondaryLanguageType;
   }
 
-  public void setRlgnTpc(Short rlgnTpc) {
-    this.rlgnTpc = rlgnTpc;
+  public void setSecondaryLanguageType(Short secondaryLanguageType) {
+    this.secondaryLanguageType = secondaryLanguageType;
   }
 
-  public Short getsLangTc() {
-    return sLangTc;
+  public String getSensivityIndicator() {
+    return sensivityIndicator;
   }
 
-  public void setsLangTc(Short sLangTc) {
-    this.sLangTc = sLangTc;
+  public void setSensivityIndicator(String sensivityIndicator) {
+    this.sensivityIndicator = sensivityIndicator;
   }
 
-  public String getSenstvInd() {
-    return senstvInd;
+  public String getSensivityHealthInfoOnFileIndicator() {
+    return sensivityHealthInfoOnFileIndicator;
   }
 
-  public void setSenstvInd(String senstvInd) {
-    this.senstvInd = senstvInd;
+  public void setSensivityHealthInfoOnFileIndicator(String sensivityHealthInfoOnFileIndicator) {
+    this.sensivityHealthInfoOnFileIndicator = sensivityHealthInfoOnFileIndicator;
   }
 
-  public String getSntvHlind() {
-    return sntvHlind;
+  public String getSocialSecurityNumber() {
+    return socialSecurityNumber;
   }
 
-  public void setSntvHlind(String sntvHlind) {
-    this.sntvHlind = sntvHlind;
+  public void setSocialSecurityNumber(String socialSecurityNumber) {
+    this.socialSecurityNumber = socialSecurityNumber;
   }
 
-  public String getSsNo() {
-    return ssNo;
+  public String getSocialSecurityNumberChangedCode() {
+    return socialSecurityNumberChangedCode;
   }
 
-  public void setSsNo(String ssNo) {
-    this.ssNo = ssNo;
+  public void setSocialSecurityNumberChangedCode(String socialSecurityNumberChangedCode) {
+    this.socialSecurityNumberChangedCode = socialSecurityNumberChangedCode;
   }
 
-  public String getSsnChgCd() {
-    return ssnChgCd;
+  public String getSuffixTitleDescription() {
+    return suffixTitleDescription;
   }
 
-  public void setSsnChgCd(String ssnChgCd) {
-    this.ssnChgCd = ssnChgCd;
+  public void setSuffixTitleDescription(String suffixTitleDescription) {
+    this.suffixTitleDescription = suffixTitleDescription;
   }
 
-  public String getSufxTldsc() {
-    return sufxTldsc;
+  public String getUnemployedParentCode() {
+    return unemployedParentCode;
   }
 
-  public void setSufxTldsc(String sufxTldsc) {
-    this.sufxTldsc = sufxTldsc;
+  public void setUnemployedParentCode(String unemployedParentCode) {
+    this.unemployedParentCode = unemployedParentCode;
   }
 
-  public String getUnemplyCd() {
-    return unemplyCd;
+  public String getLstUpdateId() {
+    return lstUpdateId;
   }
 
-  public void setUnemplyCd(String unemplyCd) {
-    this.unemplyCd = unemplyCd;
+  public void setLstUpdateId(String lstUpdateId) {
+    this.lstUpdateId = lstUpdateId;
   }
 
-  public String getLstUpdId() {
-    return lstUpdId;
+  public Timestamp getLastUpdateTimestamp() {
+    return lastUpdateTimestamp;
   }
 
-  public void setLstUpdId(String lstUpdId) {
-    this.lstUpdId = lstUpdId;
+  public void setLastUpdateTimestamp(Timestamp lastUpdateTimestamp) {
+    this.lastUpdateTimestamp = lastUpdateTimestamp;
   }
 
-  public Timestamp getLstUpdTs() {
-    return lstUpdTs;
+  public String getCommentDescription() {
+    return commentDescription;
   }
 
-  public void setLstUpdTs(Timestamp lstUpdTs) {
-    this.lstUpdTs = lstUpdTs;
+  public void setCommentDescription(String commentDescription) {
+    this.commentDescription = commentDescription;
   }
 
-  public String getCommntDsc() {
-    return commntDsc;
+  public String getEstimatedDobCode() {
+    return estimatedDobCode;
   }
 
-  public void setCommntDsc(String commntDsc) {
-    this.commntDsc = commntDsc;
+  public void setEstimatedDobCode(String estimatedDobCode) {
+    this.estimatedDobCode = estimatedDobCode;
   }
 
-  public String getEstDobCd() {
-    return estDobCd;
+  public String getBirthplaceVerifiedIdentificator() {
+    return birthplaceVerifiedIdentificator;
   }
 
-  public void setEstDobCd(String estDobCd) {
-    this.estDobCd = estDobCd;
+  public void setBirthplaceVerifiedIdentificator(String birthplaceVerifiedIdentificator) {
+    this.birthplaceVerifiedIdentificator = birthplaceVerifiedIdentificator;
   }
 
-  public String getBpVerInd() {
-    return bpVerInd;
+  public String getHispanicOriginCode() {
+    return hispanicOriginCode;
   }
 
-  public void setBpVerInd(String bpVerInd) {
-    this.bpVerInd = bpVerInd;
+  public void setHispanicOriginCode(String hispanicOriginCode) {
+    this.hispanicOriginCode = hispanicOriginCode;
   }
 
-  public String getHispCd() {
-    return hispCd;
+  public String getChildrenServIdentificator() {
+    return childrenServIdentificator;
   }
 
-  public void setHispCd(String hispCd) {
-    this.hispCd = hispCd;
+  public void setChildrenServIdentificator(String childrenServIdentificator) {
+    this.childrenServIdentificator = childrenServIdentificator;
   }
 
-  public String getCurrcaInd() {
-    return currcaInd;
+  public String getCurrentlyRegionalCenteerIdentificator() {
+    return currentlyRegionalCenteerIdentificator;
   }
 
-  public void setCurrcaInd(String currcaInd) {
-    this.currcaInd = currcaInd;
+  public void setCurrentlyRegionalCenteerIdentificator(
+      String currentlyRegionalCenteerIdentificator) {
+    this.currentlyRegionalCenteerIdentificator = currentlyRegionalCenteerIdentificator;
   }
 
-  public String getCurregInd() {
-    return curregInd;
+  public String getCurrentlyOtherDescription() {
+    return currentlyOtherDescription;
   }
 
-  public void setCurregInd(String curregInd) {
-    this.curregInd = curregInd;
+  public void setCurrentlyOtherDescription(String currentlyOtherDescription) {
+    this.currentlyOtherDescription = currentlyOtherDescription;
   }
 
-  public String getCothDesc() {
-    return cothDesc;
+  public String getPreviouslyReceivedIdentificator() {
+    return previouslyReceivedIdentificator;
   }
 
-  public void setCothDesc(String cothDesc) {
-    this.cothDesc = cothDesc;
+  public void setPreviouslyReceivedIdentificator(String previouslyReceivedIdentificator) {
+    this.previouslyReceivedIdentificator = previouslyReceivedIdentificator;
   }
 
-  public String getPrevcaInd() {
-    return prevcaInd;
+  public String getPreviouslyRegionalCenterIdentificator() {
+    return previouslyRegionalCenterIdentificator;
   }
 
-  public void setPrevcaInd(String prevcaInd) {
-    this.prevcaInd = prevcaInd;
+  public void setPreviouslyRegionalCenterIdentificator(
+      String previouslyRegionalCenterIdentificator) {
+    this.previouslyRegionalCenterIdentificator = previouslyRegionalCenterIdentificator;
   }
 
-  public String getPreregInd() {
-    return preregInd;
+  public String getPreviouslyOtherDescription() {
+    return previouslyOtherDescription;
   }
 
-  public void setPreregInd(String preregInd) {
-    this.preregInd = preregInd;
+  public void setPreviouslyOtherDescription(String previouslyOtherDescription) {
+    this.previouslyOtherDescription = previouslyOtherDescription;
   }
 
-  public String getPothDesc() {
-    return pothDesc;
+  public String getHealthCarePlanIdentificator() {
+    return healthCarePlanIdentificator;
   }
 
-  public void setPothDesc(String pothDesc) {
-    this.pothDesc = pothDesc;
+  public void setHealthCarePlanIdentificator(String healthCarePlanIdentificator) {
+    this.healthCarePlanIdentificator = healthCarePlanIdentificator;
   }
 
-  public String getHcareInd() {
-    return hcareInd;
+  public String getLimitationOnSCPHealthIndicator() {
+    return limitationOnSCPHealthIndicator;
   }
 
-  public void setHcareInd(String hcareInd) {
-    this.hcareInd = hcareInd;
-  }
-
-  public String getLimitInd() {
-    return limitInd;
-  }
-
-  public void setLimitInd(String limitInd) {
-    this.limitInd = limitInd;
+  public void setLimitationOnSCPHealthIndicator(String limitationOnSCPHealthIndicator) {
+    this.limitationOnSCPHealthIndicator = limitationOnSCPHealthIndicator;
   }
 
   public String getBirthCity() {
@@ -1137,52 +1132,53 @@ public class ClientDTO extends BaseDTO {
     this.healthTxt = healthTxt;
   }
 
-  public LocalDate getMtermDt() {
-    return mtermDt;
+  public LocalDate getMotherParentalTermDate() {
+    return motherParentalTermDate;
   }
 
-  public void setMtermDt(LocalDate mtermDt) {
-    this.mtermDt = mtermDt;
+  public void setMotherParentalTermDate(LocalDate motherParentalTermDate) {
+    this.motherParentalTermDate = motherParentalTermDate;
   }
 
-  public LocalDate getFtermDt() {
-    return ftermDt;
+  public LocalDate getFatherParentalTermDate() {
+    return fatherParentalTermDate;
   }
 
-  public void setFtermDt(LocalDate ftermDt) {
-    this.ftermDt = ftermDt;
+  public void setFatherParentalTermDate(LocalDate fatherParentalTermDate) {
+    this.fatherParentalTermDate = fatherParentalTermDate;
   }
 
-  public String getZippyInd() {
-    return zippyInd;
+  public String getZippyIdentificator() {
+    return zippyIdentificator;
   }
 
-  public void setZippyInd(String zippyInd) {
-    this.zippyInd = zippyInd;
+  public void setZippyIdentificator(String zippyIdentificator) {
+    this.zippyIdentificator = zippyIdentificator;
   }
 
-  public String getDeathPlc() {
-    return deathPlc;
+  public String getDeathPlace() {
+    return deathPlace;
   }
 
-  public void setDeathPlc(String deathPlc) {
-    this.deathPlc = deathPlc;
+  public void setDeathPlace(String deathPlace) {
+    this.deathPlace = deathPlace;
   }
 
-  public String getTrMbvrtB() {
-    return trMbvrtB;
+  public String getTribalMemberVerificationIdentificator() {
+    return tribalMemberVerificationIdentificator;
   }
 
-  public void setTrMbvrtB(String trMbvrtB) {
-    this.trMbvrtB = trMbvrtB;
+  public void setTribalMemberVerificationIdentificator(
+      String tribalMemberVerificationIdentificator) {
+    this.tribalMemberVerificationIdentificator = tribalMemberVerificationIdentificator;
   }
 
-  public String getTrbaCltB() {
-    return trbaCltB;
+  public String getTribalAncestryClientIdentificator() {
+    return tribalAncestryClientIdentificator;
   }
 
-  public void setTrbaCltB(String trbaCltB) {
-    this.trbaCltB = trbaCltB;
+  public void setTribalAncestryClientIdentificator(String tribalAncestryClientIdentificator) {
+    this.tribalAncestryClientIdentificator = tribalAncestryClientIdentificator;
   }
 
   public String getSoc158Ind() {
@@ -1193,12 +1189,12 @@ public class ClientDTO extends BaseDTO {
     this.soc158Ind = soc158Ind;
   }
 
-  public String getDthDtInd() {
-    return dthDtInd;
+  public String getDeathDateVerifiedIdentificator() {
+    return deathDateVerifiedIdentificator;
   }
 
-  public void setDthDtInd(String dthDtInd) {
-    this.dthDtInd = dthDtInd;
+  public void setDeathDateVerifiedIdentificator(String deathDateVerifiedIdentificator) {
+    this.deathDateVerifiedIdentificator = deathDateVerifiedIdentificator;
   }
 
   public String getEmailAddr() {
@@ -1209,43 +1205,51 @@ public class ClientDTO extends BaseDTO {
     this.emailAddr = emailAddr;
   }
 
-  public String getAdjdelInd() {
-    return adjdelInd;
+  public String getAdjudicatedDelinquentIdentificator() {
+    return adjudicatedDelinquentIdentificator;
   }
 
-  public void setAdjdelInd(String adjdelInd) {
-    this.adjdelInd = adjdelInd;
+  public void setAdjudicatedDelinquentIdentificator(String adjudicatedDelinquentIdentificator) {
+    this.adjudicatedDelinquentIdentificator = adjudicatedDelinquentIdentificator;
   }
 
-  public String getEthUdCd() {
-    return ethUdCd;
+  public String getEthUnableToDeterminCode() {
+    return ethUnableToDeterminCode;
   }
 
-  public void setEthUdCd(String ethUdCd) {
-    this.ethUdCd = ethUdCd;
+  public void setEthUnableToDeterminCode(String ethUnableToDeterminCode) {
+    this.ethUnableToDeterminCode = ethUnableToDeterminCode;
   }
 
-  public String getHispUdCd() {
-    return hispUdCd;
+  public String getHispUnableToDeterminateReasonCode() {
+    return hispUnableToDeterminateReasonCode;
   }
 
-  public void setHispUdCd(String hispUdCd) {
-    this.hispUdCd = hispUdCd;
+  public void setHispUnableToDeterminateReasonCode(String hispUnableToDeterminateReasonCode) {
+    this.hispUnableToDeterminateReasonCode = hispUnableToDeterminateReasonCode;
   }
 
-  public String getSocplcCd() {
-    return socplcCd;
+  public String getSoc158PlacementCode() {
+    return soc158PlacementCode;
   }
 
-  public void setSocplcCd(String socplcCd) {
-    this.socplcCd = socplcCd;
+  public void setSoc158PlacementCode(String soc158PlacementCode) {
+    this.soc158PlacementCode = soc158PlacementCode;
   }
 
-  public String getClIndxNo() {
-    return clIndxNo;
+  public String getSciIndexNumber() {
+    return sciIndexNumber;
   }
 
-  public void setClIndxNo(String clIndxNo) {
-    this.clIndxNo = clIndxNo;
+  public void setSciIndexNumber(String sciIndexNumber) {
+    this.sciIndexNumber = sciIndexNumber;
+  }
+
+  public Short getBirthCountryCode() {
+    return birthCountryCode;
+  }
+
+  public void setBirthCountryCode(Short birthCountryCode) {
+    this.birthCountryCode = birthCountryCode;
   }
 }

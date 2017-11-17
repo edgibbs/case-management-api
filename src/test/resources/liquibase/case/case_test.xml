@@ -37,63 +37,8 @@
             <column name="SRV_CMPC" value="1692" />
             <column name="SRV_CMPDT" value="1998-12-03" />
             <column name="TICKLE_T_B" value="N" />
-        </insert>
-
-
-        <insert tableName="SYS_CD_C">
-            <column name="SYS_ID" value="1692"/>
-            <column name="CATEGORYID" value="0"/>
-            <column name="INACTV_IND" value="N"/>
-            <column name="OTHER_CD" value="01"/>
-            <column name="SHORT_DSC" value="Emergency Response"/>
-            <column name="LGC_ID" value="ER"/>
             <column name="LST_UPD_ID" value="q25"/>
             <column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>
-            <column name="THIRD_ID" value="0000000000"/>
-            <column name="FKS_META_T" value="SRV_CMPC"/>
-            <column name="LONG_DSC" value=""/>
-        </insert>
-
-        <insert tableName="SYS_CD_C">
-            <column name="SYS_ID" value="1124"/>
-            <column name="CATEGORYID" value="0"/>
-            <column name="INACTV_IND" value="Y"/>
-            <column name="OTHER_CD" value="01"/>
-            <column name="SHORT_DSC" value="Yolo"/>
-            <column name="LGC_ID" value="57"/>
-            <column name="LST_UPD_ID" value="q25"/>
-            <column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>
-            <column name="THIRD_ID" value="0000000000"/>
-            <column name="FKS_META_T" value="GVR_ENTC"/>
-            <column name="LONG_DSC" value=""/>
-        </insert>
-
-        <insert tableName="SYS_CD_C">
-            <column name="SYS_ID" value="122"/>
-            <column name="CATEGORYID" value="0"/>
-            <column name="INACTV_IND" value="N"/>
-            <column name="OTHER_CD" value="SP"/>
-            <column name="SHORT_DSC" value="Approved"/>
-            <column name="LGC_ID" value="0005"/>
-            <column name="LST_UPD_ID" value="q25"/>
-            <column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>
-            <column name="THIRD_ID" value="0000000000"/>
-            <column name="FKS_META_T" value="APV_STC"/>
-            <column name="LONG_DSC" value=""/>
-        </insert>
-
-        <insert tableName="SYS_CD_C">
-            <column name="SYS_ID" value="563"/>
-            <column name="CATEGORYID" value="0"/>
-            <column name="INACTV_IND" value="N"/>
-            <column name="OTHER_CD" value=""/>
-            <column name="SHORT_DSC" value="United States"/>
-            <column name="LGC_ID" value="US"/>
-            <column name="LST_UPD_ID" value="q25"/>
-            <column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>
-            <column name="THIRD_ID" value="0000000000"/>
-            <column name="FKS_META_T" value="CNTRY_C"/>
-            <column name="LONG_DSC" value=""/>
         </insert>
 
         <insert tableName="LONG_TXT">

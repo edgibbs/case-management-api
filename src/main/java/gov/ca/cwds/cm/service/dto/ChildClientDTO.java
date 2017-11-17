@@ -243,6 +243,10 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, readOnly = false)
   private Boolean tribalCustomaryAdoptionIndicator;
 
+  @NotNull
+  @ApiModelProperty(required = true, readOnly = false)
+  private ClientDTO client;
+
   public static long getSerialVersionUID() {
     return serialVersionUID;
   }

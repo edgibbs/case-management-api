@@ -11,7 +11,7 @@ services:
           LICENSE: "accept"
           DB2NAME: ${DB_CMS_DB_NAME}
   case-api:
-      image: ${REPOSITORY}/casemanagement
+      image: ${REPOSITORY}/case-management-api
       hostname: casemanagement
       depends_on:
         db2:

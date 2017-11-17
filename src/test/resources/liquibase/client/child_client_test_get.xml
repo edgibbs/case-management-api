@@ -25,7 +25,7 @@
             <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
             <column name="ACQ_ED_DSC" value="" />
             <column name="ACQ_HTHDSC" value="" />
-            <!--<column name="HEPDOC_OLD" value="null" />-->
+            <column name="HEPDOC_OLD" value="" />
             <column name="PRTLIM_IND" value="Y" />
             <column name="INDIAN_IND" value="N" />
             <column name="PREADPT_CD" value="N" />
