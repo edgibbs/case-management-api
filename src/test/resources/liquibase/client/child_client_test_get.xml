@@ -11,7 +11,6 @@
             <column name="HLONFL_IND" value="N"/>
             <column name="CURNT_CSID" value="D9G54xH00Z" />
             <column name="DTH_CIRC" value="3145"/>
-            <!--<column name="VOL_PLCDOC" value="null" />-->
             <column name="FC2_APLT_B" value="N" />
             <column name="ICWA_ELGCD" value="N" />
             <column name="MEDELIGT_B" value="N" />
@@ -43,10 +42,6 @@
             <column name="TCADPT_IND" value="N" />
             <column name="ICADSL_IND" value="Y" />
             <column name="ICADSR_IND" value="Y" />
-            <!--<column name="FSTAMP_DT" value="null" />-->
-            <!--<column name="SIJ_INT_DT" value="null" />-->
-            <!--<column name="SSI_SCR_DT" value="null" />-->
-            <!--<column name="TCADPT_DT" value="null" />-->
         </insert>
     </changeSet>
 </databaseChangeLog>
