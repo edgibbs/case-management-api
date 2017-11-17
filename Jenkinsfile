@@ -54,7 +54,7 @@ node ('tpt3-slave'){
 		  rtGradle.useWrapper = true
    }
    stage('Build'){
-		def buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'jar'
+		def buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'shadowJar'
    }
    stage('Unit Tests') {
        buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'test jacocoTestReport', switches: '--stacktrace'
