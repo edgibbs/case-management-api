@@ -17,6 +17,7 @@ public class DatabaseHelperTest extends BaseApiIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
+    setUpCms();
     setUpDb();
   }
 

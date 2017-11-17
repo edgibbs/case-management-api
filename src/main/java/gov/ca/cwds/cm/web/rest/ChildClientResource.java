@@ -30,7 +30,7 @@ public class ChildClientResource {
   }
 
   @GET
-  @Path("/{clientId}")
+  @Path("/{id}")
   @ApiResponses(
     value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
@@ -45,13 +45,12 @@ public class ChildClientResource {
   )
   @UnitOfWork
   public Response get(
-      @PathParam("clientId")
+      @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
           String clientId) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
     childClientParameterObject.setChildClientId(clientId);
     Response childClientDTO = childClientResourceDelegat.get(childClientParameterObject);
-    System.out.println(childClientDTO.getEntity());
     return Response.ok().entity(childClientDTO.getEntity()).build();
   }
 }

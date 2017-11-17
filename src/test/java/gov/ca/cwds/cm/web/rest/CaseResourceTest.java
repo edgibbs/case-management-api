@@ -19,6 +19,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
+		setUpCms();
 		setUpDb();
 	}
 

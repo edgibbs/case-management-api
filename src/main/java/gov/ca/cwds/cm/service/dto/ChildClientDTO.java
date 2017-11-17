@@ -247,6 +247,14 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(required = true, readOnly = false)
   private ClientDTO client;
 
+  public ClientDTO getClient() {
+    return client;
+  }
+
+  public void setClient(ClientDTO client) {
+    this.client = client;
+  }
+
   public static long getSerialVersionUID() {
     return serialVersionUID;
   }
