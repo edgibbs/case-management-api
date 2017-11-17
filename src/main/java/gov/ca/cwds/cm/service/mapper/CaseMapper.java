@@ -1,13 +1,12 @@
 package gov.ca.cwds.cm.service.mapper;
 
-import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(
-  imports = {Constants.class}
+  uses = TrailingSpacesRemovalPostMappingProcessor.class
 )
 public interface CaseMapper {
 
@@ -32,5 +31,7 @@ public interface CaseMapper {
   @Mapping(source = "state.shortDsc", target = "state")
   @Mapping(source = "staffPerson.identifier", target = "staffPerson")
   @Mapping(source = "childClient.victimClientId", target = "childClient")
+  @Mapping(source = "alertText.textDescription", target = "alertText")
+  @Mapping(source = "closureStatementText.textDescription", target = "closureStatementText")
   CaseDTO toCaseDTO(Case caseEntity);
 }

@@ -7,11 +7,12 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /** @author CWDS TPT-3 Team */
-@Mapper
+@Mapper(uses = ClientMapper.class)
 public interface ChildClientMapper {
 
   ChildClientMapper INSTANCE = Mappers.getMapper(ChildClientMapper.class);
 
+  @Mapping(target = "messages", ignore = true)
   @Mapping(target = "victimClientId", source = "victimClientId")
   @Mapping(target = "adoptableCode", source = "adoptable")
   @Mapping(target = "adoptedAge", source = "adoptedAge")

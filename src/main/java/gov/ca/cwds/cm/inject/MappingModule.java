@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import gov.ca.cwds.cm.service.mapper.AddressMapper;
 import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.CaseMapper;
+import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
 import org.mapstruct.factory.Mappers;
 
@@ -19,6 +20,7 @@ public class MappingModule extends AbstractModule {
     bindMapperAsEagerSingleton(AddressMapper.class);
     bindMapperAsEagerSingleton(CaseMapper.class);
     bindMapperAsEagerSingleton(ChildClientMapper.class);
+    bindMapperAsEagerSingleton(ClientMapper.class);
     bindMapperAsEagerSingleton(SystemCodeMapper.class);
   }
 

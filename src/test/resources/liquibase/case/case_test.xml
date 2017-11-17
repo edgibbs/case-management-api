@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet id="data_for_case" author="TPT3_team">
+        <insert tableName="CASE_T">
+            <column name="IDENTIFIER" value="ArgnUzi09L" />
+            <column name="ALERT_TXT" value="Qpqiiyg09L" />
+            <column name="APRVL_NO" value="67Co6IX0LF"/>
+            <column name="APV_STC" value="122"/>
+            <column name="CLS_RSNC" value="309" />
+            <column name="CSPL_DET_B" value="N"/>
+            <column name="CL_STM_TXT" value="UCAtsm400F" />
+            <column name="CNTRY_C" value="563" />
+            <column name="CNTY_SPFCD" value="10" />
+            <column name="NOTES_DOC" value="MWRk9Z70Ki" />
+            <column name="EMANCPN_DT" value="2018-03-17" />
+            <column name="END_DT" value="2018-03-17" />
+            <column name="FKCHLD_CLT" value="BKk7CHj00Z" />
+            <column name="FKREFERL_T" value="IUvCQKr0Ki" />
+            <column name="FKSTFPERST" value="0Ki" />
+            <column name="GVR_ENTC" value="1124" />
+            <column name="ICPCSTAT_B" value="N" />
+            <column name="ICPC_RQT_B" value="N" />
+            <column name="LMT_ACSSCD" value="N" />
+            <column name="LMT_ACS_DT" value="2018-03-17" />
+            <column name="LMT_ACSDSC" value="County determined by primary assignment as of Release 7.1 implementation date of May 2014" />
+            <column name="L_GVR_ENTC" value="1080" />
+            <column name="CASE_NM" value="RTS6733.1216B, Victim3 " />
+            <column name="NXT_TILPDT" value="2017-03-17" />
+            <column name="PRJ_END_DT" value="2017-03-17" />
+            <column name="RSP_AGY_CD" value="C" />
+            <column name="SPRJ_CST_B" value="N" />
+            <column name="START_DT" value="2017-03-17" />
+            <column name="STATE_C" value="1828" />
+            <column name="SRV_CMPC" value="1692" />
+            <column name="SRV_CMPDT" value="1998-12-03" />
+            <column name="TICKLE_T_B" value="N" />
+            <column name="LST_UPD_ID" value="q25"/>
+            <column name="LST_UPD_TS" value="1996-02-13 12:57:24.769759"/>
+        </insert>
+
+        <insert tableName="LONG_TXT">
+            <column name="IDENTIFIER" value="Qpqiiyg09L"/>
+            <column name="LST_UPD_ID" value="09L"/>
+            <column name="LST_UPD_TS" value="1998-06-18 11:31:52.089749"/>
+            <column name="CNTY_SPFCD" value="21"/>
+            <column name="TTEXT_DSC" value="hooby doop"/>
+        </insert>
+
+        <insert tableName="LONG_TXT">
+            <column name="IDENTIFIER" value="UCAtsm400F"/>
+            <column name="LST_UPD_ID" value="09L"/>
+            <column name="LST_UPD_TS" value="1998-06-18 11:31:52.089749"/>
+            <column name="CNTY_SPFCD" value="21"/>
+            <column name="TTEXT_DSC" value="Closure statement"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

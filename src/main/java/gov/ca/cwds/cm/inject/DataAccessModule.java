@@ -68,7 +68,8 @@ public class DataAccessModule extends AbstractModule {
               PlacementHomeNotes.class,
               OtherChildrenInPlacementHome.class,
               OtherPeopleScpRelationship.class,
-              OtherAdultsInPlacementHome.class
+              OtherAdultsInPlacementHome.class,
+              LongText.class
           )
           .build();
 
