@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #The file should have UNIX-style EOL
+JAVA_OPTS="-Xms128m -Xmx512m"
 
 if [ -z "$CM_API_CONFIG" ]
 then
