@@ -32,7 +32,7 @@ swagger:
   logoutUrl: ${LOGOUT_URL:-http://localhost:8080/perry/authn/logout}
   showSwagger: ${SHOW_SWAGGER:-true}
   jsonUrl: ${SWAGGER_JSON_URL:-http://localhost:8080/swagger.json}
-  callbackUrl: ${https:-http://localhost:8080/swagger}
+  callbackUrl: ${SWAGGER_CALLBACK_URL:-http://localhost:8080/swagger}
 
 upgardeDbOnStart: ${UPGRADE_DB_ON_START:-true}
 
