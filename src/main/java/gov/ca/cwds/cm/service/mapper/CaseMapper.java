@@ -11,8 +11,6 @@ import org.mapstruct.Mapping;
 public interface CaseMapper {
 
   @Mapping(target = "messages", ignore = true)
-  @Mapping(target = "alertText", ignore = true)
-  @Mapping(target = "closureStatementText", ignore = true)
   @Mapping(source = "identifier", target = "id")
   @Mapping(source = "approvalStatusType.shortDsc", target = "approvalStatus")
   @Mapping(source = "caseClosureReasonType.shortDsc", target = "caseClosureReason")
