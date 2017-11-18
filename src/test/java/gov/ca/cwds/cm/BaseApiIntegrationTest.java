@@ -61,7 +61,7 @@ public abstract class BaseApiIntegrationTest {
 
   public static void setUpDb() throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/test_database_master.xml");
+      getDatabaseHelper().runScript("liquibase/migration_master.xml");
     }
   }
 }
