@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+/** @author CWDS TPT-3 Team */
 @Mapper(
   uses = TrailingSpacesRemovalPostMappingProcessor.class
 )
