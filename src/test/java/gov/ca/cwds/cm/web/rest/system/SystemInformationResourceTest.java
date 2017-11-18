@@ -3,7 +3,7 @@ package gov.ca.cwds.cm.web.rest.system;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
-import gov.ca.cwds.cm.web.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;
