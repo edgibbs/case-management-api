@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-/** @author CWDS TPT-2 Team */
+/** @author CWDS TPT-3 Team */
 public class DatabaseHelperTest extends BaseApiIntegrationTest {
 
   DatabaseHelper helper;
