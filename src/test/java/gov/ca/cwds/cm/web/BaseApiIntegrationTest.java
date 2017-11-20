@@ -89,9 +89,12 @@ public abstract class BaseApiIntegrationTest {
     }
   }
 
-  public static void runScript(final String scriptPath) throws Exception {
+  public static void runScripts(final String... scriptPaths) throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript(scriptPath);
+      final DatabaseHelper databaseHelper = getDatabaseHelper();
+      for (String path : scriptPaths) {
+        databaseHelper.runScript(path);
+      }
     }
   }
 }

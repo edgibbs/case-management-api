@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="cl_addr_t ddl" author="CWDS TPT-3 Team">
+    <sql>
+      CREATE TABLE "CL_ADDRT"  (
+      "IDENTIFIER" CHAR(10) NOT NULL ,
+      "ADDR_TPC" SMALLINT NOT NULL ,
+      "BK_INMT_ID" CHAR(10) NOT NULL WITH DEFAULT  ,
+      "EFF_END_DT" DATE WITH DEFAULT NULL ,
+      "EFF_STRTDT" DATE WITH DEFAULT NULL ,
+      "LST_UPD_ID" CHAR(3) NOT NULL ,
+      "LST_UPD_TS" TIMESTAMP NOT NULL ,
+      "FKADDRS_T" CHAR(10) NOT NULL ,
+      "FKCLIENT_T" CHAR(10) NOT NULL ,
+      "HOMLES_IND" CHAR(1) NOT NULL WITH DEFAULT 'N' ,
+      "FKREFERL_T" CHAR(10) WITH DEFAULT NULL );
+    </sql>
+  </changeSet>
+</databaseChangeLog>

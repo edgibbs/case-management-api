@@ -20,8 +20,8 @@ public class AddressResourceTest extends BaseApiIntegrationTest {
   @BeforeClass
   public static void beforeClass() throws Exception {
     setUpDb();
-    runScript("liquibase/address/ddl_addrs_t.xml");
-    runScript("liquibase/address/dml_address_test_data.xml");
+    runScripts("liquibase/address/ddl_addrs_t.xml");
+    runScripts("liquibase/address/dml_address_test_data.xml");
   }
 
   @Test

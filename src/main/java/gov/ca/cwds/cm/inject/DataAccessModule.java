@@ -1,10 +1,13 @@
 package gov.ca.cwds.cm.inject;
 
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
+
 import com.google.common.collect.ImmutableList;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.cm.persistence.model.Address;
+import gov.ca.cwds.cm.persistence.model.ClientAddress;
 import gov.ca.cwds.data.legacy.cms.entity.BackgroundCheck;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
@@ -23,7 +26,14 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeNotes;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
-import gov.ca.cwds.data.legacy.cms.entity.syscodes.*;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
 import gov.ca.cwds.data.persistence.cms.SystemCode;
 import gov.ca.cwds.inject.CmsHibernateBundle;
 import gov.ca.cwds.inject.CmsSessionFactory;
@@ -33,43 +43,42 @@ import io.dropwizard.hibernate.SessionFactoryFactory;
 import io.dropwizard.setup.Bootstrap;
 import org.hibernate.SessionFactory;
 
-import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
-
 /** @author CWDS TPT-3 Team */
 public class DataAccessModule extends AbstractModule {
 
   private final ImmutableList<Class<?>> cmsEntities =
       ImmutableList.<Class<?>>builder()
           .add(
-              Address.class,
-              Client.class,
-              Case.class,
-              Country.class,
-              LongText.class,
-              CaseClosureReasonType.class,
-              ApprovalStatusType.class,
-              ChildClient.class,
-              StaffPerson.class,
-              County.class,
-              State.class,
               ActiveServiceComponentType.class,
-              DeathCircumstancesType.class,
-              PlacementEpisode.class,
-              OutOfHomePlacement.class,
-              PlacementHome.class,
-              SubstituteCareProvider.class,
-              SystemCode.class,
-              CountyLicenseCase.class,
-              LicensingVisit.class,
-              VisitType.class,
-              OutOfStateCheck.class,
+              Address.class,
+              ApprovalStatusType.class,
               BackgroundCheck.class,
-              PlacementHomeProfile.class,
-              PlacementHomeNotes.class,
+              Case.class,
+              CaseClosureReasonType.class,
+              ChildClient.class,
+              Client.class,
+              ClientAddress.class,
+              Country.class,
+              County.class,
+              CountyLicenseCase.class,
+              DeathCircumstancesType.class,
+              LicensingVisit.class,
+              LongText.class,
+              LongText.class,
+              OtherAdultsInPlacementHome.class,
               OtherChildrenInPlacementHome.class,
               OtherPeopleScpRelationship.class,
-              OtherAdultsInPlacementHome.class,
-              LongText.class
+              OutOfHomePlacement.class,
+              OutOfStateCheck.class,
+              PlacementEpisode.class,
+              PlacementHome.class,
+              PlacementHomeNotes.class,
+              PlacementHomeProfile.class,
+              StaffPerson.class,
+              State.class,
+              SubstituteCareProvider.class,
+              SystemCode.class,
+              VisitType.class
           )
           .build();
 

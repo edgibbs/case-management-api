@@ -3,7 +3,10 @@ package gov.ca.cwds.cm.service.mapper;
 import gov.ca.cwds.cm.persistence.model.Address;
 import gov.ca.cwds.cm.service.dto.AddressDTO;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyBooleanToStringMapper;
+import gov.ca.cwds.cm.service.mapper.tool.LegacyZeroNumberToNullNumberMapper;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyZeroNumberToNullStringMapper;
+import gov.ca.cwds.cm.service.mapper.tool.NullNumberToZeroNumberField;
+import gov.ca.cwds.cm.service.mapper.tool.ZeroNumberToNullNumberField;
 import gov.ca.cwds.cm.service.mapper.tool.ZeroNumberToNullStringField;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -13,7 +16,11 @@ import org.mapstruct.Mapping;
  * @author CWDS TPT-3 Team
  */
 
-@Mapper(uses = { LegacyBooleanToStringMapper.class, LegacyZeroNumberToNullStringMapper.class })
+@Mapper(uses = {
+    LegacyBooleanToStringMapper.class,
+    LegacyZeroNumberToNullStringMapper.class,
+    LegacyZeroNumberToNullNumberMapper.class
+})
 public interface AddressMapper {
 
   @Mapping(target = "messages", ignore = true)
@@ -54,12 +61,30 @@ public interface AddressMapper {
       qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(source = "stateCd", target = "stateCode")
-  @Mapping(source = "streetSuffixCd", target = "streetSuffixCode")
-  @Mapping(source = "unitDesignationCd", target = "unitDesignatorCode")
+  @Mapping(
+      source = "streetSuffixCd",
+      target = "streetSuffixCode",
+      qualifiedBy = { ZeroNumberToNullNumberField.class }
+  )
+  @Mapping(
+      source = "unitDesignationCd",
+      target = "unitDesignatorCode",
+      qualifiedBy = { ZeroNumberToNullNumberField.class }
+  )
   @Mapping(source = "zip4", target = "zipSuffix", qualifiedBy = ZeroNumberToNullStringField.class)
   AddressDTO toDto(final Address address);
 
   @InheritInverseConfiguration
+  @Mapping(
+      source = "streetSuffixCode",
+      target = "streetSuffixCd",
+      qualifiedBy = NullNumberToZeroNumberField.class
+  )
+  @Mapping(
+      source = "unitDesignatorCode",
+      target = "unitDesignationCd",
+      qualifiedBy = NullNumberToZeroNumberField.class
+  )
   @Mapping(target = "state", ignore = true)
   @Mapping(target = "contextAddressType", ignore = true)
   @Mapping(target = "lastUpdatedId", ignore = true)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="client_address_test_data" author="CWDS TPT-3 Team">
+    <sql>
+      INSERT INTO CL_ADDRT (IDENTIFIER,ADDR_TPC,BK_INMT_ID,EFF_END_DT,EFF_STRTDT,LST_UPD_ID,LST_UPD_TS,FKADDRS_T,FKCLIENT_T,HOMLES_IND,FKREFERL_T) VALUES
+      ('Ab7lSwF0Hy',32,'          ','2005-12-09','1999-09-14','q48','2005-12-09 16:20:43.320','Aay9NMz0Nu','GmNMeSx0Hy','N','GHnnNq70Hy')
+      ,('AerNmAW0Bv',32,'          ','2005-12-09','1999-03-09','q48','2005-12-09 16:20:43.320','AazXkiy0Ib','GmNMeSx0Hy','N','1JFuA4q0Bv')
+      ,('AfokIT400J',32,'          ','2005-12-09','1998-01-01','q48','2005-12-09 16:20:43.320','Ab7mue101b','0B8PWEb00J','N','5HDLYVG00J')
+      ;
+    </sql>
+  </changeSet>
+</databaseChangeLog>

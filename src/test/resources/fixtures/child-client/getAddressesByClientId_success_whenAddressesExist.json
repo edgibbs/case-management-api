@@ -1,0 +1,57 @@
+{
+  "items" : [ {
+    "id" : "Ab7lSwF0Hy",
+    "address" : {
+      "id" : "Aay9NMz0Nu",
+      "description" : "Ms. Evans is homeless.",
+      "city" : "San Diego",
+      "foreign_address_exists" : false,
+      "government_entity_code" : 1104,
+      "other_header_address" : "",
+      "post_direction_text_code" : "",
+      "pre_direction_text_code" : "",
+      "primary_phone" : "4120006613",
+      "state_code" : 1828,
+      "street_name" : "Bunker Hill Circle",
+      "street_number" : "6666",
+      "street_suffix_code" : 0,
+      "unit_designator_code" : 0,
+      "unit_number" : "",
+      "zip" : "92117"
+    },
+    "address_type" : 32,
+    "booking_or_inmate_id" : "",
+    "effective_end_date" : "2005-12-09",
+    "effective_start_date" : "1999-09-14",
+    "homeless_indicator" : false,
+    "client_id" : "GmNMeSx0Hy",
+    "referral_id" : "GHnnNq70Hy"
+  }, {
+    "id" : "AerNmAW0Bv",
+    "address" : {
+      "id" : "AazXkiy0Ib",
+      "description" : "",
+      "city" : "Sacramento",
+      "foreign_address_exists" : false,
+      "government_entity_code" : 1126,
+      "other_header_address" : "",
+      "post_direction_text_code" : "",
+      "pre_direction_text_code" : "",
+      "primary_phone" : "9430007990",
+      "state_code" : 1828,
+      "street_name" : "Columbus Terrace",
+      "street_number" : "2435",
+      "street_suffix_code" : 0,
+      "unit_designator_code" : 0,
+      "unit_number" : "",
+      "zip" : "95833"
+    },
+    "address_type" : 32,
+    "booking_or_inmate_id" : "",
+    "effective_end_date" : "2005-12-09",
+    "effective_start_date" : "1999-03-09",
+    "homeless_indicator" : false,
+    "client_id" : "GmNMeSx0Hy",
+    "referral_id" : "1JFuA4q0Bv"
+  } ]
+}

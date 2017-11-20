@@ -20,8 +20,8 @@ public class SystemCodeResourceTest extends BaseApiIntegrationTest {
   @BeforeClass
   public static void beforeClass() throws Exception {
     setUpDb();
-    runScript("liquibase/system_code/ddl_sys_cd_c.xml");
-    runScript("liquibase/system_code/dml_system_code.xml");
+    runScripts("liquibase/system_code/ddl_sys_cd_c.xml");
+    runScripts("liquibase/system_code/dml_system_code.xml");
   }
 
   @Test

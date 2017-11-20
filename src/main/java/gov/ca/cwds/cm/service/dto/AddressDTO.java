@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.service.dto;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.api.Response;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@ApiModel(description = "The place where a CLIENT may be located and/or communicated with.")
 public class AddressDTO extends BaseDTO implements Response {
 
   private static final long serialVersionUID = 1L;
