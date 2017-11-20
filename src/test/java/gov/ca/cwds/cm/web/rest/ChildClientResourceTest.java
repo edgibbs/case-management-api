@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.web.rest;
 
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
+import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -17,7 +18,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-/** @author CWDS TPT-3 Team */
+/**
+ * @author CWDS TPT-3 Team
+ */
 public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   public static final String CLIENT_ID = "BKk7CHj00Z";
@@ -27,9 +30,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     setUpCms();
     setUpDb();
     runScripts(
-//        "liquibase/address/ddl_addrs_t.xml",
         "liquibase/address/dml_address_test_data.xml",
-//        "liquibase/client/address/ddl_cl_addr_t.xml",
         "liquibase/client/address/dml_client_address_test_data.xml"
     );
   }
@@ -46,8 +47,11 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   @Test
   public void getAddressesByClientId_success_whenAddressesExist() throws Exception {
+    // given
+    final String path = API.CHILD_CLIENT + "/GmNMeSx0Hy/" + API.ADDRESSES;
+
     // when
-    final Response actualResult = clientTestRule.target(Constants.API.CHILD_CLIENT + "/GmNMeSx0Hy/addresses")
+    final Response actualResult = clientTestRule.target(path)
         .request(MediaType.APPLICATION_JSON_TYPE)
         .get(Response.class);
 
@@ -60,8 +64,11 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   @Test
   public void getAddressesByClientId_code404_whenNoAddress() throws Exception {
+    // given
+    final String path = API.CHILD_CLIENT + "/NotExistingId/" + API.ADDRESSES;
+
     // when
-    final Response actualResult = clientTestRule.target(Constants.API.CHILD_CLIENT + "/NotExistingId/addresses")
+    final Response actualResult = clientTestRule.target(path)
         .request(MediaType.APPLICATION_JSON_TYPE)
         .get(Response.class);
 

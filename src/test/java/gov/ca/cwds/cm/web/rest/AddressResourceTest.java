@@ -5,8 +5,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.web.BaseApiIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;
@@ -19,8 +19,7 @@ public class AddressResourceTest extends BaseApiIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpDb();
-    runScripts("liquibase/address/ddl_addrs_t.xml");
+    setUpCms();
     runScripts("liquibase/address/dml_address_test_data.xml");
   }
 

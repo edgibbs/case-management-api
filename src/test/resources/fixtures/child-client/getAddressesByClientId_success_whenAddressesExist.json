@@ -14,8 +14,6 @@
       "state_code" : 1828,
       "street_name" : "Bunker Hill Circle",
       "street_number" : "6666",
-      "street_suffix_code" : 0,
-      "unit_designator_code" : 0,
       "unit_number" : "",
       "zip" : "92117"
     },
@@ -41,8 +39,6 @@
       "state_code" : 1828,
       "street_name" : "Columbus Terrace",
       "street_number" : "2435",
-      "street_suffix_code" : 0,
-      "unit_designator_code" : 0,
       "unit_number" : "",
       "zip" : "95833"
     },

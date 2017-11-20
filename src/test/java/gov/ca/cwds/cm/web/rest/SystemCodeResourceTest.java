@@ -5,8 +5,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.web.BaseApiIntegrationTest;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;
@@ -19,9 +19,7 @@ public class SystemCodeResourceTest extends BaseApiIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
-    setUpDb();
-    runScripts("liquibase/system_code/ddl_sys_cd_c.xml");
-    runScripts("liquibase/system_code/dml_system_code.xml");
+    setUpCms();
   }
 
   @Test

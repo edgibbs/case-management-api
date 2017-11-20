@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.web.rest;
 import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
 
 import com.google.inject.Inject;
+import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.inject.ChildClientServiceBackedResource;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
@@ -57,17 +58,17 @@ public class ChildClientResource {
   )
   @UnitOfWork
   public Response get(
-      @PathParam("clientId")
+      @PathParam("id")
       @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-      final String clientId) {
+      final String id) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
-    childClientParameterObject.setChildClientId(clientId);
+    childClientParameterObject.setChildClientId(id);
     Response childClientDTO = childClientResourceDelegate.get(childClientParameterObject);
     return Response.ok().entity(childClientDTO.getEntity()).build();
   }
 
   @GET
-  @Path("/{id}/addresses")
+  @Path("/{id}/" + API.ADDRESSES)
   @ApiResponses(
     value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
