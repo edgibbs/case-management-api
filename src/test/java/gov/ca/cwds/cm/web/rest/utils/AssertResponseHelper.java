@@ -7,23 +7,18 @@ import io.dropwizard.jackson.Jackson;
 import java.io.IOException;
 import java.util.Map;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 public final class AssertResponseHelper {
 
-  private AssertResponseHelper() {
-  }
+  private AssertResponseHelper() {}
 
   @SuppressWarnings("unchecked")
   public static void assertEqualsResponse(String fixture, String actualString) throws IOException {
     ObjectMapper objectMapper = Jackson.newObjectMapper();
-    Map<String, String> expectedMap = (Map<String, String>) objectMapper
-        .readValue(fixture, Map.class);
-    Map<String, String> actualMap = (Map<String, String>) objectMapper
-        .readValue(actualString, Map.class);
+    Map<String, String> expectedMap =
+        (Map<String, String>) objectMapper.readValue(fixture, Map.class);
+    Map<String, String> actualMap =
+        (Map<String, String>) objectMapper.readValue(actualString, Map.class);
     assertThat(actualMap).isEqualTo(expectedMap);
   }
-
 }

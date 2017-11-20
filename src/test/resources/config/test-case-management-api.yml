@@ -44,7 +44,6 @@ cmsDataSourceFactory:
       hibernate.id.new_generator_mappings: false
       hibernate.show_sql: false
 
-
 webSecurity:
   httpResponseSecurityHeaders:
     # Prevent MIMI sniffing

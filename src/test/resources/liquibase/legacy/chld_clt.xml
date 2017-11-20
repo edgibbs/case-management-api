@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <!-- This change set only for testing -->
+    <changeSet author="TPT3_team" id="child_client_table">
+
+        <createTable tableName="CHLD_CLT">
+            <column name="FC_ELIGT_B" type="${type.string}(1)" >
+                <constraints nullable="true"/>
+            </column>
+            <column name="EDONFL_IND" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="HLONFL_IND" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="CURNT_CSID" type="${type.string}(10)" >
+                <constraints nullable="true"/>
+            </column>
+            <column name="DTH_CIRC" type="${type.short}" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="VOL_PLCDOC" type="${type.string}(10)" >
+                <constraints nullable="true"/>
+            </column>
+            <column name="FC2_APLT_B" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="ICWA_ELGCD" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="MEDELIGT_B" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="MNRMOM_IND" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRG_TRMT_B" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="PTRN_INT_B" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="SAWS_CS_NO" type="${type.short}" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="SAW1APLT_B" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="SSI_SSPIND" type="${type.string}(1)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="LST_UPD_ID" type="${type.string}(3)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="LST_UPD_TS" type="TIMESTAMP" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="FKCLIENT_T" type="${type.string}(10)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACQ_ED_DSC" type="${type.string}(254)" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACQ_HTHDSC" type="${type.string}(254)" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEPDOC_OLD" type="${type.string}(10)" defaultValue="">
+                <constraints nullable="true"/>
+            </column>
+            <column name="PRTLIM_IND" type="${type.string}(1)" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INDIAN_IND" type="${type.string}(1)" defaultValue="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PREADPT_CD" type="${type.string}(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADPT_AGE" type="${type.short}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADOPTBL_CD" type="${type.string}(2)" defaultValue="NA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DRMSHEPDOC" type="${type.string}(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="BHIST_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SFSURB_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AWOL_AB_CD" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRBA_NOT_B" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FSTAMP_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DISABLD_CD" type="${type.string}(1)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="CLG_IND" type="${type.string}(1)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="PSVOC_IND" type="${type.string}(1)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="TCADPT_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ICADSL_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ICADSR_IND" type="${type.string}(1)" defaultValue="N">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FSTAMP_DT" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+            <column name="SIJ_INT_DT" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+            <column name="SSI_SCR_DT" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+            <column name="TCADPT_DT" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

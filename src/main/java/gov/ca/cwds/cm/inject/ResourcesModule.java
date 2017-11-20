@@ -1,7 +1,13 @@
 package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Injector;
+import com.google.inject.Provides;
+import gov.ca.cwds.cm.service.ChildClientService;
+import gov.ca.cwds.cm.web.rest.ChildClientResource;
 import gov.ca.cwds.cm.web.rest.system.SystemInformationResource;
+import gov.ca.cwds.rest.resources.ResourceDelegate;
+import gov.ca.cwds.rest.resources.ServiceBackedResourceDelegate;
 
 /**
  * Identifies all CM_UNIT_OF_WORK API domain resource classes available for dependency injection
@@ -21,6 +27,14 @@ public class ResourcesModule extends AbstractModule {
   @Override
   protected void configure() {
     bind(SystemInformationResource.class);
+    bind(ChildClientResource.class);
+  }
+
+  @Provides
+  @ChildClientServiceBackedResource
+  public ResourceDelegate childClientBackedResource(Injector injector) {
+    return new ServiceBackedResourceDelegate(
+            injector.getInstance(ChildClientService.class));
   }
 
 }

@@ -23,7 +23,12 @@ public final class Constants {
     public static final String SYSTEM_INFORMATION_PATH = "system-information";
 
     public static final String CM_PATH = "cm";
+
     public static final String CM_TAG = "cm";
+
+    public static final String CHILD_CLIENT = "child-clients";
+
+    public static final String CASE = "case";
 
     private API() {
     }

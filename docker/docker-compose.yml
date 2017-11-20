@@ -12,7 +12,7 @@ services:
           DB2NAME: ${DB_CMS_DB_NAME}
   case-api:
       image: ${REPOSITORY}/case-management-api
-      hostname: case-management-api
+      hostname: casemanagement
       depends_on:
         db2:
           condition: service_started
