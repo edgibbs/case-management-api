@@ -1,8 +1,8 @@
 package gov.ca.cwds.cm.web.rest;
 
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
-import gov.ca.cwds.cm.web.BaseApiIntegrationTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -19,6 +19,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
+		setUpCms();
 		setUpDb();
 	}
 

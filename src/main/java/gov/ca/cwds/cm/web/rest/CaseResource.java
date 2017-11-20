@@ -27,7 +27,7 @@ public class CaseResource {
   }
 
   @GET
-  @Path("/{caseId}")
+  @Path("/{id}")
   @ApiResponses(
     value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
@@ -38,10 +38,10 @@ public class CaseResource {
   @UnitOfWork
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class, code = 200)
   public Response get(
-      @PathParam("caseId")
+      @PathParam("id")
           @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
-          String caseId) {
-    CaseDTO caseDTO = caseService.find(caseId);
+          String id) {
+    CaseDTO caseDTO = caseService.find(id);
     if (caseDTO != null) {
       return Response.status(Response.Status.OK).entity(caseDTO).build();
     }

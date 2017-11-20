@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web;
+package gov.ca.cwds.cm;
 
 import gov.ca.cwds.cm.CmApiApplication;
 import gov.ca.cwds.cm.CmApiConfiguration;
@@ -53,39 +53,15 @@ public abstract class BaseApiIntegrationTest {
         dataSourceFactory.getUrl(), dataSourceFactory.getUser(), dataSourceFactory.getPassword());
   }
 
-  public static void setUpFas() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/fas_database_master.xml");
-    }
-  }
-
-  public static void setUpLis() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/lis_database_master.xml");
-    }
-  }
-
   public static void setUpCms() throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
       getDatabaseHelper().runScript("liquibase/cwscms_database_master.xml");
     }
   }
 
-  public static void setUpCmsrs() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/cwscmsrs_database_master.xml");
-    }
-  }
-
-  public static void setUpCalsns() throws Exception {
-    if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/calsns_database_master_for_tests.xml");
-    }
-  }
-
   public static void setUpDb() throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/test_database_master.xml");
+      getDatabaseHelper().runScript("liquibase/migration_master.xml");
     }
   }
 
