@@ -16,6 +16,7 @@ import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 /** @author CWDS TPT-3 Team */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@SuppressWarnings({"squid:S3437"})
 public class ClientDTO extends BaseDTO {
 
   private static final long serialVersionUID = -4098613951159302301L;

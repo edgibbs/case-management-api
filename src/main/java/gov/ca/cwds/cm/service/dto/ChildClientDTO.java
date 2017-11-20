@@ -18,6 +18,7 @@ import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 
 /** @author CWDS TPT-3 Team */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@SuppressWarnings({"squid:S3437"})
 public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 7569314519640349923L;
