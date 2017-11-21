@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Objects;
 
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
