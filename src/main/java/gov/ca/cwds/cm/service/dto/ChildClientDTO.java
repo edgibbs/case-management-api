@@ -1,13 +1,13 @@
 package gov.ca.cwds.cm.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
-import gov.ca.cwds.rest.api.Response;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -212,6 +212,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
     value = "yyyy-MM-dd",
     example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime sijsScheduledInterviewDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -238,6 +239,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
     value = "yyyy-MM-dd",
     example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime tribalCustomaryAdoptionDate;
 
   @NotNull
@@ -579,5 +581,15 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   public void setTribalCustomaryAdoptionIndicator(Boolean tribalCustomaryAdoptionIndicator) {
     this.tribalCustomaryAdoptionIndicator = tribalCustomaryAdoptionIndicator;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return EqualsBuilder.reflectionEquals(this, o);
+  }
+
+  @Override
+  public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 }

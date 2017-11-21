@@ -1,8 +1,5 @@
 package gov.ca.cwds.cm;
 
-import gov.ca.cwds.cm.CmApiApplication;
-import gov.ca.cwds.cm.CmApiConfiguration;
-import gov.ca.cwds.cm.DatabaseHelper;
 import gov.ca.cwds.cm.web.rest.RestClientTestRule;
 import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
 import io.dropwizard.db.DataSourceFactory;
