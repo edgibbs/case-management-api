@@ -5,7 +5,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 import java.math.BigDecimal;
 
 /**
- * The mapper to map legacy db number columns to String fields in DTO an vice verse.
+ * The mapper to map legacy db number columns to String fields in DTO and vice versa.
  *
  * @author CWDS TPT-3 Team
  */
