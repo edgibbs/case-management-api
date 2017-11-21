@@ -6,7 +6,6 @@ import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

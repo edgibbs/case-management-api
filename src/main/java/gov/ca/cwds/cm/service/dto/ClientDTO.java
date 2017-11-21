@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
@@ -576,6 +577,7 @@ public class ClientDTO extends BaseDTO {
             + "District Office.",
     example = " "
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   private LocalDate motherParentalTermDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -1252,5 +1254,19 @@ public class ClientDTO extends BaseDTO {
 
   public void setBirthCountryCode(Short birthCountryCode) {
     this.birthCountryCode = birthCountryCode;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof ClientDTO)) return false;
+    if (!super.equals(o)) return false;
+    ClientDTO clientDTO = (ClientDTO) o;
+    return Objects.equals(identifier, clientDTO.identifier);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), identifier);
   }
 }

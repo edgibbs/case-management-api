@@ -1,11 +1,9 @@
 package gov.ca.cwds.cm.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
-import gov.ca.cwds.rest.api.Response;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -13,6 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 
@@ -212,6 +211,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
     value = "yyyy-MM-dd",
     example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime sijsScheduledInterviewDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -238,6 +238,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
     value = "yyyy-MM-dd",
     example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime tribalCustomaryAdoptionDate;
 
   @NotNull
@@ -579,5 +580,19 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   public void setTribalCustomaryAdoptionIndicator(Boolean tribalCustomaryAdoptionIndicator) {
     this.tribalCustomaryAdoptionIndicator = tribalCustomaryAdoptionIndicator;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof ChildClientDTO)) return false;
+    if (!super.equals(o)) return false;
+    ChildClientDTO that = (ChildClientDTO) o;
+    return Objects.equals(victimClientId, that.victimClientId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), victimClientId);
   }
 }

@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.web.rest;
 
+import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.inject.ChildClientServiceBackedResource;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
@@ -44,6 +45,7 @@ public class ChildClientResource {
     code = 200
   )
   @UnitOfWork
+  @Timed
   public Response get(
       @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
