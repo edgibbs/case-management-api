@@ -1,7 +1,7 @@
 package gov.ca.cwds.cm.service;
 
-import gov.ca.cwds.cm.persistence.dao.ClientAddressDao;
-import gov.ca.cwds.cm.persistence.model.ClientAddress;
+import gov.ca.cwds.data.legacy.cms.dao.ClientAddressDao;
+import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.service.dto.CollectionDTO;
 import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;

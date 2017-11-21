@@ -2,7 +2,7 @@ package gov.ca.cwds.cm.service.mapper;
 
 import gov.ca.cwds.cm.service.dto.SystemCodeDTO;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyBooleanToStringMapper;
-import gov.ca.cwds.data.persistence.cms.SystemCode;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,9 +13,8 @@ import org.mapstruct.Mapping;
 @Mapper(uses = { LegacyBooleanToStringMapper.class })
 public interface SystemCodeMapper {
 
-  @Mapping(source = "foreignKeyMetaTable", target = "metaCode")
-  @Mapping(source = "otherCd", target = "otherCode")
   @Mapping(target = "messages", ignore = true)
-  SystemCodeDTO toDto(final SystemCode address);
+  @Mapping(source = "fkMeta", target = "metaCode")
+  SystemCodeDTO toDto(SystemCode address);
 
 }

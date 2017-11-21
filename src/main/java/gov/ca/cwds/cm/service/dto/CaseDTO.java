@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
-import gov.ca.cwds.cm.service.mapper.RemoveTrailingSpaces;
+import gov.ca.cwds.cm.service.mapper.tool.RemoveTrailingSpaces;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
@@ -447,19 +449,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    if (!super.equals(o)) return false;
-
-    CaseDTO caseDTO = (CaseDTO) o;
-
-    return id.equals(caseDTO.id);
+    return EqualsBuilder.reflectionEquals(this, o);
   }
 
   @Override
   public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + id.hashCode();
-    return result;
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 }

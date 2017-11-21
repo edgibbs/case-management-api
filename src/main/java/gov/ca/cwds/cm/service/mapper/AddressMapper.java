@@ -1,6 +1,5 @@
 package gov.ca.cwds.cm.service.mapper;
 
-import gov.ca.cwds.cm.persistence.model.Address;
 import gov.ca.cwds.cm.service.dto.AddressDTO;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyBooleanToStringMapper;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyZeroNumberToNullNumberMapper;
@@ -8,6 +7,7 @@ import gov.ca.cwds.cm.service.mapper.tool.LegacyZeroNumberToNullStringMapper;
 import gov.ca.cwds.cm.service.mapper.tool.NullNumberToZeroNumberField;
 import gov.ca.cwds.cm.service.mapper.tool.ZeroNumberToNullNumberField;
 import gov.ca.cwds.cm.service.mapper.tool.ZeroNumberToNullStringField;
+import gov.ca.cwds.data.legacy.cms.entity.Address;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -24,71 +24,66 @@ import org.mapstruct.Mapping;
 public interface AddressMapper {
 
   @Mapping(target = "messages", ignore = true)
-  @Mapping(source = "addressDescription", target = "description")
   @Mapping(
-      source = "emergencyNumber",
+      source = "emergencyPhone",
       target = "emergencyPhone",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "emergencyExtension",
+      source = "emergencyPhoneExtension",
       target = "emergencyPhoneExtension",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
-  @Mapping(source = "frgAdrtB", target = "foreignAddressExists")
-  @Mapping(source = "governmentEntityCd", target = "governmentEntityCode")
   @Mapping(
-      source = "messageNumber",
+      source = "messagePhone",
       target = "messagePhone",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "messageExtension",
+      source = "messagePhoneExtension",
       target = "messagePhoneExtension",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
-  @Mapping(source = "headerAddress", target = "otherHeaderAddress")
-  @Mapping(source = "postDirCd", target = "postDirectionTextCode")
-  @Mapping(source = "preDirCd", target = "preDirectionTextCode")
   @Mapping(
-      source = "primaryNumber",
+      source = "primaryPhone",
       target = "primaryPhone",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
   @Mapping(
-      source = "primaryExtension",
+      source = "primaryPhoneExtension",
       target = "primaryPhoneExtension",
       qualifiedBy = ZeroNumberToNullStringField.class
   )
-  @Mapping(source = "stateCd", target = "stateCode")
   @Mapping(
-      source = "streetSuffixCd",
+      source = "streetSuffixCode",
       target = "streetSuffixCode",
-      qualifiedBy = { ZeroNumberToNullNumberField.class }
+      qualifiedBy = ZeroNumberToNullNumberField.class
   )
   @Mapping(
-      source = "unitDesignationCd",
+      source = "unitDesignatorCode",
       target = "unitDesignatorCode",
-      qualifiedBy = { ZeroNumberToNullNumberField.class }
+      qualifiedBy = ZeroNumberToNullNumberField.class
   )
-  @Mapping(source = "zip4", target = "zipSuffix", qualifiedBy = ZeroNumberToNullStringField.class)
-  AddressDTO toDto(final Address address);
+  @Mapping(
+      source = "zipSuffix",
+      target = "zipSuffix",
+      qualifiedBy = ZeroNumberToNullStringField.class
+  )
+  AddressDTO toDto(Address address);
 
   @InheritInverseConfiguration
   @Mapping(
       source = "streetSuffixCode",
-      target = "streetSuffixCd",
+      target = "streetSuffixCode",
       qualifiedBy = NullNumberToZeroNumberField.class
   )
   @Mapping(
       source = "unitDesignatorCode",
-      target = "unitDesignationCd",
+      target = "unitDesignatorCode",
       qualifiedBy = NullNumberToZeroNumberField.class
   )
-  @Mapping(target = "state", ignore = true)
-  @Mapping(target = "contextAddressType", ignore = true)
   @Mapping(target = "lastUpdatedId", ignore = true)
   @Mapping(target = "lastUpdatedTime", ignore = true)
-  Address toEntity(final AddressDTO dto);
+  Address toEntity(AddressDTO dto);
 
 }

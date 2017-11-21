@@ -39,6 +39,29 @@ public class LegacyZeroNumberToNullStringMapperTest {
   }
 
   @Test
+  public void toLong_zero_whenNullInput() {
+    final Long actual = testSubject.toLong(null);
+    assertThat(actual, is(equalTo(0L)));
+  }
+
+  @Test
+  public void toLong_zero_whenEmptyInput() {
+    final Long actual = testSubject.toLong("");
+    assertThat(actual, is(equalTo(0L)));
+  }
+
+  @Test
+  public void toLong_success_whenValidInput() {
+    final Long actual = testSubject.toLong("123");
+    assertThat(actual, is(equalTo(123L)));
+  }
+
+  @Test(expected = NumberFormatException.class)
+  public void toLong_exception_whenInvalidInput() {
+    testSubject.toLong("notANumber");
+  }
+
+  @Test
   public void toInteger_zero_whenNullInput() {
     final Integer actual = testSubject.toInteger(null);
     assertThat(actual, is(equalTo(0)));
@@ -99,6 +122,24 @@ public class LegacyZeroNumberToNullStringMapperTest {
   @Test
   public void toStringFromDecimal_success_whenValidInput() {
     final String actual = testSubject.toStringFromDecimal(new BigDecimal("101"));
+    assertThat(actual, is(equalTo("101")));
+  }
+
+  @Test
+  public void toStringFromLong_null_whenNullInput() {
+    final String actual = testSubject.toStringFromLong(null);
+    assertThat(actual, is(nullValue()));
+  }
+
+  @Test
+  public void toStringFromLong_null_whenZeroInput() {
+    final String actual = testSubject.toStringFromLong(0L);
+    assertThat(actual, is(nullValue()));
+  }
+
+  @Test
+  public void toStringFromLong_success_whenValidInput() {
+    final String actual = testSubject.toStringFromLong(101L);
     assertThat(actual, is(equalTo("101")));
   }
 

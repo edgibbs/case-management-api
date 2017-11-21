@@ -1,8 +1,8 @@
 package gov.ca.cwds.cm.service;
 
 import com.google.inject.Inject;
-import gov.ca.cwds.cm.persistence.dao.AddressDao;
-import gov.ca.cwds.cm.persistence.model.Address;
+import gov.ca.cwds.data.legacy.cms.dao.AddressDao;
+import gov.ca.cwds.data.legacy.cms.entity.Address;
 import gov.ca.cwds.cm.service.mapper.AddressMapper;
 import gov.ca.cwds.rest.api.Response;
 import java.io.Serializable;

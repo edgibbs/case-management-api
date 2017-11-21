@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.service.mapper;
+package gov.ca.cwds.cm.service.mapper.tool;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.ClassUtils;

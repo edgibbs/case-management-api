@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@SuppressWarnings({"squid:S3437"})
 public class CollectionDTO<T extends BaseDTO> extends BaseDTO implements Response {
 
   private static final long serialVersionUID = -8348328384818361345L;

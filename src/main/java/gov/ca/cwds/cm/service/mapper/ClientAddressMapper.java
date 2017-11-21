@@ -1,8 +1,8 @@
 package gov.ca.cwds.cm.service.mapper;
 
-import gov.ca.cwds.cm.persistence.model.ClientAddress;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.service.mapper.tool.LegacyBooleanToStringMapper;
+import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,16 +15,12 @@ import org.mapstruct.Mapping;
 public interface ClientAddressMapper {
 
   @Mapping(target = "messages", ignore = true)
-  @Mapping(source = "bkInmtId", target = "bookingOrInmateId")
-  @Mapping(source = "effEndDt", target = "effectiveEndDate")
-  @Mapping(source = "effStartDt", target = "effectiveStartDate")
-  @Mapping(source = "homelessInd", target = "homelessIndicator")
   @Mapping(source = "fkClient", target = "clientId")
   @Mapping(source = "fkReferral", target = "referralId")
   ClientAddressDTO toDto(ClientAddress clientAddress);
 
   @InheritInverseConfiguration
-  @Mapping(target = "fkAddress", ignore = true)
+  @Mapping(source = "address.id", target = "fkAddress")
   @Mapping(target = "lastUpdatedId", ignore = true)
   @Mapping(target = "lastUpdatedTime", ignore = true)
   ClientAddress toEntity(ClientAddressDTO clientAddressDTO);

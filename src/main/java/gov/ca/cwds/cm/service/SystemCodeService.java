@@ -1,11 +1,11 @@
 package gov.ca.cwds.cm.service;
 
 import com.google.inject.Inject;
-import gov.ca.cwds.cm.persistence.dao.SystemCodeDao;
 import gov.ca.cwds.cm.service.dto.CollectionDTO;
 import gov.ca.cwds.cm.service.dto.SystemCodeDTO;
 import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
-import gov.ca.cwds.data.persistence.cms.SystemCode;
+import gov.ca.cwds.data.legacy.cms.dao.SystemCodeDao;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
