@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.validation.Date;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -1258,15 +1260,11 @@ public class ClientDTO extends BaseDTO {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ClientDTO)) return false;
-    if (!super.equals(o)) return false;
-    ClientDTO clientDTO = (ClientDTO) o;
-    return Objects.equals(identifier, clientDTO.identifier);
+    return EqualsBuilder.reflectionEquals(this, o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), identifier);
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 }

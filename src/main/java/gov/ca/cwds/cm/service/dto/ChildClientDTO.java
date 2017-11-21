@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -584,15 +586,11 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ChildClientDTO)) return false;
-    if (!super.equals(o)) return false;
-    ChildClientDTO that = (ChildClientDTO) o;
-    return Objects.equals(victimClientId, that.victimClientId);
+    return EqualsBuilder.reflectionEquals(this, o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), victimClientId);
+    return HashCodeBuilder.reflectionHashCode(this);
   }
 }
