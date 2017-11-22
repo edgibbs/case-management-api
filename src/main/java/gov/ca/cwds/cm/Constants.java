@@ -28,6 +28,10 @@ public final class Constants {
 
     public static final String CHILD_CLIENT = "child-clients";
 
+    public static final String ADDRESSES = "addresses";
+
+    public static final String SYSTEM_CODES = "system-codes";
+
     public static final String CASE = "case";
 
     public static final String CASE_WORKERS = "caseworkers";
