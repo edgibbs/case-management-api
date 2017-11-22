@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.CASE;
 
+import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
@@ -45,6 +46,7 @@ public class CaseResource {
       }
   )
   @UnitOfWork
+  @Timed
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class)
   public Response get(
       @PathParam("id")

@@ -82,6 +82,7 @@ public class ChildClientResource {
     response = ClientAddressDTO.class
   )
   @UnitOfWork
+  @Timed
   public Response getAddressesByClientId(
       @PathParam("id")
       @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")

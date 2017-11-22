@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.SYSTEM_CODES;
 
+import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.SystemCodeService;
 import gov.ca.cwds.cm.service.dto.CollectionDTO;
@@ -45,6 +46,7 @@ public class SystemCodeResource {
       @ApiResponse(code = 404, message = "Not Found")
   })
   @ApiOperation(value = "Find System Codes by meta code", response = SystemCodeDTO.class)
+  @Timed
   public Response get(
       @PathParam("metaCode")
       @ApiParam(required = true, name = "metaCode", value = "The meta code to find System Codes by", example = "GVR_ENTC")
