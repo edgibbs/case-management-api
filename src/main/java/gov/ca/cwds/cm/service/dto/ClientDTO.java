@@ -586,6 +586,7 @@ public class ClientDTO extends BaseDTO {
             + "District Office.",
     example = " "
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   private LocalDate motherParentalTermDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)

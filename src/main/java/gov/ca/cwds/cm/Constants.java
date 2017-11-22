@@ -34,6 +34,8 @@ public final class Constants {
 
     public static final String CASE = "case";
 
+    public static final String CASE_WORKERS = "caseworkers";
+
     private API() {
     }
 

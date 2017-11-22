@@ -215,6 +215,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
       value = "yyyy-MM-dd",
       example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime sijsScheduledInterviewDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -237,6 +238,7 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
       value = "yyyy-MM-dd",
       example = "2000-01-01"
   )
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime tribalCustomaryAdoptionDate;
 
   @NotNull
