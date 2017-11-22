@@ -1,15 +1,14 @@
 package gov.ca.cwds.cm.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
 import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
 
+import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.inject.ChildClientServiceBackedResource;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
-import gov.ca.cwds.cm.service.dto.CollectionDTO;
 import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
 import gov.ca.cwds.rest.resources.ResourceDelegate;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -18,6 +17,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.util.Collection;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -87,7 +87,7 @@ public class ChildClientResource {
       @PathParam("id")
       @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
       final String id) {
-    final CollectionDTO<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
-    return ResourceUtil.responseOrNotFound(addresses);
+    final Collection<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
+    return ResponseUtil.responseOrNotFound(addresses);
   }
 }

@@ -5,7 +5,6 @@ import static gov.ca.cwds.cm.Constants.API.SYSTEM_CODES;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.SystemCodeService;
-import gov.ca.cwds.cm.service.dto.CollectionDTO;
 import gov.ca.cwds.cm.service.dto.SystemCodeDTO;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
@@ -13,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.util.Collection;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -52,7 +52,7 @@ public class SystemCodeResource {
       @ApiParam(required = true, name = "metaCode", value = "The meta code to find System Codes by", example = "GVR_ENTC")
       final String metaCode
   ) {
-    final CollectionDTO<SystemCodeDTO> serviceCodes = systemCodeService.findByMetaCode(metaCode);
-    return ResourceUtil.responseOrNotFound(serviceCodes);
+    final Collection<SystemCodeDTO> serviceCodes = systemCodeService.findByMetaCode(metaCode);
+    return ResponseUtil.responseOrNotFound(serviceCodes);
   }
 }

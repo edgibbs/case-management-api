@@ -60,7 +60,7 @@ public class CaseWorkerMockResource {
           String caseworkerId)
       throws IOException {
 
-    if ("q48".equals(caseworkerId)) {
+    if (!"q48".equals(caseworkerId)) {
       return Response.ok().status(Response.Status.NOT_FOUND).build();
     }
 

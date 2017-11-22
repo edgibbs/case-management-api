@@ -1,7 +1,7 @@
 package gov.ca.cwds.cm.service;
 
+import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
-import gov.ca.cwds.cm.service.dto.CollectionDTO;
 import gov.ca.cwds.cm.service.dto.SystemCodeDTO;
 import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
 import gov.ca.cwds.data.legacy.cms.dao.SystemCodeDao;
@@ -24,15 +24,13 @@ public class SystemCodeService extends CrudServiceAdapter {
     this.systemCodeMapper = systemCodeMapper;
   }
 
-  public CollectionDTO<SystemCodeDTO> findByMetaCode(final String metaCode) {
+  public Collection<SystemCodeDTO> findByMetaCode(final String metaCode) {
     final Collection<SystemCode> systemCodes = systemCodeDao.findByMetaCode(metaCode);
 
     final List<SystemCodeDTO> dtos = systemCodes.stream()
         .map(systemCodeMapper::toDto)
         .collect(Collectors.toList());
 
-    return CollectionDTO.<SystemCodeDTO>builder()
-        .items(dtos)
-        .build();
+    return ImmutableList.<SystemCodeDTO>builder().addAll(dtos).build();
   }
 }

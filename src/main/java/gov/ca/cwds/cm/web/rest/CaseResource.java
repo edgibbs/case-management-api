@@ -53,6 +53,6 @@ public class CaseResource {
       @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
       String id) {
     CaseDTO caseDTO = caseService.find(id);
-    return ResourceUtil.responseOrNotFound(caseDTO);
+    return ResponseUtil.responseOrNotFound(caseDTO);
   }
 }

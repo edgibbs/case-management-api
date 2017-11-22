@@ -1,10 +1,10 @@
 package gov.ca.cwds.cm.service;
 
+import com.google.common.collect.ImmutableList;
+import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
+import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;
 import gov.ca.cwds.data.legacy.cms.dao.ClientAddressDao;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
-import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
-import gov.ca.cwds.cm.service.dto.CollectionDTO;
-import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,16 +26,14 @@ public class ClientAddressService extends CrudServiceAdapter {
     this.clientAddressMapper = clientAddressMapper;
   }
 
-  public CollectionDTO<ClientAddressDTO> findByClientId(final String clientId) {
+  public Collection<ClientAddressDTO> findByClientId(final String clientId) {
     final Collection<ClientAddress> addresses = clientAddressDao.findByClientId(clientId);
 
     final List<ClientAddressDTO> dtos = addresses.stream()
         .map(clientAddressMapper::toDto)
         .collect(Collectors.toList());
 
-    return CollectionDTO.<ClientAddressDTO>builder()
-        .items(dtos)
-        .build();
+    return ImmutableList.<ClientAddressDTO>builder().addAll(dtos).build();
   }
 
 }

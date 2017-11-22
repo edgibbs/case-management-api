@@ -52,7 +52,7 @@ public class AddressResource {
       final String id
   ) {
     final gov.ca.cwds.rest.api.Response response = addressService.find(id);
-    return ResourceUtil.responseOrNotFound(response);
+    return ResponseUtil.responseOrNotFound(response);
   }
 
 }
