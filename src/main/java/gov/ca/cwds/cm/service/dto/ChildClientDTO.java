@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -19,7 +17,7 @@ import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 /** @author CWDS TPT-3 Team */
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
-public class ChildClientDTO extends BaseDTO implements RequestResponse {
+public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
 
   private static final long serialVersionUID = 7569314519640349923L;
 
@@ -245,18 +243,6 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
   @NotNull
   @ApiModelProperty(required = true, readOnly = false)
   private Boolean tribalCustomaryAdoptionIndicator;
-
-  @NotNull
-  @ApiModelProperty(required = true, readOnly = false)
-  private ClientDTO client;
-
-  public ClientDTO getClient() {
-    return client;
-  }
-
-  public void setClient(ClientDTO client) {
-    this.client = client;
-  }
 
   public static long getSerialVersionUID() {
     return serialVersionUID;
@@ -581,15 +567,5 @@ public class ChildClientDTO extends BaseDTO implements RequestResponse {
 
   public void setTribalCustomaryAdoptionIndicator(Boolean tribalCustomaryAdoptionIndicator) {
     this.tribalCustomaryAdoptionIndicator = tribalCustomaryAdoptionIndicator;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    return EqualsBuilder.reflectionEquals(this, o);
-  }
-
-  @Override
-  public int hashCode() {
-    return HashCodeBuilder.reflectionHashCode(this);
   }
 }
