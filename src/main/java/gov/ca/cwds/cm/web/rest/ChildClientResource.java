@@ -35,6 +35,9 @@ public class ChildClientResource {
 
   @Inject
   private ClientFacade clientFacade;
+  @Inject
+  private ClientAddressService clientAddressService;
+
 
   @GET
   @Path("/{id}")
@@ -56,7 +59,7 @@ public class ChildClientResource {
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
          final String id) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
-    childClientParameterObject.setChildClientId(clientId);
+    childClientParameterObject.setChildClientId(id);
     return Response.ok().entity(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT)).build();
   }
 

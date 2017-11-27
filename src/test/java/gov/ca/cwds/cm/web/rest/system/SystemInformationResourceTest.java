@@ -24,7 +24,7 @@ public class SystemInformationResourceTest extends BaseApiIntegrationTest {
         .target(Constants.API.SYSTEM_INFORMATION_PATH)
         .request(MediaType.APPLICATION_JSON)
         .get(SystemInformationDTO.class);
-    assertEquals("CASE MANAGEMENT API", systemInformationDTO.getApplication());
+    assertEquals("CWDS CASE MANAGEMENT API", systemInformationDTO.getApplication());
     assertNotNull(systemInformationDTO.getVersion());
 
     assertDeadlocks(systemInformationDTO.getDeadlocks());
