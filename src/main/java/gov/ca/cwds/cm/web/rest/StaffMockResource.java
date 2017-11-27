@@ -1,7 +1,5 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.Constants.API.STAFF;
-
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
