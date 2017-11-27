@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
 /** @author CWDS TPT-3 Team */
-public class CaseWorkerResourceTest extends BaseApiIntegrationTest {
+public class CaseWorkerMockResourceTest extends BaseApiIntegrationTest {
 
   public static final String CASEWORKER_ID = "q48";
   public static final String WRONG_CASEWORKER_ID = "-1";

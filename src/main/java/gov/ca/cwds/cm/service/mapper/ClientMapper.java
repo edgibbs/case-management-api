@@ -4,13 +4,10 @@ import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 /** @author CWDS TPT-3 Team */
 @Mapper
 public interface ClientMapper {
-
-  ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
   @Mapping(target = "commentDescription", source = "commntDsc")
   @Mapping(target = "estimatedDobCode", source = "estDobCd")

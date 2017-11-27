@@ -15,20 +15,20 @@ import static io.dropwizard.testing.FixtureHelpers.fixture;
 
 public class CaseResourceTest extends BaseApiIntegrationTest {
 
-	public static final String CASE_ID = "ArgnUzi09L";
+  public static final String CASE_ID = "ArgnUzi09L";
 
-	@BeforeClass
-	public static void beforeClass() throws Exception {
-		setUpCms();
-		setUpDb();
-	}
+  @BeforeClass
+  public static void beforeClass() throws Exception {
+    setUpCms();
+    setUpDb();
+  }
 
-	@Test
-	public void testGetCaseById() throws Exception {
-		WebTarget target = clientTestRule.target(Constants.API.CASE + "/" + CASE_ID);
-		Response response = target.request(MediaType.APPLICATION_JSON).get();
-		CaseDTO caseDTO = response.readEntity(CaseDTO.class);
-		String fixture = fixture("fixtures/case-by-id-response.json");
-		assertEqualsResponse(fixture, transformDTOtoJSON(caseDTO));
-	}
+  @Test
+  public void testGetCaseById() throws Exception {
+    WebTarget target = clientTestRule.target(Constants.API.CASE + "/" + CASE_ID);
+    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    CaseDTO caseDTO = response.readEntity(CaseDTO.class);
+    String fixture = fixture("fixtures/case-by-id-response.json");
+    assertEqualsResponse(fixture, transformDTOtoJSON(caseDTO));
+  }
 }

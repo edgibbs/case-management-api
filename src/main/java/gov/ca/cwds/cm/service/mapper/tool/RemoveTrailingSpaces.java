@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.service.mapper;
+package gov.ca.cwds.cm.service.mapper.tool;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

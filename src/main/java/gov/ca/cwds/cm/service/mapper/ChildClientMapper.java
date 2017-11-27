@@ -4,13 +4,10 @@ import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 /** @author CWDS TPT-3 Team */
 @Mapper(uses = {ClientMapper.class})
 public interface ChildClientMapper {
-
-  ChildClientMapper INSTANCE = Mappers.getMapper(ChildClientMapper.class);
 
   @Mapping(target = "messages", ignore = true)
   @Mapping(target = "victimClientId", source = "victimClientId")
@@ -52,7 +49,7 @@ public interface ChildClientMapper {
     source = "safelySurrendedBabiesIndicatorVar"
   )
   @Mapping(target = "sawsCaseSerialNumber", source = "sawsCaseSerialNumber")
-  @Mapping(target = "deathCircumstancesType", source = "deathCircumstancesType.sysId")
+  @Mapping(target = "deathCircumstancesType", source = "deathCircumstancesType.systemId")
   @Mapping(target = "sijsScheduledInterviewDate", ignore = true)
   @Mapping(target = "siiNextScreeningDueDate", ignore = true)
   @Mapping(target = "ssiSspApplicationIndicator", source = "ssiSspApplicationIndicator")

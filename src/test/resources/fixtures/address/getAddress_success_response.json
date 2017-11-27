@@ -1,0 +1,20 @@
+{
+  "id" : "Ab7mue101b",
+  "description" : "",
+  "city" : "Lakeport",
+  "emergency_phone" : "5243542354",
+  "emergency_phone_extension" : "523454",
+  "foreign_address_exists" : false,
+  "government_entity_code" : 1084,
+  "other_header_address" : "",
+  "post_direction_text_code" : "",
+  "pre_direction_text_code" : "",
+  "primary_phone" : "8300001242",
+  "primary_phone_extension" : "54235",
+  "state_code" : 1828,
+  "street_name" : "Vahlen Crossing",
+  "street_number" : "45435",
+  "unit_number" : "",
+  "zip" : "45435",
+  "zip_suffix" : "4534"
+}
