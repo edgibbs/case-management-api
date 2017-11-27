@@ -1,7 +1,5 @@
 package gov.ca.cwds.cm.web.rest;
 
-import static gov.ca.cwds.cm.Constants.API.CASE_WORKERS;
-
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -10,30 +8,25 @@ import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
+import static gov.ca.cwds.cm.Constants.API.STAFF;
 
 /**
  * @author CWDS TPT-3 Team
  */
-@Api(tags = CASE_WORKERS, value = CASE_WORKERS)
-@Path(value = CASE_WORKERS)
+@Api(tags = STAFF, value = STAFF)
+@Path(value = STAFF)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CaseWorkerMockResource {
+public class StaffMockResource {
 
   @GET
   @Path("/{id}/clients")
