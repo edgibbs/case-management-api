@@ -26,8 +26,6 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   public static final String CLIENT_ID = "BKk7CHj00Z";
 
-  public static final String WRONG_CLIENT_ID = "-1";
-
   @BeforeClass
   public static void beforeClass() throws Exception {
     setUpCms();
