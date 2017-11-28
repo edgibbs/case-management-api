@@ -45,17 +45,4 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
     return configuration.getWebSecurityConfiguration();
   }
 
-  @Provides
-  @ApplicationName
-  public String appName(T configuration) {
-    return configuration.getApplicationName();
-  }
-
-  @Provides
-  @ApplicationVersion
-  public String appVersion(T configuration) {
-    return configuration.getVersion();
-  }
-
-
 }

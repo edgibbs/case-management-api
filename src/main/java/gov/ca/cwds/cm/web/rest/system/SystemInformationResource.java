@@ -5,9 +5,8 @@ import static gov.ca.cwds.cm.Constants.API.SYSTEM_INFORMATION_PATH;
 import com.codahale.metrics.health.HealthCheck;
 import com.codahale.metrics.health.HealthCheck.Result;
 import com.google.inject.Inject;
+import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.cm.Constants;
-import gov.ca.cwds.cm.inject.ApplicationName;
-import gov.ca.cwds.cm.inject.ApplicationVersion;
 import gov.ca.cwds.cm.service.dto.system.HealthCheckResultDTO;
 import gov.ca.cwds.cm.service.dto.system.SystemInformationDTO;
 import gov.ca.cwds.rest.api.ApiException;
@@ -41,11 +40,10 @@ public class SystemInformationResource {
 
   @Inject
   public SystemInformationResource(
-      @ApplicationName final String applicationName,
-      @ApplicationVersion final String applicationVersion,
+      final CmApiConfiguration configuration,
       final Environment environment) {
-    this.applicationName = applicationName;
-    this.applicationVersion = applicationVersion;
+    this.applicationName = configuration.getApplicationName();
+    this.applicationVersion = configuration.getVersion();
     this.environment = environment;
     final Properties versionProperties = getVersionProperties();
     this.buildNumber = versionProperties.getProperty(BUILD_NUMBER);
