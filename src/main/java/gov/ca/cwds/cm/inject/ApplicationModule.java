@@ -2,7 +2,6 @@ package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.name.Named;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.inject.AuditingModule;
 import gov.ca.cwds.rest.WebSecurityConfiguration;
@@ -47,13 +46,13 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   }
 
   @Provides
-  @Named("app.name")
+  @ApplicationName
   public String appName(T configuration) {
     return configuration.getApplicationName();
   }
 
   @Provides
-  @Named("app.version")
+  @ApplicationVersion
   public String appVersion(T configuration) {
     return configuration.getVersion();
   }
