@@ -1,6 +1,6 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
+import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENTS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -28,8 +28,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /** @author CWDS TPT-3 Team */
-@Api(tags = CHILD_CLIENT, value = CHILD_CLIENT)
-@Path(value = CHILD_CLIENT)
+@Api(tags = CHILD_CLIENTS, value = CHILD_CLIENTS)
+@Path(value = CHILD_CLIENTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {

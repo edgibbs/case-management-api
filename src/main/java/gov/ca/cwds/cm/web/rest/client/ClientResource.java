@@ -1,6 +1,6 @@
 package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.Constants.API.CLIENT;
+import static gov.ca.cwds.cm.Constants.API.CLIENTS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -23,8 +23,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /** @author CWDS TPT-3 Team */
-@Api(tags = CLIENT, value = CLIENT)
-@Path(value = CLIENT)
+@Api(tags = CLIENTS, value = CLIENTS)
+@Path(value = CLIENTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClientResource {

@@ -30,7 +30,7 @@ public class ClientResourceTest extends BaseApiIntegrationTest {
 
   @Test
   public void testGetChildClientById() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.CLIENT + "/" + CLIENT_ID);
+    WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     ClientDTO clientDTO = response.readEntity(ClientDTO.class);
 
