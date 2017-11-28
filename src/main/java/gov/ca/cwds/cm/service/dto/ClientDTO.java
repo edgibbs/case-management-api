@@ -12,7 +12,6 @@ import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,7 +21,6 @@ import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 /** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)

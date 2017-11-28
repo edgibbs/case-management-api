@@ -32,7 +32,6 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   @Override
   protected void configure() {
     install(new ServicesModule());
-    install(new ResourcesModule());
     install(new AuditingModule());
     install(new MappingModule());
     install(new FiltersModule());

@@ -5,12 +5,12 @@ import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.inject.ChildClientServiceBackedResource;
+import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
-import gov.ca.cwds.rest.resources.ResourceDelegate;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,25 +33,23 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {
 
-  private final ResourceDelegate childClientResourceDelegate;
-  private final ClientAddressService clientAddressService;
+  private ClientFacade clientFacade;
+  private ClientAddressService clientAddressService;
 
   @Inject
-  public ChildClientResource(
-      @ChildClientServiceBackedResource ResourceDelegate childClientResourceDelegate,
-      ClientAddressService clientAddressService) {
-    this.childClientResourceDelegate = childClientResourceDelegate;
+  public ChildClientResource(ClientFacade clientFacade, ClientAddressService clientAddressService) {
     this.clientAddressService = clientAddressService;
+    this.clientFacade = clientFacade;
   }
 
   @GET
   @Path("/{id}")
   @ApiResponses(
-    value = {
-      @ApiResponse(code = 401, message = "Not Authorized"),
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 406, message = "Accept Header not supported")
-    }
+          value = {
+                  @ApiResponse(code = 401, message = "Not Authorized"),
+                  @ApiResponse(code = 404, message = "Not found"),
+                  @ApiResponse(code = 406, message = "Accept Header not supported")
+          }
   )
   @ApiOperation(
     value = "Find childClient by client ID",
@@ -61,12 +59,11 @@ public class ChildClientResource {
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
+         final String id) {
     ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
     childClientParameterObject.setChildClientId(id);
-    Response childClientDTO = childClientResourceDelegate.get(childClientParameterObject);
-    return Response.ok().entity(childClientDTO.getEntity()).build();
+    return Response.ok().entity(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT)).build();
   }
 
   @GET
