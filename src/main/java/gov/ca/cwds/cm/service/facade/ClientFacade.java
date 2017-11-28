@@ -12,8 +12,12 @@ import java.io.Serializable;
  */
 public class ClientFacade {
 
-    @Inject
     private ChildClientService childClientService;
+
+    @Inject
+    public ClientFacade(ChildClientService childClientService) {
+        this.childClientService = childClientService;
+    }
 
     public Response find(Serializable serializable, ClientType clientType) {
         switch (clientType) {

@@ -14,11 +14,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author CWDS TPT-3 Team
@@ -26,7 +24,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)

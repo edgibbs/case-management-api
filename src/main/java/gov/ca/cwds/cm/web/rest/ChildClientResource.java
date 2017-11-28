@@ -33,11 +33,14 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {
 
-  @Inject
   private ClientFacade clientFacade;
-  @Inject
   private ClientAddressService clientAddressService;
 
+  @Inject
+  public ChildClientResource(ClientFacade clientFacade, ClientAddressService clientAddressService) {
+    this.clientAddressService = clientAddressService;
+    this.clientFacade = clientFacade;
+  }
 
   @GET
   @Path("/{id}")
