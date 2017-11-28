@@ -1,11 +1,14 @@
 package gov.ca.cwds.cm.service.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /** @author CWDS TPT-3 Team */
 @Data
