@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
 
@@ -10,7 +10,8 @@ import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
-import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
+import gov.ca.cwds.cm.web.rest.ResponseUtil;
+import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,9 +62,9 @@ public class ChildClientResource {
       @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
          final String id) {
-    ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
-    childClientParameterObject.setChildClientId(id);
-    return Response.ok().entity(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT)).build();
+    ClientParameterObject clientParameterObject = new ClientParameterObject();
+    clientParameterObject.setClientId(id);
+    return Response.ok().entity(clientFacade.find(clientParameterObject, ClientType.CHILD_CLIENT)).build();
   }
 
   @GET

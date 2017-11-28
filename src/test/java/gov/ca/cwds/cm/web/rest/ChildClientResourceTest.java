@@ -4,6 +4,7 @@ import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import org.assertj.core.api.Assertions;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,6 +25,8 @@ import static org.hamcrest.Matchers.is;
 public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   public static final String CLIENT_ID = "BKk7CHj00Z";
+
+  public static final String WRONG_CLIENT_ID = "-1";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
