@@ -21,6 +21,10 @@ public class ClientFacade {
   }
 
   public Response find(Serializable serializable, ClientType clientType) {
+    if (clientType == null) {
+      return null;
+    }
+
     switch (clientType) {
       case BASE_CLIENT:
         return clientService.find(serializable);
