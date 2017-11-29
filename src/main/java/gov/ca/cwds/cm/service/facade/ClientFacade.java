@@ -21,8 +21,8 @@ public class ClientFacade {
   }
 
   public Response find(Serializable serializable, ClientType clientType) {
-    if (ClientType.CHILD_CLIENT.equals(clientType)) {
-      return childClientService.find(serializable);
+    if (clientType == null) {
+      return null;
     }
 
     switch (clientType) {
