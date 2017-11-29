@@ -10,9 +10,14 @@ import java.io.Serializable;
 
 public class CaseService extends TypedCrudServiceAdapter {
 
-  @Inject private CaseDao caseDao;
+  private CaseDao caseDao;
+  private CaseMapper caseMapper;
 
-  @Inject private CaseMapper caseMapper;
+  @Inject
+  public CaseService(CaseDao caseDao, CaseMapper caseMapper) {
+    this.caseDao = caseDao;
+    this.caseMapper = caseMapper;
+  }
 
   @Override
   public CaseDTO find(Serializable param) {
