@@ -63,8 +63,6 @@ public final class ResponseUtil {
   }
 
   private static boolean isCollectionDtoEmpty(final CollectionDTO<?> collectionDTO) {
-    return collectionDTO == null
-        || collectionDTO.getItems() == null
-        || collectionDTO.getItems().isEmpty();
+    return collectionDTO == null || CollectionUtils.isEmpty(collectionDTO.getItems());
   }
 }
