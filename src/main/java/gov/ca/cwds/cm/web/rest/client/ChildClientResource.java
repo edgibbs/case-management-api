@@ -1,6 +1,6 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
-import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENT;
+import static gov.ca.cwds.cm.Constants.API.CHILD_CLIENTS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -10,7 +10,8 @@ import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
-import gov.ca.cwds.cm.web.rest.parameter.ChildClientParameterObject;
+import gov.ca.cwds.cm.web.rest.ResponseUtil;
+import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +28,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /** @author CWDS TPT-3 Team */
-@Api(tags = CHILD_CLIENT, value = CHILD_CLIENT)
-@Path(value = CHILD_CLIENT)
+@Api(tags = CHILD_CLIENTS, value = CHILD_CLIENTS)
+@Path(value = CHILD_CLIENTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildClientResource {
@@ -61,9 +62,9 @@ public class ChildClientResource {
       @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
          final String id) {
-    ChildClientParameterObject childClientParameterObject = new ChildClientParameterObject();
-    childClientParameterObject.setChildClientId(id);
-    return Response.ok().entity(clientFacade.find(childClientParameterObject, ClientType.CHILD_CLIENT)).build();
+    ClientParameterObject clientParameterObject = new ClientParameterObject();
+    clientParameterObject.setClientId(id);
+    return Response.ok().entity(clientFacade.find(clientParameterObject, ClientType.CHILD_CLIENT)).build();
   }
 
   @GET

@@ -3,6 +3,7 @@ package gov.ca.cwds.cm.service.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.rest.validation.Date;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,7 +26,7 @@ import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 @AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
-public class ClientDTO extends BaseDTO {
+public class ClientDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = -4098613951159302301L;
 

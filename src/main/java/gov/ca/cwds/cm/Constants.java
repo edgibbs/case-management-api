@@ -26,7 +26,9 @@ public final class Constants {
 
     public static final String CM_TAG = "cm";
 
-    public static final String CHILD_CLIENT = "child-clients";
+    public static final String CHILD_CLIENTS = "child-clients";
+
+    public static final String CLIENTS = "clients";
 
     public static final String ADDRESSES = "addresses";
 
