@@ -1,5 +1,7 @@
 package gov.ca.cwds.cm.service.dto;
 
+import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -7,17 +9,14 @@ import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.rest.validation.Date;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 /** @author CWDS TPT-3 Team */
 @Data
@@ -423,7 +422,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "occurrence of this entity type.",
     example = "00h"
   )
-  private Timestamp lastUpdateTimestamp;
+  private LocalDateTime lastUpdateTimestamp;
 
   @NotNull
   @Size(max = 120)

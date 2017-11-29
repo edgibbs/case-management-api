@@ -82,8 +82,8 @@ public interface AddressMapper {
       target = "unitDesignatorCode",
       qualifiedBy = NullNumberToZeroNumberField.class
   )
-  @Mapping(target = "lastUpdatedId", ignore = true)
-  @Mapping(target = "lastUpdatedTime", ignore = true)
+  @Mapping(target = "lastUpdateId", ignore = true)
+  @Mapping(target = "lastUpdateTime", ignore = true)
   Address toEntity(AddressDTO dto);
 
 }

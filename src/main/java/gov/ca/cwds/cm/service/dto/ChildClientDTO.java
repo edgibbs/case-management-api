@@ -244,8 +244,4 @@ public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
   @ApiModelProperty(required = true)
   private Boolean tribalCustomaryAdoptionIndicator;
 
-  @NotNull
-  @ApiModelProperty(required = true)
-  private ClientDTO client;
-
 }
