@@ -6,8 +6,6 @@ import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.data.legacy.cms.dao.ChildClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
-import gov.ca.cwds.rest.api.Request;
-import gov.ca.cwds.rest.api.Response;
 
 import java.io.Serializable;
 
@@ -27,20 +25,5 @@ public class ChildClientService extends CrudServiceAdapter {
   public ChildClientDTO find(Serializable serializable) {
     ChildClient childClient = childClientDao.find(((ClientParameterObject) serializable).getClientId());
     return childClientMapper.toChildClientDTO(childClient);
-  }
-
-  @Override
-  public Response delete(Serializable serializable) {
-    return null;
-  }
-
-  @Override
-  public Response create(Request request) {
-    return null;
-  }
-
-  @Override
-  public Response update(Serializable serializable, Request request) {
-    return null;
   }
 }
