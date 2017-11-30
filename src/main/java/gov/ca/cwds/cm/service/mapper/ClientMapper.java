@@ -3,10 +3,12 @@ package gov.ca.cwds.cm.service.mapper;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import org.mapstruct.Mapper;
+import org.mapstruct.MapperConfig;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingInheritanceStrategy;
 
 /** @author CWDS TPT-3 Team */
-@Mapper
+@MapperConfig(mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_FROM_CONFIG)
 @FunctionalInterface
 public interface ClientMapper {
 
