@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingInheritanceStrategy;
 
 /** @author CWDS TPT-3 Team */
+@Mapper
 @MapperConfig(mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_FROM_CONFIG)
 @FunctionalInterface
 public interface ClientMapper {
