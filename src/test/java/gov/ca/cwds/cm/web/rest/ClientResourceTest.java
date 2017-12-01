@@ -9,16 +9,11 @@ import static org.assertj.core.api.Assertions.fail;
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
-import gov.ca.cwds.cm.web.rest.dto.request.ClientsSearchCriteria;
-import io.dropwizard.cli.Cli;
-import java.util.List;
-import javax.ws.rs.NotFoundException;
+import gov.ca.cwds.cm.service.dto.search.criteria.ClientsSearchCriteriaDTO;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.assertj.core.api.ListAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -29,27 +24,27 @@ public class ClientResourceTest extends BaseApiIntegrationTest {
   public static final String CASEWORKER_ID = "q48";
   public static final String WRONG_CASEWORKER_ID = "-1";
 
-//  @BeforeClass
-//  public static void beforeClass() throws Exception {
-//    setUpCms();
-//    setUpDb();
-//    runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
-//  }
-//
-//  @Test
-//  public void testGetChildClientById() throws Exception {
-//    WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID);
-//    Response response = target.request(MediaType.APPLICATION_JSON).get();
-//    ClientDTO clientDTO = response.readEntity(ClientDTO.class);
-//
-//    String fixture = fixture("fixtures/client-by-id-response.json");
-//    assertEqualsResponse(fixture, transformDTOtoJSON(clientDTO));
-//  }
+  @BeforeClass
+  public static void beforeClass() throws Exception {
+    setUpCms();
+    setUpDb();
+    runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
+  }
+
+  @Test
+  public void testGetChildClientById() throws Exception {
+    WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID);
+    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    ClientDTO clientDTO = response.readEntity(ClientDTO.class);
+
+    String fixture = fixture("fixtures/client-by-id-response.json");
+    assertEqualsResponse(fixture, transformDTOtoJSON(clientDTO));
+  }
 
   @Test
   public void testGetCaseById() throws Exception {
     WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/_search");
-    ClientsSearchCriteria searchCriteria = new ClientsSearchCriteria(CASEWORKER_ID);
+    ClientsSearchCriteriaDTO searchCriteria = new ClientsSearchCriteriaDTO(CASEWORKER_ID);
     Response response =
         target
             .request(MediaType.APPLICATION_JSON)
@@ -60,7 +55,7 @@ public class ClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testGetBaseByWrongId() {
     WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/_search");
-    ClientsSearchCriteria searchCriteria = new ClientsSearchCriteria(WRONG_CASEWORKER_ID);
+    ClientsSearchCriteriaDTO searchCriteria = new ClientsSearchCriteriaDTO(WRONG_CASEWORKER_ID);
     Response response =
         target
             .request(MediaType.APPLICATION_JSON)

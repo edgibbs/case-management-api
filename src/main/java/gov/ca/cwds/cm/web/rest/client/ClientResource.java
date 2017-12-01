@@ -12,7 +12,7 @@ import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.web.rest.ResponseUtil;
-import gov.ca.cwds.cm.web.rest.dto.request.ClientsSearchCriteria;
+import gov.ca.cwds.cm.service.dto.search.criteria.ClientsSearchCriteriaDTO;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
@@ -82,8 +82,8 @@ public class ClientResource {
   @ApiOperation(value = "Find client by client ID", response = ClientDTO[].class)
   @UnitOfWork
   @Timed
-  public Response search(@ApiParam ClientsSearchCriteria clientsSearchCriteria) throws IOException {
-    if (!"q48".equals(clientsSearchCriteria.getStaffId())) {
+  public Response search(@ApiParam ClientsSearchCriteriaDTO clientsSearchCriteriaDTO) throws IOException {
+    if (!"q48".equals(clientsSearchCriteriaDTO.getStaffId())) {
       return Response.status(200).entity(new ArrayList<>()).build();
     }
 
