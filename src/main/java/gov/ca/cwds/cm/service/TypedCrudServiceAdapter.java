@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * @author CWDS TPT-3 Team
  */
-public class TypedCrudServiceAdapter<P extends Serializable, Q extends Request, S extends Response>
+public abstract class TypedCrudServiceAdapter<P extends Serializable, Q extends Request, S extends Response>
     implements TypedCrudsService<P, Q, S> {
 
   @Override
