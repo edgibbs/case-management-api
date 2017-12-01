@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * @author CWDS TPT-3 Team
  */
-public class CrudServiceAdapter implements CrudsService {
+public abstract class CrudServiceAdapter implements CrudsService {
 
   @Override
   public Response find(Serializable params) {
