@@ -1,0 +1,53 @@
+{
+  "results": [
+    {
+      "id": "AadfKnG07n",
+      "approval_number": "R8TQDh807n",
+      "approval_status": "122",
+      "case_closure_reason": "310",
+      "caseplan_children_detail": false,
+      "country": "563",
+      "county_specific_code": "57",
+      "end_date": "2002-11-08",
+      "child_client": "8m7hS7i07n",
+      "staff_person": "07n",
+      "county": "1124",
+      "icpc_outgoing_placement_status": false,
+      "icpc_outgoing_request": false,
+      "limited_access": "N/A",
+      "case_name": "pts 20414                          ",
+      "responsible_agency": "County Welfare Department",
+      "special_project_case": false,
+      "start_date": "2002-11-08",
+      "state": "1828",
+      "active_service_component": "1692",
+      "active_service_component_start_date": "2002-11-08",
+      "tickle": false
+    },
+    {
+      "id": "Aekbau900u",
+      "approval_number": "GIxeGnJ00u",
+      "approval_status": "122",
+      "case_closure_reason": "313",
+      "caseplan_children_detail": false,
+      "country": "563",
+      "county_specific_code": "05",
+      "end_date": "1997-09-16",
+      "child_client": "HYpyXEf00u",
+      "staff_person": "00u",
+      "county": "1072",
+      "icpc_outgoing_placement_status": false,
+      "icpc_outgoing_request": false,
+      "limited_access": "N/A",
+      "case_name": "R5511 Boy S                        ",
+      "responsible_agency": "County Welfare Department",
+      "special_project_case": false,
+      "start_date": "1997-09-01",
+      "state": "1828",
+      "active_service_component": "1694",
+      "active_service_component_start_date": "1997-09-01",
+      "tickle": false
+    }
+  ],
+  "total_records": 5
+}

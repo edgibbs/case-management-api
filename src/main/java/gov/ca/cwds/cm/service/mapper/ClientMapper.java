@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 @FunctionalInterface
 public interface ClientMapper {
 
+  @Mapping(target = "messages", ignore = true)
   @Mapping(target = "commentDescription", source = "commntDsc")
   @Mapping(target = "estimatedDobCode", source = "estDobCd")
   @Mapping(target = "birthplaceVerifiedIdentificator", source = "bpVerInd")

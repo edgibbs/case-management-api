@@ -22,9 +22,13 @@ public final class Constants {
 
     public static final String SYSTEM_INFORMATION_PATH = "system-information";
 
+    public static final String ID = "id";
+
     public static final String CM_PATH = "cm";
 
     public static final String CM_TAG = "cm";
+
+    public static final String SEARCH = "_search";
 
     public static final String CHILD_CLIENTS = "child-clients";
 
@@ -34,7 +38,7 @@ public final class Constants {
 
     public static final String SYSTEM_CODES = "system-codes";
 
-    public static final String CASE = "case";
+    public static final String CASES = "cases";
 
     public static final String STAFF = "staff";
 
