@@ -8,7 +8,7 @@ import org.junit.Test;
  */
 public class TypedCrudServiceAdapterTest {
 
-  private final TypedCrudServiceAdapter testSubject = new TypedCrudServiceAdapter();
+  private final TypedCrudServiceAdapter testSubject = new TypedCrudServiceAdapter(){};
 
   @Test(expected = UnsupportedOperationException.class)
   public void create_exception_whenAnyInput() {
