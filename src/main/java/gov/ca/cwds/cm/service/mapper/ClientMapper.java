@@ -3,10 +3,13 @@ package gov.ca.cwds.cm.service.mapper;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import org.mapstruct.Mapper;
+import org.mapstruct.MapperConfig;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingInheritanceStrategy;
 
 /** @author CWDS TPT-3 Team */
 @Mapper
+@MapperConfig(mappingInheritanceStrategy = MappingInheritanceStrategy.AUTO_INHERIT_FROM_CONFIG)
 @FunctionalInterface
 public interface ClientMapper {
 
@@ -39,8 +42,8 @@ public interface ClientMapper {
   @Mapping(target = "soc158PlacementCode", source = "socplcCd")
   @Mapping(target = "hispUnableToDeterminateReasonCode", source = "hispUdCd")
   @Mapping(target = "ethUnableToDeterminCode", source = "ethUdCd")
-  @Mapping(target = "lastUpdateTimestamp", source = "lstUpdTs")
-  @Mapping(target = "lstUpdateId", source = "lstUpdId")
+  @Mapping(target = "lastUpdateTimestamp", source = "lastUpdateTime")
+  @Mapping(target = "lastUpdateId", source = "lastUpdateId")
   @Mapping(target = "unemployedParentCode", source = "unemplyCd")
   @Mapping(target = "suffixTitleDescription", source = "sufxTldsc")
   @Mapping(target = "socialSecurityNumberChangedCode", source = "ssnChgCd")

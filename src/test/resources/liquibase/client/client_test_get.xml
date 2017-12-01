@@ -5,8 +5,8 @@
 
     <changeSet id="correct_data_for_client" author="TPT3_team">
         <insert tableName="CLIENT_T">
-            <column name="ALN_REG_NO" value="111483672"/>
             <column name="IDENTIFIER" value="BKk7CHj00Z" />
+            <column name="ALN_REG_NO" value="111483672"/>
             <column name="ADPTN_STCD" value="N" />
             <column name="BIRTH_DT" value="1944-01-30"/>
             <column name="BR_FAC_NM" value="San Jose Medical Center"/>
@@ -43,7 +43,6 @@
             <column name="SSN_CHG_CD" value="N"/>
             <column name="SUFX_TLDSC" value="D.D"/>
             <column name="UNEMPLY_CD" value="U"/>
-            <column name="LST_UPD_ID" value="200"/>
             <column name="COMMNT_DSC" value="Primary Comments for the Primary Client."/>
             <column name="EST_DOB_CD" value="Y"/>
             <column name="BP_VER_IND" value="N"/>
@@ -71,6 +70,7 @@
             <column name="SOCPLC_CD" value="M"/>
             <column name="CL_INDX_NO" value=" "/>
             <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
+            <column name="LST_UPD_ID" value="200"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

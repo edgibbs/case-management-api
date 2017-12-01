@@ -72,5 +72,46 @@
       <column name="CL_INDX_NO" value=" "/>
       <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
     </insert>
+
+    <insert tableName="CHLD_CLT">
+      <column name="FKCLIENT_T" value="22223312D" />
+      <column name="FC_ELIGT_B" value="Y" />
+      <column name="EDONFL_IND" value="N"/>
+      <column name="HLONFL_IND" value="N"/>
+      <column name="CURNT_CSID" value="D9G54xH00Z" />
+      <column name="DTH_CIRC" value="3145"/>
+      <column name="FC2_APLT_B" value="N" />
+      <column name="ICWA_ELGCD" value="N" />
+      <column name="MEDELIGT_B" value="N" />
+      <column name="MNRMOM_IND" value="N" />
+      <column name="PRG_TRMT_B" value="N" />
+      <column name="PTRN_INT_B" value="N" />
+      <column name="SAWS_CS_NO" value="35" />
+      <column name="SAW1APLT_B" value="N" />
+      <column name="SSI_SSPIND" value="N" />
+      <column name="LST_UPD_ID" value="0JG" />
+      <column name="ACQ_ED_DSC" value="" />
+      <column name="ACQ_HTHDSC" value="" />
+      <column name="HEPDOC_OLD" value="" />
+      <column name="PRTLIM_IND" value="Y" />
+      <column name="INDIAN_IND" value="N" />
+      <column name="PREADPT_CD" value="N" />
+      <column name="ADPT_AGE" value="12" />
+      <column name="ADOPTBL_CD" value="NA" />
+      <column name="DRMSHEPDOC" value="null" />
+      <column name="BHIST_IND" value="N" />
+      <column name="SFSURB_IND" value="N" />
+      <column name="AWOL_AB_CD" value="N" />
+      <column name="TRBA_NOT_B" value="N" />
+      <column name="FSTAMP_IND" value="N" />
+      <column name="DISABLD_CD" value="null" />
+      <column name="CLG_IND" value="Y" />
+      <column name="PSVOC_IND" value="Y" />
+      <column name="TCADPT_IND" value="N" />
+      <column name="ICADSL_IND" value="Y" />
+      <column name="ICADSR_IND" value="Y" />
+      <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924156" />
+      <column name="LST_UPD_ID" value="300"/>
+    </insert>
   </changeSet>
 </databaseChangeLog>

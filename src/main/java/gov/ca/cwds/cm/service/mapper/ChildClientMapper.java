@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 /** @author CWDS TPT-3 Team */
-@Mapper(uses = {ClientMapper.class})
+@Mapper(config = ClientMapper.class)
 @FunctionalInterface
 public interface ChildClientMapper {
 
@@ -61,6 +61,7 @@ public interface ChildClientMapper {
   @Mapping(target = "tribalCustomaryAdoptionDate", ignore = true)
   @Mapping(target = "tribalCustomaryAdoptionIndicator", source = "tribalCustomaryAdoptionIndicator")
   @Mapping(target = "foodStampsApplicationDate", ignore = true)
-  @Mapping(target = "client", source = "client")
+  @Mapping(target = "childClientLastUpdateTimestamp", source = "childClientLastUpdateTime")
+  @Mapping(target = "childClientLastUpdateId", source = "childClientLastUpdateId")
   ChildClientDTO toChildClientDTO(ChildClient childClient);
 }

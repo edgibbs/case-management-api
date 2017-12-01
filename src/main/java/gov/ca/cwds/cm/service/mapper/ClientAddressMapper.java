@@ -21,8 +21,8 @@ public interface ClientAddressMapper {
 
   @InheritInverseConfiguration
   @Mapping(source = "address.id", target = "fkAddress")
-  @Mapping(target = "lastUpdatedId", ignore = true)
-  @Mapping(target = "lastUpdatedTime", ignore = true)
+  @Mapping(target = "lastUpdateId", ignore = true)
+  @Mapping(target = "lastUpdateTime", ignore = true)
   ClientAddress toEntity(ClientAddressDTO clientAddressDTO);
 
 }

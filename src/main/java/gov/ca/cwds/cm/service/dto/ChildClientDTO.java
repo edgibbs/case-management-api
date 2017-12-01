@@ -3,20 +3,18 @@ package gov.ca.cwds.cm.service.dto;
 import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author CWDS TPT-3 Team
@@ -25,10 +23,9 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
-public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
+public class ChildClientDTO extends ClientDTO {
 
   private static final long serialVersionUID = 7569314519640349923L;
 
@@ -245,7 +242,11 @@ public class ChildClientDTO extends BaseClientDTO implements RequestResponse {
   private Boolean tribalCustomaryAdoptionIndicator;
 
   @NotNull
-  @ApiModelProperty(required = true)
-  private ClientDTO client;
+  @JsonIgnore
+  private String childClientLastUpdateId;
+
+  @NotNull
+  @JsonIgnore
+  private LocalDateTime childClientLastUpdateTimestamp;
 
 }
