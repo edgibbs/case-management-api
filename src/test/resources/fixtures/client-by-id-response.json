@@ -38,7 +38,6 @@
   "social_security_number_changed_code": "N",
   "suffix_title_description": "D.D",
   "unemployed_parent_code": "U",
-  "lst_update_id": "200",
   "comment_description": "Primary Comments for the Primary Client.",
   "estimated_dob_code": "Y",
   "birthplace_verified_identificator": "N",
@@ -65,5 +64,6 @@
   "hisp_unable_to_determinate_reason_code": "",
   "soc158_placement_code": "M",
   "sci_index_number": "",
-  "last_update_timestamp": "2000-03-17"
+  "last_update_timestamp": "2000-03-17T17:01:54.924155",
+  "lst_update_id": "200"
 }

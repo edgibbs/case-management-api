@@ -65,7 +65,7 @@
   "hisp_unable_to_determinate_reason_code": "",
   "soc158_placement_code": "M",
   "sci_index_number": "",
-  "last_update_timestamp": "2000-03-17",
+  "last_update_timestamp": "2000-03-17T17:01:54.924155",
   "victim_client_id": "BKk7CHj00Z",
   "adoptable_code": "NOT_ASSESSED",
   "adopted_age": 12,
@@ -97,5 +97,9 @@
   "tribal_ancestry_notifctn_indicator_var": false,
   "tribal_customary_adoption_indicator": false,
   "drms_he_passport_doc_old": "",
-  "previously_adopted": "NO"
+  "previously_adopted": "NO",
+  "last_update_timestamp": "2000-03-17T17:01:54.924155",
+  "lst_update_id": "200",
+  "child_client_last_update_timestamp": "2000-03-17T17:01:54.924156",
+  "child_client_lst_update_id": "300"
 }
