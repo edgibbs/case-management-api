@@ -43,7 +43,7 @@ public interface ClientMapper {
   @Mapping(target = "hispUnableToDeterminateReasonCode", source = "hispUdCd")
   @Mapping(target = "ethUnableToDeterminCode", source = "ethUdCd")
   @Mapping(target = "lastUpdateTimestamp", source = "lastUpdateTime")
-  @Mapping(target = "lstUpdateId", source = "lastUpdateId")
+  @Mapping(target = "lastUpdateId", source = "lastUpdateId")
   @Mapping(target = "unemployedParentCode", source = "unemplyCd")
   @Mapping(target = "suffixTitleDescription", source = "sufxTldsc")
   @Mapping(target = "socialSecurityNumberChangedCode", source = "ssnChgCd")

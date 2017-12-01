@@ -62,6 +62,6 @@ public interface ChildClientMapper {
   @Mapping(target = "tribalCustomaryAdoptionIndicator", source = "tribalCustomaryAdoptionIndicator")
   @Mapping(target = "foodStampsApplicationDate", ignore = true)
   @Mapping(target = "childClientLastUpdateTimestamp", source = "childClientLastUpdateTime")
-  @Mapping(target = "childClientLstUpdateId", source = "childClientLastUpdateId")
+  @Mapping(target = "childClientLastUpdateId", source = "childClientLastUpdateId")
   ChildClientDTO toChildClientDTO(ChildClient childClient);
 }
