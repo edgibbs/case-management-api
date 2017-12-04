@@ -23,8 +23,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -82,19 +80,20 @@ public class ClientResource {
   @ApiOperation(value = "Search clients by criteria", response = ClientDTO[].class)
   @UnitOfWork
   @Timed
-  public Response search(@ApiParam ClientsSearchCriteriaDTO clientsSearchCriteriaDTO) throws IOException {
+  public Response search(@ApiParam ClientsSearchCriteriaDTO clientsSearchCriteriaDTO)
+      throws IOException {
     if (!"q48".equals(clientsSearchCriteriaDTO.getStaffId())) {
-      return Response.status(200).entity(new ArrayList<>()).build();
+      return ResponseUtil.responseOrNotFound(new ArrayList<>());
     }
 
     return ResponseUtil.responseOrNotFound(getMockedData());
   }
 
-  private List<ClientDTO> getMockedData() throws IOException {
+  private ClientDTO[] getMockedData() throws IOException {
     ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
     objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
     String json = FixtureHelpers.fixture("fixtures/list_of_related_clients_by_staff_id.json");
     ClientDTO[] array = objectMapper.readValue(json, ClientDTO[].class);
-    return Arrays.asList(array);
+    return array;
   }
 }

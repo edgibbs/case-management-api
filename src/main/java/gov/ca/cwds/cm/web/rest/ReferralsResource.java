@@ -18,8 +18,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -48,18 +46,16 @@ public class ReferralsResource {
   @Timed
   public Response search(@ApiParam ReferralSearchCriteria referralSearchCriteria)
       throws IOException {
-    if (!"-1".equals(referralSearchCriteria.getStaffId())) {
-      return Response.status(200).entity(new ArrayList<>()).build();
+    if ("-1".equals(referralSearchCriteria.getStaffId())) {
+      return ResponseUtil.responseOrNotFound(new ArrayList<>());
     }
-
     return ResponseUtil.responseOrNotFound(getMockedData());
   }
 
-  private List<ReferralDTO> getMockedData() throws IOException {
+  private ReferralDTO[] getMockedData() throws IOException {
     ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
     objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
     String json = FixtureHelpers.fixture("fixtures/referrals_by_staff_id_mock.json");
-    ReferralDTO[] array = objectMapper.readValue(json, ReferralDTO[].class);
-    return Arrays.asList(array);
+    return objectMapper.readValue(json, ReferralDTO[].class);
   }
 }

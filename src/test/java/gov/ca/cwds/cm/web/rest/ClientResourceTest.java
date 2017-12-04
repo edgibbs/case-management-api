@@ -4,7 +4,6 @@ import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByF
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
@@ -14,6 +13,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -60,7 +60,6 @@ public class ClientResourceTest extends BaseApiIntegrationTest {
         target
             .request(MediaType.APPLICATION_JSON)
             .post(Entity.entity(searchCriteria, MediaType.APPLICATION_JSON_TYPE));
-    assertThat(response.getStatus()).isEqualTo(200);
-    assertThat(response.readEntity(ClientDTO[].class).length).isEqualTo(0);
+    assertThat(response.getStatus()).isEqualTo(Status.NOT_FOUND.getStatusCode());
   }
 }
