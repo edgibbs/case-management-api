@@ -42,6 +42,8 @@ public final class Constants {
 
     public static final String STAFF = "staff";
 
+    public static final String REFERRAL = "referral";
+
     private API() {
     }
 

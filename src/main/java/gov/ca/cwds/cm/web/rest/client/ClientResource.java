@@ -79,7 +79,7 @@ public class ClientResource {
       @ApiResponse(code = 406, message = "Accept Header not supported")
     }
   )
-  @ApiOperation(value = "Find client by client ID", response = ClientDTO[].class)
+  @ApiOperation(value = "Search clients by criteria", response = ClientDTO[].class)
   @UnitOfWork
   @Timed
   public Response search(@ApiParam ClientsSearchCriteriaDTO clientsSearchCriteriaDTO) throws IOException {
