@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.service.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import gov.ca.cwds.cm.service.dictionaries.AssignmentType;
 import gov.ca.cwds.rest.api.Response;
 import gov.ca.cwds.rest.validation.Date;
 import io.swagger.annotations.ApiModelProperty;
@@ -496,5 +497,12 @@ public class ReferralDTO extends BaseDTO implements Response {
       example = "N"
   )
   private Boolean zippyCreatedIndicator;
+
+  @NotNull
+  @ApiModelProperty(
+      value = "Referral type from ASSIGNMENT one of Primary or Secondary",
+      example = "PRIMARY"
+  )
+  private AssignmentType assignmentType;
 
 }

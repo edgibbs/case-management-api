@@ -42,7 +42,7 @@ public final class Constants {
 
     public static final String STAFF = "staff";
 
-    public static final String REFERRAL = "referral";
+    public static final String REFERRALS = "referrals";
 
     private API() {
     }

@@ -47,6 +47,7 @@
     "specifics_included_code": "A",
     "sufficient_information_code": "A",
     "unfounded_series_code": "A",
-    "zippy_created_indicator": true
+    "zippy_created_indicator": true,
+    "assignment_type": "PRIMARY"
   }
 ]
