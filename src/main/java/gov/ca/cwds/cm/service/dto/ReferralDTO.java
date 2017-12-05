@@ -23,7 +23,6 @@ public class ReferralDTO extends BaseDTO implements Response {
   private static final long serialVersionUID = 4504908645901963401L;
 
   @NotNull
-  @Size(max = 10)
   @ApiModelProperty(
       value =
           "ID - A system generated number used to uniquely  identify each Referral.    This ID has an internal "
