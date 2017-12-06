@@ -19,7 +19,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /** @author CWDS TPT-3 Team */
-public class StafPersonResourceTest extends BaseApiIntegrationTest {
+public class StaffPersonResourceTest extends BaseApiIntegrationTest {
 
   public static final String STAFF_PERSON_ID = "q48";
   public static final String WRONG_STAFF_PERSON_ID = "-1";

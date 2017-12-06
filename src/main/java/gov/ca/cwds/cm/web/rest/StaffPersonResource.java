@@ -8,9 +8,11 @@ import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.inject.Inject;
 import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
+import gov.ca.cwds.cm.service.facade.CaseLoadFacade;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
 import io.swagger.annotations.Api;
@@ -35,7 +37,14 @@ import javax.ws.rs.core.Response;
 @Path(value = STAFF)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class StafPersonResource {
+public class StaffPersonResource {
+
+  private CaseLoadFacade caseLoadFacade;
+
+  @Inject
+  public StaffPersonResource(CaseLoadFacade caseLoadFacade) {
+    this.caseLoadFacade = caseLoadFacade;
+  }
 
   @GET
   @Path("/{id}/clients")
@@ -83,10 +92,7 @@ public class StafPersonResource {
           @ApiParam(required = true, value = "The unique staffId", example = "AadfKnG07n")
           final String id)
       throws IOException {
-    if ("-1".equals(id)) {
-      return ResponseUtil.responseOrNotFound(new ArrayList<>());
-    }
-    return ResponseUtil.responseOrNotFound(Mock.getMockedData());
+    return ResponseUtil.responseOrNotFound(caseLoadFacade.getReferralsWithActiveAssignment(id));
   }
 
   private static final class Mock {
@@ -99,13 +105,6 @@ public class StafPersonResource {
       String json = FixtureHelpers.fixture("fixtures/list_of_related_clients_by_staff_id.json");
       ClientDTO[] array = objectMapper.readValue(json, ClientDTO[].class);
       return Arrays.asList(array);
-    }
-
-    public static ReferralDTO[] getMockedData() throws IOException {
-      ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
-      objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
-      String json = FixtureHelpers.fixture("fixtures/referrals_by_staff_id_mock.json");
-      return objectMapper.readValue(json, ReferralDTO[].class);
     }
   }
 }
