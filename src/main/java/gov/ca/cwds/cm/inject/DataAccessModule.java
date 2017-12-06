@@ -9,6 +9,9 @@ import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.data.legacy.cms.entity.Address;
 import gov.ca.cwds.data.legacy.cms.entity.BackgroundCheck;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
+import gov.ca.cwds.data.legacy.cms.entity.CaseAssignment;
+import gov.ca.cwds.data.legacy.cms.entity.CaseLoad;
+import gov.ca.cwds.data.legacy.cms.entity.CaseLoadWeighting;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
@@ -24,7 +27,10 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementEpisode;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeNotes;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
+import gov.ca.cwds.data.legacy.cms.entity.Referral;
+import gov.ca.cwds.data.legacy.cms.entity.ReferralAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
+import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
@@ -32,6 +38,7 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
@@ -78,7 +85,15 @@ public class DataAccessModule extends AbstractModule {
               State.class,
               SubstituteCareProvider.class,
               SystemCode.class,
-              VisitType.class
+              VisitType.class,
+              CaseAssignment.class,
+              ReferralAssignment.class,
+              CaseLoad.class,
+              SecondaryAssignmentRoleType.class,
+              Referral.class,
+              Case.class,
+              StaffPersonCaseLoad.class,
+              CaseLoadWeighting.class
           )
           .build();
 
