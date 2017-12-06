@@ -32,6 +32,8 @@ import gov.ca.cwds.data.legacy.cms.entity.ReferralAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentRecipient;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
@@ -59,9 +61,14 @@ public class DataAccessModule extends AbstractModule {
               ActiveServiceComponentType.class,
               Address.class,
               ApprovalStatusType.class,
+              AssignmentRecipient.class,
+              AssignmentType.class,
+              CaseAssignment.class,
               BackgroundCheck.class,
               Case.class,
               CaseClosureReasonType.class,
+              CaseLoad.class,
+              CaseLoadWeighting.class,
               ChildClient.class,
               Client.class,
               ClientAddress.class,
@@ -70,7 +77,6 @@ public class DataAccessModule extends AbstractModule {
               CountyLicenseCase.class,
               DeathCircumstancesType.class,
               LicensingVisit.class,
-              LongText.class,
               LongText.class,
               OtherAdultsInPlacementHome.class,
               OtherChildrenInPlacementHome.class,
@@ -81,7 +87,9 @@ public class DataAccessModule extends AbstractModule {
               PlacementHome.class,
               PlacementHomeNotes.class,
               PlacementHomeProfile.class,
+              SecondaryAssignmentRoleType.class,
               StaffPerson.class,
+              StaffPersonCaseLoad.class,
               State.class,
               SubstituteCareProvider.class,
               SystemCode.class,

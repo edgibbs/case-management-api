@@ -35,7 +35,7 @@ project.ext {
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    calsModelVersion = '0.4.4'
+    calsModelVersion = '0.4.6'
     shiroSecurityVersion = '0.4.3'
 }
 
