@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -42,13 +43,9 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
   public void testGetClientsByWrongStaffId() {
     WebTarget target =
         clientTestRule.target(Constants.API.STAFF + "/" + WRONG_STAFF_PERSON_ID + "/clients");
-    Invocation.Builder invocation = target.request(MediaType.APPLICATION_JSON);
-    try {
-      invocation.get(List.class);
-      fail("Correct response is not expected");
-    } catch (NotFoundException e) {
-      Assertions.assertThat("HTTP 404 Not Found").isEqualTo(e.getMessage());
-    }
+    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    AssertionsForClassTypes.assertThat(response.getStatus())
+        .isEqualTo(Status.NOT_FOUND.getStatusCode());
   }
 
   @Test
