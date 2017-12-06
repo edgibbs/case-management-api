@@ -433,7 +433,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "means of a birth certificate or other legal document acceptable to the court.",
     example = "N"
   )
-  private Boolean birthplaceVerifiedIdentificator;
+  private Boolean birthplaceVerifiedIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -455,7 +455,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private Boolean childrenServIdentificator;
+  private Boolean childrenServIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -466,7 +466,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "are historical, and new valueswill be stored in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "Y"
   )
-  private Boolean currentlyRegionalCenteerIdentificator;
+  private Boolean currentlyRegionalCenteerIndicator;
 
   @NotNull
   @Size(max = 25)
@@ -490,7 +490,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "be stored in the DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private Boolean previouslyReceivedIdentificator;
+  private Boolean previouslyReceivedIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -502,7 +502,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "DUAL_AGENCY_SERVICES_HISTORY entity.",
     example = "N"
   )
-  private Boolean previouslyRegionalCenterIdentificator;
+  private Boolean previouslyRegionalCenterIndicator;
 
   @NotNull
   @Size(max = 25)
@@ -524,7 +524,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "Health Care Plan  on File for a Special Needs Child.",
     example = "N"
   )
-  private Boolean healthCarePlanIdentificator;
+  private Boolean healthCarePlanIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -586,7 +586,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "Referral notebook as opposed to the traditional client notebook.",
     example = "N"
   )
-  private Boolean zippyIdentificator;
+  private Boolean zippyIndicator;
 
   @Size(max = 35)
   @ApiModelProperty(
@@ -603,7 +603,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "unnecessary processing time from searching for information that does not exist in the data base.",
     example = "N"
   )
-  private Boolean tribalMemberVerificationIdentificator;
+  private Boolean tribalMemberVerificationIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -615,7 +615,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "not exist in the data base.",
     example = "N"
   )
-  private Boolean tribalAncestryClientIdentificator;
+  private Boolean tribalAncestryClientIndicator;
 
   @NotNull
   @Size(max = 1)
@@ -635,7 +635,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
             + "The valid values are Yes (Y) and No (N)",
     example = "N"
   )
-  private Boolean deathDateVerifiedIdentificator;
+  private Boolean deathDateVerifiedIndicator;
 
   @Size(max = 50)
   @ApiModelProperty(
@@ -649,7 +649,7 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
     value = "ADJUDICATED DELINQUENT IND - Records that a client has been an adjudicated delinquent",
     example = " "
   )
-  private Boolean adjudicatedDelinquentIdentificator;
+  private Boolean adjudicatedDelinquentIndicator;
 
   @Size(max = 1)
   @ApiModelProperty(
