@@ -378,7 +378,7 @@ public class ReferralDTO extends BaseDTO implements Response {
           + "was received by a STAFF PERSON.  This will be  defaulted to the system tim",
       example = "16:41:49"
   )
-  private String receivedTime;
+  private LocalDate receivedTime;
 
   @Size(max = 4)
   @NotNull
@@ -414,7 +414,7 @@ public class ReferralDTO extends BaseDTO implements Response {
           + "response type to a REFERRAL.",
       example = "16:41:49"
   )
-  private String responseDeterminationTime;
+  private LocalDate responseDeterminationTime;
 
   @Size(max = 10)
   @ApiModelProperty(

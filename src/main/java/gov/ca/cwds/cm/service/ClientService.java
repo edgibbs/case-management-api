@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  * @author CWDS TPT-3 Team
  */
-public class ClientService implements CrudsService {
+public class ClientService extends CrudServiceAdapter {
 
   private ClientDao clientDao;
   private ClientMapper clientMapper;
@@ -25,25 +25,9 @@ public class ClientService implements CrudsService {
     this.clientDao = clientDao;
   }
 
-
   @Override
   public ClientDTO find(Serializable serializable) {
     Client client = clientDao.find(((ClientParameterObject) serializable).getClientId());
     return clientMapper.toClientDTO(client);
-  }
-
-  @Override
-  public Response delete(Serializable serializable) {
-    return null;
-  }
-
-  @Override
-  public Response create(Request request) {
-    return null;
-  }
-
-  @Override
-  public Response update(Serializable serializable, Request request) {
-    return null;
   }
 }
