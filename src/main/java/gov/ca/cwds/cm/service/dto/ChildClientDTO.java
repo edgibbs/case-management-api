@@ -30,7 +30,6 @@ public class ChildClientDTO extends ClientDTO {
   private static final long serialVersionUID = 7569314519640349923L;
 
   @NotNull
-  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(
       required = true,
       readOnly = true,

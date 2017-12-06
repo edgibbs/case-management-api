@@ -29,7 +29,6 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
   private static final long serialVersionUID = -4098613951159302301L;
 
   @NotNull
-  @Size(max = 10)
   @ApiModelProperty(
     value =
         "ID - A system generated number used to uniquely  identify each CLIENT.    This ID has an internal "
