@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.web.rest;
 
+import static gov.ca.cwds.cm.Constants.API.CASES;
 import static gov.ca.cwds.cm.Constants.API.ID;
 import static gov.ca.cwds.cm.Constants.API.REFERRALS;
 import static gov.ca.cwds.cm.Constants.API.STAFF;
@@ -10,8 +11,10 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.Inject;
 import gov.ca.cwds.ObjectMapperUtils;
+import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
+import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
 import gov.ca.cwds.cm.service.facade.CaseLoadFacade;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
@@ -21,8 +24,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -39,15 +42,17 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class StaffPersonResource {
 
-  private CaseLoadFacade caseLoadFacade;
+  private final CaseLoadFacade caseLoadFacade;
+  private final CaseService caseService;
 
   @Inject
-  public StaffPersonResource(CaseLoadFacade caseLoadFacade) {
+  public StaffPersonResource(CaseLoadFacade caseLoadFacade, CaseService caseService) {
     this.caseLoadFacade = caseLoadFacade;
+    this.caseService = caseService;
   }
 
   @GET
-  @Path("/{id}/clients")
+  @Path("/{" + ID + "}/clients")
   @ApiResponses(
     value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
@@ -59,7 +64,7 @@ public class StaffPersonResource {
   @UnitOfWork
   @Timed
   public Response getClients(
-      @PathParam("id")
+      @PathParam(ID)
           @ApiParam(
             required = true,
             value = "The unique caseworker(staff person) ID",
@@ -76,7 +81,7 @@ public class StaffPersonResource {
   }
 
   @GET
-  @Path("/{id}/" + REFERRALS)
+  @Path("/{" + ID + "}/" + REFERRALS)
   @ApiResponses(
     value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
@@ -93,6 +98,24 @@ public class StaffPersonResource {
           final String id)
       throws IOException {
     return ResponseUtil.responseOrNotFound(caseLoadFacade.getReferralsWithActiveAssignment(id));
+  }
+
+  @GET
+  @Path("/{" + ID + "}/" + CASES)
+  @ApiResponses(
+    value = {
+      @ApiResponse(code = 401, message = "Not Authorized"),
+    }
+  )
+  @ApiOperation(value = "Search active cases by staffId", response = CaseByStaff[].class)
+  @UnitOfWork
+  @Timed
+  public Response getCases(
+      @PathParam(ID)
+      @ApiParam(required = true, value = "The unique staffId", example = "0Ki")
+      final String id) {
+    final Collection<CaseByStaff> cases = caseService.findActiveByStaffId(id);
+    return Response.ok(cases).build();
   }
 
   private static final class Mock {

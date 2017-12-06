@@ -2,29 +2,19 @@ package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.CASES;
 import static gov.ca.cwds.cm.Constants.API.ID;
-import static gov.ca.cwds.cm.Constants.API.SEARCH;
 
 import com.codahale.metrics.annotation.Timed;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.Inject;
-import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
-import gov.ca.cwds.cm.service.dto.search.criteria.CaseCriteriaDTO;
-import gov.ca.cwds.cm.service.dto.search.result.CaseSearchResultDTO;
 import io.dropwizard.hibernate.UnitOfWork;
-import io.dropwizard.testing.FixtureHelpers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.io.IOException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -67,27 +57,4 @@ public class CaseResource {
     return ResponseUtil.responseOrNotFound(caseDTO);
   }
 
-  @POST
-  @Path(SEARCH)
-  @ApiResponses(
-      value = {
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
-  )
-  @UnitOfWork
-  @Timed
-  @ApiOperation(value = "MOCK: Find Case by search criteria", response = CaseSearchResultDTO.class)
-  public Response searchMOCK(final CaseCriteriaDTO criteria) throws IOException {
-    return Response.ok()
-        .entity("q58".equals(criteria.getStaffId()) ? getMockedData() : new CaseSearchResultDTO())
-        .build();
-  }
-
-  private CaseSearchResultDTO getMockedData() throws IOException {
-    ObjectMapper objectMapper = ObjectMapperUtils.createObjectMapper();
-    objectMapper.registerModule(new Jdk8Module()).registerModule(new JavaTimeModule());
-    String json = FixtureHelpers.fixture("fixtures/cases-by-staff-id-mock.json");
-    return objectMapper.readValue(json, CaseSearchResultDTO.class);
-  }
 }

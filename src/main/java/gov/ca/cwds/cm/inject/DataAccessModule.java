@@ -9,6 +9,9 @@ import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.data.legacy.cms.entity.Address;
 import gov.ca.cwds.data.legacy.cms.entity.BackgroundCheck;
 import gov.ca.cwds.data.legacy.cms.entity.Case;
+import gov.ca.cwds.data.legacy.cms.entity.CaseAssignment;
+import gov.ca.cwds.data.legacy.cms.entity.CaseLoad;
+import gov.ca.cwds.data.legacy.cms.entity.CaseLoadWeighting;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
@@ -25,13 +28,17 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeNotes;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
+import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentRecipient;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
@@ -52,9 +59,14 @@ public class DataAccessModule extends AbstractModule {
               ActiveServiceComponentType.class,
               Address.class,
               ApprovalStatusType.class,
+              AssignmentRecipient.class,
+              AssignmentType.class,
+              CaseAssignment.class,
               BackgroundCheck.class,
               Case.class,
               CaseClosureReasonType.class,
+              CaseLoad.class,
+              CaseLoadWeighting.class,
               ChildClient.class,
               Client.class,
               ClientAddress.class,
@@ -63,7 +75,6 @@ public class DataAccessModule extends AbstractModule {
               CountyLicenseCase.class,
               DeathCircumstancesType.class,
               LicensingVisit.class,
-              LongText.class,
               LongText.class,
               OtherAdultsInPlacementHome.class,
               OtherChildrenInPlacementHome.class,
@@ -74,7 +85,9 @@ public class DataAccessModule extends AbstractModule {
               PlacementHome.class,
               PlacementHomeNotes.class,
               PlacementHomeProfile.class,
+              SecondaryAssignmentRoleType.class,
               StaffPerson.class,
+              StaffPersonCaseLoad.class,
               State.class,
               SubstituteCareProvider.class,
               SystemCode.class,
