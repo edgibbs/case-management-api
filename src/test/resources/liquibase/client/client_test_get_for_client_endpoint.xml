@@ -37,7 +37,7 @@
       <column name="P_LANG_TPC" value="33"/>
       <column name="RLGN_TPC" value="44"/>
       <column name="S_LANG_TC" value="11"/>
-      <column name="SENSTV_IND" value="1"/>
+      <column name="SENSTV_IND" value="R"/>
       <column name="SNTV_HLIND" value="Y"/>
       <column name="SS_NO" value="N"/>
       <column name="SSN_CHG_CD" value="N"/>
@@ -66,7 +66,7 @@
       <column name="SOC158_IND" value="Y"/>
       <column name="DTH_DT_IND" value="N"/>
       <column name="EMAIL_ADDR" value="test@test.com"/>
-      <column name="ADJDEL_IND" value=" "/>
+      <column name="ADJDEL_IND" value="null"/>
       <column name="HISP_UD_CD" value=" "/>
       <column name="SOCPLC_CD" value="M"/>
       <column name="CL_INDX_NO" value=" "/>
