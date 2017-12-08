@@ -6,6 +6,7 @@ import gov.ca.cwds.cm.service.dictionaries.AssignmentType;
 import gov.ca.cwds.rest.api.Response;
 import gov.ca.cwds.rest.validation.Date;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.Instant;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -380,7 +381,7 @@ public class ReferralDTO extends BaseDTO implements Response {
           + "was received by a STAFF PERSON.  This will be  defaulted to the system tim",
       example = "16:41:49"
   )
-  private LocalDate receivedTime;
+  private Instant receivedTime;
 
   @Size(max = 4)
   @NotNull
@@ -416,7 +417,7 @@ public class ReferralDTO extends BaseDTO implements Response {
           + "response type to a REFERRAL.",
       example = "16:41:49"
   )
-  private LocalDate responseDeterminationTime;
+  private Instant responseDeterminationTime;
 
   @Size(max = 10)
   @ApiModelProperty(

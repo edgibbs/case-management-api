@@ -5,6 +5,7 @@ import gov.ca.cwds.cm.service.dto.ReferralDTO;
 import gov.ca.cwds.cm.service.mapper.ReferralMapper;
 import gov.ca.cwds.data.legacy.cms.dao.ReferralDao;
 import gov.ca.cwds.data.legacy.cms.entity.Referral;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class ReferralService extends CrudServiceAdapter {
   }
 
   public List<ReferralDTO> getReferralsByStaffId(String staffId) {
-    List<Referral> referrals = referralDao.getOpenReferralsByStaffId(staffId, null);
+    List<Referral> referrals = referralDao.getOpenReferralsByStaffId(staffId, LocalDate.now());
     return referrals
         .stream()
         .map(referral -> referralMapper.toReferralDTO(referral))

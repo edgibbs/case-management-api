@@ -1,15 +1,17 @@
 package gov.ca.cwds.cm.service.mapper;
 
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
+import gov.ca.cwds.cm.service.mapper.tool.LegacyBooleanToStringMapper;
 import gov.ca.cwds.data.legacy.cms.entity.Referral;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
+@Mapper(uses = {LegacyBooleanToStringMapper.class})
+@FunctionalInterface
 public interface ReferralMapper {
 
-  @Mapping(source = "identifier", target = "id")
+  @Mapping(source = "id", target = "identifier")
   @Mapping(source = "additionalInfoIncludedCode", target = "additionalInfoIncludedCode")
   @Mapping(source = "anonymousReporterIndicator", target = "anonymousReporterIndicator")
   @Mapping(source = "applicationForPetitionIndicator", target = "applicationForPetitionIndicator")
@@ -18,18 +20,24 @@ public interface ReferralMapper {
   @Mapping(source = "caretakersPerpetratorCode", target = "caretakersPerpetratorCode")
   @Mapping(source = "closureDate", target = "closureDate")
   @Mapping(source = "communicationMethodType", target = "communicationMethodType")
-  @Mapping(source = "countySpecificCode", target = "id")
-  @Mapping(source = "currentLocationOfChildren", target = "id")
-  @Mapping(source = "drmsAllegationDescriptionDoc", target = "id")
-  @Mapping(source = "drmsErReferralDoc", target = "id")
-  @Mapping(source = "drmsInvestigationDoc", target = "id")
-  @Mapping(source = "familyAwarenessIndicator", target = "id")
-  @Mapping(source = "familyRefusedServicesIndicator", target = "id")
-  @Mapping(source = "filedSuspectedChildAbuseReporttoLawEnforcementIndicator", target = "id")
+  @Mapping(source = "countySpecificCode", target = "countySpecificCode")
+  @Mapping(source = "currentLocationOfChildren", target = "currentLocationOfChildren")
+  @Mapping(source = "drmsAllegationDescriptionDoc", target = "drmsAllegationDescriptionDoc")
+  @Mapping(source = "drmsErReferralDoc", target = "drmsErReferralDoc")
+  @Mapping(source = "drmsInvestigationDoc", target = "drmsInvestigationDoc")
+  @Mapping(source = "familyAwarenessIndicator", target = "familyAwarenessIndicator")
+  @Mapping(source = "familyRefusedServicesIndicator", target = "familyRefusedServicesIndicator")
+  @Mapping(
+    source = "filedSuspectedChildAbuseReporttoLawEnforcementIndicator",
+    target = "filedSuspectedChildAbuseReporttoLawEnforcementIndicator"
+  )
   @Mapping(source = "firstEvaluatedOutApprovalDate", target = "firstEvaluatedOutApprovalDate")
   @Mapping(source = "allegesAbuseOccurredAtAddressId", target = "allegesAbuseOccurredAtAddressId")
   @Mapping(source = "linkToPrimaryReferralId", target = "linkToPrimaryReferralId")
-  @Mapping(source = "firstResponseDeterminedByStaffPersonId", target = "firstResponseDeterminedByStaffPersonId")
+  @Mapping(
+    source = "firstResponseDeterminedByStaffPersonId",
+    target = "firstResponseDeterminedByStaffPersonId"
+  )
   @Mapping(source = "primaryContactStaffPersonId", target = "primaryContactStaffPersonId")
   @Mapping(source = "govtEntityType", target = "govtEntityType")
   @Mapping(source = "homelessIndicator", target = "homelessIndicator")
@@ -58,5 +66,4 @@ public interface ReferralMapper {
   @Mapping(source = "unfoundedSeriesCode", target = "unfoundedSeriesCode")
   @Mapping(source = "zippyCreatedIndicator", target = "zippyCreatedIndicator")
   ReferralDTO toReferralDTO(Referral referral);
-
 }

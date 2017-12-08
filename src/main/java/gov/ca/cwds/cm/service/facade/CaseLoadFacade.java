@@ -35,7 +35,7 @@ public class CaseLoadFacade {
   public List<ReferralDTO> getReferralsWithActiveAssignment(String staffId) throws IOException {
     List<ReferralDTO> referrals = referralService.getReferralsByStaffId(staffId);
     List<BaseAssignment> assignments =
-        assignmentDao.getOpenReferralsByStaffId(
+        assignmentDao.getOpenAssignmentsByStaffIds(
             referrals.stream().map(ReferralDTO::getIdentifier).collect(Collectors.toList()));
     return referrals
         .stream()
@@ -52,7 +52,7 @@ public class CaseLoadFacade {
                 .filter(line -> line.getEstablishedForId().equals(referralDTO.getIdentifier()))
                 .findAny()
                 .orElse(null)
-                .getEstablishedForId()));
+                .getAssignmentType().getCode()));
     return referralDTO;
   }
 }

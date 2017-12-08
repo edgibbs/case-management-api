@@ -23,7 +23,7 @@ import org.junit.Test;
 /** @author CWDS TPT-3 Team */
 public class StaffPersonResourceTest extends BaseApiIntegrationTest {
 
-  public static final String STAFF_PERSON_ID = "q48";
+  public static final String STAFF_PERSON_ID = "0Ki";
   public static final String WRONG_STAFF_PERSON_ID = "-1";
 
   @BeforeClass
@@ -51,7 +51,7 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
   }
 
   @Test
-  public void getReferralsByStaffIdTest() throws Exception {
+  public void getActiveReferralsByStaffIdTest() throws Exception {
     WebTarget target =
         clientTestRule.target(API.STAFF + "/" + STAFF_PERSON_ID + "/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -59,7 +59,7 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
   }
 
   @Test
-  public void getReferralsByWrongStaffIdTest() {
+  public void getActiveReferralsByWrongStaffIdTest() {
     WebTarget target =
         clientTestRule.target(API.STAFF + "/" + WRONG_STAFF_PERSON_ID + "/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();

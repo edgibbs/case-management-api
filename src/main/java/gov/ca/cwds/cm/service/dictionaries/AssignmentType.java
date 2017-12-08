@@ -4,22 +4,22 @@ package gov.ca.cwds.cm.service.dictionaries;
  * @author CWDS TPT-3 Team
  */
 public enum AssignmentType {
-  PRIMARY("P"),
-  SECONDARY("S"),
-  READ_ONLY("R");
+  PRIMARY('P'),
+  SECONDARY('S'),
+  READ_ONLY('R');
 
-  AssignmentType(String type) {
-    this.type = type;
+  AssignmentType(Character code) {
+    this.code = code;
   }
 
-  private String type;
+  private Character code;
 
-  public static AssignmentType from(String type) {
-    if (PRIMARY.type.equals(type)) {
+  public static AssignmentType from(Character type) {
+    if (PRIMARY.code.equals(type)) {
       return PRIMARY;
-    } else if (SECONDARY.type.equals(type)) {
+    } else if (SECONDARY.code.equals(type)) {
       return SECONDARY;
-    } else if (READ_ONLY.type.equals(type)) {
+    } else if (READ_ONLY.code.equals(type)) {
       return READ_ONLY;
     }
 
