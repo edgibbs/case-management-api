@@ -25,6 +25,7 @@ public class ReferralService extends CrudServiceAdapter {
   public List<ReferralDTO> getReferralsByStaffId(String staffId) {
     List<Referral> referrals = referralDao.getOpenReferralsByStaffId(staffId, LocalDate.now());
     return referrals
+
         .stream()
         .map(referral -> referralMapper.toReferralDTO(referral))
         .collect(Collectors.toList());

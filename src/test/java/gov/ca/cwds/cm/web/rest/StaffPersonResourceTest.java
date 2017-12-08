@@ -23,7 +23,7 @@ import org.junit.Test;
 /** @author CWDS TPT-3 Team */
 public class StaffPersonResourceTest extends BaseApiIntegrationTest {
 
-  public static final String STAFF_PERSON_ID = "0Ki";
+  public static final String STAFF_PERSON_ID = "con";
   public static final String WRONG_STAFF_PERSON_ID = "-1";
 
   @BeforeClass
@@ -31,6 +31,7 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
     setUpCms();
     setUpDb();
     runScripts("liquibase/case/get-cases-by-staff-id_test-data.xml");
+    runScripts("liquibase/referral/get_referrals_by_staff_id.xml");
   }
 
   @Test
