@@ -6,6 +6,7 @@
     <changeSet id="correct_data_for_client" author="TPT3_team">
         <insert tableName="CLIENT_T">
             <column name="IDENTIFIER" value="BKk7CHj00Z" />
+            <column name="ADJDEL_IND" value="null"/>
             <column name="ALN_REG_NO" value="111483672"/>
             <column name="ADPTN_STCD" value="N" />
             <column name="BIRTH_DT" value="1944-01-30"/>
@@ -65,8 +66,7 @@
             <column name="SOC158_IND" value="Y"/>
             <column name="DTH_DT_IND" value="N"/>
             <column name="EMAIL_ADDR" value="test@test.com"/>
-            <column name="ADJDEL_IND" value=" "/>
-            <column name="HISP_UD_CD" value=" "/>
+            <column name="HISP_UD_CD" value="A"/>
             <column name="SOCPLC_CD" value="M"/>
             <column name="CL_INDX_NO" value=" "/>
             <column name="LST_UPD_TS" value="2000-03-17 17:01:54.924155" />
