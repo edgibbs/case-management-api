@@ -81,7 +81,7 @@ public interface ClientMapper {
   @Mapping(target = "birthFacilityName", source = "birthFacilityName")
   @Mapping(target = "birthDt", source = "birthDate")
   @Mapping(target = "alienRegistrationNumber", source = "alienRegistrationNumber")
-  @Mapping(target = "adoptionStatusCode", source = "adoptionStatusCode")
+  @Mapping(target = "adoptionStatusCode", source = "adoptionStatus.code")
   @Mapping(target = "identifier", source = "identifier")
   ClientDTO toClientDTO(Client client);
 }
