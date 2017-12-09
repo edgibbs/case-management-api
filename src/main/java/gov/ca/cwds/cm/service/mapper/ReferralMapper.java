@@ -11,6 +11,8 @@ import org.mapstruct.Mapping;
 @FunctionalInterface
 public interface ReferralMapper {
 
+  @Mapping(ignore = true, target = "messages")
+  @Mapping(ignore = true, target = "assignmentType")
   @Mapping(source = "id", target = "identifier")
   @Mapping(source = "additionalInfoIncludedCode", target = "additionalInfoIncludedCode")
   @Mapping(source = "anonymousReporterIndicator", target = "anonymousReporterIndicator")
