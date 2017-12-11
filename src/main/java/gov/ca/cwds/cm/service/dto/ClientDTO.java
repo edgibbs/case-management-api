@@ -16,12 +16,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @SuppressWarnings({"squid:S3437"})
 public class ClientDTO extends BaseDTO implements RequestResponse {
