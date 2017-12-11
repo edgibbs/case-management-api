@@ -3,12 +3,12 @@ package gov.ca.cwds.cm.service.facade;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.ReferralService;
-import gov.ca.cwds.cm.service.dictionaries.AssignmentType;
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
 import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
 import gov.ca.cwds.cm.service.dto.facade.ReferralByStaff;
 import gov.ca.cwds.data.legacy.cms.dao.AssignmentDao;
 import gov.ca.cwds.data.legacy.cms.entity.BaseAssignment;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,14 +45,13 @@ public class CaseLoadFacade {
 
   private ReferralByStaff enrichReferralDtos(
       final ReferralDTO referralDTO, final List<BaseAssignment> assignment) {
-    Character assignmentType =
+    AssignmentType assignmentType =
         assignment
             .stream()
             .filter(line -> line.getEstablishedForId().equals(referralDTO.getIdentifier()))
             .findAny().orElse(null)
-            .getAssignmentType()
-            .getCode();
+            .getAssignmentType();
 
-    return new ReferralByStaff(referralDTO, AssignmentType.from(assignmentType));
+    return new ReferralByStaff(referralDTO, assignmentType);
   }
 }

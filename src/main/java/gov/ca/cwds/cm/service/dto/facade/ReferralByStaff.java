@@ -2,9 +2,9 @@ package gov.ca.cwds.cm.service.dto.facade;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import gov.ca.cwds.cm.service.dictionaries.AssignmentType;
 import gov.ca.cwds.cm.service.dto.BaseDTO;
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
+import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.rest.api.Response;
 
 /**
