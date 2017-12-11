@@ -6,6 +6,7 @@ import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.CaseMapper;
 import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
+import gov.ca.cwds.cm.service.mapper.ReferralByStaffMapper;
 import gov.ca.cwds.cm.service.mapper.ReferralMapper;
 import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
 import gov.ca.cwds.cm.service.mapper.facade.CaseByStaffMapper;
@@ -28,6 +29,7 @@ public class MappingModule extends AbstractModule {
     bindMapperAsEagerSingleton(ClientMapper.class);
     bindMapperAsEagerSingleton(SystemCodeMapper.class);
     bindMapperAsEagerSingleton(ReferralMapper.class);
+    bindMapperAsEagerSingleton(ReferralByStaffMapper.class);
   }
 
   private void bindMapperAsEagerSingleton(Class<?> clazz) {
