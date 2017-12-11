@@ -1,14 +1,16 @@
 package gov.ca.cwds.cm.service.facade;
 
-import static com.google.common.collect.MoreCollectors.onlyElement;
-
 import com.google.inject.Inject;
+import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.ReferralService;
 import gov.ca.cwds.cm.service.dictionaries.AssignmentType;
 import gov.ca.cwds.cm.service.dto.ReferralDTO;
+import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
+import gov.ca.cwds.cm.service.dto.facade.ReferralByStaff;
 import gov.ca.cwds.data.legacy.cms.dao.AssignmentDao;
 import gov.ca.cwds.data.legacy.cms.entity.BaseAssignment;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,15 +19,16 @@ public class CaseLoadFacade {
 
   private AssignmentDao assignmentDao;
   private ReferralService referralService;
+  private CaseService caseService;
 
   @Inject
-  public CaseLoadFacade(AssignmentDao assignmentDao,
-      ReferralService referralService) {
+  public CaseLoadFacade(
+      AssignmentDao assignmentDao, ReferralService referralService, CaseService caseService) {
     this.assignmentDao = assignmentDao;
     this.referralService = referralService;
   }
 
-  public List<ReferralDTO> getReferralsWithActiveAssignment(String staffId) throws IOException {
+  public List<ReferralByStaff> getReferralsWithActiveAssignment(String staffId) throws IOException {
     List<ReferralDTO> referrals = referralService.getReferralsByStaffId(staffId);
     List<BaseAssignment> assignments =
         assignmentDao.getAssignmentsByStaffIds(
@@ -36,18 +39,20 @@ public class CaseLoadFacade {
         .collect(Collectors.toList());
   }
 
-  private ReferralDTO enrichReferralDtos(
-      final ReferralDTO referralDTO, final List<BaseAssignment> assignment) {
-    Character assignmentType = assignment
-        .stream()
-        .filter(line -> line.getEstablishedForId().equals(referralDTO.getIdentifier()))
-        .collect(onlyElement()).getAssignmentType().getCode();
+  public List<CaseByStaff> getActiveCases(String staffId) {
+    return new ArrayList<>(caseService.findActiveByStaffId(staffId));
+  }
 
-    referralDTO.setAssignmentType(
-        AssignmentType.from(
-            assignmentType
-        )
-    );
-    return referralDTO;
+  private ReferralByStaff enrichReferralDtos(
+      final ReferralDTO referralDTO, final List<BaseAssignment> assignment) {
+    Character assignmentType =
+        assignment
+            .stream()
+            .filter(line -> line.getEstablishedForId().equals(referralDTO.getIdentifier()))
+            .findAny().orElse(null)
+            .getAssignmentType()
+            .getCode();
+
+    return new ReferralByStaff(referralDTO, AssignmentType.from(assignmentType));
   }
 }

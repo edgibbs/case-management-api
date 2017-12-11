@@ -12,7 +12,6 @@ import org.mapstruct.Mapping;
 public interface ReferralMapper {
 
   @Mapping(ignore = true, target = "messages")
-  @Mapping(ignore = true, target = "assignmentType")
   @Mapping(source = "id", target = "identifier")
   @Mapping(source = "additionalInfoIncludedCode", target = "additionalInfoIncludedCode")
   @Mapping(source = "anonymousReporterIndicator", target = "anonymousReporterIndicator")

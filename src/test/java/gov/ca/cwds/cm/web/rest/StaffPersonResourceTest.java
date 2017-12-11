@@ -72,11 +72,6 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
   }
 
   @Test
-  public void getActiveReferralsByStaffIdWithNonActiveAssignment() {
-
-  }
-
-  @Test
   public void getActiveCasesByStaffId_success() throws IOException, JSONException {
     // given
     final String inputUri = API.STAFF + "/0Ki/" + API.CASES;
