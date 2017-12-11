@@ -3,18 +3,14 @@ package gov.ca.cwds.cm.service.dto.system;
 import com.codahale.metrics.health.HealthCheck;
 import gov.ca.cwds.cm.service.dto.BaseDTO;
 import java.util.HashMap;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @author CWDS CALS API Team
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @SuppressWarnings("squid:S2160")
 public class HealthCheckResultDTO extends BaseDTO {
 

@@ -8,10 +8,8 @@ import gov.ca.cwds.rest.api.Response;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.Collection;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * The abstract class purpose is to support swagger ApiModel description for concrete search result.
@@ -21,8 +19,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-@AllArgsConstructor
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties({"messages"})
 @SuppressWarnings({"squid:S1948"})

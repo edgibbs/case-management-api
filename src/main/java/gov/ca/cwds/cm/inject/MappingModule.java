@@ -7,6 +7,7 @@ import gov.ca.cwds.cm.service.mapper.CaseMapper;
 import gov.ca.cwds.cm.service.mapper.ClientAddressMapper;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.service.mapper.SystemCodeMapper;
+import gov.ca.cwds.cm.service.mapper.facade.CaseByStaffMapper;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -20,6 +21,7 @@ public class MappingModule extends AbstractModule {
   protected void configure() {
     bindMapperAsEagerSingleton(AddressMapper.class);
     bindMapperAsEagerSingleton(CaseMapper.class);
+    bindMapperAsEagerSingleton(CaseByStaffMapper.class);
     bindMapperAsEagerSingleton(ChildClientMapper.class);
     bindMapperAsEagerSingleton(ClientAddressMapper.class);
     bindMapperAsEagerSingleton(ClientMapper.class);
