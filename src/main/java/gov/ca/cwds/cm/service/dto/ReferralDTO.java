@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 /** @author CWDS TPT-3 Team */
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ReferralDTO extends BaseDTO implements Response {
 
