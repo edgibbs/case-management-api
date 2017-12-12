@@ -47,7 +47,7 @@ public interface ReferralMapper {
   @Mapping(source = "limitedAccessCode", target = "limitedAccessCode")
   @Mapping(source = "limitedAccessDate", target = "limitedAccessDate")
   @Mapping(source = "limitedAccessDesc", target = "limitedAccessDesc")
-  @Mapping(source = "limitedAccessGovtAgencyType", target = "limitedAccessGovtAgencyType")
+  @Mapping(source = "limitedAccessCounty.systemId", target = "limitedAccessGovtAgencyType")
   @Mapping(source = "mandatedCrossReportReceivedDate", target = "mandatedCrossReportReceivedDate")
   @Mapping(source = "referralName", target = "referralName")
   @Mapping(source = "openAdequateCaseCode", target = "openAdequateCaseCode")
