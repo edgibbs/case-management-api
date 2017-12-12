@@ -31,11 +31,11 @@ project.ext {
     projectMajorVersion = '0.1.0'
     projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.1-SNAPSHOT'
+    coreApiVersion = '0.5.2-SNAPSHOT'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    calsModelVersion = '0.4.4'
+    calsModelVersion = '0.4.6'
     shiroSecurityVersion = '0.4.3'
 }
 
