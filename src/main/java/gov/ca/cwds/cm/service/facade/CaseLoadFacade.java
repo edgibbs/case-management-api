@@ -10,7 +10,6 @@ import gov.ca.cwds.cm.service.mapper.ReferralByStaffMapper;
 import gov.ca.cwds.data.legacy.cms.dao.AssignmentDao;
 import gov.ca.cwds.data.legacy.cms.entity.BaseAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,16 +24,23 @@ public class CaseLoadFacade {
 
   @Inject
   public CaseLoadFacade(
-      AssignmentDao assignmentDao, ReferralService referralService, CaseService caseService, ReferralByStaffMapper referralByStaffMapper) {
+      AssignmentDao assignmentDao,
+      ReferralService referralService,
+      CaseService caseService,
+      ReferralByStaffMapper referralByStaffMapper) {
     this.assignmentDao = assignmentDao;
     this.referralService = referralService;
     this.caseService = caseService;
     this.referralByStaffMapper = referralByStaffMapper;
   }
 
-  public List<ReferralByStaff> getReferralsWithActiveAssignment(String staffId) throws IOException {
-    List<ReferralByStaff> referrals = referralService.getReferralsByStaffId(staffId).stream().map(t -> referralByStaffMapper.toReferral(t)).collect(
-        Collectors.toList());
+  public List<ReferralByStaff> getReferralsWithActiveAssignment(String staffId) {
+    List<ReferralByStaff> referrals =
+        referralService
+            .getReferralsByStaffId(staffId)
+            .stream()
+            .map(t -> referralByStaffMapper.toReferral(t))
+            .collect(Collectors.toList());
     List<BaseAssignment> assignments =
         assignmentDao.getAssignmentsByStaffIds(
             referrals.stream().map(ReferralDTO::getIdentifier).collect(Collectors.toList()));
@@ -50,12 +56,14 @@ public class CaseLoadFacade {
 
   private ReferralByStaff enrichReferralDtos(
       final ReferralByStaff referralDTO, final List<BaseAssignment> assignment) {
-    AssignmentType assignmentType =
+    BaseAssignment baseAssignment =
         assignment
             .stream()
             .filter(line -> line.getEstablishedForId().equals(referralDTO.getIdentifier()))
-            .findAny().orElse(null)
-            .getAssignmentType();
+            .findAny()
+            .orElse(null);
+    AssignmentType assignmentType =
+        baseAssignment == null ? null : baseAssignment.getAssignmentType();
     referralDTO.setAssignmentType(assignmentType);
     return referralDTO;
   }
