@@ -21,7 +21,7 @@ public interface ReferralMapper {
   @Mapping(source = "caretakersPerpetratorCode", target = "caretakersPerpetratorCode")
   @Mapping(source = "closureDate", target = "closureDate")
   @Mapping(source = "communicationMethodType", target = "communicationMethodType")
-  @Mapping(source = "countySpecificCode", target = "countySpecificCode")
+  @Mapping(source = "countySpecificCode.systemId", target = "countySpecificCode")
   @Mapping(source = "currentLocationOfChildren", target = "currentLocationOfChildren")
   @Mapping(source = "drmsAllegationDescriptionDoc", target = "drmsAllegationDescriptionDoc")
   @Mapping(source = "drmsErReferralDoc", target = "drmsErReferralDoc")
@@ -39,7 +39,7 @@ public interface ReferralMapper {
     source = "firstResponseDeterminedByStaffPersonId",
     target = "firstResponseDeterminedByStaffPersonId"
   )
-  @Mapping(source = "primaryContactStaffPersonId", target = "primaryContactStaffPersonId")
+  @Mapping(source = "primaryContactStaffPerson.identifier", target = "primaryContactStaffPersonId")
   @Mapping(source = "govtEntityType", target = "govtEntityType")
   @Mapping(source = "homelessIndicator", target = "homelessIndicator")
   @Mapping(source = "legalDefinitionCode", target = "legalDefinitionCode")
