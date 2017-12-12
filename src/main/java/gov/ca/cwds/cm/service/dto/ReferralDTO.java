@@ -1,12 +1,15 @@
 package gov.ca.cwds.cm.service.dto;
 
+import static gov.ca.cwds.rest.api.domain.DomainObject.TIME_FORMAT;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.rest.api.Response;
 import gov.ca.cwds.rest.validation.Date;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
@@ -347,7 +350,7 @@ public class ReferralDTO extends BaseDTO implements Response {
           + "problem described in the allegation. This attribute is part of the ER Protocol.",
       example = "b"
   )
-  private String openAdequateCaseCode;
+  private Boolean openAdequateCaseCode;
 
   @Date
   @ApiModelProperty(
@@ -369,12 +372,13 @@ public class ReferralDTO extends BaseDTO implements Response {
 
   @Size(max = 8)
   @NotNull
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = TIME_FORMAT)
   @ApiModelProperty(
       value = "RECEIVED_TIME - The time of day the reported incident (REFERRAL)  "
           + "was received by a STAFF PERSON.  This will be  defaulted to the system tim",
       example = "16:41:49"
   )
-  private Instant receivedTime;
+  private LocalTime receivedTime;
 
   @Size(max = 4)
   @NotNull
@@ -404,13 +408,14 @@ public class ReferralDTO extends BaseDTO implements Response {
   private LocalDate responseDeterminationDate;
 
   @Size(max = 8)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = TIME_FORMAT)
   @NotNull
   @ApiModelProperty(
       value = "RESPONSE_DETERMINATION_TIME - The time of day when the screener assigns a specific "
           + "response type to a REFERRAL.",
       example = "16:41:49"
   )
-  private Instant responseDeterminationTime;
+  private LocalTime responseDeterminationTime;
 
   @Size(max = 10)
   @ApiModelProperty(
@@ -480,9 +485,9 @@ public class ReferralDTO extends BaseDTO implements Response {
       value = "UNFOUNDED_SERIES_CODE - Indicates allegation is one in a series of previously "
           + "investigated, non-substantiated reports from the same party with no new allegations "
           + "made.  This attribute is part of the ER Protocol.",
-      example = "A"
+      example = "N"
   )
-  private String unfoundedSeriesCode;
+  private Boolean unfoundedSeriesCode;
 
   @NotNull
   @Size(max = 1)
