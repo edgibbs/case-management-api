@@ -15,7 +15,7 @@ import org.junit.Test;
 /** @author CWDS TPT-3 Team */
 public class ClientResourceTest extends BaseApiIntegrationTest {
 
-  public static final String CLIENT_ID = "22223312D";
+  public static final String CLIENT_ID = "22223312D0";
 
   @BeforeClass
   public static void beforeClass() throws Exception {
