@@ -23,7 +23,6 @@ import org.junit.Test;
 /** @author CWDS TPT-3 Team */
 public class StaffPersonResourceTest extends BaseApiIntegrationTest {
 
-  public static final String STAFF_PERSON_ID = "q48";
   public static final String WRONG_STAFF_PERSON_ID = "-1";
 
   @BeforeClass
@@ -31,18 +30,18 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
     setUpCms();
     setUpDb();
     runScripts("liquibase/case/get-cases-by-staff-id_test-data.xml");
+    runScripts("liquibase/referral/get_referrals_by_staff_id.xml");
   }
 
   @Test
-  public void testGetClientsByStaffId() throws Exception {
-    WebTarget target =
-        clientTestRule.target(Constants.API.STAFF + "/" + STAFF_PERSON_ID + "/clients");
+  public void getClientsByStaffId() throws Exception {
+    WebTarget target = clientTestRule.target(Constants.API.STAFF + "/con/clients");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/list_of_related_clients_by_staff_id.json");
   }
 
   @Test
-  public void testGetClientsByWrongStaffId() {
+  public void getClientsByWrongStaffId() {
     WebTarget target =
         clientTestRule.target(Constants.API.STAFF + "/" + WRONG_STAFF_PERSON_ID + "/clients");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -51,15 +50,21 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
   }
 
   @Test
-  public void getReferralsByStaffIdTest() throws Exception {
-    WebTarget target =
-        clientTestRule.target(API.STAFF + "/" + STAFF_PERSON_ID + "/" + API.REFERRALS);
+  public void getActiveReferralByStaffId() throws Exception {
+    WebTarget target = clientTestRule.target(API.STAFF + "/con/" + API.REFERRALS);
+    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    assertResponseByFixturePath(response, "fixtures/referral_by_staff_id.json");
+  }
+
+  @Test
+  public void getActiveReferralsByStaffId() throws IOException, JSONException {
+    WebTarget target = clientTestRule.target(API.STAFF + "/04Z/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     assertResponseByFixturePath(response, "fixtures/referrals_by_staff_id.json");
   }
 
   @Test
-  public void getReferralsByWrongStaffIdTest() {
+  public void getActiveReferralsByWrongStaffId() {
     WebTarget target =
         clientTestRule.target(API.STAFF + "/" + WRONG_STAFF_PERSON_ID + "/" + API.REFERRALS);
     Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -72,14 +77,12 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
     final String inputUri = API.STAFF + "/0Ki/" + API.CASES;
 
     // when
-    final Response actualResult = clientTestRule.target(inputUri).request(MediaType.APPLICATION_JSON).get();
+    final Response actualResult =
+        clientTestRule.target(inputUri).request(MediaType.APPLICATION_JSON).get();
 
     // then
     MatcherAssert.assertThat(actualResult.getStatus(), is(equalTo(Status.OK.getStatusCode())));
-    assertResponseByFixturePath(
-        actualResult,
-        "fixtures/case-by-staff-id-response.json"
-    );
+    assertResponseByFixturePath(actualResult, "fixtures/case-by-staff-id-response.json");
   }
 
   @Test
@@ -88,7 +91,8 @@ public class StaffPersonResourceTest extends BaseApiIntegrationTest {
     final String inputUri = API.STAFF + "/" + WRONG_STAFF_PERSON_ID + "/" + API.CASES;
 
     // when
-    final Response response = clientTestRule.target(inputUri).request(MediaType.APPLICATION_JSON).get();
+    final Response response =
+        clientTestRule.target(inputUri).request(MediaType.APPLICATION_JSON).get();
     final CaseByStaff[] actualArray = response.readEntity(CaseByStaff[].class);
 
     // then

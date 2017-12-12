@@ -27,6 +27,8 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementEpisode;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHome;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeNotes;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
+import gov.ca.cwds.data.legacy.cms.entity.Referral;
+import gov.ca.cwds.data.legacy.cms.entity.ReferralAssignment;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
@@ -91,7 +93,15 @@ public class DataAccessModule extends AbstractModule {
               State.class,
               SubstituteCareProvider.class,
               SystemCode.class,
-              VisitType.class
+              VisitType.class,
+              CaseAssignment.class,
+              ReferralAssignment.class,
+              CaseLoad.class,
+              SecondaryAssignmentRoleType.class,
+              Referral.class,
+              Case.class,
+              StaffPersonCaseLoad.class,
+              CaseLoadWeighting.class
           )
           .build();
 
