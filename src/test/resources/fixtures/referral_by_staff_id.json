@@ -33,8 +33,9 @@
     "response_determination_time": "13:10:00",
     "responsible_agency_code": "C",
     "special_project_referral_indicator": false,
-    "specifics_included_code": "",
-    "sufficient_information_code": "",
+    "specifics_included_code": false,
+    "sufficient_information_code": false,
+    "unfounded_series_code": false,
     "zippy_created_indicator": false,
     "assignment_type": "PRIMARY"
   }

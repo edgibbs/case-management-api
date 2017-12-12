@@ -29,8 +29,8 @@
     "response_determination_time": "13:19:00",
     "responsible_agency_code": "C",
     "special_project_referral_indicator": false,
-    "specifics_included_code": "Y",
-    "sufficient_information_code": "Y",
+    "specifics_included_code": true,
+    "sufficient_information_code": true,
     "unfounded_series_code": false,
     "zippy_created_indicator": false,
     "assignment_type": "PRIMARY"
@@ -62,8 +62,9 @@
     "referred_to_resource_type": 0,
     "responsible_agency_code": "C",
     "special_project_referral_indicator": false,
-    "specifics_included_code": "",
-    "sufficient_information_code": "",
+    "specifics_included_code": false,
+    "sufficient_information_code": false,
+    "unfounded_series_code": false,
     "zippy_created_indicator": false,
     "assignment_type": "PRIMARY"
   }

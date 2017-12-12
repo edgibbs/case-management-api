@@ -466,18 +466,18 @@ public class ReferralDTO extends BaseDTO implements Response {
   @ApiModelProperty(
       value = "SPECIFICS_INCLUDED_CODE - Indicates specific acts and/or behavior were "
           + "included in allegation. This attribute is part of the ER Protocol.",
-      example = "A"
+      example = "N"
   )
-  private String specificsIncludedCode;
+  private Boolean specificsIncludedCode;
 
   @NotNull
   @Size(max = 1)
   @ApiModelProperty(
       value = "SUFFICIENT_INFORMATION_CODE - Indicates if there were sufficient information to "
           + "locate the family.  This attribute is part of the ER Protocol.",
-      example = "A"
+      example = "N"
   )
-  private String sufficientInformationCode;
+  private Boolean sufficientInformationCode;
 
   @NotNull
   @Size(max = 1)
