@@ -17,8 +17,7 @@
       'QZelKzacon', 'N', 'N', 1103, ' ', 'N', 'N', null, 'Paul Judd ', ' ', '1998-08-13',
       '11:42:00', 1520, 0, '1998-08-28', '13:10:00', null, null, ' ', ' ', ' ', 'con',
       '1998-08-28 13:26:29.508889', null, null, 'con', 'con', '36', 'N', 'N', 'N', 'N', null, 'C',
-      null, null,
-      null, '1998-08-28');
+      null, null, null, null);
 
       INSERT INTO REFERL_T (IDENTIFIER, ADD_INF_CD, ANRPTR_IND, PETAPL_IND, APRVL_NO,
       APV_STC, CR_PERP_CD, REFCLSR_DT, CMM_MTHC, CHILOC_TXT, ALGDSC_DOC, ER_REF_DOC, INVSTG_DOC,
