@@ -13,9 +13,11 @@ import java.time.LocalTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /** @author CWDS TPT-3 Team */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ReferralDTO extends BaseDTO implements Response {
 
