@@ -37,9 +37,15 @@ import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ImmigrationStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.Ethnicity;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.Language;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.MaritalStatus;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.NameType;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.Religion;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SecondaryAssignmentRoleType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
@@ -101,7 +107,13 @@ public class DataAccessModule extends AbstractModule {
               Referral.class,
               Case.class,
               StaffPersonCaseLoad.class,
-              CaseLoadWeighting.class
+              CaseLoadWeighting.class,
+              ImmigrationStatus.class,
+              MaritalStatus.class,
+              NameType.class,
+              Ethnicity.class,
+              Language.class,
+              Religion.class
           )
           .build();
 
