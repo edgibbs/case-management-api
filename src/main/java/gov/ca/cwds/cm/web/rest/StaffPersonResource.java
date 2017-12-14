@@ -13,8 +13,8 @@ import com.google.inject.Inject;
 import gov.ca.cwds.ObjectMapperUtils;
 import gov.ca.cwds.cm.service.CaseService;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
-import gov.ca.cwds.cm.service.dto.ReferralDTO;
 import gov.ca.cwds.cm.service.dto.facade.CaseByStaff;
+import gov.ca.cwds.cm.service.dto.facade.ReferralByStaff;
 import gov.ca.cwds.cm.service.facade.CaseLoadFacade;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.testing.FixtureHelpers;
@@ -89,7 +89,7 @@ public class StaffPersonResource {
       @ApiResponse(code = 406, message = "Accept Header not supported")
     }
   )
-  @ApiOperation(value = "Search referrals by staffId", response = ReferralDTO[].class)
+  @ApiOperation(value = "Search referrals by staffId", response = ReferralByStaff[].class)
   @UnitOfWork
   @Timed
   public Response getReferrals(
