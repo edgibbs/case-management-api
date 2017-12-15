@@ -6,11 +6,13 @@ import gov.ca.cwds.cm.service.dto.ReferralDTO;
 import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.rest.api.Response;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author CWDS TPT-3 Team
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ReferralByStaff extends ReferralDTO implements Response {
 

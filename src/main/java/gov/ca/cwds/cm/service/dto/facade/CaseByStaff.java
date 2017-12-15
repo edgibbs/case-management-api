@@ -45,6 +45,14 @@ public class CaseByStaff extends BaseDTO implements Response {
   private String identifier;
 
   @ApiModelProperty(
+      value = "CASE.NAME - The name which can be used for easy retrieval of a CASE instead of the ID. "
+          + "This will be defaulted to the focus CLIENT's (e.g., Case Child) Name (last, first) "
+          + "upon opening of a CASE.",
+      example = "AaQshqm0Mb"
+  )
+  private String caseName;
+
+  @ApiModelProperty(
       value = "CLIENT.ID - A system generated number used to uniquely identify each CLIENT. "
           + "This ID has an internal 10 digit alpha-numeric representation[sic] and an external 19 "
           + "digit numeric representation.  The external representation is displayed at the User "

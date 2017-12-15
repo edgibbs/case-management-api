@@ -8,11 +8,15 @@
     <sql>
       INSERT INTO CASE_T
       (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
-      VALUES('NbVJLIz0Ki', '2001-08-07', 1692, 'GqbfXQD0Ki', 122, 320, 'Y', NULL, 563, NULL, '2001-08-07', 1095, 'N', 'N', 'N', 'Worth, Natalie                     ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:07:06.050', 'Hoor9eP0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
+      VALUES('NbVJLIz0Ki', '2001-08-07', 1692, 'GqbfXQD0Ki', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Natalie                     ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:07:06.050', 'Hoor9eP0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
 
       INSERT INTO CASE_T
       (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
-      VALUES('M6ufkiD0Ki', '2001-08-07', 1692, 'FojvGuD0Ki', 122, 320, 'Y', NULL, 563, NULL, '2001-08-07', 1095, 'N', 'N', 'N', 'Worth, Sarah                       ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:08:28.742', 'O7MuwVx0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
+      VALUES('M6ufkiD0Ki', '2001-08-07', 1692, 'FojvGuD0Ki', 122, 320, 'Y', NULL, 563, NULL, NULL, 1095, 'N', 'N', 'N', 'Worth, Sarah                       ', NULL, 'Y', 1828, 'N', '0Ki', '2001-08-07 13:08:28.742', 'O7MuwVx0Ki', '2001-08-07', '0Ki', '28', NULL, 'G5Xtyuj0Ki', 'C', NULL, NULL, NULL, NULL, NULL);
+
+      INSERT INTO CASE_T
+      (IDENTIFIER, START_DT, SRV_CMPC, APRVL_NO, APV_STC, CLS_RSNC, CSPL_DET_B, CL_STM_TXT, CNTRY_C, NOTES_DOC, END_DT, GVR_ENTC, ICPCSTAT_B, ICPC_RQT_B, LMT_ACSSCD, CASE_NM, PRJ_END_DT, SPRJ_CST_B, STATE_C, TICKLE_T_B, LST_UPD_ID, LST_UPD_TS, FKCHLD_CLT, SRV_CMPDT, FKSTFPERST, CNTY_SPFCD, ALERT_TXT, FKREFERL_T, RSP_AGY_CD, NXT_TILPDT, EMANCPN_DT, L_GVR_ENTC, LMT_ACS_DT, LMT_ACSDSC)
+      VALUES('ISHfaXG0Ki', '2002-09-16', 1692, 'NBDmEhM0Ki', 122, 302, 'Y', NULL, 563, NULL, '2004-05-17', 1095, 'N', 'N', 'N', 'STC6798 Case1                      ', NULL, 'N', 1828, 'N', '0Ki', '2004-05-17 16:03:00.662', 'Gdlhhri0Ki', '2002-09-16', '0Ki', '99', NULL, NULL, 'C', NULL, NULL, NULL, NULL, NULL);
     </sql>
 
     <sql>
@@ -45,6 +49,10 @@
       INSERT INTO ASGNM_T
       (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
       VALUES('RFhuPwb0Ki', NULL, NULL, 'M6ufkiD0Ki', 'C', 0, '2001-08-07', '08:31:00', 'P', 0.000, '0Ki', '2001-08-07 13:08:28.742', NULL, '2BNuWjo0Ki', '                                                                                                                                                                ', '28');
+
+      INSERT INTO ASGNM_T
+      (IDENTIFIER, END_DT, END_TM, ESTBLSH_ID, ESTBLSH_CD, ASSG_RLC, START_DT, START_TM, ASGNMNT_CD, WGHTNG_NO, LST_UPD_ID, LST_UPD_TS, FKOST_PTYT, FKCASE_LDT, RESPL_DSC, CNTY_SPFCD)
+      VALUES('Svb5d7G0Ki', NULL, '16:02:00', 'ISHfaXG0Ki', 'C', 0, '2002-09-16', '08:19:00', 'P', 0.000, '0Ki', '2004-05-17 16:03:00.662', NULL, 'FCzoa5V00E', '                                                                                                                                                                ', '28');
     </sql>
 
     <sql>
@@ -55,6 +63,10 @@
       INSERT INTO CASE_LDT
       (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
       VALUES('2BNuWjo0Ki', 'Y', 0.000, NULL, 'Lucky''s caseload              ', 'N', '2004-07-13', '0Ki', '2004-09-20 13:32:36.340', '1ZsaZBI0Ki', 'N', '28', 'N');
+
+      INSERT INTO CASE_LDT
+      (IDENTIFIER, ASGDSK_IND, CLD_CEILNO, END_DT, IDENTFR_NM, ON_HLD_IND, START_DT, LST_UPD_ID, LST_UPD_TS, FKASG_UNIT, CASELD_B, CNTY_SPFCD, ARCASS_IND)
+      VALUES('FCzoa5V00E', 'Y', 0.000, NULL, 'In-box caseload               ', 'N', '2001-01-11', '0Ki', '2002-09-17 11:36:58.395', 'DOTqhPx00E', 'N', '99', 'N');
     </sql>
 
     <sql>
@@ -65,6 +77,10 @@
       INSERT INTO CSLDWGHT
       (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD)
       VALUES('Y, Sup              ', 'Luck                     ', ' ', '      ', '    ', '0Ki', '2004-07-13 11:21:15.804', '2BNuWjo0Ki', '0Sr', '28');
+
+      INSERT INTO CSLDWGHT
+      (FIRST_NM, LAST_NM, MID_INI_NM, NMPRFX_DSC, SUFX_TLDSC, LST_UPD_ID, LST_UPD_TS, FKCASE_LDT, FKSTFPERST, CNTY_SPFCD)
+      VALUES('H                   ', 'RAMES                    ', ' ', '      ', '    ', '00E', '2001-01-11 10:24:05.557', 'FCzoa5V00E', '0Ki', '99');
     </sql>
   </changeSet>
 </databaseChangeLog>
