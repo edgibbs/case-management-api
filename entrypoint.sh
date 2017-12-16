@@ -2,6 +2,8 @@
 
 #The file should have UNIX-style EOL
 
+JAVA_OPTS="-Xms128m -Xmx256m ${JAVA_OPTS}"
+
 if [ -z "$CM_API_CONFIG" ]
 then
   CM_API_CONFIG="case-management-api.yml"
