@@ -50,7 +50,7 @@ public interface ChildClientMapper {
     source = "safelySurrendedBabiesIndicatorVar"
   )
   @Mapping(target = "sawsCaseSerialNumber", source = "sawsCaseSerialNumber")
-  @Mapping(target = "deathCircumstancesType", source = "deathCircumstancesType.systemId")
+  @Mapping(target = "deathCircumstancesType", source = "deathCircumstancesTypeCode")
   @Mapping(target = "sijsScheduledInterviewDate", ignore = true)
   @Mapping(target = "siiNextScreeningDueDate", ignore = true)
   @Mapping(target = "ssiSspApplicationIndicator", source = "ssiSspApplicationIndicator")
