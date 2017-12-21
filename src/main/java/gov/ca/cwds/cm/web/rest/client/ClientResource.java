@@ -17,7 +17,6 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -58,22 +57,5 @@ public class ClientResource {
     clientParameterObject.setClientId(id);
     return ResponseUtil.responseOrNotFound(
         clientFacade.find(clientParameterObject, ClientType.BASE_CLIENT));
-  }
-
-  @PUT
-  @Path("/{id}")
-  @Produces(MediaType.APPLICATION_JSON)
-  @Timed
-  @ApiResponses(
-      value = {
-          @ApiResponse(code = 400, message = "Bad request"),
-          @ApiResponse(code = 404, message = "Not Found"),
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
-  )
-  @ApiOperation(value = "Update client", response = ClientDTO.class)
-  public Response update() {
-    return null;
   }
 }

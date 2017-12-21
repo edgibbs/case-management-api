@@ -15,10 +15,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.NotEmpty;
 
-/**
- * @author CWDS TPT-3 Team
- */
-
+/** @author CWDS TPT-3 Team */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
@@ -29,25 +26,21 @@ public class ChildClientDTO extends ClientDTO {
 
   @NotNull
   @ApiModelProperty(
-      required = true,
-      readOnly = true,
-      value = "CLIENT ID of victim",
-      example = "ABC1234567"
+    required = true,
+    readOnly = true,
+    value = "CLIENT ID of victim",
+    example = "ABC1234567"
   )
   private String victimClientId;
 
   @NotEmpty
   @Size(min = 1, max = 2)
   @OneOf(
-      value = {"N", "Y", "NA"},
-      ignoreCase = true,
-      ignoreWhitespace = true
+    value = {"N", "Y", "NA"},
+    ignoreCase = true,
+    ignoreWhitespace = true
   )
-  @ApiModelProperty(
-      required = true,
-      value = "Adoptable Code",
-      example = "ADOPTABLE"
-  )
+  @ApiModelProperty(required = true, value = "Adoptable Code", example = "ADOPTABLE")
   private String adoptableCode;
 
   @NotNull
@@ -85,12 +78,9 @@ public class ChildClientDTO extends ClientDTO {
   @ApiModelProperty(required = true)
   private Boolean birthHistoryIndicatorVar;
 
-  @NotNull
-  @ApiModelProperty
-  private Boolean childIndianAncestryIndicator;
+  @NotNull @ApiModelProperty private Boolean childIndianAncestryIndicator;
 
-  @ApiModelProperty
-  private Boolean collegeIndicator;
+  @ApiModelProperty private Boolean collegeIndicator;
 
   @Size(max = CMS_ID_LEN)
   @ApiModelProperty(example = "ABC1234567")
@@ -102,14 +92,11 @@ public class ChildClientDTO extends ClientDTO {
 
   @Size(min = 1, max = 1)
   @OneOf(
-      value = {"N", "Y", "D"},
-      ignoreCase = true,
-      ignoreWhitespace = true
+    value = {"N", "Y", "D"},
+    ignoreCase = true,
+    ignoreWhitespace = true
   )
-  @ApiModelProperty(
-      value = "Disablility Diagnosed",
-      example = "N"
-  )
+  @ApiModelProperty(value = "Disablility Diagnosed", example = "N")
   private String disabilityDiagnosedCode;
 
   @Size(max = CMS_ID_LEN)
@@ -130,10 +117,7 @@ public class ChildClientDTO extends ClientDTO {
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @gov.ca.cwds.rest.validation.Date
-  @ApiModelProperty(
-      value = "yyyy-MM-dd",
-      example = "2000-01-01"
-  )
+  @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   private LocalDateTime foodStampsApplicationDate;
 
   @NotNull
@@ -143,9 +127,9 @@ public class ChildClientDTO extends ClientDTO {
   @NotEmpty
   @Size(min = 1, max = 1, message = "size must be 1")
   @OneOf(
-      value = {"Y", "N", "U", "P"},
-      ignoreCase = true,
-      ignoreWhitespace = true
+    value = {"Y", "N", "U", "P"},
+    ignoreCase = true,
+    ignoreWhitespace = true
   )
   @ApiModelProperty(required = true, example = "N")
   private String icwaEligibilityCode;
@@ -185,9 +169,9 @@ public class ChildClientDTO extends ClientDTO {
   @NotEmpty
   @Size(min = 1, max = 1, message = "size must be 1")
   @OneOf(
-      value = {"Y", "N", "U", "X"},
-      ignoreCase = true,
-      ignoreWhitespace = true
+    value = {"Y", "N", "U", "X"},
+    ignoreCase = true,
+    ignoreWhitespace = true
   )
   @ApiModelProperty(required = true, example = "N")
   private String previouslyAdopted;
@@ -204,18 +188,12 @@ public class ChildClientDTO extends ClientDTO {
   @ApiModelProperty(example = "0")
   private Integer sawsCaseSerialNumber;
 
-  @ApiModelProperty(
-      value = "yyyy-MM-dd",
-      example = "2000-01-01"
-  )
+  @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime sijsScheduledInterviewDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @ApiModelProperty(
-      value = "yyyy-MM-dd",
-      example = "2000-01-01"
-  )
+  @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @gov.ca.cwds.rest.validation.Date
   private LocalDateTime siiNextScreeningDueDate;
 
@@ -227,10 +205,7 @@ public class ChildClientDTO extends ClientDTO {
   @ApiModelProperty(required = true)
   private Boolean tribalAncestryNotifctnIndicatorVar;
 
-  @ApiModelProperty(
-      value = "yyyy-MM-dd",
-      example = "2000-01-01"
-  )
+  @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDateTime tribalCustomaryAdoptionDate;
 
@@ -238,12 +213,7 @@ public class ChildClientDTO extends ClientDTO {
   @ApiModelProperty(required = true)
   private Boolean tribalCustomaryAdoptionIndicator;
 
-  @NotNull
-  @JsonIgnore
-  private String childClientLastUpdateId;
+  @NotNull @JsonIgnore private String childClientLastUpdateId;
 
-  @NotNull
-  @JsonIgnore
-  private LocalDateTime childClientLastUpdateTimestamp;
-
+  @NotNull @JsonIgnore private LocalDateTime childClientLastUpdateTimestamp;
 }
