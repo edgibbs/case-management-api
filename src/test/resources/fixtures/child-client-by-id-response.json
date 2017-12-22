@@ -44,6 +44,7 @@
   "hispanic_origin_code": "U",
   "children_serv_indicator": false,
   "currently_regional_centeer_indicator": true,
+  "death_circumstances_type": "3145",
   "currently_other_description": "QWREQWER",
   "previously_received_indicator": false,
   "previously_regional_center_indicator": false,
