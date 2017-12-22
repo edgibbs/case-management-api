@@ -6,6 +6,7 @@ import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.cms.data.access.dto.ClientEntityAwareDTO;
+import gov.ca.cwds.cms.data.access.service.ClientCoreService;
 import gov.ca.cwds.cms.data.access.service.ClientServiceCore;
 import gov.ca.cwds.cms.data.access.service.DataAccessServicesException;
 import gov.ca.cwds.cms.data.access.utils.PerryUtils;
@@ -18,14 +19,14 @@ public class ClientService extends CrudServiceAdapter {
 
   private ClientDao clientDao;
   private ClientMapper clientMapper;
-  private ClientServiceCore clientServiceCore;
+  private ClientCoreService clientCoreService;
 
   @Inject
   public ClientService(
-      ClientDao clientDao, ClientMapper clientMapper, ClientServiceCore clientServiceCore) {
+      ClientDao clientDao, ClientMapper clientMapper, ClientCoreService clientServiceCore) {
     this.clientMapper = clientMapper;
     this.clientDao = clientDao;
-    this.clientServiceCore = clientServiceCore;
+    this.clientCoreService = clientServiceCore;
   }
 
   @Override
@@ -38,6 +39,6 @@ public class ClientService extends CrudServiceAdapter {
     ClientEntityAwareDTOBuilder builder =
         new ClientEntityAwareDTOBuilder(client, PerryUtils.getPerryAccount());
     ClientEntityAwareDTO clientEntityAwareDTO = builder.build();
-    return clientServiceCore.update(clientEntityAwareDTO);
+    return clientCoreService.update(clientEntityAwareDTO);
   }
 }
