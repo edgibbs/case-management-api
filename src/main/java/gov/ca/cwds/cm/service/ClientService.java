@@ -7,7 +7,6 @@ import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.cms.data.access.dto.ClientEntityAwareDTO;
 import gov.ca.cwds.cms.data.access.service.ClientCoreService;
-import gov.ca.cwds.cms.data.access.service.ClientServiceCore;
 import gov.ca.cwds.cms.data.access.service.DataAccessServicesException;
 import gov.ca.cwds.cms.data.access.utils.PerryUtils;
 import gov.ca.cwds.data.legacy.cms.dao.ClientDao;
