@@ -2,8 +2,8 @@ package gov.ca.cwds.cm.inject;
 
 import com.google.inject.AbstractModule;
 import gov.ca.cwds.cm.service.CaseService;
-import gov.ca.cwds.cms.data.access.service.ClientServiceCore;
-import gov.ca.cwds.cms.data.access.service.impl.ClientServiceCoreImpl;
+import gov.ca.cwds.cms.data.access.service.ClientCoreService;
+import gov.ca.cwds.cms.data.access.service.impl.ClientCoreServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +27,6 @@ public class ServicesModule extends AbstractModule {
   protected void configure() {
     LOG.debug("ServicesModule configure method");
     bind(CaseService.class);
-    bind(ClientServiceCore.class).to(ClientServiceCoreImpl.class);
+    bind(ClientCoreService.class).to(ClientCoreServiceImpl.class);
   }
 }
