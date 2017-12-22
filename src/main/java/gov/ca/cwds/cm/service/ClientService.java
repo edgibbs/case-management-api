@@ -1,33 +1,43 @@
 package gov.ca.cwds.cm.service;
 
 import com.google.inject.Inject;
+import gov.ca.cwds.cm.service.builder.ClientEntityAwareDTOBuilder;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
+import gov.ca.cwds.cms.data.access.dto.ClientEntityAwareDTO;
+import gov.ca.cwds.cms.data.access.service.ClientServiceCore;
+import gov.ca.cwds.cms.data.access.service.DataAccessServicesException;
+import gov.ca.cwds.cms.data.access.utils.PerryUtils;
 import gov.ca.cwds.data.legacy.cms.dao.ClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
-import gov.ca.cwds.rest.api.Request;
-import gov.ca.cwds.rest.api.Response;
-import gov.ca.cwds.rest.services.CrudsService;
 import java.io.Serializable;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class ClientService extends CrudServiceAdapter {
 
   private ClientDao clientDao;
   private ClientMapper clientMapper;
+  private ClientServiceCore clientServiceCore;
 
   @Inject
-  public ClientService(ClientDao clientDao, ClientMapper clientMapper) {
+  public ClientService(
+      ClientDao clientDao, ClientMapper clientMapper, ClientServiceCore clientServiceCore) {
     this.clientMapper = clientMapper;
     this.clientDao = clientDao;
+    this.clientServiceCore = clientServiceCore;
   }
 
   @Override
   public ClientDTO find(Serializable serializable) {
     Client client = clientDao.find(((ClientParameterObject) serializable).getClientId());
     return clientMapper.toClientDTO(client);
+  }
+
+  protected Client updateClient(Client client) throws DataAccessServicesException {
+    ClientEntityAwareDTOBuilder builder =
+        new ClientEntityAwareDTOBuilder(client, PerryUtils.getPerryAccount());
+    ClientEntityAwareDTO clientEntityAwareDTO = builder.build();
+    return clientServiceCore.update(clientEntityAwareDTO);
   }
 }
