@@ -31,7 +31,9 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     setUpDb();
     runScripts(
         "liquibase/address/dml_address_test_data.xml",
-        "liquibase/client/address/dml_client_address_test_data.xml");
+        "liquibase/client/address/dml_client_address_test_data.xml",
+        "liquibase/client/child_client_test_update.xml"
+        );
   }
 
   @Test
@@ -45,9 +47,9 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testUpdateChildClient() throws Exception {
     ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
+    childClientDTO.setAdoptableCode("Y");
 
     WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
-    childClientDTO.setAdoptableCode("NA");
     ChildClientDTO response =
         target
             .request(MediaType.APPLICATION_JSON_TYPE)

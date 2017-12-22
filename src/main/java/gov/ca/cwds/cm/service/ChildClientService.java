@@ -23,7 +23,12 @@ public class ChildClientService extends CrudServiceAdapter {
 
   @Override
   public ChildClientDTO find(Serializable serializable) {
-    ChildClient childClient = childClientDao.find(((ClientParameterObject) serializable).getClientId());
+    ChildClient childClient =
+        childClientDao.find(((ClientParameterObject) serializable).getClientId());
     return childClientMapper.toChildClientDTO(childClient);
+  }
+
+  public void update(Serializable serializable) {
+    childClientDao.update((ChildClient) serializable);
   }
 }

@@ -30,4 +30,8 @@ public class ClientService extends CrudServiceAdapter {
     Client client = clientDao.find(((ClientParameterObject) serializable).getClientId());
     return clientMapper.toClientDTO(client);
   }
+
+  public void update(Serializable serializable) {
+    clientDao.update(clientMapper.toClient((ClientDTO) serializable));
+  }
 }

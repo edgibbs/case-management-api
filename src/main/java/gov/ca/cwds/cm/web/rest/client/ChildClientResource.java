@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.Collection;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -102,7 +103,11 @@ public class ChildClientResource {
       }
   )
   @ApiOperation(value = "Update client", response = ChildClientDTO.class)
-  public Response update() {
-    return null;
+  public Response update(
+      @ApiParam(name = "form", value = "The Form object")
+      ChildClientDTO childClient
+  ) {
+    clientFacade.update(childClient, ClientType.CHILD_CLIENT);
+    return ResponseUtil.responseOrNotFound(childClient);
   }
 }
