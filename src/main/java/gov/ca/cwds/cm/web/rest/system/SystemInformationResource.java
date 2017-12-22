@@ -32,6 +32,7 @@ public class SystemInformationResource {
 
   private static final String VERSION_PROPERTIES_FILE = "version.properties";
   private static final String BUILD_NUMBER = "build.number";
+  private static final String BUILD_VERSION = "build.version";
 
   private final String applicationName;
   private final String applicationVersion;
@@ -43,9 +44,9 @@ public class SystemInformationResource {
       final CmApiConfiguration configuration,
       final Environment environment) {
     this.applicationName = configuration.getApplicationName();
-    this.applicationVersion = configuration.getVersion();
     this.environment = environment;
     final Properties versionProperties = getVersionProperties();
+    this.applicationVersion = versionProperties.getProperty(BUILD_VERSION);
     this.buildNumber = versionProperties.getProperty(BUILD_NUMBER);
   }
 
