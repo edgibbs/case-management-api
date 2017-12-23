@@ -8,7 +8,6 @@ import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.cms.data.access.dto.ClientEntityAwareDTO;
 import gov.ca.cwds.cms.data.access.service.ClientCoreService;
 import gov.ca.cwds.cms.data.access.service.DataAccessServicesException;
-import gov.ca.cwds.cms.data.access.utils.PerryUtils;
 import gov.ca.cwds.data.legacy.cms.dao.ClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import java.io.Serializable;
@@ -34,9 +33,10 @@ public class ClientService extends CrudServiceAdapter {
     return clientMapper.toClientDTO(client);
   }
 
+  //use this method at update() implementation
   protected Client updateClient(Client client) throws DataAccessServicesException {
     ClientEntityAwareDTOBuilder builder =
-        new ClientEntityAwareDTOBuilder(client, PerryUtils.getPerryAccount());
+        new ClientEntityAwareDTOBuilder(client);
     ClientEntityAwareDTO clientEntityAwareDTO = builder.build();
     return clientCoreService.update(clientEntityAwareDTO);
   }
