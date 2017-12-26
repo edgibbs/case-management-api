@@ -103,7 +103,10 @@ public class ChildClientResource {
   @ApiOperation(value = "Update client", response = ChildClientDTO.class)
   public Response update(
       @ApiParam(name = "form", value = "The Form object")
-      ChildClientDTO childClient
+      ChildClientDTO childClient,
+      @PathParam("id")
+      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+      final String id
   ) {
     return ResponseUtil.responseOrNotFound(getMockedChildClientForContractUpdate(childClient));
   }
