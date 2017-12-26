@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -118,7 +119,7 @@ public class ChildClientDTO extends ClientDTO {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
-  private LocalDateTime foodStampsApplicationDate;
+  private LocalDate foodStampsApplicationDate;
 
   @NotNull
   @ApiModelProperty(required = true, example = "true")
@@ -190,12 +191,12 @@ public class ChildClientDTO extends ClientDTO {
 
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  private LocalDateTime sijsScheduledInterviewDate;
+  private LocalDate sijsScheduledInterviewDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @gov.ca.cwds.rest.validation.Date
-  private LocalDateTime siiNextScreeningDueDate;
+  private LocalDate siiNextScreeningDueDate;
 
   @NotNull
   @ApiModelProperty(required = true)
@@ -207,7 +208,7 @@ public class ChildClientDTO extends ClientDTO {
 
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  private LocalDateTime tribalCustomaryAdoptionDate;
+  private LocalDate tribalCustomaryAdoptionDate;
 
   @NotNull
   @ApiModelProperty(required = true)

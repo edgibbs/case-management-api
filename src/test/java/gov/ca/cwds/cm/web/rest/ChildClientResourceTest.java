@@ -32,8 +32,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     runScripts(
         "liquibase/address/dml_address_test_data.xml",
         "liquibase/client/address/dml_client_address_test_data.xml",
-        "liquibase/client/child_client_test_update.xml"
-        );
+        "liquibase/client/child_client_test_update.xml");
   }
 
   @Test
@@ -48,17 +47,30 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   public void testUpdateChildClient() throws Exception {
     ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
     childClientDTO.setAdoptableCode("Y");
+    childClientDTO.setAdoptedAge((short) 22);
+    childClientDTO.setAfdcFcEligibilityIndicatorVar(true);
+    childClientDTO.setAllHealthInfoOnFileIndicator(true);
+    childClientDTO.setAllEducationInfoOnFileIndicator(true);
+    childClientDTO.setAttemptToAcquireEducInfoDesc("Educ info test");
+    childClientDTO.setAwolAbductedCode("Y");
+    childClientDTO.setBirthHistoryIndicatorVar(true);
+    childClientDTO.setCurrentCaseId("ABC1234333");
+    childClientDTO.setCollegeIndicator(true);
+    childClientDTO.setChildIndianAncestryIndicator(true);
+    childClientDTO.setDeathCircumstancesType("3321");
+    childClientDTO.setDisabilityDiagnosedCode("D");
+    childClientDTO.setMinorNmdParentIndicator(true);
 
     WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
     ChildClientDTO response =
         target
             .request(MediaType.APPLICATION_JSON_TYPE)
-            .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
-
-    childClientDTO = getChildClientDTO("BKk7CHj00A");
+            .put(
+                Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE),
+                ChildClientDTO.class);
 
     String fixture = fixture("fixtures/child-client-after-update-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(childClientDTO));
+    assertEqualsResponse(fixture, transformDTOtoJSON(response));
   }
 
   @Test

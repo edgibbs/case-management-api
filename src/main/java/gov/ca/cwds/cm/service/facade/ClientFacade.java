@@ -39,8 +39,10 @@ public class ClientFacade {
     switch (clientType) {
       case BASE_CLIENT:
         clientService.update(serializable);
+        break;
       case CHILD_CLIENT:
-        childClientService.update(serializable);
+        childClientService.update(serializable, null);
+        break;
     }
   }
 }

@@ -8,7 +8,6 @@ import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
-import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.web.rest.ResponseUtil;
@@ -20,7 +19,6 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.Collection;
-import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -107,7 +105,11 @@ public class ChildClientResource {
       @ApiParam(name = "form", value = "The Form object")
       ChildClientDTO childClient
   ) {
-    clientFacade.update(childClient, ClientType.CHILD_CLIENT);
-    return ResponseUtil.responseOrNotFound(childClient);
+    return ResponseUtil.responseOrNotFound(getMockedChildClientForContractUpdate(childClient));
+  }
+
+  private ChildClientDTO getMockedChildClientForContractUpdate(ChildClientDTO childClientDTO) {
+    childClientDTO.setAdoptableCode("Y");
+    return childClientDTO;
   }
 }
