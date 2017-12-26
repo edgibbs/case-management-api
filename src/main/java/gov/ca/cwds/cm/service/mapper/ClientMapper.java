@@ -50,8 +50,6 @@ public interface ClientMapper {
     source = "hispanicUnableToDetermineReason.code"
   )
   @Mapping(target = "ethUnableToDeterminCode", source = "ethnicityUnableToDetermineReason.code")
-  @Mapping(target = "lastUpdateTimestamp", source = "lastUpdateTime")
-  @Mapping(target = "lastUpdateId", source = "lastUpdateId")
   @Mapping(target = "unemployedParentCode", source = "parentUnemployedStatus.code")
   @Mapping(target = "suffixTitleDescription", source = "suffixTitleDescription")
   @Mapping(target = "socialSecurityNumberChangedCode", source = "socialSecurityNumberChangedCode")
@@ -146,8 +144,6 @@ public interface ClientMapper {
     expression = "java(UnableToDetermineReason.from(clientDTO.getEthUnableToDeterminCode()))",
     target = "ethnicityUnableToDetermineReason"
   )
-  @Mapping(source = "lastUpdateTimestamp", target = "lastUpdateTime")
-  @Mapping(source = "lastUpdateId", target = "lastUpdateId")
   @Mapping(
     expression = "java(ParentUnemployedStatus.from(clientDTO.getUnemployedParentCode()))",
     target = "parentUnemployedStatus"

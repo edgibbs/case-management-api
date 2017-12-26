@@ -213,8 +213,4 @@ public class ChildClientDTO extends ClientDTO {
   @NotNull
   @ApiModelProperty(required = true)
   private Boolean tribalCustomaryAdoptionIndicator;
-
-  @NotNull @JsonIgnore private String childClientLastUpdateId;
-
-  @NotNull @JsonIgnore private LocalDateTime childClientLastUpdateTimestamp;
 }

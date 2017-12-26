@@ -63,8 +63,6 @@ public interface ChildClientMapper {
   @Mapping(target = "tribalCustomaryAdoptionDate", ignore = true)
   @Mapping(target = "tribalCustomaryAdoptionIndicator", source = "tribalCustomaryAdoptionIndicator")
   @Mapping(target = "foodStampsApplicationDate", ignore = true)
-  @Mapping(target = "childClientLastUpdateTimestamp", source = "childClientLastUpdateTime")
-  @Mapping(target = "childClientLastUpdateId", source = "childClientLastUpdateId")
   ChildClientDTO toChildClientDTO(ChildClient childClient);
 
   @Mapping(source = "victimClientId", target = "victimClientId")
@@ -113,8 +111,6 @@ public interface ChildClientMapper {
     source = "tribalAncestryNotifctnIndicatorVar"
   )
   @Mapping(source = "tribalCustomaryAdoptionIndicator", target = "tribalCustomaryAdoptionIndicator")
-  @Mapping(source = "childClientLastUpdateTimestamp", target = "childClientLastUpdateTime")
-  @Mapping(source = "childClientLastUpdateId", target = "childClientLastUpdateId")
 //  @Mapping(
 //      expression = "java(Adoptable.from(clientDTO.getAdoptableCode()))",
 //      target = "adoptable"

@@ -109,7 +109,6 @@ public class ChildClientResource {
   }
 
   private ChildClientDTO getMockedChildClientForContractUpdate(ChildClientDTO childClientDTO) {
-    childClientDTO.setAdoptableCode("Y");
     return childClientDTO;
   }
 }
