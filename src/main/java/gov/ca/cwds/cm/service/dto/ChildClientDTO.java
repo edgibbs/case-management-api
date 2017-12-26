@@ -77,7 +77,7 @@ public class ChildClientDTO extends ClientDTO {
 
   @NotNull
   @ApiModelProperty(required = true)
-  private Boolean birthHistoryIndicatorVar;
+  private boolean birthHistoryIndicatorVar;
 
   @NotNull @ApiModelProperty private Boolean childIndianAncestryIndicator;
 
