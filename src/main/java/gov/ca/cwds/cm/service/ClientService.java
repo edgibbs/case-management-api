@@ -33,15 +33,15 @@ public class ClientService extends CrudServiceAdapter {
     return clientMapper.toClientDTO(client);
   }
 
+  public void update(Serializable serializable) {
+    clientDao.update(clientMapper.toClient((ClientDTO) serializable));
+  }
+
   //use this method at update() implementation
-  protected Client updateClient(Client client) throws DataAccessServicesException {
+  private Client updateClient(Client client) throws DataAccessServicesException {
     ClientEntityAwareDTOBuilder builder =
         new ClientEntityAwareDTOBuilder(client);
     ClientEntityAwareDTO clientEntityAwareDTO = builder.build();
     return clientCoreService.update(clientEntityAwareDTO);
-  }
-
-  public void update(Serializable serializable) {
-    clientDao.update(clientMapper.toClient((ClientDTO) serializable));
   }
 }
