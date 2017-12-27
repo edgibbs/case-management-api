@@ -101,7 +101,7 @@ dependencies {
     compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion , changing: true) {
         exclude group: 'org.glassfish.jersey.core'
     }
-
+    compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion , changing: true
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
     compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.25'
