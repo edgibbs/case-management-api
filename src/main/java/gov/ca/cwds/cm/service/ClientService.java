@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * @author CWDS TPT-3 Team
  */
-public class ClientService extends CrudServiceAdapter {
+public class ClientService {
 
   private final ClientDao clientDao;
 
