@@ -10,6 +10,7 @@ import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
+import gov.ca.cwds.rest.api.Request;
 import gov.ca.cwds.rest.api.Response;
 import java.io.Serializable;
 
@@ -56,13 +57,18 @@ public class ClientFacade {
   }
 
   public Response update(Serializable serializable, ClientType clientType) {
+  public void update(Serializable serializable, Request request, ClientType clientType) {
     switch (clientType) {
       case BASE_CLIENT:
         return updateClient((ClientDTO) serializable);
+        clientService.update(serializable, request);
+        break;
       case CHILD_CLIENT:
         return updateChildClient((ChildClientDTO) serializable);
       default:
         return null;
+        childClientService.update(serializable, request);
+        break;
     }
   }
 

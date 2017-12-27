@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * @author CWDS TPT-3 Team
  */
-public class ClientService {
+public class ClientService extends CrudServiceAdapter {
 
   private final ClientDao clientDao;
 
@@ -22,9 +22,5 @@ public class ClientService {
   @Authorize("client:read:client")
   public Client find(Serializable serializable) {
     return clientDao.find(((ClientParameterObject) serializable).getClientId());
-  }
-
-  public Client update(Client entity) {
-    return clientDao.update(entity);
   }
 }
