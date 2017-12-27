@@ -24,7 +24,7 @@ public class ClientService {
     return clientDao.find(((ClientParameterObject) serializable).getClientId());
   }
 
-  public void update(Serializable serializable) {
-    clientDao.update(clientMapper.toClient((ClientDTO) serializable));
+  public Client update(Client entity) {
+    return clientDao.update(entity);
   }
 }

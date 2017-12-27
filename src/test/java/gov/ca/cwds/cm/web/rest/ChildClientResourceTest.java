@@ -1,18 +1,5 @@
 package gov.ca.cwds.cm.web.rest;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
-import gov.ca.cwds.cm.Constants;
-import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.service.dto.ChildClientDTO;
-import javax.ws.rs.client.Entity;
-import org.assertj.core.api.Assertions;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
@@ -24,6 +11,8 @@ import static org.hamcrest.Matchers.is;
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;

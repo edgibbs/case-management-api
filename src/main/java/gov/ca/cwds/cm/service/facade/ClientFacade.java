@@ -4,6 +4,8 @@ import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.ChildClientService;
 import gov.ca.cwds.cm.service.ClientService;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
+import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.mapper.ChildClientMapper;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
@@ -53,14 +55,26 @@ public class ClientFacade {
     return childClientMapper.toChildClientDTO(childClient);
   }
 
-  public void update(Serializable serializable, ClientType clientType) {
+  public Response update(Serializable serializable, ClientType clientType) {
     switch (clientType) {
       case BASE_CLIENT:
-        clientService.update(serializable);
-        break;
+        return updateClient((ClientDTO) serializable);
       case CHILD_CLIENT:
-        childClientService.update(serializable, null);
-        break;
+        return updateChildClient((ChildClientDTO) serializable);
+      default:
+        return null;
     }
+  }
+
+  private ChildClientDTO updateChildClient(ChildClientDTO dto) {
+    final ChildClient entity = childClientMapper.fromChildClientDTO(dto);
+    final ChildClient updatedEntity = childClientService.update(entity);
+    return childClientMapper.toChildClientDTO(updatedEntity);
+  }
+
+  private ClientDTO updateClient(ClientDTO dto) {
+    final Client entity = clientMapper.toClient(dto);
+    final Client updatedEntity = clientService.update(entity);
+    return clientMapper.toClientDTO(updatedEntity);
   }
 }
