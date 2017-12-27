@@ -30,6 +30,7 @@ import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeNotes;
 import gov.ca.cwds.data.legacy.cms.entity.PlacementHomeProfile;
 import gov.ca.cwds.data.legacy.cms.entity.Referral;
 import gov.ca.cwds.data.legacy.cms.entity.ReferralAssignment;
+import gov.ca.cwds.data.legacy.cms.entity.ReferralClient;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPerson;
 import gov.ca.cwds.data.legacy.cms.entity.StaffPersonCaseLoad;
 import gov.ca.cwds.data.legacy.cms.entity.SubstituteCareProvider;
@@ -109,6 +110,7 @@ public class DataAccessModule extends AbstractModule {
               CaseLoad.class,
               SecondaryAssignmentRoleType.class,
               Referral.class,
+              ReferralClient.class,
               Case.class,
               StaffPersonCaseLoad.class,
               CaseLoadWeighting.class,

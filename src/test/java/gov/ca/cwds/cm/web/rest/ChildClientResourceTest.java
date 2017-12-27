@@ -1,5 +1,18 @@
 package gov.ca.cwds.cm.web.rest;
 
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.Constants;
+import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import javax.ws.rs.client.Entity;
+import org.assertj.core.api.Assertions;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
 import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
@@ -30,8 +43,8 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     setUpDb();
     runScripts(
         "liquibase/address/dml_address_test_data.xml",
-        "liquibase/client/address/dml_client_address_test_data.xml"
-    );
+        "liquibase/client/address/dml_client_address_test_data.xml",
+        "liquibase/client/child_client_test_update.xml");
   }
 
   @Test
@@ -59,6 +72,36 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
     // then
     assertThat(response.getStatus(), is(403));
+  }
+
+  @Test
+  public void testUpdateChildClient() throws Exception {
+    ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
+    childClientDTO.setAdoptableCode("Y");
+    childClientDTO.setAdoptedAge((short) 22);
+    childClientDTO.setAfdcFcEligibilityIndicatorVar(true);
+    childClientDTO.setAllHealthInfoOnFileIndicator(true);
+    childClientDTO.setAllEducationInfoOnFileIndicator(true);
+    childClientDTO.setAttemptToAcquireEducInfoDesc("Educ info test");
+    childClientDTO.setAwolAbductedCode("Y");
+    childClientDTO.setBirthHistoryIndicatorVar(true);
+    childClientDTO.setCurrentCaseId("ABC1234333");
+    childClientDTO.setCollegeIndicator(true);
+    childClientDTO.setChildIndianAncestryIndicator(true);
+    childClientDTO.setDeathCircumstancesType("3321");
+    childClientDTO.setDisabilityDiagnosedCode("D");
+    childClientDTO.setMinorNmdParentIndicator(true);
+
+    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
+    ChildClientDTO response =
+        target
+            .request(MediaType.APPLICATION_JSON_TYPE)
+            .put(
+                Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE),
+                ChildClientDTO.class);
+
+    String fixture = fixture("fixtures/child-client-after-update-response.json");
+    assertEqualsResponse(fixture, transformDTOtoJSON(response));
   }
 
   @Test
@@ -90,5 +133,11 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
     // then
     assertThat(actualResult.getStatus(), is(equalTo(404)));
+  }
+
+  private ChildClientDTO getChildClientDTO(String clientId) {
+    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/" + clientId);
+    Response response = target.request(MediaType.APPLICATION_JSON).get();
+    return response.readEntity(ChildClientDTO.class);
   }
 }

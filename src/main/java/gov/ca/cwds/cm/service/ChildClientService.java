@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.data.legacy.cms.dao.ChildClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
+
+import gov.ca.cwds.rest.api.Request;
+import gov.ca.cwds.rest.api.Response;
 import gov.ca.cwds.security.annotations.Authorize;
 import java.io.Serializable;
 
@@ -20,5 +23,12 @@ public class ChildClientService {
   @Authorize("client:read:client")
   public ChildClient find(Serializable serializable) {
     return childClientDao.find(((ClientParameterObject) serializable).getClientId());
+  }
+
+  @Override
+  public Response update(Serializable serializable, Request request) {
+    ChildClient entity = childClientMapper.fromChildClientDTO((ChildClientDTO) serializable);
+    ChildClient client = childClientDao.update(entity);
+    return childClientMapper.toChildClientDTO(client);
   }
 }

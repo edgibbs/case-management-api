@@ -52,4 +52,15 @@ public class ClientFacade {
     final ChildClient childClient = childClientService.find(serializable);
     return childClientMapper.toChildClientDTO(childClient);
   }
+
+  public void update(Serializable serializable, ClientType clientType) {
+    switch (clientType) {
+      case BASE_CLIENT:
+        clientService.update(serializable);
+        break;
+      case CHILD_CLIENT:
+        childClientService.update(serializable, null);
+        break;
+    }
+  }
 }
