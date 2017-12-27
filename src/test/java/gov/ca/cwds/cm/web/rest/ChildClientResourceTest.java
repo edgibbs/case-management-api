@@ -1,23 +1,20 @@
 package gov.ca.cwds.cm.web.rest;
 
-import gov.ca.cwds.cm.BaseApiIntegrationTest;
-import gov.ca.cwds.cm.Constants;
-import gov.ca.cwds.cm.Constants.API;
-import gov.ca.cwds.cm.service.dto.ChildClientDTO;
-import org.assertj.core.api.Assertions;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+
+import gov.ca.cwds.cm.BaseApiIntegrationTest;
+import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.service.dto.ChildClientDTO;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * @author CWDS TPT-3 Team
@@ -28,6 +25,7 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
+    setUpCwsRs1();
     setUpCms();
     setUpDb();
     runScripts(
@@ -37,13 +35,30 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   }
 
   @Test
-  public void testGetChildClientById() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.CHILD_CLIENTS + "/" + CLIENT_ID);
-    Response response = target.request(MediaType.APPLICATION_JSON).get();
-    ChildClientDTO childClientDTO = response.readEntity(ChildClientDTO.class);
+  public void getChildClientById_success_whenAuthorizedUser() throws Exception {
+    // given
+    // when
+    final ChildClientDTO actual = clientTestRule
+        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON)
+        .get()
+        .readEntity(ChildClientDTO.class);
 
-    String fixture = fixture("fixtures/child-client-by-id-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(childClientDTO));
+    // then
+    final String expectedFixture = fixture("fixtures/child-client-by-id-response.json");
+    assertEqualsResponse(expectedFixture, transformDTOtoJSON(actual));
+  }
+
+  @Test
+  public void getChildClientById_notAuthorized_whenUnauthorizedUser() throws Exception {
+    // given
+    // when
+    final Response response = clientTestRule.target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+        .request(MediaType.APPLICATION_JSON).get();
+
+    // then
+    assertThat(response.getStatus(), is(403));
   }
 
   @Test

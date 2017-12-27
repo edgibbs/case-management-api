@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm.inject;
 
 import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CWSRS;
 
 import com.google.common.collect.ImmutableList;
 import com.google.inject.AbstractModule;
@@ -37,11 +38,11 @@ import gov.ca.cwds.data.legacy.cms.entity.enums.AssignmentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ActiveServiceComponentType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ApprovalStatusType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.CaseClosureReasonType;
-import gov.ca.cwds.data.legacy.cms.entity.syscodes.ImmigrationStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Ethnicity;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.ImmigrationStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Language;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.MaritalStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.NameType;
@@ -51,10 +52,13 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.State;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.SystemCode;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.VisitType;
 import gov.ca.cwds.inject.CmsHibernateBundle;
+import gov.ca.cwds.inject.CwsRsHibernateBundle;
+import gov.ca.cwds.inject.CwsRsSessionFactory;
 import gov.ca.cwds.inject.CmsSessionFactory;
 import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.hibernate.SessionFactoryFactory;
+import io.dropwizard.hibernate.UnitOfWorkAwareProxyFactory;
 import io.dropwizard.setup.Bootstrap;
 import org.hibernate.SessionFactory;
 
@@ -130,13 +134,35 @@ public class DataAccessModule extends AbstractModule {
         }
       };
 
+  private final HibernateBundle<CmApiConfiguration> cwsRsHibernateBundle
+      = new HibernateBundle<CmApiConfiguration>(ImmutableList.of(), new SessionFactoryFactory()) {
+    @Override
+    public PooledDataSourceFactory getDataSourceFactory(CmApiConfiguration configuration) {
+      return configuration.getCwsRsDataSourceFactory();
+    }
+
+    @Override
+    public String name() {
+      return CWSRS;
+    }
+  };
+
   public DataAccessModule(Bootstrap<? extends CmApiConfiguration> bootstrap) {
     bootstrap.addBundle(cmsHibernateBundle);
+    bootstrap.addBundle(cwsRsHibernateBundle);
   }
 
   @Override
   protected void configure() {
     //do nothing
+  }
+
+  @Provides
+  UnitOfWorkAwareProxyFactory provideUnitOfWorkAwareProxyFactory() {
+    return new UnitOfWorkAwareProxyFactory(
+        getCmsHibernateBundle(),
+        getCwsRsHibernateBundle()
+    );
   }
 
   @Provides
@@ -146,8 +172,21 @@ public class DataAccessModule extends AbstractModule {
   }
 
   @Provides
+  @CwsRsSessionFactory
+  SessionFactory cwsRsSessionFactory() {
+    return cwsRsHibernateBundle.getSessionFactory();
+  }
+
+  @Provides
   @CmsHibernateBundle
   public HibernateBundle<CmApiConfiguration> getCmsHibernateBundle() {
     return cmsHibernateBundle;
   }
+
+  @Provides
+  @CwsRsHibernateBundle
+  public HibernateBundle<CmApiConfiguration> getCwsRsHibernateBundle() {
+    return cwsRsHibernateBundle;
+  }
+
 }

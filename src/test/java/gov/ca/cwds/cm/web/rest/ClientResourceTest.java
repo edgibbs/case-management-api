@@ -1,12 +1,14 @@
 package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
+import static gov.ca.cwds.security.test.TestSecurityFilter.PATH_TO_PRINCIPAL_FIXTURE;
 import static io.dropwizard.testing.FixtureHelpers.fixture;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;
@@ -19,18 +21,37 @@ public class ClientResourceTest extends BaseApiIntegrationTest {
 
   @BeforeClass
   public static void beforeClass() throws Exception {
+    setUpCwsRs1();
     setUpCms();
     setUpDb();
     runScripts("liquibase/client/client_test_get_for_client_endpoint.xml");
   }
 
   @Test
-  public void testGetChildClientById() throws Exception {
-    WebTarget target = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID);
-    Response response = target.request(MediaType.APPLICATION_JSON).get();
-    ClientDTO clientDTO = response.readEntity(ClientDTO.class);
+  public void testGetClientById_success_whenAuthorizedUser() throws Exception {
+    // given
+    final String expectedFixture = fixture("fixtures/client-by-id-response.json");
 
-    String fixture = fixture("fixtures/client-by-id-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(clientDTO));
+    // when
+    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON)
+        .get();
+    final ClientDTO client = response.readEntity(ClientDTO.class);
+
+    // then
+    assertEqualsResponse(expectedFixture, transformDTOtoJSON(client));
+  }
+
+  @Test
+  public void testGetClientById_notAuthorized_whenUnauthorizedUser() throws Exception {
+    // given
+    // when
+    final Response response = clientTestRule.target(Constants.API.CLIENTS + "/" + CLIENT_ID)
+        .request(MediaType.APPLICATION_JSON)
+        .get();
+
+    // then
+    assertThat(response.getStatus(), is(403));
   }
 }

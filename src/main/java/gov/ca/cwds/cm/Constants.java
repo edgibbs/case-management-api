@@ -9,12 +9,6 @@ public final class Constants {
 
   public static final String N = "N";
 
-  public static final String SPACE = " ";
-
-  public static final String SQL_TYPE = "sqlType";
-
-  public static final String RETURNED_CLASS_NAME_PARAM = "returnedClassName";
-
   private Constants() {
   }
 
@@ -23,12 +17,6 @@ public final class Constants {
     public static final String SYSTEM_INFORMATION_PATH = "system-information";
 
     public static final String ID = "id";
-
-    public static final String CM_PATH = "cm";
-
-    public static final String CM_TAG = "cm";
-
-    public static final String SEARCH = "_search";
 
     public static final String CHILD_CLIENTS = "child-clients";
 
@@ -45,16 +33,6 @@ public final class Constants {
     public static final String REFERRALS = "referrals";
 
     private API() {
-    }
-
-    public static class PathParams {
-
-      public static final String CM_NAME_PARAMETER = "caseName";
-      public static final String CM_ID_PARAMETER = "caseId";
-
-
-      private PathParams() {
-      }
     }
   }
 
@@ -74,6 +52,7 @@ public final class Constants {
   public static class UnitOfWork {
 
     public static final String CMS = "cwscms";
+    public static final String CWSRS = "cwsrs";
 
     public static final String XA_CMS = "xa_cwscms";
 

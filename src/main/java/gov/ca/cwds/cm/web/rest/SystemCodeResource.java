@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.SYSTEM_CODES;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -38,7 +39,7 @@ public class SystemCodeResource {
     this.systemCodeService = systemCodeService;
   }
 
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @GET
   @Path("/{metaCode}")
   @ApiResponses(value = {

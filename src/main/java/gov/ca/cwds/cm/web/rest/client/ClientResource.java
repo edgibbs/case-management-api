@@ -1,6 +1,8 @@
 package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.Constants.API.CLIENTS;
+import static gov.ca.cwds.cm.Constants.API.ID;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -30,7 +32,7 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ClientResource {
 
-  private ClientFacade clientFacade;
+  private final ClientFacade clientFacade;
 
   @Inject
   public ClientResource(ClientFacade clientFacade) {
@@ -38,24 +40,30 @@ public class ClientResource {
   }
 
   @GET
-  @Path("/{id}")
-  @ApiResponses(
-    value = {
-      @ApiResponse(code = 401, message = "Not Authorized"),
-      @ApiResponse(code = 404, message = "Not found"),
-      @ApiResponse(code = 406, message = "Accept Header not supported")
-    }
-  )
+  @Path("/{" + ID + "}")
+  @ApiResponses(value = {
+      @ApiResponse(code = 401, message = "Not Authenticated"),
+      @ApiResponse(code = 403, message = "Unauthorized"),
+      @ApiResponse(code = 404, message = "Not found")
+  })
   @ApiOperation(value = "Find client by client ID", response = ClientDTO.class)
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @Timed
   public Response get(
       @PathParam("id")
-          @ApiParam(required = true, value = "The unique client ID", example = "DSC1233117")
-          final String id) {
-    ClientParameterObject clientParameterObject = new ClientParameterObject();
+      @ApiParam(required = true, value = "The unique client ID", example = "0YIPkZU0S0")
+      final String id) {
+    final ClientParameterObject clientPO = toClientParameterObject(id);
+    final gov.ca.cwds.rest.api.Response response = clientFacade.find(
+        clientPO,
+        ClientType.BASE_CLIENT
+    );
+    return ResponseUtil.responseOrNotFound(response);
+  }
+
+  private ClientParameterObject toClientParameterObject(String id) {
+    final ClientParameterObject clientParameterObject = new ClientParameterObject();
     clientParameterObject.setClientId(id);
-    return ResponseUtil.responseOrNotFound(
-        clientFacade.find(clientParameterObject, ClientType.BASE_CLIENT));
+    return clientParameterObject;
   }
 }

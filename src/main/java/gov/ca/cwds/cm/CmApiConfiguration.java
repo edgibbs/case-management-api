@@ -2,18 +2,29 @@ package gov.ca.cwds.cm;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.ca.cwds.rest.BaseApiConfiguration;
+import io.dropwizard.db.DataSourceFactory;
 
 public class CmApiConfiguration extends BaseApiConfiguration {
 
-  private boolean upgardeDbOnStart = false;
+  private boolean upgradeDbOnStart = false;
+
+  private DataSourceFactory cwsRsDataSourceFactory;
 
   @JsonProperty
   public boolean isUpgradeDbOnStart() {
-    return upgardeDbOnStart;
+    return upgradeDbOnStart;
   }
 
-  public void setUpgardeDbOnStart(boolean upgardeDbOnStart) {
-    this.upgardeDbOnStart = upgardeDbOnStart;
+  public void setUpgradeDbOnStart(boolean upgradeDbOnStart) {
+    this.upgradeDbOnStart = upgradeDbOnStart;
   }
 
+  @JsonProperty
+  public DataSourceFactory getCwsRsDataSourceFactory() {
+    return cwsRsDataSourceFactory;
+  }
+
+  public void setCwsRsDataSourceFactory(DataSourceFactory cwsRsDataSourceFactory) {
+    this.cwsRsDataSourceFactory = cwsRsDataSourceFactory;
+  }
 }

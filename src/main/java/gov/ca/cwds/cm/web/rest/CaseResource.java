@@ -2,6 +2,7 @@ package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.CASES;
 import static gov.ca.cwds.cm.Constants.API.ID;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -46,7 +47,7 @@ public class CaseResource {
           @ApiResponse(code = 406, message = "Accept Header not supported")
       }
   )
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @Timed
   @ApiOperation(value = "Find Case by case ID", response = CaseDTO.class)
   public Response get(

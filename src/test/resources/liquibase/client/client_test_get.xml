@@ -38,7 +38,7 @@
             <column name="P_LANG_TPC" value="1248"/>
             <column name="RLGN_TPC" value="1553"/>
             <column name="S_LANG_TC" value="1249"/>
-            <column name="SENSTV_IND" value="N"/>
+            <column name="SENSTV_IND" value="R"/>
             <column name="SNTV_HLIND" value="Y"/>
             <column name="SS_NO" value="N"/>
             <column name="SSN_CHG_CD" value="N"/>

@@ -1,7 +1,6 @@
 package gov.ca.cwds.cm.web.rest.filters;
 
-
-import gov.ca.cwds.cm.auth.PerryUserIdentity;
+import gov.ca.cwds.security.realm.PerryAccount;
 import java.util.Date;
 import java.util.EnumMap;
 import java.util.List;
@@ -33,7 +32,7 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
    *
    * @param userIdentity User identity
    */
-  private RequestExecutionContextImpl(PerryUserIdentity userIdentity) {
+  private RequestExecutionContextImpl(PerryAccount userIdentity) {
     put(Parameter.REQUEST_START_TIME, new Date());
     put(Parameter.USER_IDENTITY, userIdentity);
     put(Parameter.SEQUENCE_EXTERNAL_TABLE, Integer.valueOf(0));
@@ -44,7 +43,7 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
    * package.
    */
   static void startRequest() {
-    PerryUserIdentity userIdentity = new PerryUserIdentity();
+    PerryAccount userIdentity = new PerryAccount();
     userIdentity.setUser(DEFAULT_USER_ID);
 
     Subject currentUser = SecurityUtils.getSubject();
@@ -52,8 +51,8 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
       @SuppressWarnings("rawtypes")
       List principals = currentUser.getPrincipals().asList();
 
-      if (principals.size() > 1 && principals.get(1) instanceof PerryUserIdentity) {
-        PerryUserIdentity currentUserInfo = (PerryUserIdentity) principals.get(1);
+      if (principals.size() > 1 && principals.get(1) instanceof PerryAccount) {
+        PerryAccount currentUserInfo = (PerryAccount) principals.get(1);
         String staffPersonId = currentUserInfo.getStaffId();
         if (!StringUtils.isBlank(staffPersonId)) {
           userIdentity = currentUserInfo;
@@ -101,7 +100,7 @@ class RequestExecutionContextImpl implements RequestExecutionContext {
   @Override
   public String getUserId() {
     String userId = null;
-    PerryUserIdentity userIdentity = (PerryUserIdentity) get(Parameter.USER_IDENTITY);
+    PerryAccount userIdentity = (PerryAccount) get(Parameter.USER_IDENTITY);
     if (userIdentity != null) {
       userId = userIdentity.getUser();
     }

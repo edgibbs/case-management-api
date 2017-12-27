@@ -13,7 +13,7 @@ server:
       - type: console
 
 shiro:
-  iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro_nosec.ini}"]
+  iniConfigs: ["classpath:config/shiro-test.ini"]
 
 swagger:
   templateName: swagger.mustache
@@ -25,7 +25,7 @@ swagger:
   loginUrl: ${LOGIN_URL:-http://localhost:8090/authn/login}
   showSwagger: ${SHOW_SWAGGER:-true}
 
-upgardeDbOnStart: ${UPGRADE_DB_ON_START:-false}
+upgradeDbOnStart: ${UPGRADE_DB_ON_START:-false}
 
 cmsDataSourceFactory:
   driverClass: org.h2.Driver
@@ -41,6 +41,23 @@ cmsDataSourceFactory:
   properties:
       hibernate.dialect: org.hibernate.dialect.H2Dialect
       hibernate.default_schema: cwscms
+      hibernate.id.new_generator_mappings: false
+      hibernate.show_sql: false
+
+cwsRsDataSourceFactory:
+  driverClass: org.h2.Driver
+  user: sa
+  password:
+  url: jdbc:h2:mem:cwsrs1;INIT=create schema if not exists cwsrs1\;set schema cwsrs1
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  logValidationErrors: true
+  initialSize: ${DB_CMS_CP_INITIAL_SIZE:-2}
+  minSize: ${DB_CMS_CP_MIN_SIZE:-2}
+  maxSize: ${DB_CMS_CP_MAX_SIZE:-8}
+  minIdleTime: 1 minute
+  properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+      hibernate.default_schema: cwsrs1
       hibernate.id.new_generator_mappings: false
       hibernate.show_sql: false
 
