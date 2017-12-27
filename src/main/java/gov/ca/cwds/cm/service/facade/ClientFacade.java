@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.ChildClientService;
 import gov.ca.cwds.cm.service.ClientService;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
-import gov.ca.cwds.rest.api.Request;
 import gov.ca.cwds.rest.api.Response;
 
 import java.io.Serializable;
@@ -33,17 +32,6 @@ public class ClientFacade {
         return childClientService.find(serializable);
       default:
         return null;
-    }
-  }
-
-  public void update(Serializable serializable, Request request, ClientType clientType) {
-    switch (clientType) {
-      case BASE_CLIENT:
-        clientService.update(serializable, request);
-        break;
-      case CHILD_CLIENT:
-        childClientService.update(serializable, request);
-        break;
     }
   }
 }
