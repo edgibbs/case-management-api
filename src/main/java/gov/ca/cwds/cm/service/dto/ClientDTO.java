@@ -684,11 +684,4 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
   )
   private String sciIndexNumber;
 
-  @NotNull
-  @JsonIgnore
-  private String lastUpdateId;
-
-  @NotNull
-  @JsonIgnore
-  private LocalDateTime lastUpdateTimestamp;
 }

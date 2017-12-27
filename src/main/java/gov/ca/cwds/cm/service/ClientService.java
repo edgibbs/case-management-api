@@ -40,4 +40,8 @@ public class ClientService extends CrudServiceAdapter {
     ClientEntityAwareDTO clientEntityAwareDTO = builder.build();
     return clientCoreService.update(clientEntityAwareDTO);
   }
+
+  public void update(Serializable serializable) {
+    clientDao.update(clientMapper.toClient((ClientDTO) serializable));
+  }
 }

@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiResponses;
 import java.util.Collection;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -85,5 +86,32 @@ public class ChildClientResource {
           final String id) {
     final Collection<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
     return ResponseUtil.responseOrNotFound(addresses);
+  }
+
+  @PUT
+  @Path("/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Timed
+  @ApiResponses(
+      value = {
+          @ApiResponse(code = 400, message = "Bad request"),
+          @ApiResponse(code = 404, message = "Not Found"),
+          @ApiResponse(code = 401, message = "Not Authorized"),
+          @ApiResponse(code = 406, message = "Accept Header not supported")
+      }
+  )
+  @ApiOperation(value = "Update client", response = ChildClientDTO.class)
+  public Response update(
+      @ApiParam(name = "form", value = "The Form object")
+      ChildClientDTO childClient,
+      @PathParam("id")
+      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+      final String id
+  ) {
+    return ResponseUtil.responseOrNotFound(getMockedChildClientForContractUpdate(childClient));
+  }
+
+  private ChildClientDTO getMockedChildClientForContractUpdate(ChildClientDTO childClientDTO) {
+    return childClientDTO;
   }
 }
