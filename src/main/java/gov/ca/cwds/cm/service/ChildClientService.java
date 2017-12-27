@@ -15,16 +15,13 @@ public class ChildClientService extends CrudServiceAdapter {
 
   private ChildClientDao childClientDao;
   private ChildClientMapper childClientMapper;
-  private ClientCoreService clientCoreService;
 
   @Inject
   public ChildClientService(
       ChildClientDao childClientDao,
-      ChildClientMapper childClientMapper,
-      ClientCoreService clientCoreService) {
+      ChildClientMapper childClientMapper) {
     this.childClientDao = childClientDao;
     this.childClientMapper = childClientMapper;
-    this.clientCoreService = clientCoreService;
   }
 
   @Override
