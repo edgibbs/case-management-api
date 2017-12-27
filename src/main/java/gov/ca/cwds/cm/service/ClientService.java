@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
-import gov.ca.cwds.cms.data.access.service.ClientCoreService;
 import gov.ca.cwds.data.legacy.cms.dao.ClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import java.io.Serializable;
@@ -14,14 +13,12 @@ public class ClientService extends CrudServiceAdapter {
 
   private ClientDao clientDao;
   private ClientMapper clientMapper;
-  private ClientCoreService clientCoreService;
 
   @Inject
   public ClientService(
-      ClientDao clientDao, ClientMapper clientMapper, ClientCoreService clientServiceCore) {
+      ClientDao clientDao, ClientMapper clientMapper) {
     this.clientMapper = clientMapper;
     this.clientDao = clientDao;
-    this.clientCoreService = clientServiceCore;
   }
 
   @Override
