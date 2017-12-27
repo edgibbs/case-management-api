@@ -19,7 +19,7 @@ server:
       - type: console
 
 shiro:
-  iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro_nosec.ini}"]
+  iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro.ini}"]
 
 swagger:
   templateName: swagger.mustache
@@ -28,13 +28,13 @@ swagger:
   title: "CWDS CASE MANAGEMENT API"
   description: "RESTful CASE MANAGEMENT API."
   logo: images/CWDS-API-Logo-Horizontal.png
-  loginUrl: ${LOGIN_URL:-http://localhost:8080/authn/login/}
-  logoutUrl: ${LOGOUT_URL:-http://localhost:8080/perry/authn/logout}
+  loginUrl: ${LOGIN_URL:-http://localhost:18080/perry/authn/login}
+  logoutUrl: ${LOGOUT_URL:-http://localhost:18080/perry/authn/logout}
   showSwagger: ${SHOW_SWAGGER:-true}
   jsonUrl: ${SWAGGER_JSON_URL:-http://localhost:8080/swagger.json}
   callbackUrl: ${SWAGGER_CALLBACK_URL:-http://localhost:8080/swagger}
 
-upgardeDbOnStart: ${UPGRADE_DB_ON_START:-true}
+upgradeDbOnStart: ${UPGRADE_DB_ON_START:-true}
 
 cmsDataSourceFactory:
   autoCommitByDefault: false
@@ -60,6 +60,26 @@ cmsDataSourceFactory:
       hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
       hibernate.cache.use_query_cache: true
 
+cwsRsDataSourceFactory:
+  autoCommitByDefault: false
+  driverClass: com.ibm.db2.jcc.DB2Driver
+  user: ${DB_RS_USER:-db2inst1}
+  password: ${DB_RS_PASSWORD:-db2inst1}
+  url: ${DB_RS_JDBC_URL:-jdbc:db2://localhost:50000/DB0TDEV}
+  validationQuery: "select count(*) from ${DB_RS_SCHEMA:-CWSRS1}.CLIENT_CNTY"
+  logValidationErrors: true
+  initialSize: ${DB_RS_CP_INITIAL_SIZE:-1}
+  minSize: ${DB_RS_CP_MIN_SIZE:-2}
+  maxSize: ${DB_RS_CP_MAX_SIZE:-8}
+  minIdleTime: 1 minute
+  maxWaitForConnection: 20s
+  minSize: 8
+  maxSize: 32
+  properties:
+      hibernate.dialect: org.hibernate.dialect.DB2Dialect
+      hibernate.show_sql: true
+      hibernate.default_schema: ${DB_RS_SCHEMA:-CWSRS1}
+      hibernate.connection.autocommit: false
 
 webSecurity:
   httpResponseSecurityHeaders:
