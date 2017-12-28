@@ -56,6 +56,7 @@ public abstract class BaseCmApiApplication<T extends CmApiConfiguration> extends
   private void runDataSourceHealthChecks(Environment environment) {
     HealthCheckRegistry healthCheckRegistry = environment.healthChecks();
     doHealthCheck(healthCheckRegistry, Constants.UnitOfWork.CMS);
+    doHealthCheck(healthCheckRegistry, Constants.UnitOfWork.CWSRS);
   }
 
   private void doHealthCheck(HealthCheckRegistry healthCheckRegistry, String key) {

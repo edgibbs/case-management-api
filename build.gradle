@@ -36,7 +36,6 @@ project.ext {
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
     calsModelVersion = '0.4.6'
-    shiroSecurityVersion = '0.4.3'
 }
 
 group projectGroup
@@ -100,7 +99,10 @@ dependencies {
 // Exclude transitive dependencies.
     compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion , changing: true) {
         exclude group: 'org.glassfish.jersey.core'
+        exclude group: 'gov.ca.cwds.api', module: 'api-security'
     }
+    compile group: 'gov.ca.cwds.api', name: 'api-security', version: '0.5.3_320'
+
     compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion , changing: true
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.1'
@@ -121,17 +123,17 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
     compile group: 'org.apache.commons', name: 'commons-compress', version: '1.14'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
-    compile group: 'gov.ca.cwds.api', name: 'shiro-security', version: shiroSecurityVersion
     compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
     testCompile (group: 'gov.ca.cwds.cals', name: 'fas-data-model', version: calsModelVersion, changing: true)
     testCompile (group: 'gov.ca.cwds.cals', name: 'cws-cms-data-model', version: calsModelVersion, changing: true)
 
     compile group: 'com.github.javafaker', name: 'javafaker', version: '0.13'
     compile(group: "com.github.java-json-tools", name: "json-schema-validator", version: "2.2.8")
-    compile group: 'gov.ca.cwds.api', name: 'jwt-security', version: shiroSecurityVersion
     compile 'org.mapstruct:mapstruct-jdk8:' + mapstructVersion
     compileOnly 'org.projectlombok:lombok:' + lombokVersion
 
+    testCompile group: 'gov.ca.cwds.cals', name: 'cws-rs1-data-model', version: calsModelVersion
+    testCompile group: 'gov.ca.cwds.api', name:'api-security-test-support', version: '0.5.3-SNAPSHOT'
     testCompile group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile 'org.mockito:mockito-core:2.0.54-beta'
@@ -176,6 +178,10 @@ runShadow {
 
 test {
     systemProperty 'java.net.preferIPv4Stack', 'true'
+    exclude '**/*IT*'
+    jacoco {
+        excludes = ["**org/drools/**/*"]
+    }
 }
 
 jar {

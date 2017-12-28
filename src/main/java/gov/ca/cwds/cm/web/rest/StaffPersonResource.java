@@ -4,6 +4,7 @@ import static gov.ca.cwds.cm.Constants.API.CASES;
 import static gov.ca.cwds.cm.Constants.API.ID;
 import static gov.ca.cwds.cm.Constants.API.REFERRALS;
 import static gov.ca.cwds.cm.Constants.API.STAFF;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -61,7 +62,7 @@ public class StaffPersonResource {
     }
   )
   @ApiOperation(value = "Find clients by caseworker ID from cases", response = ClientDTO[].class)
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @Timed
   public Response getClients(
       @PathParam(ID)
@@ -90,7 +91,7 @@ public class StaffPersonResource {
     }
   )
   @ApiOperation(value = "Search referrals by staffId", response = ReferralByStaff[].class)
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @Timed
   public Response getReferrals(
       @PathParam(ID)
@@ -108,7 +109,7 @@ public class StaffPersonResource {
     }
   )
   @ApiOperation(value = "Search active cases by staffId", response = CaseByStaff[].class)
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @Timed
   public Response getCases(
       @PathParam(ID)

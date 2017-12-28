@@ -44,27 +44,43 @@ public abstract class BaseApiIntegrationTest {
     return clientTestRule.getMapper().writeValueAsString(o);
   }
 
-  protected static DatabaseHelper getDatabaseHelper() {
-    DataSourceFactory dataSourceFactory = appRule.getConfiguration().getCmsDataSourceFactory();
+  protected static DatabaseHelper getCmsDatabaseHelper() {
+    return createDatabaseHelper(appRule.getConfiguration().getCmsDataSourceFactory());
+  }
+
+  protected static DatabaseHelper getRsDatabaseHelper() {
+    return createDatabaseHelper(appRule.getConfiguration().getCwsRsDataSourceFactory());
+  }
+
+  private static DatabaseHelper createDatabaseHelper(DataSourceFactory dataSourceFactory) {
     return new DatabaseHelper(
-        dataSourceFactory.getUrl(), dataSourceFactory.getUser(), dataSourceFactory.getPassword());
+        dataSourceFactory.getUrl(),
+        dataSourceFactory.getUser(),
+        dataSourceFactory.getPassword()
+    );
   }
 
   public static void setUpCms() throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/cwscms_database_master.xml");
+      getCmsDatabaseHelper().runScript("liquibase/cwscms_database_master.xml");
+    }
+  }
+
+  public static void setUpCwsRs1() throws Exception {
+    if (!TestModeUtils.isIntegrationTestsMode()) {
+      getRsDatabaseHelper().runScript("liquibase/cwsrs1-database-master.xml");
     }
   }
 
   public static void setUpDb() throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      getDatabaseHelper().runScript("liquibase/migration_master.xml");
+      getCmsDatabaseHelper().runScript("liquibase/migration_master.xml");
     }
   }
 
   public static void runScripts(final String... scriptPaths) throws Exception {
     if (!TestModeUtils.isIntegrationTestsMode()) {
-      final DatabaseHelper databaseHelper = getDatabaseHelper();
+      final DatabaseHelper databaseHelper = getCmsDatabaseHelper();
       for (String path : scriptPaths) {
         databaseHelper.runScript(path);
       }

@@ -21,5 +21,6 @@ public class SystemInformationDTO extends BaseDTO {
   private String version;
   private String buildNumber;
   private HealthCheckResultDTO cwscms;
+  private HealthCheckResultDTO cwsrs1;
   private HealthCheckResultDTO deadlocks;
 }

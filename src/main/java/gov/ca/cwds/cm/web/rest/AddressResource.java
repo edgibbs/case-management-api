@@ -1,6 +1,7 @@
 package gov.ca.cwds.cm.web.rest;
 
 import static gov.ca.cwds.cm.Constants.API.ADDRESSES;
+import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
@@ -37,7 +38,7 @@ public class AddressResource {
     this.addressService = addressService;
   }
 
-  @UnitOfWork
+  @UnitOfWork(CMS)
   @GET
   @Path("/{id}")
   @ApiResponses(value = {

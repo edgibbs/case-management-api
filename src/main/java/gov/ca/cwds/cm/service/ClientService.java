@@ -1,29 +1,26 @@
 package gov.ca.cwds.cm.service;
 
 import com.google.inject.Inject;
-import gov.ca.cwds.cm.service.dto.ClientDTO;
-import gov.ca.cwds.cm.service.mapper.ClientMapper;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
 import gov.ca.cwds.data.legacy.cms.dao.ClientDao;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
+import gov.ca.cwds.security.annotations.Authorize;
 import java.io.Serializable;
 
-/** @author CWDS TPT-3 Team */
-public class ClientService extends CrudServiceAdapter {
+/**
+ * @author CWDS TPT-3 Team
+ */
+public class ClientService {
 
-  private ClientDao clientDao;
-  private ClientMapper clientMapper;
+  private final ClientDao clientDao;
 
   @Inject
-  public ClientService(
-      ClientDao clientDao, ClientMapper clientMapper) {
-    this.clientMapper = clientMapper;
+  public ClientService(ClientDao clientDao) {
     this.clientDao = clientDao;
   }
 
-  @Override
-  public ClientDTO find(Serializable serializable) {
-    Client client = clientDao.find(((ClientParameterObject) serializable).getClientId());
-    return clientMapper.toClientDTO(client);
+  @Authorize("client:read:client")
+  public Client find(Serializable serializable) {
+    return clientDao.find(((ClientParameterObject) serializable).getClientId());
   }
 }

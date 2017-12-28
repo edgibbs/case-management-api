@@ -76,6 +76,7 @@ public class SystemInformationResource {
 
     final Map<String, Result> healthChecks = environment.healthChecks().runHealthChecks();
     systemInformation.setCwscms(getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CMS)));
+    systemInformation.setCwsrs1(getHealthCheckResultDTO(healthChecks.get(Constants.UnitOfWork.CWSRS)));
     systemInformation.setDeadlocks(getHealthCheckResultDTO(healthChecks.get("deadlocks")));
 
     return systemInformation;

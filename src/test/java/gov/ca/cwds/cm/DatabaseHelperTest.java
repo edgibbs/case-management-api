@@ -22,7 +22,7 @@ public class DatabaseHelperTest extends BaseApiIntegrationTest {
 
   @Before
   public void before() {
-    helper = getDatabaseHelper();
+    helper = getCmsDatabaseHelper();
   }
 
   @Test
