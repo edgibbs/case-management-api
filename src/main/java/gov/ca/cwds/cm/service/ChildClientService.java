@@ -15,28 +15,14 @@ import java.io.Serializable;
 public class ChildClientService {
 
   private final ChildClientDao childClientDao;
-  private final ClientCoreService clientCoreService;
 
   @Inject
-  public ChildClientService(
-      ChildClientDao childClientDao,
-      ClientCoreService clientCoreService) {
+  public ChildClientService(ChildClientDao childClientDao) {
     this.childClientDao = childClientDao;
-    this.clientCoreService = clientCoreService;
   }
 
   @Authorize("client:read:client")
   public ChildClient find(Serializable serializable) {
     return childClientDao.find(((ClientParameterObject) serializable).getClientId());
-  }
-
-  public ChildClient update(ChildClient childClient) {
-    final ClientEntityAwareDTO clientEntityAwareDTO = new ClientEntityAwareDTOBuilder(childClient)
-        .build();
-    try {
-      return (ChildClient) clientCoreService.update(clientEntityAwareDTO);
-    } catch (DataAccessServicesException e) {
-      throw new RuntimeException(e);
-    }
   }
 }
