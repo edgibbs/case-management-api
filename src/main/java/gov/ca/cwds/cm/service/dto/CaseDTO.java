@@ -66,11 +66,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "County", example = "Alameda")
+  @ApiModelProperty(required = true, value = "County", example = "10")
   private String countySpecificCode;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(value = "DRMS notes", example = "Text")
+  @ApiModelProperty(value = "DRMS notes", example = "At9HoSn0WJ")
   private String drmsNotesDoc;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -88,24 +88,24 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Child")
+  @ApiModelProperty(required = true, value = "Child Client", example = "8m7hS7i07n")
   private String childClient;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(value = "Referrer")
+  @ApiModelProperty(value = "Referral", example="7Rgxy9S00T")
   private String referralId;
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Staff Person")
+  @ApiModelProperty(required = true, value = "Staff Person", example="07n")
   private String staffPerson;
 
   @RemoveTrailingSpaces
   @ApiModelProperty(
       value = "County within the state of California to which a specific CASE is assigned.",
-      example = "Alameda"
+      example = "1068"
   )
-  private String county;
+  private short county;
 
   @NotNull
   @ApiModelProperty(
@@ -113,7 +113,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
       value = "ICPC outgoing placement status indicator.",
       example = "true"
   )
-  private Boolean icpcOutgoingPlacementStatus;
+  private boolean icpcOutgoingPlacementStatus;
 
   @NotNull
   @ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
