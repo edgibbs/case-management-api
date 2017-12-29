@@ -61,8 +61,8 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Country", example = "US")
-  private String country;
+  @ApiModelProperty(required = true, value = "Country", example = "563")
+  private short country;
 
   @RemoveTrailingSpaces
   @NotNull
