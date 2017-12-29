@@ -134,7 +134,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private String limitedAccessDesc;
 
   @ApiModelProperty(value = "Limited access county", example = "Alameda")
-  private String limitedAccessCounty;
+  private Short limitedAccessCounty;
 
   @RemoveTrailingSpaces
   @NotNull
@@ -173,8 +173,8 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "State", example = "California")
-  private String state;
+  @ApiModelProperty(required = true, value = "State", example = "1828")
+  private short state;
 
   @RemoveTrailingSpaces
   @NotNull

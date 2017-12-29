@@ -28,7 +28,7 @@ public interface CaseMapper {
   @Mapping(source = "county.systemId", target = "county")
   @Mapping(source = "limitedAccessCounty.systemId", target = "limitedAccessCounty")
   @Mapping(source = "limitedAccess.code", target = "limitedAccess")
-  @Mapping(source = "responsibleAgency.description", target = "responsibleAgency")
+  @Mapping(source = "responsibleAgency.code", target = "responsibleAgency")
   @Mapping(source = "stateCode", target = "state")
   @Mapping(source = "staffPerson.identifier", target = "staffPerson")
   @Mapping(source = "childClient.victimClientId", target = "childClient")
