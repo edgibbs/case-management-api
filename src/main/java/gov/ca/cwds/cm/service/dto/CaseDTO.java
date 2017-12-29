@@ -29,22 +29,22 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private String id;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(value = "Alert Text", example = "Text")
+  @ApiModelProperty(value = "Alert Text", example = "EssaJ4W0Js")
   private String alertText;
 
   @RemoveTrailingSpaces
   @Size(max = 10)
-  @ApiModelProperty(value = "Approval Number", example = "100")
+  @ApiModelProperty(value = "Approval Number", example = "GIxeGnJ00u")
   private String approvalNumber;
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Approval Status", example = "100")
-  private String approvalStatus;
+  @ApiModelProperty(required = true, value = "Approval Status", example = "118")
+  private short approvalStatus;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(required = true, value = "Case Closure Reason", example = "Child Abducted")
-  private String caseClosureReason;
+  @ApiModelProperty(required = true, value = "Case Closure Reason", example = "306")
+  private short caseClosureReason;
 
   @NotNull
   @ApiModelProperty(
@@ -181,9 +181,9 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(
       required = true,
       value = "Service component being referenced  for a child's case",
-      example = "Emergency Response"
+      example = "1692"
   )
-  private String activeServiceComponent;
+  private short activeServiceComponent;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @gov.ca.cwds.rest.validation.Date
