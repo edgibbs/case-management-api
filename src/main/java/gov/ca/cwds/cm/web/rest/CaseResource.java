@@ -76,6 +76,9 @@ public class CaseResource {
       final String id,
       @ApiParam(name = "caseData", value = "The Case data")
       CaseDTO caseDTO) {
+
+    caseDTO.setId(id);
+
     return ResponseUtil.responseOrNotFound(caseDTO);
   }
 }
