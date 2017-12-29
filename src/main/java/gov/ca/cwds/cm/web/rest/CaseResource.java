@@ -69,7 +69,7 @@ public class CaseResource {
       @ApiResponse(code = 406, message = "Accept Header not supported")
     }
   )
-  @ApiOperation(value = "Update case", response = CaseDTO.class)
+  @ApiOperation(value = "Update Case", response = CaseDTO.class)
   public Response update(
       @PathParam("id")
       @ApiParam(required = true, value = "The unique case ID", example = "AadfKnG07n")
