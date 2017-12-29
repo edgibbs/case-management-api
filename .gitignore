@@ -6,7 +6,6 @@ build/
 .settings/
 bin/
 .idea
-*.env
 *.sw*
 /build/
 /.idea/
