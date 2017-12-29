@@ -26,6 +26,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 3787452961716324977L;
 
+  @ApiModelProperty(value = "ID", example = "AadfKnG07n")
   private String id;
 
   @RemoveTrailingSpaces
@@ -133,12 +134,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   @ApiModelProperty(value = "Limited access description", example = "Text")
   private String limitedAccessDesc;
 
-  @ApiModelProperty(value = "Limited access county", example = "Alameda")
+  @ApiModelProperty(value = "Limited access county", example = "1068")
   private Short limitedAccessCounty;
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Case name")
+  @ApiModelProperty(required = true, value = "Case name", example = "Sibling Hanson")
   private String caseName;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
@@ -158,7 +159,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private LocalDate projectedEndDate;
 
   @RemoveTrailingSpaces
-  @ApiModelProperty(value = "Responsible agency")
+  @ApiModelProperty(value = "Responsible agency", example = "A")
   private String responsibleAgency;
 
   @NotNull
