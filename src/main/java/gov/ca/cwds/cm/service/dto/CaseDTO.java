@@ -52,11 +52,11 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
       value = "Caseplan children detail existing indicator.",
       example = "true"
   )
-  private Boolean caseplanChildrenDetail;
+  private boolean caseplanChildrenDetail;
 
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Case closure statement text", example = "Text")
+  @ApiModelProperty(required = true, value = "Case closure statement text", example = "Fn3lUdY00F")
   private String closureStatementText;
 
   @RemoveTrailingSpaces
