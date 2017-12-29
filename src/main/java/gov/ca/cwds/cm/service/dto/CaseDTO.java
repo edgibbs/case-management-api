@@ -117,7 +117,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @NotNull
   @ApiModelProperty(required = true, value = "ICPC outgoing request", example = "true")
-  private Boolean icpcOutgoingRequest;
+  private boolean icpcOutgoingRequest;
 
   @RemoveTrailingSpaces
   @NotNull
