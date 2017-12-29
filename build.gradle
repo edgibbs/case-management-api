@@ -28,14 +28,36 @@ project.ext {
     projectGroup = 'gov.ca.cwds.case-management'
     projectDockerGroup = 'cwds'
     projectDockerAppName = 'case-management-api'
-    projectMajorVersion = '0.5.3'
-    projectVersion = projectMajorVersion // + '-SNAPSHOT'
+    projectMajorVersion = '0.5.4'
+    //projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
     coreApiVersion = '0.5.4_141-RC'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
     calsModelVersion = '0.4.6'
+
+    isRelease = System.getProperty("Release") == "true"
+    buildNumber = System.getProperty('BuildNumber')
+    customVersion = System.getProperty('CustomVersion')
+
+    projectSnapshotVersion = projectMajorVersion + "-SNAPSHOT"
+    projectReleaseVersion = (customVersion == null || customVersion == "" || customVersion.startsWith('$') ? projectMajorVersion + '_' + buildNumber + '-RC' : customVersion )
+    projectVersion = (isRelease ? projectReleaseVersion : projectSnapshotVersion )
+    dockerTag = projectVersion
+
+    /*// assumed that Windows users use the Docker Toolbox
+    buildEnv = System.env.BUILD_ENV ?: (Os.isFamily(Os.FAMILY_WINDOWS) ? 'WIN_DEV' : 'JENKINS')
+    devDockerHost = System.env.DEV_DOCKER_HOST ?: '192.168.99.100'
+    devDockerPort = 2376
+
+    commonsCollectionsVersion = '4.1'*/
+
+    // Publishing configuration
+    snapshotMavenRepo = "http://sonar.dev.cwds.io:8081/artifactory/repo"
+    releaseMavenRepo = "http://sonar.dev.cwds.io:8081/artifactory/libs-release"
+    artifactoryRepo = (isRelease ? releaseMavenRepo : snapshotMavenRepo)
+
 }
 
 group projectGroup
@@ -214,8 +236,6 @@ task copyDist(type: Copy, dependsOn: shadowJar) {
 
 
 def releaseDocker = System.getProperty("ReleaseDocker")
-def buildNumber = System.getProperty('BuildNumber')
-def dockerTag = (releaseDocker == 'true' && buildNumber != null  ? projectMajorVersion + '_' + buildNumber + '-RC' : projectVersion )
 def tempRepository = 'cwds'
 
 task readArguments() {
@@ -281,13 +301,11 @@ publishing {
             from components.java
             groupId projectGroup
             artifactId rootProject.name
-            version version + ((System.properties.getProperty('build') != null) ? '.' + System.properties.getProperty('build') : '')
         }
     }
     repositories {
-        //mavenLocal()
         maven {
-            url "http://sonar.dev.cwds.io:8081/artifactory/repo"
+            url artifactoryRepo
         }
     }
 }
