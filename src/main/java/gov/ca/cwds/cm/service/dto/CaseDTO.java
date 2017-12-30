@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import gov.ca.cwds.cm.service.mapper.tool.RemoveTrailingSpaces;
+import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
@@ -121,7 +122,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private boolean icpcOutgoingRequest;
 
   @RemoveTrailingSpaces
-  @NotNull
+  @Size(min = 1, max = 1)
+  @OneOf(
+      value = {"N", "R", "S"},
+      ignoreCase = true,
+      ignoreWhitespace = true
+  )
   @ApiModelProperty(required = true, value = "Security access level code", example = "S")
   private String limitedAccess;
 
@@ -159,6 +165,12 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private LocalDate projectedEndDate;
 
   @RemoveTrailingSpaces
+  @Size(min = 1, max = 1)
+  @OneOf(
+      value = {"A", "C", "I", "K", "M", "O", "P", "S"},
+      ignoreCase = true,
+      ignoreWhitespace = true
+  )
   @ApiModelProperty(value = "Responsible agency code", example = "A")
   private String responsibleAgency;
 
