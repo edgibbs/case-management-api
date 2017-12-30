@@ -1,5 +1,6 @@
 package gov.ca.cwds.cm.service.dto;
 
+import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,6 +28,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 3787452961716324977L;
 
+  @Size(max = CMS_ID_LEN)
   @ApiModelProperty(value = "ID", example = "AadfKnG07n")
   private String id;
 
@@ -58,6 +60,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
+  @Size(max = CMS_ID_LEN)
   @ApiModelProperty(required = true, value = "Case closure statement text ID", example = "Fn3lUdY00F")
   private String closureStatementText;
 
@@ -72,6 +75,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
   private String countySpecificCode;
 
   @RemoveTrailingSpaces
+  @Size(max = CMS_ID_LEN)
   @ApiModelProperty(value = "DRMS notes document ID", example = "At9HoSn0WJ")
   private String drmsNotesDoc;
 
@@ -90,15 +94,18 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
+  @Size(max = CMS_ID_LEN)
   @ApiModelProperty(required = true, value = "Child Client ID", example = "8m7hS7i07n")
   private String childClient;
 
   @RemoveTrailingSpaces
+  @Size(max = CMS_ID_LEN)
   @ApiModelProperty(value = "Referral ID", example="7Rgxy9S00T")
   private String referralId;
 
   @RemoveTrailingSpaces
   @NotNull
+  @Size(max = 3)
   @ApiModelProperty(required = true, value = "Staff Person ID", example="07n")
   private String staffPerson;
 
