@@ -55,8 +55,9 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     caseDTO.setCounty((short) 1068);
     caseDTO.setIcpcOutgoingPlacementStatus(true);
     caseDTO.setIcpcOutgoingRequest(true);
+    caseDTO.setLimitedAccess("N");
     caseDTO.setLimitedAccessDesc("Text");
-    caseDTO.setLimitedAccessCounty(Short.valueOf((short) 1068));
+    caseDTO.setLimitedAccessCounty((short) 1068);
     caseDTO.setCaseName("Sibling Hanson");
     caseDTO.setNextTilpDueDate(localDate("2018-10-24"));
     caseDTO.setProjectedEndDate(localDate("2018-10-23"));

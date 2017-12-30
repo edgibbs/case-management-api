@@ -17,6 +17,7 @@
   "county" : 1068,
   "icpc_outgoing_placement_status" : true,
   "icpc_outgoing_request" : true,
+  "limited_access" : "N",
   "limited_access_desc" : "Text",
   "limited_access_county" : 1068,
   "case_name" : "Sibling Hanson",
