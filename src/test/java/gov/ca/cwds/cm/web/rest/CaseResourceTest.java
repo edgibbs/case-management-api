@@ -7,7 +7,6 @@ import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
 import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.dto.CaseDTO;
-import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -69,7 +68,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     caseDTO.setActiveServiceComponentStartDate(localDate("2016-10-23"));
     caseDTO.setTickle(true);
 
-    WebTarget target = clientTestRule.target(API.CASES + "/AadfKnG07n");
+    WebTarget target = clientTestRule.target(API.CASES + "/" + CASE_ID);
     CaseDTO response =
         target
             .request(MediaType.APPLICATION_JSON_TYPE)
