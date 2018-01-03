@@ -1,30 +1,29 @@
 version: '2.1'
 services:
-  db2:
-      image: cwds/db2data
-      env_file: .env
-      hostname: db2
-      ports:
-          - ${DB_CMS_DB2_PORT}:${DB_CMS_DB2_PORT}
-      environment:
-          DB2INST1_PASSWORD: ${DB_CMS_PASSWORD}
-          LICENSE: "accept"
-          DB2NAME: ${DB_CMS_DB_NAME}
-  case-api:
-      image: ${REPOSITORY}/case-management-api
-      hostname: casemanagement
-      depends_on:
-        db2:
-          condition: service_started
-      restart: on-failure
-      ports:
-        - ${CASE_API_PORT}:${CASE_API_PORT}
-      env_file: .env
-      environment:
-         SHIRO_CONFIG_PATH: ${SHIRO_NOSEC_CONFIG_PATH}
-         KEY_STORE_FILE: ${KEY_STORE_FILE}
-         DB_CMS_JDBC_URL: "jdbc:db2://db2:${DB_CMS_DB2_PORT}/${DB_CMS_DB_NAME}"
+  perry:
+    image: cwds/perry:0.4.5-HF12
+    hostname: perry
+    ports:
+      - ${PERRY_PORT}:8080
+      - ${PERRY_ADMIN_PORT}:8092
+    env_file: .env
 
+  db2data:
+    image: cwds/db2data
+    hostname: db2data
+    ports:
+      - ${DB_CMS_DB2_PORT}:${DB_CMS_DB2_PORT}
+    env_file: .env
 
-
-
+  case-management-api:
+    image: cwds/case-management-api
+    hostname: case-management-api
+    depends_on:
+      db2data:
+        condition: service_started
+      perry:
+        condition: service_started
+    restart: on-failure
+    ports:
+      - ${CASE_MANAGEMENT_API_PORT}:8080
+    env_file: .env
