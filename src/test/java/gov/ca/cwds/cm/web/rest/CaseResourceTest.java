@@ -43,11 +43,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     CaseDTO caseDTO = validCaseDto();
 
     WebTarget target = clientTestRule.target(API.CASES + "/" + CASE_ID);
-    CaseDTO response =
-        target
-            .request(MediaType.APPLICATION_JSON_TYPE)
-            .put(Entity.entity(caseDTO, MediaType.APPLICATION_JSON_TYPE), CaseDTO.class);
-
+    CaseDTO response = updateCase(target, caseDTO);
     String fixture = fixture("fixtures/case-after-update-response.json");
     assertEqualsResponse(fixture, transformDTOtoJSON(response));
   }
@@ -59,9 +55,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     WebTarget target = clientTestRule.target(API.CASES + "/");
 
     try {
-      target
-          .request(MediaType.APPLICATION_JSON_TYPE)
-          .put(Entity.entity(caseDTO, MediaType.APPLICATION_JSON_TYPE), CaseDTO.class);
+      updateCase(target, caseDTO);
       fail();
     } catch (InternalServerErrorException e) {
       Response response = e.getResponse();
@@ -77,9 +71,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     WebTarget target = clientTestRule.target(
         API.CASES + "/" + CASE_ID);
     try {
-      target
-          .request(MediaType.APPLICATION_JSON_TYPE)
-          .put(Entity.entity(caseDTO, MediaType.APPLICATION_JSON_TYPE), CaseDTO.class);
+      updateCase(target, caseDTO);
       fail();
     } catch (ClientErrorException e) {
       Response response = e.getResponse();
@@ -94,9 +86,7 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
 
     WebTarget target = clientTestRule.target(API.CASES + "/" + CASE_ID);
     try {
-      target
-          .request(MediaType.APPLICATION_JSON_TYPE)
-          .put(Entity.entity(caseDTO, MediaType.APPLICATION_JSON_TYPE), CaseDTO.class);
+      updateCase(target, caseDTO);
       fail();
     } catch (ClientErrorException e) {
       Response response = e.getResponse();
@@ -134,5 +124,11 @@ public class CaseResourceTest extends BaseApiIntegrationTest {
     caseDTO.setActiveServiceComponentStartDate(localDate("2016-10-23"));
 
     return caseDTO;
+  }
+
+  private CaseDTO updateCase(WebTarget target, CaseDTO caseDTO) {
+    return target
+        .request(MediaType.APPLICATION_JSON_TYPE)
+        .put(Entity.entity(caseDTO, MediaType.APPLICATION_JSON_TYPE), CaseDTO.class);
   }
 }
