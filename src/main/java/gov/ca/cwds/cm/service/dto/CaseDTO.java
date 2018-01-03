@@ -28,7 +28,7 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = -8382919588078449541L;
 
-  //IDENTIFIER, may be null (value is taken from URL)
+  //IDENTIFIER, may be null for update(value is taken from URL)
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(value = "ID", example = "AadfKnG07n")
   private String id;
