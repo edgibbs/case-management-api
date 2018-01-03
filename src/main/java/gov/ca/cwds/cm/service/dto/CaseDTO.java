@@ -28,174 +28,167 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 3787452961716324977L;
 
-  @Size(max = CMS_ID_LEN)
+  //IDENTIFIER, may be null (value is taken from URL)
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(value = "ID", example = "AadfKnG07n")
   private String id;
 
+  //ALERT_TXT
   @RemoveTrailingSpaces
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(value = "Alert Text ID", example = "EssaJ4W0Js")
-  private String alertText;
+  private String alertTextId;
 
-  @RemoveTrailingSpaces
-  @Size(max = 10)
-  @ApiModelProperty(value = "Approval Number ID", example = "GIxeGnJ00u")
-  private String approvalNumber;
-
+  //APV_STC
   @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Approval Status Code", example = "118")
-  private short approvalStatus;
+  private Short approvalStatusCode;
 
-  @RemoveTrailingSpaces
-  @ApiModelProperty(required = true, value = "Case Closure Reason Code", example = "306")
-  private short caseClosureReason;
-
-  @NotNull
-  @ApiModelProperty(
-      required = true,
-      value = "Caseplan children detail existing indicator",
-      example = "true"
-  )
-  private boolean caseplanChildrenDetail;
-
+  //CASE_NM
   @RemoveTrailingSpaces
   @NotNull
-  @Size(max = CMS_ID_LEN)
-  @ApiModelProperty(required = true, value = "Case closure statement text ID", example = "Fn3lUdY00F")
-  private String closureStatementText;
+  @ApiModelProperty(required = true, value = "Case name", example = "Sibling Hanson")
+  private String caseName;
 
+  //CL_STM_TXT
+  @RemoveTrailingSpaces
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
+  @ApiModelProperty(value = "Case closure statement text ID", example = "Fn3lUdY00F")
+  private String closureStatementTextId;
+
+  //CLS_RSNC, if 0 in DB, should be null in DTO
+  @RemoveTrailingSpaces
+  @ApiModelProperty(value = "Case Closure Reason Code", example = "306")
+  private Short caseClosureReasonCode;
+
+  //CNTRY_C
   @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "Country Code", example = "563")
-  private short country;
+  private Short countryCode;
 
+  //CNTY_SPFCD
   @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(required = true, value = "County Code", example = "10")
   private String countySpecificCode;
 
-  @RemoveTrailingSpaces
-  @Size(max = CMS_ID_LEN)
-  @ApiModelProperty(value = "DRMS notes document ID", example = "At9HoSn0WJ")
-  private String drmsNotesDoc;
-
+  //EMANCPN_DT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
       value = "The anticipated date the child client will become emancipated",
       example = "2018-10-20"
   )
   private LocalDate emancipationDate;
 
+  //END_DT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(value = "End date", example = "2018-10-20")
   private LocalDate endDate;
 
+  //FKCHLD_CLT
   @RemoveTrailingSpaces
   @NotNull
-  @Size(max = CMS_ID_LEN)
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(required = true, value = "Child Client ID", example = "8m7hS7i07n")
-  private String childClient;
+  private String childClientId;
 
+  //FKREFERL_T
   @RemoveTrailingSpaces
-  @Size(max = CMS_ID_LEN)
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(value = "Referral ID", example="7Rgxy9S00T")
   private String referralId;
 
+  //FKSTFPERST
   @RemoveTrailingSpaces
   @NotNull
-  @Size(max = 3)
+  @Size(min = 3, max = 3)
   @ApiModelProperty(required = true, value = "Staff Person ID", example="07n")
-  private String staffPerson;
+  private String staffPersonId;
 
+  //GVR_ENTC
   @RemoveTrailingSpaces
-  @ApiModelProperty(
-      value = "Code of the county within the state of California to which a specific CASE is assigned",
-      example = "1068"
-  )
-  private short county;
-
   @NotNull
   @ApiModelProperty(
       required = true,
-      value = "ICPC outgoing placement status indicator",
-      example = "true"
+      value = "Code of the county within the state of California to which a specific CASE is assigned",
+      example = "1068"
   )
-  private boolean icpcOutgoingPlacementStatus;
+  private Short countyCode;
 
-  @NotNull
-  @ApiModelProperty(required = true, value = "ICPC outgoing request indicator", example = "true")
-  private boolean icpcOutgoingRequest;
-
+  //L_GVR_ENTC
   @RemoveTrailingSpaces
-  @Size(min = 1, max = 1)
-  @OneOf(
-      value = {"N", "R", "S"},
-      ignoreCase = true,
-      ignoreWhitespace = true
-  )
-  @ApiModelProperty(required = true, value = "Security access level code", example = "S")
-  private String limitedAccess;
+  @ApiModelProperty(value = "Limited access county", example = "1068")
+  private Short limitedAccessCountyCode;
 
+  //LMT_ACS_DT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(value = "Limited access date", example = "2016-10-25")
   private LocalDate limitedAccessDate;
 
+  //LMT_ACSDSC
   @RemoveTrailingSpaces
   @ApiModelProperty(value = "Limited access description", example = "Text")
   private String limitedAccessDesc;
 
-  @ApiModelProperty(value = "Limited access county", example = "1068")
-  private Short limitedAccessCounty;
-
+  //LMT_ACSSCD
   @RemoveTrailingSpaces
   @NotNull
-  @ApiModelProperty(required = true, value = "Case name", example = "Sibling Hanson")
-  private String caseName;
+  @OneOf(
+      value = {
+          "NO_RESTRICTION",
+          "SEALED",
+          "SENSITIVE"
+      },
+      ignoreCase = true,
+      ignoreWhitespace = true
+  )
+  @ApiModelProperty(required = true, value = "Security access level code", example = "SEALED")
+  private String limitedAccess;
 
+  //NOTES_DOC
+  @RemoveTrailingSpaces
+  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
+  @ApiModelProperty(value = "DRMS notes document ID", example = "At9HoSn0WJ")
+  private String drmsNotesDocId;
+
+  //NXT_TILPDT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
       value = "Next Transitional Independent Living Plan due date",
       example = "2018-10-24"
   )
   private LocalDate nextTilpDueDate;
 
+  //PRJ_END_DT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(
       value = "Next Transitional Independent Living Plan due date",
       example = "2018-10-23"
   )
   private LocalDate projectedEndDate;
 
+  //RSP_AGY_CD
   @RemoveTrailingSpaces
-  @Size(min = 1, max = 1)
   @OneOf(
-      value = {"A", "C", "I", "K", "M", "O", "P", "S"},
+      value = {
+          "PRIVATE_ADOPTION_AGENCY",
+          "COUNTY_WELFARE_DEPARTMENT",
+          "INDIAN_CHILD_WELFARE",
+          "KIN_GAP",
+          "MENTAL_HEALTH",
+          "OUT_OF_STATE_AGENCY",
+          "PROBATION",
+          "STATE_ADOPTION_DISTRICT_OFFICE"
+      },
       ignoreCase = true,
       ignoreWhitespace = true
   )
-  @ApiModelProperty(value = "Responsible agency code", example = "A")
+  @ApiModelProperty(value = "Responsible agency code", example = "PRIVATE_ADOPTION_AGENCY")
   private String responsibleAgency;
 
-  @NotNull
-  @ApiModelProperty(required = true, value = "Special case project indicator", example = "true")
-  private Boolean specialProjectCase;
-
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
-  @NotNull
-  @ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
-  private LocalDate startDate;
-
-  @RemoveTrailingSpaces
-  @NotNull
-  @ApiModelProperty(required = true, value = "State", example = "1828")
-  private short state;
-
+  //SRV_CMPC
   @RemoveTrailingSpaces
   @NotNull
   @ApiModelProperty(
@@ -203,16 +196,22 @@ public class CaseDTO extends BaseDTO implements RequestResponse {
       value = "Code of the service component being referenced for a child's case",
       example = "1692"
   )
-  private short activeServiceComponent;
+  private Short activeServiceComponentCode;
 
+  //SRV_CMPDT
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
-  @gov.ca.cwds.rest.validation.Date
   @NotNull
   @ApiModelProperty(required = true, value = "Service component start date", example = "2016-10-23")
   private LocalDate activeServiceComponentStartDate;
 
+  //START_DT
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @NotNull
-  @ApiModelProperty(required = true, value = "Tickle indicator", example = "true")
-  private Boolean tickle;
+  @ApiModelProperty(required = true, value = "Start date", example = "2016-10-23")
+  private LocalDate startDate;
 
+  //STATE_C, if 0 in DB, should be null in DTO
+  @RemoveTrailingSpaces
+  @ApiModelProperty(value = "State", example = "1828")
+  private Short stateCode;
 }

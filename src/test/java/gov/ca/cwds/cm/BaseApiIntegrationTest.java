@@ -16,6 +16,8 @@ import org.junit.Rule;
 /** @author CWDS TPT-3 Team */
 public abstract class BaseApiIntegrationTest {
 
+  public static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
+
   private static final DateTimeFormatter DATE_TIME_FORMATTER =
       DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
