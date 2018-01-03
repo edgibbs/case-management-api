@@ -26,7 +26,7 @@ import lombok.EqualsAndHashCode;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CaseDTO extends BaseDTO implements RequestResponse {
 
-  private static final long serialVersionUID = 3787452961716324977L;
+  private static final long serialVersionUID = -8382919588078449541L;
 
   //IDENTIFIER, may be null (value is taken from URL)
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
