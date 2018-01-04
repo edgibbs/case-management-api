@@ -31,7 +31,8 @@ project.ext {
     projectMajorVersion = '0.5.4'
     //projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.4_141-RC'
+    coreApiVersion = '0.5.4_150-RC'
+    apiSecurityVersion = "0.5.4_V1_19-RC"
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
@@ -94,7 +95,7 @@ jacocoTestReport {
         csv.enabled false
         html.destination "${project.buildDir}/jacocoHtml"
     }
-    
+
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
@@ -123,7 +124,7 @@ dependencies {
         exclude group: 'org.glassfish.jersey.core'
         exclude group: 'gov.ca.cwds.api', module: 'api-security'
     }
-    compile group: 'gov.ca.cwds.api', name: 'api-security', version: '0.5.3_320'
+    compile group: 'gov.ca.cwds.api', name: 'api-security', version: apiSecurityVersion
 
     compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion , changing: true
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
@@ -138,7 +139,7 @@ dependencies {
             'org.postgresql:postgresql:9.4.1208.jre7',
             'io.dropwizard:dropwizard-testing:' + dropwizardVersion
     )
-    
+
     compile group: 'org.hibernate', name: 'hibernate-ehcache', version: '5.2.8.Final'
     compile group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '4.39'
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
@@ -166,7 +167,7 @@ dependencies {
         exclude group: 'javax.servlet', module: 'javax.servlet-api'
         exclude group: 'junit', module: 'junit'
     }
-    
+
     apt 'org.mapstruct:mapstruct-processor:' + mapstructVersion
     apt 'org.projectlombok:lombok:' + lombokVersion
 }

@@ -7,6 +7,7 @@ import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 import com.codahale.metrics.annotation.Timed;
 import com.google.inject.Inject;
 import gov.ca.cwds.cm.Constants.API;
+import gov.ca.cwds.cm.service.ChildClientService;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
@@ -14,6 +15,7 @@ import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.web.rest.ResponseUtil;
 import gov.ca.cwds.cm.web.rest.parameter.ClientParameterObject;
+import gov.ca.cwds.cms.data.access.service.DataAccessServicesException;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,6 +23,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.Collection;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -39,43 +42,50 @@ public class ChildClientResource {
 
   private final ClientFacade clientFacade;
   private final ClientAddressService clientAddressService;
+  private ChildClientService childClientService;
 
   @Inject
-  public ChildClientResource(ClientFacade clientFacade, ClientAddressService clientAddressService) {
+  public ChildClientResource(
+      ClientFacade clientFacade,
+      ClientAddressService clientAddressService,
+      ChildClientService childClientService) {
     this.clientAddressService = clientAddressService;
     this.clientFacade = clientFacade;
+    this.childClientService = childClientService;
   }
 
   @GET
   @Path("/{" + ID + "}")
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(code = 401, message = "Not Authorized"),
       @ApiResponse(code = 404, message = "Not found"),
       @ApiResponse(code = 406, message = "Accept Header not supported")
-  })
+    }
+  )
   @ApiOperation(value = "Find childClient by client ID", response = ChildClientDTO.class)
   @UnitOfWork(CMS)
   @Timed
   public Response get(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) {
     final ClientParameterObject clientParameterObject = new ClientParameterObject();
     clientParameterObject.setClientId(id);
-    final gov.ca.cwds.rest.api.Response clientDTO = clientFacade.find(
-        clientParameterObject,
-        ClientType.CHILD_CLIENT
-    );
+    final gov.ca.cwds.rest.api.Response clientDTO =
+        clientFacade.find(clientParameterObject, ClientType.CHILD_CLIENT);
     return ResponseUtil.responseOrNotFound(clientDTO);
   }
 
   @GET
   @Path("/{" + ID + "}/" + API.ADDRESSES)
-  @ApiResponses(value = {
+  @ApiResponses(
+    value = {
       @ApiResponse(code = 401, message = "Not Authenticated"),
       @ApiResponse(code = 403, message = "Unauthorized"),
       @ApiResponse(code = 404, message = "Not found")
-  })
+    }
+  )
   @ApiOperation(
     value = "ClientAddresses of ChildClient by client Id",
     response = ClientAddressDTO.class
@@ -84,8 +94,8 @@ public class ChildClientResource {
   @Timed
   public Response getAddressesByClientId(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
-      final String id) {
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) {
     final Collection<ClientAddressDTO> addresses = clientAddressService.findByClientId(id);
     return ResponseUtil.responseOrNotFound(addresses);
   }
@@ -95,25 +105,20 @@ public class ChildClientResource {
   @Produces(MediaType.APPLICATION_JSON)
   @Timed
   @ApiResponses(
-      value = {
-          @ApiResponse(code = 400, message = "Bad request"),
-          @ApiResponse(code = 404, message = "Not Found"),
-          @ApiResponse(code = 401, message = "Not Authorized"),
-          @ApiResponse(code = 406, message = "Accept Header not supported")
-      }
+    value = {
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 404, message = "Not Found"),
+      @ApiResponse(code = 401, message = "Not Authorized"),
+      @ApiResponse(code = 406, message = "Accept Header not supported")
+    }
   )
+  @UnitOfWork(CMS)
   @ApiOperation(value = "Update client", response = ChildClientDTO.class)
   public Response update(
-      @ApiParam(name = "form", value = "The Form object")
-      ChildClientDTO childClient,
+      @ApiParam(name = "client", value = "The Form object") @Valid ChildClientDTO childClient,
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
-      final String id
-  ) {
-    return ResponseUtil.responseOrNotFound(getMockedChildClientForContractUpdate(childClient));
-  }
-
-  private ChildClientDTO getMockedChildClientForContractUpdate(ChildClientDTO childClientDTO) {
-    return childClientDTO;
+          @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+          final String id) throws DataAccessServicesException {
+    return ResponseUtil.responseOrNotFound(childClientService.update(id, childClient));
   }
 }
