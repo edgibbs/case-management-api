@@ -14,9 +14,9 @@ public interface ClientMapper {
 
   @Mapping(target = "messages", ignore = true)
   @Mapping(target = "commentDescription", source = "commentDescription")
-  @Mapping(target = "estimatedDobCode", source = "dateOfBirthStatus.code")
+  @Mapping(target = "estimatedDobCode", source = "dateOfBirthStatus")
   @Mapping(target = "birthplaceVerifiedIndicator", source = "birthplaceVerifiedIndicator")
-  @Mapping(target = "hispanicOriginCode", source = "hispanicOrigin.code")
+  @Mapping(target = "hispanicOriginCode", source = "hispanicOrigin")
   @Mapping(target = "healthTxt", source = "healthSummaryText")
   @Mapping(target = "birthCity", source = "birthCity")
   @Mapping(target = "limitationOnSCPHealthIndicator", source = "limitationOnScpHealthIndicator")
@@ -27,8 +27,8 @@ public interface ClientMapper {
   @Mapping(target = "currentlyOtherDescription", source = "currentlyOtherDescription")
   @Mapping(target = "childrenServIndicator", source = "currentCaChildrenServiceIndicator")
   @Mapping(
-    target = "currentlyRegionalCenteerIndicator",
-    source = "currentlyRegionalCenterIndicator"
+      target = "currentlyRegionalCenteerIndicator",
+      source = "currentlyRegionalCenterIndicator"
   )
   @Mapping(target = "adjudicatedDelinquentIndicator", source = "adjudicatedDelinquentIndicator")
   @Mapping(target = "deathDateVerifiedIndicator", source = "deathDateVerifiedIndicator")
@@ -36,29 +36,29 @@ public interface ClientMapper {
   @Mapping(target = "soc158Ind", source = "soc158SealedClientIndicator")
   @Mapping(target = "tribalAncestryClientIndicator", source = "tribalAncestryClientIndicator")
   @Mapping(
-    target = "tribalMemberVerificationIndicator",
-    source = "tribalMembershipVerifcationIndicator"
+      target = "tribalMemberVerificationIndicator",
+      source = "tribalMembershipVerifcationIndicator"
   )
   @Mapping(target = "deathPlace", source = "deathPlace")
   @Mapping(target = "zippyIndicator", source = "zippyCreatedIndicator")
   @Mapping(target = "fatherParentalTermDate", source = "fatherParentalRightTermDate")
   @Mapping(target = "sciIndexNumber", source = "clientIndexNumber")
   @Mapping(target = "motherParentalTermDate", source = "motherParentalRightTermDate")
-  @Mapping(target = "soc158PlacementCode", source = "soc158placementsStatus.code")
+  @Mapping(target = "soc158PlacementCode", source = "soc158placementsStatus")
   @Mapping(
-    target = "hispUnableToDeterminateReasonCode",
-    source = "hispanicUnableToDetermineReason.code"
+      target = "hispUnableToDeterminateReasonCode",
+      source = "hispanicUnableToDetermineReason"
   )
-  @Mapping(target = "ethUnableToDeterminCode", source = "ethnicityUnableToDetermineReason.code")
-  @Mapping(target = "unemployedParentCode", source = "parentUnemployedStatus.code")
+  @Mapping(target = "ethUnableToDeterminCode", source = "ethnicityUnableToDetermineReason")
+  @Mapping(target = "unemployedParentCode", source = "parentUnemployedStatus")
   @Mapping(target = "suffixTitleDescription", source = "suffixTitleDescription")
   @Mapping(target = "socialSecurityNumberChangedCode", source = "socialSecurityNumberChangedCode")
   @Mapping(target = "socialSecurityNumber", source = "socialSecurityNumber")
   @Mapping(
-    target = "sensivityHealthInfoOnFileIndicator",
-    source = "sensitiveHealthInfoOnFileIndicator"
+      target = "sensivityHealthInfoOnFileIndicator",
+      source = "sensitiveHealthInfoOnFileIndicator"
   )
-  @Mapping(target = "sensivityIndicator", source = "sensitivity.code")
+  @Mapping(target = "sensivityIndicator", source = "sensitivity")
   @Mapping(target = "secondaryLanguageType", source = "secondaryLanguageCode")
   @Mapping(target = "religionType", source = "religionCode")
   @Mapping(target = "primaryLanguageType", source = "primaryLanguageCode")
@@ -66,14 +66,14 @@ public interface ClientMapper {
   @Mapping(target = "outstandingWarrantIndicator", source = "outstandingWarrantIndicator")
   @Mapping(target = "nameType", source = "nameType.systemId")
   @Mapping(target = "namePrefixDescription", source = "namePrefixDescription")
-  @Mapping(target = "militaryStatusCode", source = "militaryStatus.code")
+  @Mapping(target = "militaryStatusCode", source = "militaryStatus")
   @Mapping(target = "materialStatusType", source = "maritalStatusCode")
   @Mapping(target = "maritalCohabitatnIndicator", source = "maritalCohabitationHistoryIndicator")
-  @Mapping(target = "litrateCode", source = "literateStatus.code")
-  @Mapping(target = "incapacitatedParentCode", source = "incapacitatedParentStatus.code")
+  @Mapping(target = "litrateCode", source = "literateStatus")
+  @Mapping(target = "incapacitatedParentCode", source = "incapacitatedParentStatus")
   @Mapping(target = "immigrationStatusType", source = "immigrationStatusCode")
   @Mapping(target = "immigrationCountryCodeType", source = "immigrationCountryCode")
-  @Mapping(target = "genderCode", source = "gender.code")
+  @Mapping(target = "genderCode", source = "gender")
   @Mapping(target = "driverLicenseStateCodeType", source = "driverLicenseStateCode")
   @Mapping(target = "driverLicensNumber", source = "driverLicenseNumber")
   @Mapping(target = "deathReason", source = "deathReasonText")
@@ -90,19 +90,19 @@ public interface ClientMapper {
   @Mapping(target = "birthFacilityName", source = "birthFacilityName")
   @Mapping(target = "birthDt", source = "birthDate")
   @Mapping(target = "alienRegistrationNumber", source = "alienRegistrationNumber")
-  @Mapping(target = "adoptionStatusCode", source = "adoptionStatus.code")
+  @Mapping(target = "adoptionStatusCode", source = "adoptionStatus")
   @Mapping(target = "identifier", source = "identifier")
   ClientDTO toClientDTO(Client client);
 
   @Mapping(source = "commentDescription", target = "commentDescription")
   @Mapping(
-    expression = "java(DateOfBirthStatus.from(clientDTO.getEstimatedDobCode()))",
-    target = "dateOfBirthStatus"
+      source = "estimatedDobCode",
+      target = "dateOfBirthStatus"
   )
   @Mapping(source = "birthplaceVerifiedIndicator", target = "birthplaceVerifiedIndicator")
   @Mapping(
-    expression = "java(HispanicOrigin.from(clientDTO.getHispanicOriginCode()))",
-    target = "hispanicOrigin"
+      source = "hispanicOriginCode",
+      target = "hispanicOrigin"
   )
   @Mapping(source = "healthTxt", target = "healthSummaryText")
   @Mapping(source = "birthCity", target = "birthCity")
@@ -114,8 +114,8 @@ public interface ClientMapper {
   @Mapping(source = "currentlyOtherDescription", target = "currentlyOtherDescription")
   @Mapping(source = "childrenServIndicator", target = "currentCaChildrenServiceIndicator")
   @Mapping(
-    source = "currentlyRegionalCenteerIndicator",
-    target = "currentlyRegionalCenterIndicator"
+      source = "currentlyRegionalCenteerIndicator",
+      target = "currentlyRegionalCenterIndicator"
   )
   @Mapping(source = "adjudicatedDelinquentIndicator", target = "adjudicatedDelinquentIndicator")
   @Mapping(source = "deathDateVerifiedIndicator", target = "deathDateVerifiedIndicator")
@@ -123,8 +123,8 @@ public interface ClientMapper {
   @Mapping(source = "soc158Ind", target = "soc158SealedClientIndicator")
   @Mapping(source = "tribalAncestryClientIndicator", target = "tribalAncestryClientIndicator")
   @Mapping(
-    source = "tribalMemberVerificationIndicator",
-    target = "tribalMembershipVerifcationIndicator"
+      source = "tribalMemberVerificationIndicator",
+      target = "tribalMembershipVerifcationIndicator"
   )
   @Mapping(source = "deathPlace", target = "deathPlace")
   @Mapping(source = "zippyIndicator", target = "zippyCreatedIndicator")
@@ -132,32 +132,32 @@ public interface ClientMapper {
   @Mapping(source = "sciIndexNumber", target = "clientIndexNumber")
   @Mapping(source = "motherParentalTermDate", target = "motherParentalRightTermDate")
   @Mapping(
-    expression = "java(Soc158placementsStatus.from(clientDTO.getSoc158PlacementCode()))",
-    target = "soc158placementsStatus"
+      source = "soc158PlacementCode",
+      target = "soc158placementsStatus"
   )
   @Mapping(
-    expression =
-        "java(UnableToDetermineReason.from(clientDTO.getHispUnableToDeterminateReasonCode()))",
-    target = "hispanicUnableToDetermineReason"
+      source =
+          "hispUnableToDeterminateReasonCode",
+      target = "hispanicUnableToDetermineReason"
   )
   @Mapping(
-    expression = "java(UnableToDetermineReason.from(clientDTO.getEthUnableToDeterminCode()))",
-    target = "ethnicityUnableToDetermineReason"
+      source = "ethUnableToDeterminCode",
+      target = "ethnicityUnableToDetermineReason"
   )
   @Mapping(
-    expression = "java(ParentUnemployedStatus.from(clientDTO.getUnemployedParentCode()))",
-    target = "parentUnemployedStatus"
+      source = "unemployedParentCode",
+      target = "parentUnemployedStatus"
   )
   @Mapping(source = "suffixTitleDescription", target = "suffixTitleDescription")
   @Mapping(source = "socialSecurityNumberChangedCode", target = "socialSecurityNumberChangedCode")
   @Mapping(source = "socialSecurityNumber", target = "socialSecurityNumber")
   @Mapping(
-    source = "sensivityHealthInfoOnFileIndicator",
-    target = "sensitiveHealthInfoOnFileIndicator"
+      source = "sensivityHealthInfoOnFileIndicator",
+      target = "sensitiveHealthInfoOnFileIndicator"
   )
   @Mapping(
-    expression = "java(Sensitivity.from(clientDTO.getSensivityIndicator()))",
-    target = "sensitivity"
+      source = "sensivityIndicator",
+      target = "sensitivity"
   )
   @Mapping(source = "secondaryLanguageType", target = "secondaryLanguageCode")
   @Mapping(source = "religionType", target = "religionCode")
@@ -167,21 +167,21 @@ public interface ClientMapper {
   @Mapping(source = "nameType", target = "nameType.systemId")
   @Mapping(source = "namePrefixDescription", target = "namePrefixDescription")
   @Mapping(
-    expression = "java(MilitaryStatus.from(clientDTO.getMilitaryStatusCode()))",
-    target = "militaryStatus"
+      source = "militaryStatusCode",
+      target = "militaryStatus"
   )
   @Mapping(source = "maritalCohabitatnIndicator", target = "maritalCohabitationHistoryIndicator")
   @Mapping(
-    expression = "java(LiterateStatus.from(clientDTO.getLitrateCode()))",
-    target = "literateStatus"
+      source = "litrateCode",
+      target = "literateStatus"
   )
   @Mapping(
-    expression = "java(IncapacitatedParentStatus.from(clientDTO.getIncapacitatedParentCode()))",
-    target = "incapacitatedParentStatus"
+      source = "incapacitatedParentCode",
+      target = "incapacitatedParentStatus"
   )
   @Mapping(source = "immigrationStatusType", target = "immigrationStatusCode")
   @Mapping(source = "immigrationCountryCodeType", target = "immigrationCountryCode")
-  @Mapping(expression = "java(Gender.from(clientDTO.getGenderCode()))", target = "gender")
+  @Mapping(source = "genderCode", target = "gender")
   @Mapping(source = "driverLicenseStateCodeType", target = "driverLicenseStateCode")
   @Mapping(source = "driverLicensNumber", target = "driverLicenseNumber")
   @Mapping(source = "deathReason", target = "deathReasonText")
@@ -199,10 +199,11 @@ public interface ClientMapper {
   @Mapping(source = "birthDt", target = "birthDate")
   @Mapping(source = "alienRegistrationNumber", target = "alienRegistrationNumber")
   @Mapping(
-    expression = "java(AdoptionStatus.from(clientDTO.getAdoptionStatusCode()))",
-    target = "adoptionStatus"
+      source = "adoptionStatusCode",
+      target = "adoptionStatus"
   )
   @Mapping(source = "identifier", target = "identifier")
   @Mapping(target = "placementEpisodes", ignore = true)
+  @Mapping(source = "materialStatusType", target = "maritalStatusCode")
   Client toClient(ClientDTO clientDTO);
 }
