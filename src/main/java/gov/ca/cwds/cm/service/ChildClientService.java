@@ -43,12 +43,13 @@ public class ChildClientService {
 
   public Response update(Serializable serializable, Request request)
       throws DataAccessServicesException {
+    String staffPersonId = PrincipalUtils.getStaffPersonId();
     ChildClient entity = childClientMapper.fromChildClientDTO((ChildClientDTO) request);
     LocalDateTime lastUpdate = LocalDateTime.now();
     entity.setIdentifier((String) serializable);
     entity.setLastUpdateTime(lastUpdate);
-    entity.setLastUpdateId(PrincipalUtils.getStaffPersonId());
-    entity.setChildClientLastUpdateId(PrincipalUtils.getStaffPersonId());
+    entity.setLastUpdateId(staffPersonId);
+    entity.setChildClientLastUpdateId(staffPersonId);
     entity.setChildClientLastUpdateTime(lastUpdate);
     ChildClient childClient = (ChildClient)updateClient(entity);
     return childClientMapper.toChildClientDTO(childClient);
