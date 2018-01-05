@@ -20,6 +20,8 @@ server:
 
 shiro:
   iniConfigs: ["file:${SHIRO_CONFIG_PATH:-config/shiro.ini}"]
+security:
+  authorizationEnabled: ${AUTHORIZATION:-true}
 
 swagger:
   templateName: swagger.mustache
@@ -33,8 +35,6 @@ swagger:
   showSwagger: ${SHOW_SWAGGER:-true}
   jsonUrl: ${SWAGGER_JSON_URL:-http://localhost:8080/swagger.json}
   callbackUrl: ${SWAGGER_CALLBACK_URL:-http://localhost:8080/swagger}
-
-upgradeDbOnStart: ${UPGRADE_DB_ON_START:-true}
 
 cmsDataSourceFactory:
   autoCommitByDefault: false

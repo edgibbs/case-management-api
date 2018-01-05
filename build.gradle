@@ -31,8 +31,7 @@ project.ext {
     projectMajorVersion = '0.5.4'
     //projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.4_150-RC'
-    apiSecurityVersion = "0.5.4_V1_19-RC"
+    coreApiVersion = '0.5.4_153-RC'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
@@ -122,9 +121,7 @@ dependencies {
 // Exclude transitive dependencies.
     compile (group: 'gov.ca.cwds.api', name: 'api-core', version: coreApiVersion , changing: true) {
         exclude group: 'org.glassfish.jersey.core'
-        exclude group: 'gov.ca.cwds.api', module: 'api-security'
     }
-    compile group: 'gov.ca.cwds.api', name: 'api-security', version: apiSecurityVersion
 
     compile group: 'gov.ca.cwds.api', name: 'legacy-data-access-services', version: coreApiVersion , changing: true
     compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
