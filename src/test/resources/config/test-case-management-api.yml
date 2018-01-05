@@ -14,6 +14,8 @@ server:
 
 shiro:
   iniConfigs: ["classpath:config/shiro-test.ini"]
+security:
+  authorizationEnabled: ${AUTHORIZATION:-true}
 
 swagger:
   templateName: swagger.mustache
@@ -24,8 +26,6 @@ swagger:
   logo: images/CWDS-API-Logo-Horizontal.png
   loginUrl: ${LOGIN_URL:-http://localhost:8090/authn/login}
   showSwagger: ${SHOW_SWAGGER:-true}
-
-upgradeDbOnStart: ${UPGRADE_DB_ON_START:-false}
 
 cmsDataSourceFactory:
   driverClass: org.h2.Driver

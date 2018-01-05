@@ -5,6 +5,7 @@ import com.google.inject.Provides;
 import gov.ca.cwds.cm.CmApiConfiguration;
 import gov.ca.cwds.inject.AuditingModule;
 import gov.ca.cwds.rest.WebSecurityConfiguration;
+import gov.ca.cwds.security.configuration.SecurityConfiguration;
 import io.dropwizard.setup.Bootstrap;
 
 /**
@@ -43,6 +44,11 @@ public class ApplicationModule<T extends CmApiConfiguration> extends AbstractMod
   @Provides
   public WebSecurityConfiguration provideWebSecurityConfiguration(T configuration) {
     return configuration.getWebSecurityConfiguration();
+  }
+
+  @Provides
+  public SecurityConfiguration provideSecurityConfiguration(T configuration) {
+    return configuration.getSecurityConfiguration();
   }
 
 }
