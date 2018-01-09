@@ -32,11 +32,11 @@ project.ext {
     projectMajorVersion = '0.5.4'
     //projectVersion = projectMajorVersion + '-SNAPSHOT'
     dropwizardVersion = '1.1.0'
-    coreApiVersion = '0.5.4_153-RC'
+    coreApiVersion = '0.5.4_183'
     mapstructVersion = '1.2.0.Final'
     lombokVersion = '1.16.18'
     mainClass = 'gov.ca.cwds.cm.CmApiApplication'
-    calsModelVersion = '0.4.6'
+    calsModelVersion = '0.5.4_412-RC'
 
     isRelease = System.getProperty("Release") == "true"
     buildNumber = System.getProperty('BuildNumber')

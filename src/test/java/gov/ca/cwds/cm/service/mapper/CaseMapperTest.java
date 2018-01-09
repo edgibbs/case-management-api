@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.service.mapper    ;
+package gov.ca.cwds.cm.service.mapper;
 
 import static org.junit.Assert.assertNull;
 
