@@ -3,8 +3,8 @@
 JAVA_OPT="-Xms128m -Xmx512m"
 
 if ([ -z "$CASE_MANAGEMENT_API_URL" ]); then
-  CASE_MANAGEMENT_API_URL="http://localhost:8080"
-  echo "Default value is set: CASE_MANAGEMENT_API_URL = http://localhost:8080"
+  echo "CASE_MANAGEMENT_API_URL variable is required"
+  exit 1
 fi
 
 if ([ -z "$TEST_TYPE" ]); then
@@ -20,6 +20,7 @@ else
   exit 1
 fi
 
+echo "Starting tests: "
 echo "CASE_MANAGEMENT_API_URL = '$CASE_MANAGEMENT_API_URL'"
 echo "TEST_TYPE = '$TEST_TYPE'"
 
