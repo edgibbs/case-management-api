@@ -57,7 +57,7 @@ node ('preint') {
 
 	}
    stage('Run tests'){
-     writeFile file: "gradle.properties", text: "forms-api.url=${APP_URL}"
+     writeFile file: "gradle.properties", text: "api.url=${APP_URL}"
 	 buildInfo = rtGradle.run buildFile: 'build.gradle', tasks: 'integrationTest'
 	}
 

@@ -6,18 +6,7 @@ import io.dropwizard.db.DataSourceFactory;
 
 public class CmApiConfiguration extends BaseApiConfiguration {
 
-  private boolean upgradeDbOnStart = false;
-
   private DataSourceFactory cwsRsDataSourceFactory;
-
-  @JsonProperty
-  public boolean isUpgradeDbOnStart() {
-    return upgradeDbOnStart;
-  }
-
-  public void setUpgradeDbOnStart(boolean upgradeDbOnStart) {
-    this.upgradeDbOnStart = upgradeDbOnStart;
-  }
 
   @JsonProperty
   public DataSourceFactory getCwsRsDataSourceFactory() {
