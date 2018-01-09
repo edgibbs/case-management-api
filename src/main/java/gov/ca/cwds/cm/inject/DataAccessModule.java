@@ -16,7 +16,10 @@ import gov.ca.cwds.data.legacy.cms.entity.CaseLoadWeighting;
 import gov.ca.cwds.data.legacy.cms.entity.ChildClient;
 import gov.ca.cwds.data.legacy.cms.entity.Client;
 import gov.ca.cwds.data.legacy.cms.entity.ClientAddress;
+import gov.ca.cwds.data.legacy.cms.entity.ClientScpEthnicity;
 import gov.ca.cwds.data.legacy.cms.entity.CountyLicenseCase;
+import gov.ca.cwds.data.legacy.cms.entity.FCEligibility;
+import gov.ca.cwds.data.legacy.cms.entity.HealthInterventionPlan;
 import gov.ca.cwds.data.legacy.cms.entity.LicensingVisit;
 import gov.ca.cwds.data.legacy.cms.entity.LongText;
 import gov.ca.cwds.data.legacy.cms.entity.OtherAdultsInPlacementHome;
@@ -43,6 +46,9 @@ import gov.ca.cwds.data.legacy.cms.entity.syscodes.Country;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.County;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.DeathCircumstancesType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Ethnicity;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.FcEligibilityDentalReason;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.FcEligibilityTermReason;
+import gov.ca.cwds.data.legacy.cms.entity.syscodes.HealthPlanTerminationType;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.ImmigrationStatus;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.Language;
 import gov.ca.cwds.data.legacy.cms.entity.syscodes.MaritalStatus;
@@ -119,7 +125,13 @@ public class DataAccessModule extends AbstractModule {
               NameType.class,
               Ethnicity.class,
               Language.class,
-              Religion.class
+              Religion.class,
+              ClientScpEthnicity.class,
+              HealthInterventionPlan.class,
+              HealthPlanTerminationType.class,
+              FCEligibility.class,
+              FcEligibilityDentalReason.class,
+              FcEligibilityTermReason.class
           )
           .build();
 
