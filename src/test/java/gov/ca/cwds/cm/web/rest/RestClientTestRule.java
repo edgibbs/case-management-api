@@ -91,7 +91,7 @@ public class RestClientTestRule implements TestRule {
   }
 
   protected String getUriString() {
-    String serverUrlStr = System.getProperty(TestModeUtils.TEMPLATE_API_URL);
+    String serverUrlStr = System.getProperty(TestModeUtils.API_URL);
     if (StringUtils.isEmpty(serverUrlStr)) {
       serverUrlStr = composeUriString();
     }
