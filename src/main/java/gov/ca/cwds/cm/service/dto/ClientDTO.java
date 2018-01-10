@@ -670,7 +670,6 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
   )
   private Boolean adjudicatedDelinquentIndicator;
 
-  @Size(max = 1)
   @ApiModelProperty(
       value =
           "ETH UNABLE TO DET REASON CODE - Records the reason that 'Unable to Determine' was selected as "
