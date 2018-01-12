@@ -18,9 +18,7 @@ import javax.ws.rs.core.Response;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * @author CWDS TPT-3 Team
- */
+/** @author CWDS TPT-3 Team */
 public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
   public static final String CLIENT_ID = "BKk7CHj00Z";
@@ -40,12 +38,13 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   public void getChildClientById_success_whenAuthorizedUser() throws Exception {
     // given
     // when
-    final ChildClientDTO actual = clientTestRule
-        .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
-        .request(MediaType.APPLICATION_JSON)
-        .get()
-        .readEntity(ChildClientDTO.class);
+    final ChildClientDTO actual =
+        clientTestRule
+            .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+            .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+            .request(MediaType.APPLICATION_JSON)
+            .get()
+            .readEntity(ChildClientDTO.class);
 
     // then
     final String expectedFixture = fixture("fixtures/child-client-by-id-response.json");
@@ -56,8 +55,11 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   public void getChildClientById_notAuthorized_whenUnauthorizedUser() throws Exception {
     // given
     // when
-    final Response response = clientTestRule.target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
-        .request(MediaType.APPLICATION_JSON).get();
+    final Response response =
+        clientTestRule
+            .target(API.CHILD_CLIENTS + "/" + CLIENT_ID)
+            .request(MediaType.APPLICATION_JSON)
+            .get();
 
     // then
     assertThat(response.getStatus(), is(403));
@@ -66,31 +68,36 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testUpdateChildClient() throws Exception {
     ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
-    childClientDTO.setAdoptableCode("Y");
+    childClientDTO.setAdoptableCode("ADOPTABLE");
     childClientDTO.setAdoptedAge((short) 22);
     childClientDTO.setAfdcFcEligibilityIndicatorVar(true);
     childClientDTO.setAllHealthInfoOnFileIndicator(true);
     childClientDTO.setAllEducationInfoOnFileIndicator(true);
     childClientDTO.setAttemptToAcquireEducInfoDesc("Educ info test");
-    childClientDTO.setAwolAbductedCode("Y");
+    childClientDTO.setAwolAbductedCode("NOT_APPLICABLE");
     childClientDTO.setBirthHistoryIndicatorVar(true);
     childClientDTO.setCurrentCaseId("ABC1234333");
     childClientDTO.setCollegeIndicator(true);
     childClientDTO.setChildIndianAncestryIndicator(true);
     childClientDTO.setDeathCircumstancesType("3321");
-    childClientDTO.setDisabilityDiagnosedCode("D");
+    childClientDTO.setDisabilityDiagnosedCode("NOT_YET_DETERMINED");
     childClientDTO.setMinorNmdParentIndicator(true);
+    childClientDTO.setIcwaEligibilityCode("NOT_ELIGIBLE");
+    childClientDTO.setPreviouslyAdopted("NO");
+    childClientDTO.setAdoptionStatusCode("NOT_FREE");
+    childClientDTO.setGenderCode("FEMALE");
+    childClientDTO.setIncapacitatedParentCode("YES");
+    childClientDTO.setMaterialStatusType((short) 1309);
 
     WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
-    ChildClientDTO response =
-        target
-            .request(MediaType.APPLICATION_JSON_TYPE)
-            .put(
-                Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE),
-                ChildClientDTO.class);
+    target
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON_TYPE)
+        .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
 
     String fixture = fixture("fixtures/child-client-after-update-response.json");
-    assertEqualsResponse(fixture, transformDTOtoJSON(response));
+    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
+    assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
   }
 
   @Test
@@ -99,15 +106,13 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     final String path = API.CHILD_CLIENTS + "/GmNMeSx0Hy/" + API.ADDRESSES;
 
     // when
-    final Response actualResult = clientTestRule.target(path)
-        .request(MediaType.APPLICATION_JSON_TYPE)
-        .get(Response.class);
+    final Response actualResult =
+        clientTestRule.target(path).request(MediaType.APPLICATION_JSON_TYPE).get(Response.class);
 
     // then
     assertResponseByFixturePath(
         actualResult,
-        "fixtures/child-client/getAddressesByClientId_success_whenAddressesExist.json"
-    );
+        "fixtures/child-client/getAddressesByClientId_success_whenAddressesExist.json");
   }
 
   @Test
@@ -116,16 +121,19 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     final String path = API.CHILD_CLIENTS + "/NotExistingId/" + API.ADDRESSES;
 
     // when
-    final Response actualResult = clientTestRule.target(path)
-        .request(MediaType.APPLICATION_JSON_TYPE)
-        .get(Response.class);
+    final Response actualResult =
+        clientTestRule.target(path).request(MediaType.APPLICATION_JSON_TYPE).get(Response.class);
 
     // then
     assertThat(actualResult.getStatus(), is(equalTo(404)));
   }
 
   private ChildClientDTO getChildClientDTO(String clientId) {
-    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/" + clientId);
+    WebTarget target =
+        clientTestRule
+            .target(API.CHILD_CLIENTS + "/" + clientId)
+            .queryParam(
+                PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json");
     Response response = target.request(MediaType.APPLICATION_JSON).get();
     return response.readEntity(ChildClientDTO.class);
   }

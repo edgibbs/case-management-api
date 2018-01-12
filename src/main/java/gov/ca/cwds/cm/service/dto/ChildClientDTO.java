@@ -3,13 +3,11 @@ package gov.ca.cwds.cm.service.dto;
 import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
@@ -27,19 +25,18 @@ public class ChildClientDTO extends ClientDTO {
 
   @NotNull
   @ApiModelProperty(
-    required = true,
-    readOnly = true,
-    value = "CLIENT ID of victim",
-    example = "ABC1234567"
+      required = true,
+      readOnly = true,
+      value = "CLIENT ID of victim",
+      example = "ABC1234567"
   )
   private String victimClientId;
 
   @NotEmpty
-  @Size(min = 1, max = 2)
   @OneOf(
-    value = {"N", "Y", "NA"},
-    ignoreCase = true,
-    ignoreWhitespace = true
+      value = {"NOT_ADOPTABLE", "NOT_ASSESSED", "ADOPTABLE"},
+      ignoreCase = true,
+      ignoreWhitespace = true
   )
   @ApiModelProperty(required = true, value = "Adoptable Code", example = "ADOPTABLE")
   private String adoptableCode;
@@ -71,8 +68,18 @@ public class ChildClientDTO extends ClientDTO {
   private String attemptToAcquireHlthInfoDesc;
 
   @NotNull
-  @Size(max = 1, message = "size must be 1")
-  @ApiModelProperty(required = true, example = "N")
+  @ApiModelProperty(required = true, example = "AWOL_BASED_ON_USER_ENTRY")
+  @OneOf(
+      value = {
+          "AWOL_BASED_ON_USER_ENTRY",
+          "ABDUCTED_BASED_ON_USER_ENTRY",
+          "ABDUCTED_BASED_ON_SYSTEM_SETTING",
+          "NOT_APPLICABLE",
+          "AWOL_BASED_ON_SYSTEM_SETTING"
+      },
+      ignoreCase = true,
+      ignoreWhitespace = true
+  )
   private String awolAbductedCode;
 
   @NotNull
@@ -91,13 +98,12 @@ public class ChildClientDTO extends ClientDTO {
   @ApiModelProperty(example = "1234")
   private String deathCircumstancesType;
 
-  @Size(min = 1, max = 1)
   @OneOf(
-    value = {"N", "Y", "D"},
-    ignoreCase = true,
-    ignoreWhitespace = true
+      value = {"NOT_YET_DETERMINED", "NO", "YES"},
+      ignoreCase = true,
+      ignoreWhitespace = true
   )
-  @ApiModelProperty(value = "Disablility Diagnosed", example = "N")
+  @ApiModelProperty(value = "Disablility Diagnosed", example = "NOT_YET_DETERMINED")
   private String disabilityDiagnosedCode;
 
   @Size(max = CMS_ID_LEN)
@@ -117,7 +123,6 @@ public class ChildClientDTO extends ClientDTO {
   private Boolean fc2EligApplicationIndicatorVar;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  @gov.ca.cwds.rest.validation.Date
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
   private LocalDate foodStampsApplicationDate;
 
@@ -126,13 +131,12 @@ public class ChildClientDTO extends ClientDTO {
   private Boolean foodStampsApplicationIndicator;
 
   @NotEmpty
-  @Size(min = 1, max = 1, message = "size must be 1")
   @OneOf(
-    value = {"Y", "N", "U", "P"},
-    ignoreCase = true,
-    ignoreWhitespace = true
+      value = {"NOT_ELIGIBLE", "ELIGIBLE", "UNKNOWN", "PENDING"},
+      ignoreCase = true,
+      ignoreWhitespace = true
   )
-  @ApiModelProperty(required = true, example = "N")
+  @ApiModelProperty(required = true, example = "PENDING")
   private String icwaEligibilityCode;
 
   @NotNull
@@ -168,13 +172,12 @@ public class ChildClientDTO extends ClientDTO {
   private Boolean postsecVocIndicator;
 
   @NotEmpty
-  @Size(min = 1, max = 1, message = "size must be 1")
   @OneOf(
-    value = {"Y", "N", "U", "X"},
-    ignoreCase = true,
-    ignoreWhitespace = true
+      value = {"NO", "UNKNOWN", "NO_USER_SELECTION", "YES"},
+      ignoreCase = true,
+      ignoreWhitespace = true
   )
-  @ApiModelProperty(required = true, example = "N")
+  @ApiModelProperty(required = true, example = "NO_USER_SELECTION")
   private String previouslyAdopted;
 
   @NotNull
@@ -195,7 +198,6 @@ public class ChildClientDTO extends ClientDTO {
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   @ApiModelProperty(value = "yyyy-MM-dd", example = "2000-01-01")
-  @gov.ca.cwds.rest.validation.Date
   private LocalDate siiNextScreeningDueDate;
 
   @NotNull

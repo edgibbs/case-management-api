@@ -5,6 +5,7 @@ import gov.ca.cwds.cm.web.rest.utils.TestModeUtils;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.ws.rs.client.Client;
 import org.glassfish.jersey.client.JerseyClient;
@@ -15,10 +16,14 @@ import org.junit.Rule;
 /** @author CWDS TPT-3 Team */
 public abstract class BaseApiIntegrationTest {
 
+  public static final int UNPROCESSABLE_ENTITY_STATUS_CODE = 422;
+
   private static final DateTimeFormatter DATE_TIME_FORMATTER =
       DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-  private static final String configFile = "config/test-case-management-api.yml";
+  private static final String configFile = "config/case-management-api.yml";
+
+  public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
   @ClassRule
   public static final DropwizardAppRule<CmApiConfiguration> appRule =
@@ -85,5 +90,9 @@ public abstract class BaseApiIntegrationTest {
         databaseHelper.runScript(path);
       }
     }
+  }
+
+  public static LocalDate localDate(String dateStr) {
+    return LocalDate.parse(dateStr, DATE_FORMATTER);
   }
 }

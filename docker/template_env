@@ -1,0 +1,31 @@
+#common
+CASE_MANAGEMENT_API_PORT=8080
+PERRY_PORT=18080
+PERRY_ADMIN_PORT=18092
+
+#perry
+DEV_MODE=true
+
+#db2data
+LICENSE=accept
+#CWSCMS db
+DB_CMS_USER=db2inst1
+DB_CMS_PASSWORD=db2inst1
+DB_CMS_DB2_HOST=localhost
+DB_CMS_DB2_PORT=50000
+DB_CMS_DB_NAME=DB0TDEV
+DB_CMS_JDBC_URL=jdbc:db2://db2data:${DB_CMS_DB2_PORT}/${DB_CMS_DB_NAME}
+#CWSRS1 db
+DB_RS_USER=db2inst1
+DB_RS_PASSWORD=db2inst1
+DB_RS_DB2_HOST=localhost
+DB_RS_DB2_PORT=50000
+DB_RS_DB_NAME=DB0TDEV
+DB_RS_JDBC_URL=jdbc:db2://db2data:${DB_RS_DB2_PORT}/${DB_RS_DB_NAME}
+
+#case-management-api
+LOGIN_URL=http://localhost:${PERRY_PORT}/perry/authn/login
+LOGOUT_URL=http://localhost:${PERRY_PORT}/perry/authn/logout
+SHIRO_CONFIG_PATH=/opt/case-management-api/config/shiro.ini
+#SHIRO_CONFIG_PATH=/opt/case-management-api/config/shiro_nosec.ini
+KEY_STORE_FILE=/opt/case-management-api/config/testKeyStore.jks

@@ -5,12 +5,12 @@ package gov.ca.cwds.cm.web.rest.utils;
  */
 public class TestModeUtils {
 
-  public static final String TEMPLATE_API_URL = "api.url";
+  public static final String API_URL = "api.url";
 
   private TestModeUtils() {
   }
 
   public static boolean isIntegrationTestsMode() {
-    return System.getProperty(TEMPLATE_API_URL) != null;
+    return System.getProperty(API_URL) != null;
   }
 }
