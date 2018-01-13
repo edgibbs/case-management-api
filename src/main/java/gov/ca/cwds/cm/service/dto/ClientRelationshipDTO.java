@@ -4,13 +4,21 @@ import static gov.ca.cwds.data.persistence.cms.CmsPersistentObject.CMS_ID_LEN;
 import static gov.ca.cwds.rest.api.domain.DomainObject.DATE_FORMAT;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@EqualsAndHashCode
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@SuppressWarnings({"squid:S3437"})
 public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
   private static final long serialVersionUID = 7455548566030460582L;
