@@ -135,7 +135,7 @@ public class ChildClientResource {
 
     ClientRelationshipDTO rel_1 = new ClientRelationshipDTO();
     rel_1.setRelationshipId("AattSTp01T");
-    rel_1.setClientId("IXjnFQn01T");
+    rel_1.setClientId("FplTfDs0Rx");
     rel_1.setRelatedClientId("FEsDPrl01T");
     rel_1.setRelationshipTypeCode((short)291);
     rel_1.setAbsentParentIndicator(false);
