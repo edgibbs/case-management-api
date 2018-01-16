@@ -10,6 +10,7 @@ import gov.ca.cwds.cm.Constants.API;
 import gov.ca.cwds.cm.service.ChildClientService;
 import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
+import gov.ca.cwds.cm.service.dto.AddressDTO;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
 import gov.ca.cwds.cm.service.dto.ClientDTO;
@@ -27,6 +28,7 @@ import io.swagger.annotations.ApiResponses;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -157,6 +159,30 @@ public class ChildClientResource {
     relatedClient_1.setCommonFirstName("Melissa");
     relatedClient_1.setCommonLastName("Wyrill");
     relatedClient_1.setEmailAddr("mv@some.com");
+
+    List<AddressDTO> relatedClientAddresses_1 = new ArrayList<>();
+    relatedClient_1.setAddresses(relatedClientAddresses_1);
+
+    AddressDTO address_10 = new AddressDTO();
+    relatedClientAddresses_1.add(address_10);
+    address_10.setId("Aay9NMz0Nu");
+    address_10.setCity("San Diego");
+    address_10.setStreetName("Bunker Hill Circle");
+    address_10.setStreetNumber("1234");
+    address_10.setZip("92117");
+    address_10.setUnitNumber("310");
+    address_10.setStateCode((short)1828);
+
+    AddressDTO address_11 = new AddressDTO();
+    relatedClientAddresses_1.add(address_11);
+    address_11.setId("AazXkiy0Ib");
+    address_11.setCity("Sacramento");
+    address_11.setStreetName("Columbus Terrace");
+    address_11.setStreetNumber("2345");
+    address_11.setZip("95833");
+    address_11.setStateCode((short)1828);
+    address_11.setPrimaryPhone("9430007990");
+
 
     return ResponseUtil.responseOrNotFound(relationships);
   }
