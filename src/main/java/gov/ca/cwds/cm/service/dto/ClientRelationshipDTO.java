@@ -8,16 +8,17 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import gov.ca.cwds.cm.RequestResponse;
 import io.dropwizard.validation.OneOf;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@ApiModel(description = "A definition of family roles and other significant connections which links one CLIENT to another.")
 @SuppressWarnings({"squid:S3437"})
 public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
@@ -82,4 +83,29 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   @NotNull
   @ApiModelProperty(value = "Related Client")
   private ClientDTO relatedClient;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    ClientRelationshipDTO that = (ClientRelationshipDTO) o;
+    return Objects.equals(clientId, that.clientId) &&
+        Objects.equals(relatedClientId, that.relatedClientId) &&
+        Objects.equals(relationshipTypeCode, that.relationshipTypeCode) &&
+        Objects.equals(relationshipStartDate, that.relationshipStartDate) &&
+        Objects.equals(relationshipEndDate, that.relationshipEndDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), clientId, relatedClientId, relationshipTypeCode,
+        relationshipStartDate, relationshipEndDate);
+  }
 }
