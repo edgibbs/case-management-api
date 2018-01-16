@@ -33,23 +33,11 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   private String clientId;
 
   @NotNull
-  @ApiModelProperty(
-      value = "Client relationship role name. String.", example = "Son", required = true
-  )
-  private String clientRelationshipRole;
-
-  @NotNull
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(
       value = "Related Client ID. String of size 10.", example = "MHH2zjk0Rx", required = true
   )
   private String relatedClientId;
-
-  @NotNull
-  @ApiModelProperty(
-      value = "Related client relationship role name. String.", example = "Father", required = true
-  )
-  private String relatedClientRelationshipRole;
 
   @NotNull
   @Size(max = Short.MAX_VALUE)
@@ -90,6 +78,4 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
       example = "YES"
   )
   private String sameHomeStatus;
-
-
 }
