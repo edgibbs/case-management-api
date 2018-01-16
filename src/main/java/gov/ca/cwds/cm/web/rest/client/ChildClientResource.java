@@ -118,7 +118,7 @@ public class ChildClientResource {
   )
   public Response getRelationshipsByClientId(
       @PathParam("id")
-      @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
+      @ApiParam(required = true, value = "The unique client ID", example = "FplTfDs0Rx")
       final String id) {
     final Collection<ClientRelationshipDTO> relationships = new ArrayList<>();
 

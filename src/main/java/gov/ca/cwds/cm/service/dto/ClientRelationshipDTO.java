@@ -35,7 +35,7 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   @NotNull
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
   @ApiModelProperty(
-      value = "Related Client ID. String of size 10.", example = "MHH2zjk0Rx", required = true
+      value = "Related Client ID. String of size 10", example = "MHH2zjk0Rx", required = true
   )
   private String relatedClientId;
 
