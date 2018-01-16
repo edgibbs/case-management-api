@@ -24,12 +24,12 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   private static final long serialVersionUID = 7455548566030460582L;
 
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
-  @ApiModelProperty(value = "ID. String of size 10.", example = "AcB3Wu00Rx")
+  @ApiModelProperty(value = "ID. String of size 10", example = "AcB3Wu00Rx")
   private String relationshipId;
 
   @NotNull
   @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
-  @ApiModelProperty(value = "Client ID. String of size 10.", example = "FplTfDs0Rx", required = true)
+  @ApiModelProperty(value = "Client ID. String of size 10", example = "FplTfDs0Rx", required = true)
   private String clientId;
 
   @NotNull
@@ -41,12 +41,12 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
   @NotNull
   @Size(max = Short.MAX_VALUE)
-  @ApiModelProperty(value = "System ID of the relationship type. Numeric.", example = "285", required = true)
+  @ApiModelProperty(value = "System ID of the relationship type. Numeric", example = "285", required = true)
   private Short relationshipTypeCode;
 
   @NotNull
   @ApiModelProperty(
-      value = "Indicates if the parent client is absent for the related child client. Boolean.",
+      value = "Indicates if the parent client is absent for the related child client. Boolean",
       example = "false",
       required = true
   )
@@ -54,14 +54,14 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @ApiModelProperty(
-      value = "The date the relationship began.",
+      value = "The date the relationship began",
       example = "2000-10-20"
   )
   private LocalDate relationshipStartDate;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @ApiModelProperty(
-      value = "The date the relationship ended.",
+      value = "The date the relationship ended",
       example = "2018-10-20"
   )
   private LocalDate relationshipEndDate;
@@ -74,7 +74,7 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
   )
   @ApiModelProperty(
       required = true,
-      value = "Indicates whether the two CLIENTs live in the same home , permitted values are : 'NO', 'UNKNOWN', 'YES'",
+      value = "Indicates whether the two CLIENTs live in the same home, permitted values are : 'NO', 'UNKNOWN', 'YES'",
       example = "YES"
   )
   private String sameHomeStatus;
