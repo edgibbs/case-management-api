@@ -12,6 +12,7 @@ import gov.ca.cwds.cm.service.ClientAddressService;
 import gov.ca.cwds.cm.service.dictionaries.ClientType;
 import gov.ca.cwds.cm.service.dto.ChildClientDTO;
 import gov.ca.cwds.cm.service.dto.ClientAddressDTO;
+import gov.ca.cwds.cm.service.dto.ClientDTO;
 import gov.ca.cwds.cm.service.dto.ClientRelationshipDTO;
 import gov.ca.cwds.cm.service.facade.ClientFacade;
 import gov.ca.cwds.cm.web.rest.ResponseUtil;
@@ -123,6 +124,7 @@ public class ChildClientResource {
     final Collection<ClientRelationshipDTO> relationships = new ArrayList<>();
 
     ClientRelationshipDTO rel_0 = new ClientRelationshipDTO();
+    relationships.add(rel_0);
     rel_0.setRelationshipId("AcB3Wu00Rx");
     rel_0.setClientId("FplTfDs0Rx");
     rel_0.setRelatedClientId("MHH2zjk0Rx");
@@ -131,7 +133,12 @@ public class ChildClientResource {
     rel_0.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
     rel_0.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
     rel_0.setSameHomeStatus("NO");
-    relationships.add(rel_0);
+
+    ClientDTO relatedClient_0 = new ClientDTO();
+    rel_0.setRelatedClient(relatedClient_0);
+    relatedClient_0.setIdentifier("MHH2zjk0Rx");
+    relatedClient_0.setCommonFirstName("Alexander");
+    relatedClient_0.setCommonLastName("Broomhall");
 
     ClientRelationshipDTO rel_1 = new ClientRelationshipDTO();
     rel_1.setRelationshipId("AattSTp01T");
@@ -143,6 +150,13 @@ public class ChildClientResource {
     rel_1.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
     rel_1.setSameHomeStatus("YES");
     relationships.add(rel_1);
+
+    ClientDTO relatedClient_1 = new ClientDTO();
+    rel_1.setRelatedClient(relatedClient_1);
+    relatedClient_1.setIdentifier("FEsDPrl01T");
+    relatedClient_1.setCommonFirstName("Melissa");
+    relatedClient_1.setCommonLastName("Wyrill");
+    relatedClient_1.setEmailAddr("mv@some.com");
 
     return ResponseUtil.responseOrNotFound(relationships);
   }

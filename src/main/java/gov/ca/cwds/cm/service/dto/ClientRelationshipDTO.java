@@ -78,4 +78,8 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
       example = "YES"
   )
   private String sameHomeStatus;
+
+  @NotNull
+  @ApiModelProperty(value = "Related Client")
+  private ClientDTO relatedClient;
 }
