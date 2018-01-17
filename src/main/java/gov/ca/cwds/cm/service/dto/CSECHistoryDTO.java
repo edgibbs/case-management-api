@@ -17,14 +17,13 @@ import lombok.Data;
 /** @author CWDS TPT-3 Team */
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class CSECHistoryDto extends BaseDTO implements RequestResponse {
+public class CSECHistoryDTO extends BaseDTO implements RequestResponse {
 
   @NotNull
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @ApiModelProperty(value = "The Date the sexual abuse began.", example = "2004-06-14")
   private LocalDate startDate;
 
-  @NotNull
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
   @ApiModelProperty(value = "The Date the sexual abuse ended.", example = "2004-06-14")
   private LocalDate endDate;
@@ -43,7 +42,8 @@ public class CSECHistoryDto extends BaseDTO implements RequestResponse {
     value =
         "The system generated number assigned to record the type of abuse that occurred. "
             + "The selection choices will be provided by the Sexual Exploitation Type code table, "
-            + "therefore this attribute will store the SysId of the chosen value",
+            + "therefore this attribute will store the SysId of the chosen value. Additional info "
+            + "can be reached from system-codes resource by 'GVR_ENTC' key.",
     example = "6657"
   )
   private String sexualExploitationType;

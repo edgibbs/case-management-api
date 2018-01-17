@@ -9,7 +9,7 @@ import static gov.ca.cwds.cm.Constants.API.ID;
 import static gov.ca.cwds.cm.Constants.UnitOfWork.CMS;
 
 import com.codahale.metrics.annotation.Timed;
-import gov.ca.cwds.cm.service.dto.CSECHistoryDto;
+import gov.ca.cwds.cm.service.dto.CSECHistoryDTO;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -45,7 +45,7 @@ public class CSECHistoryResource {
   @Timed
   @ApiOperation(
     value = "Find CSEC information pertaining to a specific child client",
-    response = CSECHistoryDto.class
+    response = CSECHistoryDTO.class
   )
   public Response getCSECByClientId(
       @PathParam(ID)
@@ -59,16 +59,16 @@ public class CSECHistoryResource {
     return Response.ok().entity(getMockedData()).build();
   }
 
-  private List<CSECHistoryDto> getMockedData() {
+  private List<CSECHistoryDTO> getMockedData() {
     String clientId = "BKk7CHj01Y";
 
-    CSECHistoryDto dto = new CSECHistoryDto();
+    CSECHistoryDTO dto = new CSECHistoryDTO();
     dto.setStartDate(LocalDate.of(1988, 10, 12));
     dto.setEndDate(LocalDate.of(1989, 10, 12));
     dto.setChildClientId(clientId);
     dto.setSexualExploitationType("6867");
 
-    CSECHistoryDto dto2 = new CSECHistoryDto();
+    CSECHistoryDTO dto2 = new CSECHistoryDTO();
     dto2.setStartDate(LocalDate.of(1998, 10, 12));
     dto2.setEndDate(LocalDate.of(1999, 10, 12));
     dto2.setChildClientId(clientId);
