@@ -386,7 +386,8 @@ public class ReferralDTO extends BaseDTO implements Response {
   @NotNull
   @ApiModelProperty(
       value = "REFERRAL_RESPONSE_TYPE - The system generated number which identifies the  first "
-          + "determined response (e.g., immediate, 10 days, etc.) assigned to the REFERRAL.",
+          + "determined response (e.g., immediate, 10 days, etc.) assigned to the REFERRAL. " +
+              "Additional info can be reached from system-codes resource by 'RFR_RSPC' key.",
       example = "1620"
   )
   private Short referralResponseType;
