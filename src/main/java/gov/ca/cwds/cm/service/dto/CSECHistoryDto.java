@@ -37,7 +37,14 @@ public class CSECHistoryDto extends BaseDTO implements RequestResponse {
 
   @RemoveTrailingSpaces
   @NotNull
-  @Size(min = CMS_ID_LEN, max = CMS_ID_LEN)
-  @ApiModelProperty(required = true, value = "Child Client ID", example = "BKk7CHj01Y")
+  @Size(min = 4, max = 4)
+  @ApiModelProperty(
+    required = true,
+    value =
+        "The system generated number assigned to record the type of abuse that occurred. "
+            + "The selection choices will be provided by the Sexual Exploitation Type code table, "
+            + "therefore this attribute will store the SysId of the chosen value",
+    example = "6657"
+  )
   private String sexualExploitationType;
 }
