@@ -181,7 +181,8 @@ public class ChildClientResource {
       @ApiParam(name = "client", value = "The Form object") @Valid ChildClientDTO childClient,
       @PathParam("id")
           @ApiParam(required = true, value = "The unique client ID", example = "GmNMeSx0Hy")
-          final String id) throws DataAccessServicesException {
+          final String id)
+      throws DataAccessServicesException {
     return ResponseUtil.responseOrNotFound(childClientService.update(id, childClient));
   }
 }

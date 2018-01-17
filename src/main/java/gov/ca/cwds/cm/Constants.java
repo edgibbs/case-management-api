@@ -32,6 +32,8 @@ public final class Constants {
 
     public static final String REFERRALS = "referrals";
 
+    public static final String CSEC_HISTORY = "csec";
+
     public static final String RELATIONSHIPS = "relationships";
 
     private API() {
