@@ -131,7 +131,7 @@ public class ChildClientResource {
     rel_0.setClientId("FplTfDs0Rx");
     rel_0.setRelatedClientId("MHH2zjk0Rx");
     rel_0.setRelationshipTypeCode((short)285);
-    rel_0.setAbsentParentIndicator(true);
+    rel_0.setAbsentParentIndicator(Boolean.TRUE);
     rel_0.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
     rel_0.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
     rel_0.setSameHomeStatus("NO");
@@ -147,7 +147,7 @@ public class ChildClientResource {
     rel_1.setClientId("FplTfDs0Rx");
     rel_1.setRelatedClientId("FEsDPrl01T");
     rel_1.setRelationshipTypeCode((short)291);
-    rel_1.setAbsentParentIndicator(false);
+    rel_1.setAbsentParentIndicator(Boolean.FALSE);
     rel_1.setRelationshipStartDate(LocalDate.of(2000, 10, 20));
     rel_1.setRelationshipEndDate(LocalDate.of(2018, 10, 20));
     rel_1.setSameHomeStatus("YES");
