@@ -42,7 +42,11 @@ public class ClientRelationshipDTO extends BaseDTO implements RequestResponse {
 
   @NotNull
   @Size(max = Short.MAX_VALUE)
-  @ApiModelProperty(value = "System ID of the relationship type. Numeric", example = "285", required = true)
+  @ApiModelProperty(
+      value = "SYS_ID number designated for each type of relationship between two CLIENTs "
+          + "(e.g.,  Son/Father, Daughter/Father, Sister/Brother, etc.)."
+      + "Additional info can be reached from system-codes resource by 'CLNTRELC' key. Numeric",
+      example = "285", required = true)
   private Short relationshipTypeCode;
 
   @NotNull
