@@ -29,7 +29,7 @@ project.ext {
     projectGroup = 'gov.ca.cwds.case-management'
     projectDockerGroup = 'cwds'
     projectDockerAppName = 'case-management-api'
-    projectMajorVersion = '0.5.4'
+    projectMajorVersion = '0.5.5'
     dropwizardVersion = '1.1.0'
     coreApiVersion = '0.5.4_185'
     mapstructVersion = '1.2.0.Final'
