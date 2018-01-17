@@ -712,7 +712,4 @@ public class ClientDTO extends BaseDTO implements RequestResponse {
       example = " "
   )
   private String sciIndexNumber;
-
-  @ApiModelProperty(value = "Collection of client's addresses")
-  private List<AddressDTO> addresses;
 }
