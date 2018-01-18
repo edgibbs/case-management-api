@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
 import static gov.ca.cwds.cm.web.rest.utils.AssertFixtureUtils.assertResponseByFixturePath;
 import static gov.ca.cwds.cm.web.rest.utils.AssertResponseHelper.assertEqualsResponse;
@@ -126,6 +126,21 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
 
     // then
     assertThat(actualResult.getStatus(), is(equalTo(404)));
+  }
+
+  @Test
+  public void getRelationshipsByClientId_success_whenRelationshipsExist() throws Exception {
+    // given
+    final String path = API.CHILD_CLIENTS + "/" + ChildClientResource.MOCK_CLIENT_ID +"/" + API.RELATIONSHIPS;
+
+    // when
+    final Response actualResult =
+        clientTestRule.target(path).request(MediaType.APPLICATION_JSON_TYPE).get(Response.class);
+
+    // then
+    assertResponseByFixturePath(
+        actualResult,
+        "fixtures/child-client/getRelationshipsByClientId_success_whenRelationshipsExist.json");
   }
 
   private ChildClientDTO getChildClientDTO(String clientId) {
