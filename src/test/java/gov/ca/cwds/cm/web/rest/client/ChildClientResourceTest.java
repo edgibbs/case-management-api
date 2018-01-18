@@ -68,6 +68,20 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
   @Test
   public void testUpdateChildClient() throws Exception {
     ChildClientDTO childClientDTO = getChildClientDTO("BKk7CHj00A");
+    enrichForUpdate(childClientDTO);
+
+    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
+    target
+        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
+        .request(MediaType.APPLICATION_JSON_TYPE)
+        .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
+
+    String fixture = fixture("fixtures/child-client-after-update-response.json");
+    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
+    assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
+  }
+
+  private void enrichForUpdate(ChildClientDTO childClientDTO) {
     childClientDTO.setAdoptableCode("ADOPTABLE");
     childClientDTO.setAdoptedAge((short) 22);
     childClientDTO.setAfdcFcEligibilityIndicatorVar(true);
@@ -88,16 +102,6 @@ public class ChildClientResourceTest extends BaseApiIntegrationTest {
     childClientDTO.setGenderCode("FEMALE");
     childClientDTO.setIncapacitatedParentCode("YES");
     childClientDTO.setMaterialStatusType((short) 1309);
-
-    WebTarget target = clientTestRule.target(API.CHILD_CLIENTS + "/BKk7CHj00A");
-    target
-        .queryParam(PATH_TO_PRINCIPAL_FIXTURE, "fixtures/perry-account/0Ki-all-authorized.json")
-        .request(MediaType.APPLICATION_JSON_TYPE)
-        .put(Entity.entity(childClientDTO, MediaType.APPLICATION_JSON_TYPE), ChildClientDTO.class);
-
-    String fixture = fixture("fixtures/child-client-after-update-response.json");
-    ChildClientDTO clientAfterUpdate = getChildClientDTO("BKk7CHj00A");
-    assertEqualsResponse(fixture, transformDTOtoJSON(clientAfterUpdate));
   }
 
   @Test
