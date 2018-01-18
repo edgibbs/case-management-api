@@ -1,4 +1,4 @@
-package gov.ca.cwds.cm.web.rest;
+package gov.ca.cwds.cm.web.rest.client;
 
 import gov.ca.cwds.cm.BaseApiIntegrationTest;
 import gov.ca.cwds.cm.Constants;
